@@ -974,7 +974,7 @@ const SKY_DATA = [
     name:{de:"Sagittarius A*", en:"Sagittarius A*"}, sci:"", note:"extremereignis",
     fact:{de:"Das supermassereiche Schwarze Loch im Herzen der Milchstraße – 4,3 Millionen Sonnenmassen, 2022 erstmals fotografiert.",
           en:"The supermassive black hole at the heart of the Milky Way – 4.3 million solar masses, first imaged in 2022."},
-    img:"images/sgra.jpg", credit:"EHT Collaboration", license:"CC BY", nasa:"Sagittarius A* black hole Event Horizon",
+    img:"images/sgrA.jpg", credit:"EHT Collaboration", license:"CC BY", nasa:"Sagittarius A* black hole Event Horizon",
     source:"https://www.eso.org/public/" },
 
   { id:"magnetar", cat:"star", emoji:"🧲", altitude_m:50000*LY,

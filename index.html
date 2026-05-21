@@ -51,15 +51,18 @@
     <span data-i18n="scrollHint">↑ Scrolle nach oben, um aufzusteigen</span>
   </div>
 
+  <!-- Hover-Popup (ein wiederverwendetes Element, per JS befüllt/positioniert) -->
+  <div id="hover-popup" hidden aria-hidden="true"></div>
+
   <!-- Detail-Modal -->
   <div id="detail-modal" hidden>
-    <div class="modal-card" role="dialog" aria-modal="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-name-h">
       <button class="modal-close" aria-label="Schließen">×</button>
-      <div class="modal-emoji"></div>
-      <h2 class="modal-name"></h2>
+      <div class="modal-emoji" aria-hidden="true"></div>
+      <h2 class="modal-name" id="modal-name-h"></h2>
       <p class="modal-sci"></p>
       <p class="modal-alt"></p>
-      <p class="modal-fact"></p>
+      <div class="modal-body"></div>
       <p class="modal-meta"></p>
     </div>
   </div>
@@ -75,6 +78,13 @@
   </div>
 
   <script src="data.js"></script>
+  <script src="data_details.js"></script>
+  <script src="dd_life.js"></script>
+  <script src="dd_tech1.js"></script>
+  <script src="dd_space.js"></script>
+  <script src="dd_solar.js"></script>
+  <script src="dd_stellar.js"></script>
+  <script src="dd_deep.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

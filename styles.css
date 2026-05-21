@@ -35,6 +35,8 @@ body{
 
 /* --- Szene --- */
 #scene{ position: relative; width: 100%; }
+/* Szene erst zeigen, wenn der Aufbau fertig ist (verhindert Layout-Shift beim Init) */
+html:not(.ready) #scene{ visibility: hidden; }
 
 #atmosphere-layer,
 #cloud-layer,
@@ -156,11 +158,17 @@ body{
 .sky-item.side-left{ left: 26%; }
 .sky-item.side-right{ left: 74%; }
 .sky-item:hover{ filter: drop-shadow(0 0 12px rgba(120,200,255,0.6)); }
+.sky-item:focus-visible{
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: 8px;
+}
 
 .sky-item img{
   display: block;
+  width: auto;
   max-width: 160px;
-  max-height: 160px;
+  height: 150px;                /* feste Höhe reserviert Platz -> kein Layout-Shift beim Lazy-Load */
   margin: 0 auto 8px;
   object-fit: contain;
 }
@@ -365,8 +373,10 @@ body{
 #detail-modal[hidden]{ display: none; }
 .modal-card{
   position: relative;
-  max-width: 440px;
+  max-width: 480px;
   width: calc(100% - 40px);
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
   background: linear-gradient(160deg, #14213f, #0a1430);
   border: 1px solid var(--ui-border);
   border-radius: 16px;
@@ -386,9 +396,52 @@ body{
 .modal-name{ margin: 8px 0 2px; font-size: 1.4rem; }
 .modal-sci{ margin: 0 0 10px; font-style: italic; color: rgba(255,255,255,0.6); }
 .modal-alt{ margin: 0 0 14px; color: var(--accent); font-weight: 600; font-size: 1.1rem; }
-.modal-fact{ margin: 0 0 14px; line-height: 1.55; }
-.modal-meta{ margin: 0; font-size: 0.8rem; color: rgba(255,255,255,0.5); }
+
+/* Ausführlicher Rumpf: Beschreibungs-Absätze + kategorisierte Key-Facts */
+.modal-body{ margin: 0 0 14px; }
+.modal-para{ margin: 0 0 12px; line-height: 1.6; }
+.modal-para:last-child{ margin-bottom: 0; }
+.modal-group{ margin-top: 16px; }
+.modal-group-title{
+  margin: 0 0 6px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.modal-rows{
+  margin: 0;
+  display: grid;
+  grid-template-columns: minmax(96px, auto) 1fr;
+  column-gap: 16px;
+  row-gap: 4px;
+}
+.modal-rows dt{ color: rgba(255,255,255,0.55); font-size: 0.88rem; }
+.modal-rows dd{ margin: 0; font-size: 0.88rem; }
+
+.modal-meta{ margin: 14px 0 0; font-size: 0.8rem; color: rgba(255,255,255,0.5); }
 .modal-meta a{ color: var(--accent); }
+
+/* --- Hover-Popup (kompakte Vorschau) --- */
+#hover-popup{
+  position: fixed;
+  z-index: 40;
+  max-width: 260px;
+  padding: 10px 14px;
+  background: var(--ui-bg);
+  border: 1px solid var(--ui-border);
+  border-radius: 10px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+  pointer-events: none;            /* darf mouseout am Item nicht stören */
+  animation: hp-in 0.12s ease;
+}
+#hover-popup[hidden]{ display: none; }
+#hover-popup .hp-name{ font-weight: 700; font-size: 0.95rem; }
+#hover-popup .hp-alt{ color: var(--accent); font-size: 0.82rem; margin: 1px 0 6px; font-variant-numeric: tabular-nums; }
+#hover-popup .hp-fact{ font-size: 0.82rem; line-height: 1.45; color: rgba(255,255,255,0.85); }
+@keyframes hp-in{ from{ opacity: 0; } to{ opacity: 1; } }
 
 /* --- Start-Overlay --- */
 #start-overlay{
@@ -429,7 +482,7 @@ body{
 /* --- Responsive --- */
 @media (max-width: 600px){
   .sky-item{ width: 140px; contain-intrinsic-size: 140px 170px; }
-  .sky-item img{ max-width: 110px; max-height: 110px; }
+  .sky-item img{ max-width: 110px; height: 110px; }
   .sky-item .placeholder{ width: 86px; height: 86px; font-size: 2.6rem; }
   .sky-item.side-left{ left: 28%; }
   .sky-item.side-right{ left: 72%; }
@@ -441,4 +494,5 @@ body{
   html, html.ready{ scroll-behavior: auto; }
   #scroll-hint{ animation: none; }
   .cloud{ will-change: auto; }
+  #hover-popup{ animation: none; }
 }

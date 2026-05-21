@@ -108,6 +108,7 @@
      --------------------------------------------------------------------- */
   const sceneEl   = document.getElementById("scene");
   const objLayer  = document.getElementById("objects-layer");
+  const ITEM_BY_ID = new Map(SKY_DATA.map((d) => [d.id, d]));   // schnelle Suche für Delegation
   const atmoLayer = document.getElementById("atmosphere-layer");
   const cloudLayer= document.getElementById("cloud-layer");
   const msLayer   = document.getElementById("milestone-layer");
@@ -140,6 +141,9 @@
       el.style.top = n.y + "px";
       el.style.left = LANE_X[n.lane] + "%";
       el.dataset.id = it.id;
+      el.tabIndex = 0;
+      el.setAttribute("role", "button");
+      el.setAttribute("aria-label", `${it.name[lang]} – ${formatAlt(it.altitude_m)}`);
 
       const note = NOTE_LABELS[it.note];
       const badge = note ? `<span class="note-badge note-${it.note}">${note[lang]}</span>` : "";
@@ -154,7 +158,6 @@
           <span class="alt">${formatAlt(it.altitude_m)}</span>
           ${badge}
         </figcaption>`;
-      el.addEventListener("click", () => openModal(it));
       frag.appendChild(el);
     }
     objLayer.replaceChildren(frag);
@@ -262,16 +265,19 @@
   }
 
   // Festes Sternenfeld im DOM-Koordinatenraum (oberer/Weltraum-Bereich).
+  // Dezente Farbtöne (überwiegend weiß, einige bläulich/gelblich) für Tiefe.
+  const STAR_TINTS = ["#ffffff", "#ffffff", "#ffffff", "#dfe9ff", "#fff1d6", "#ffe3c8"];
   const STARS = [];
   function buildStars() {
     STARS.length = 0;
     const maxY = SPACE_PX + GROUND_PX * 0.35;   // bis knapp in die obere Atmosphäre
-    for (let i = 0; i < 220; i++) {
+    for (let i = 0; i < 560; i++) {
       STARS.push({
         x: Math.random(),
         ydom: Math.random() * maxY,
         r: Math.random() * 1.4 + 0.3,
         base: Math.random() * 0.6 + 0.4,
+        c: STAR_TINTS[(Math.random() * STAR_TINTS.length) | 0],
       });
     }
   }
@@ -296,7 +302,7 @@
       const a = starAlpha(altHere) * s.base;
       if (a <= 0.01) continue;
       ctx.globalAlpha = a;
-      ctx.fillStyle = "#ffffff";
+      ctx.fillStyle = s.c;
       ctx.beginPath();
       ctx.arc(s.x * vw, screenY, s.r, 0, Math.PI * 2);
       ctx.fill();
@@ -343,16 +349,63 @@
   function requestFrame() { if (!ticking) { requestAnimationFrame(onFrame); ticking = true; } }
 
   /* ---------------------------------------------------------------------
-     6) DETAIL-MODAL
+     6) DETAIL-MODAL  (kategorisierte Sektionen, barrierefrei)
      --------------------------------------------------------------------- */
   const modal = document.getElementById("detail-modal");
+  const modalCard = modal.querySelector(".modal-card");
+  const modalBody = modal.querySelector(".modal-body");
+  let modalReturnFocus = null;          // Element, das beim Schließen Fokus zurückbekommt
+
+  // Baut den ausführlichen Rumpf: Beschreibungs-Absätze + kategorisierte Key-Fact-Gruppen.
+  // Fällt sauber auf `fact` zurück, wenn kein SKY_DETAILS-Eintrag existiert.
+  function renderModalBody(it) {
+    const det = (typeof SKY_DETAILS !== "undefined") ? SKY_DETAILS[it.id] : null;
+    const frag = document.createDocumentFragment();
+
+    const paragraphs = det && det.desc && det.desc[lang] && det.desc[lang].length
+      ? det.desc[lang]
+      : [it.fact[lang]];                // Rückfall: der bestehende Kurzfakt
+    for (const p of paragraphs) {
+      const para = document.createElement("p");
+      para.className = "modal-para";
+      para.textContent = p;
+      frag.appendChild(para);
+    }
+
+    if (det && det.groups) {
+      for (const g of det.groups) {
+        const sec = document.createElement("section");
+        sec.className = "modal-group";
+        const h = document.createElement("h3");
+        h.className = "modal-group-title";
+        h.textContent = g.title[lang];
+        sec.appendChild(h);
+        const dl = document.createElement("dl");
+        dl.className = "modal-rows";
+        for (const r of g.rows) {
+          const dt = document.createElement("dt");
+          dt.textContent = r.label[lang];
+          const dd = document.createElement("dd");
+          dd.textContent = r.value[lang];
+          dl.appendChild(dt);
+          dl.appendChild(dd);
+        }
+        sec.appendChild(dl);
+        frag.appendChild(sec);
+      }
+    }
+    modalBody.replaceChildren(frag);
+  }
+
   function openModal(it) {
+    if (!it) return;
+    modalReturnFocus = document.activeElement;
     modal.querySelector(".modal-emoji").textContent = it.emoji;
     const yr = SPACE_YEARS[it.id] ? `  ·  ${SPACE_YEARS[it.id]}` : "";
     modal.querySelector(".modal-name").textContent = it.name[lang] + yr;
     modal.querySelector(".modal-sci").textContent = it.sci || "";
     modal.querySelector(".modal-alt").textContent = formatAlt(it.altitude_m);
-    modal.querySelector(".modal-fact").textContent = it.fact[lang];
+    renderModalBody(it);
     const note = NOTE_LABELS[it.note];
     const noteTxt = note ? ` · ${note[lang]}` : "";
     const credit = it.credit ? `${it.credit}${it.license ? " (" + it.license + ")" : ""}` : "";
@@ -360,11 +413,109 @@
     modal.querySelector(".modal-meta").innerHTML =
       `${credit}${noteTxt}` + (it.source ? ` · <a href="${it.source}" target="_blank" rel="noopener">${srcLabel}</a>` : "");
     modal.hidden = false;
+    sceneEl.setAttribute("aria-hidden", "true");
+    modalBody.scrollTop = 0;
+    modalCard.scrollTop = 0;
+    modal.querySelector(".modal-close").focus();
   }
-  function closeModal() { modal.hidden = true; }
+
+  function closeModal() {
+    if (modal.hidden) return;
+    modal.hidden = true;
+    sceneEl.removeAttribute("aria-hidden");
+    if (modalReturnFocus && typeof modalReturnFocus.focus === "function") modalReturnFocus.focus();
+    modalReturnFocus = null;
+  }
+
+  // Fokusfalle: Tab zykliert innerhalb der Modal-Card.
+  function trapFocus(e) {
+    if (modal.hidden || e.key !== "Tab") return;
+    const focusables = modalCard.querySelectorAll(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+    if (!focusables.length) return;
+    const first = focusables[0], last = focusables[focusables.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  }
+
   modal.querySelector(".modal-close").addEventListener("click", closeModal);
   modal.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
-  document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeModal(); });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeModal();
+    else trapFocus(e);
+  });
+
+  /* ---------------------------------------------------------------------
+     6b) HOVER-POPUP + EVENT-DELEGATION  (ein Popup für alle 155 Items)
+     --------------------------------------------------------------------- */
+  const hoverPopup = document.getElementById("hover-popup");
+  const supportsHover = window.matchMedia("(hover: hover)").matches;
+  let hoverItemEl = null;
+
+  function hidePopup() { hoverPopup.hidden = true; hoverItemEl = null; }
+
+  function showPopup(el, it) {
+    const yr = SPACE_YEARS[it.id] ? ` · ${SPACE_YEARS[it.id]}` : "";
+    const frag = document.createDocumentFragment();
+    const name = document.createElement("div");
+    name.className = "hp-name";
+    name.textContent = it.name[lang] + yr;
+    const alt = document.createElement("div");
+    alt.className = "hp-alt";
+    alt.textContent = formatAlt(it.altitude_m);
+    const fact = document.createElement("div");
+    fact.className = "hp-fact";
+    fact.textContent = it.fact[lang];
+    frag.append(name, alt, fact);
+    hoverPopup.replaceChildren(frag);
+    hoverPopup.hidden = false;
+    positionPopup(el);
+  }
+
+  function positionPopup(el) {
+    const r = el.getBoundingClientRect();
+    const pw = hoverPopup.offsetWidth, ph = hoverPopup.offsetHeight;
+    let left = r.left + r.width / 2 - pw / 2;
+    left = Math.max(8, Math.min(left, window.innerWidth - pw - 8));
+    let top = r.top - ph - 10;                 // bevorzugt oberhalb des Items
+    if (top < 8) top = r.bottom + 10;          // sonst darunter
+    hoverPopup.style.left = left + "px";
+    hoverPopup.style.top = top + "px";
+  }
+
+  function itemFromEvent(e) {
+    const el = e.target.closest && e.target.closest(".sky-item");
+    if (!el) return null;
+    const it = ITEM_BY_ID.get(el.dataset.id);
+    return it ? { el, it } : null;
+  }
+
+  function setupInteraction() {
+    objLayer.addEventListener("click", (e) => {
+      const hit = itemFromEvent(e);
+      if (hit) { hidePopup(); openModal(hit.it); }
+    });
+    objLayer.addEventListener("keydown", (e) => {
+      if (e.key !== "Enter" && e.key !== " " && e.key !== "Spacebar") return;
+      const hit = itemFromEvent(e);
+      if (hit) { e.preventDefault(); hidePopup(); openModal(hit.it); }
+    });
+
+    if (!supportsHover) return;                // Touch: kein Popup, Tap öffnet direkt das Modal
+    objLayer.addEventListener("mouseover", (e) => {
+      const hit = itemFromEvent(e);
+      if (hit && hit.el !== hoverItemEl) { hoverItemEl = hit.el; showPopup(hit.el, hit.it); }
+    });
+    objLayer.addEventListener("mouseout", (e) => {
+      if (hoverItemEl && (!e.relatedTarget || !hoverItemEl.contains(e.relatedTarget))) hidePopup();
+    });
+    objLayer.addEventListener("focusin", (e) => {     // Keyboard-Fokus zeigt das Popup ebenfalls
+      const hit = itemFromEvent(e);
+      if (hit) { hoverItemEl = hit.el; showPopup(hit.el, hit.it); }
+    });
+    objLayer.addEventListener("focusout", hidePopup);
+    window.addEventListener("scroll", hidePopup, { passive: true });   // Popup ist fixed → bei Scroll ausblenden
+  }
 
   /* ---------------------------------------------------------------------
      7) TELEPORT-MENÜ
@@ -425,6 +576,7 @@
     buildSections();
     buildClouds();
     buildTeleport();
+    setupInteraction();                 // Event-Delegation + Hover-Popup (einmalig)
 
     // Start am Boden (ganz unten), bevor irgendetwas sichtbar wird.
     window.scrollTo(0, document.body.scrollHeight);
