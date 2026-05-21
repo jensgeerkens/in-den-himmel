@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>In den Himmel — Wie hoch fliegen Tiere?</title>
+  <meta name="description" content="Scrolle vom Boden bis ins Weltall und entdecke fliegende Tiere, Flugzeuge und Raumfahrt auf ihrer wahren Höhe.">
+  <script>
+    /* Verhindert, dass der Browser eine alte Scrollposition wiederherstellt –
+       wir starten kontrolliert am Boden (ganz unten). */
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  </script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="is-loading">
+
+  <!-- Hintergrund-Gradient + Sterne -->
+  <canvas id="bg"></canvas>
+
+  <!-- Die eigentliche, sehr hohe Szene -->
+  <main id="scene">
+    <div id="atmosphere-layer"></div>
+    <div id="cloud-layer"></div>
+    <div id="milestone-layer"></div>
+    <div id="objects-layer"></div>
+    <div id="ground"><span class="ground-label" data-i18n="ground">Meereshöhe · 0 m</span></div>
+  </main>
+
+  <!-- Höhenmesser (fixiert) -->
+  <aside id="altimeter" aria-hidden="true">
+    <div class="alt-value"><span id="alt-number">0</span></div>
+    <div class="alt-layer" id="alt-layer-name">Troposphäre</div>
+    <div class="alt-bar"><div class="alt-bar-fill" id="alt-bar-fill"></div></div>
+  </aside>
+
+  <!-- Sprachschalter + Teleport (fixiert) -->
+  <nav id="controls">
+    <div id="lang-toggle" role="group" aria-label="Sprache">
+      <button data-lang="de" class="active">DE</button>
+      <button data-lang="en">EN</button>
+    </div>
+    <details id="teleport-menu">
+      <summary data-i18n="jump">Springe zu …</summary>
+      <ul id="teleport-list"></ul>
+    </details>
+  </nav>
+
+  <!-- Hinweis zum Hochscrollen -->
+  <div id="scroll-hint">
+    <span data-i18n="scrollHint">↑ Scrolle nach oben, um aufzusteigen</span>
+  </div>
+
+  <!-- Detail-Modal -->
+  <div id="detail-modal" hidden>
+    <div class="modal-card" role="dialog" aria-modal="true">
+      <button class="modal-close" aria-label="Schließen">×</button>
+      <div class="modal-emoji"></div>
+      <h2 class="modal-name"></h2>
+      <p class="modal-sci"></p>
+      <p class="modal-alt"></p>
+      <p class="modal-fact"></p>
+      <p class="modal-meta"></p>
+    </div>
+  </div>
+
+  <!-- Start-Overlay (deckt den Init-Sprung ab) -->
+  <div id="start-overlay">
+    <div class="overlay-inner">
+      <h1 data-i18n="title">In den Himmel</h1>
+      <p data-i18n="subtitle">Vom Boden bis ins Weltall — fliegende Tiere, Flugzeuge und Raumfahrt auf ihrer wahren Höhe.</p>
+      <button id="start-btn" data-i18n="start">Abheben ↑</button>
+      <p class="overlay-credit" data-i18n="inspired">Inspiriert von neal.fun/deep-sea</p>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

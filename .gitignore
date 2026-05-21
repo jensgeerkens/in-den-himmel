@@ -1,0 +1,13 @@
+# OS / Editor
+Thumbs.db
+.DS_Store
+*.swp
+
+# Lokale Test-/Tool-Artefakte
+.playwright-mcp/
+images/raw/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
