@@ -87,6 +87,30 @@ body{
   white-space: nowrap;
 }
 
+/* --- Akt-Banner (Sektionen) --- */
+.section-banner{
+  position: absolute;
+  left: 0; right: 0;
+  text-align: center;
+  pointer-events: none;
+  border-top: 1px solid rgba(255,255,255,0.16);
+}
+.section-banner .section-title{
+  display: inline-block;
+  margin-top: 18px;
+  padding: 8px 26px;
+  font-size: clamp(1.1rem, 2.4vw, 1.9rem);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.92);
+  background: rgba(10,18,35,0.45);
+  border: 1px solid rgba(255,255,255,0.16);
+  border-radius: 999px;
+  backdrop-filter: blur(6px);
+  text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+}
+
 /* --- Wolken --- */
 .cloud{
   position: absolute;
@@ -180,6 +204,11 @@ body{
 .cat-planet   .placeholder{ box-shadow: inset 0 0 0 2px rgba(255,200,120,0.4); }
 .cat-star     .placeholder{ background: radial-gradient(circle at 40% 35%, rgba(255,240,180,0.55), rgba(255,170,70,0.12)); box-shadow: inset 0 0 0 2px rgba(255,210,120,0.55); }
 .cat-cosmic   .placeholder{ background: radial-gradient(circle at 40% 35%, rgba(190,150,255,0.4), rgba(90,60,160,0.12)); box-shadow: inset 0 0 0 2px rgba(180,140,255,0.5); }
+.cat-exoplanet .placeholder{ box-shadow: inset 0 0 0 2px rgba(120,220,180,0.45); }
+.cat-nebula   .placeholder{ background: radial-gradient(circle at 40% 35%, rgba(255,140,200,0.35), rgba(120,40,120,0.12)); box-shadow: inset 0 0 0 2px rgba(255,150,210,0.45); }
+.cat-cluster  .placeholder{ box-shadow: inset 0 0 0 2px rgba(200,220,255,0.5); }
+.cat-blackhole .placeholder{ background: radial-gradient(circle at 50% 50%, rgba(0,0,0,0.85), rgba(255,150,40,0.25)); box-shadow: inset 0 0 0 2px rgba(255,160,50,0.5); }
+.cat-galaxy   .placeholder{ background: radial-gradient(circle at 40% 35%, rgba(180,200,255,0.4), rgba(80,60,150,0.12)); box-shadow: inset 0 0 0 2px rgba(170,180,255,0.5); }
 
 /* Jahreszahl (Rekordverlauf, ab dem Weltraum) */
 .year{
@@ -207,6 +236,7 @@ body{
 .note-extremwert{     background: rgba(255,170,60,0.18);  border-color: rgba(255,190,90,0.4); }
 .note-laborwert{      background: rgba(150,120,255,0.18); border-color: rgba(170,150,255,0.4); }
 .note-bodenhoehe{     background: rgba(120,200,150,0.18); border-color: rgba(150,220,170,0.4); }
+.note-unsicher{       background: rgba(160,160,170,0.18); border-color: rgba(190,190,200,0.4); font-style: italic; }
 
 /* --- Höhenmesser --- */
 #altimeter{

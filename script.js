@@ -79,6 +79,7 @@
     extremwert:     { de: "Extremwert",   en: "extreme value" },
     laborwert:      { de: "Laborwert",    en: "lab value" },
     bodenhoehe:     { de: "Standorthöhe", en: "ground elevation" },
+    unsicher:       { de: "unsicher",     en: "uncertain" },
     typisch:        null,
     referenz:       null,
   };
@@ -110,6 +111,7 @@
   const atmoLayer = document.getElementById("atmosphere-layer");
   const cloudLayer= document.getElementById("cloud-layer");
   const msLayer   = document.getElementById("milestone-layer");
+  const secLayer  = document.getElementById("section-layer");
 
   const LANE_X = [50, 30, 70, 16, 84];     // Prozent: Mitte zuerst, dann auffächern
   const ITEM_H = 215;                       // ungefähre Item-Höhe inkl. Beschriftung
@@ -190,6 +192,26 @@
       frag.appendChild(el);
     }
     msLayer.replaceChildren(frag);
+  }
+
+  // Große Akt-Banner an den Übergängen (Eintritt = untere Grenze `from`).
+  function buildSections() {
+    const frag = document.createDocumentFragment();
+    for (const s of SECTIONS) {
+      if (s.from <= 0) continue;                 // "Atmosphäre" am Boden braucht kein Banner
+      const el = document.createElement("div");
+      el.className = "section-banner";
+      el.style.top = altToY(s.from) + "px";
+      el.innerHTML = `<span class="section-title">${s.name[lang]}</span>`;
+      frag.appendChild(el);
+    }
+    secLayer.replaceChildren(frag);
+  }
+
+  // Name des aktuellen Akts (für den Höhenmesser).
+  function currentSectionName(alt) {
+    for (const s of SECTIONS) if (alt >= s.from && alt < s.to) return s.name[lang];
+    return SECTIONS[SECTIONS.length - 1].name[lang];
   }
 
   const CLOUDS = [
@@ -299,7 +321,7 @@
     const gpxMid = TOTAL_HEIGHT - (st + vh / 2);
     const alt = Math.max(0, groundPxToAlt(gpxMid));
     altNumber.textContent = formatAlt(alt);
-    altLayerName.textContent = currentLayerName(alt);
+    altLayerName.textContent = alt < 100000 ? currentLayerName(alt) : currentSectionName(alt);
     const pct = clamp01(altToGroundPx(alt) / TOTAL_HEIGHT) * 100;
     altBarFill.style.width = pct.toFixed(1) + "%";
   }
@@ -378,6 +400,7 @@
     buildScene();
     buildAtmosphere();
     buildMilestones();
+    buildSections();
     buildTeleport();
     const h = document.documentElement; const wasReady = h.classList.contains("ready");
     h.classList.remove("ready");                          // Smooth aus, sonst springt es
@@ -399,6 +422,7 @@
     buildScene();
     buildAtmosphere();
     buildMilestones();
+    buildSections();
     buildClouds();
     buildTeleport();
 
