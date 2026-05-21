@@ -49,15 +49,38 @@ def fetch_json(url):
         return json.load(r)
 
 
-def first_image_url(term):
+def _query(term):
     url = f"{API}?{urllib.parse.urlencode({'q': term, 'media_type': 'image'})}"
     data = fetch_json(url)
-    items = data.get("collection", {}).get("items", [])
-    for it in items:
+    for it in data.get("collection", {}).get("items", []):
         links = it.get("links", [])
         if links and links[0].get("href"):
             meta = (it.get("data") or [{}])[0]
             return links[0]["href"], meta.get("title", ""), meta.get("center", "NASA")
+    return None, None, None
+
+
+def first_image_url(term):
+    # 1) Originalbegriff, 2) ohne Sonderzeichen, 3) nur die ersten beiden Wörter.
+    clean = re.sub(r"[^A-Za-z0-9 ]", " ", term)
+    clean = re.sub(r"\s+", " ", clean).strip()
+    candidates = [term]
+    if clean != term:
+        candidates.append(clean)
+    short = " ".join(clean.split()[:2])
+    if short and short not in candidates:
+        candidates.append(short)
+    # Eigenname-Fallback: nur erstes Wort, wenn es großgeschrieben ist (Proper Noun).
+    words = clean.split()
+    if words and words[0][:1].isupper() and len(words[0]) > 3 and words[0] not in candidates:
+        candidates.append(words[0])
+    for q in candidates:
+        try:
+            res = _query(q)
+            if res[0]:
+                return res
+        except Exception:
+            pass
     return None, None, None
 
 
