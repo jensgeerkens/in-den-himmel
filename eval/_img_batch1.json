@@ -1,0 +1,380 @@
+[
+ {
+  "id": "asteroidbelt",
+  "cat": "reference",
+  "name": "Asteroid Belt",
+  "img": "images/asteroidbelt.jpg",
+  "exists": true,
+  "credit": "NASA",
+  "nasa": "asteroid belt"
+ },
+ {
+  "id": "ceres",
+  "cat": "planet",
+  "name": "Ceres",
+  "img": "images/ceres.jpg",
+  "exists": true,
+  "credit": "NASA/JPL",
+  "nasa": "Ceres Dawn Occator"
+ },
+ {
+  "id": "psyche",
+  "cat": "reference",
+  "name": "Asteroid Psyche",
+  "img": "images/psyche.jpg",
+  "exists": true,
+  "credit": "NASA/JPL",
+  "nasa": "asteroid 16 Psyche"
+ },
+ {
+  "id": "comet67p",
+  "cat": "reference",
+  "name": "Comet 67P",
+  "img": "images/comet67p.jpg",
+  "exists": true,
+  "credit": "ESA/Rosetta",
+  "nasa": "comet 67P Churyumov Gerasimenko"
+ },
+ {
+  "id": "halley",
+  "cat": "reference",
+  "name": "Halley's Comet",
+  "img": "images/halley.jpg",
+  "exists": true,
+  "credit": "NASA",
+  "nasa": "Halley's Comet"
+ },
+ {
+  "id": "arrokoth",
+  "cat": "reference",
+  "name": "Arrokoth",
+  "img": "images/arrokoth.jpg",
+  "exists": true,
+  "credit": "NASA/JHUAPL",
+  "nasa": "Arrokoth New Horizons"
+ },
+ {
+  "id": "oumuamua",
+  "cat": "reference",
+  "name": "ʻOumuamua",
+  "img": "images/oumuamua.jpg",
+  "exists": true,
+  "credit": "ESO/M. Kornmesser",
+  "nasa": "Oumuamua interstellar object"
+ },
+ {
+  "id": "eris",
+  "cat": "planet",
+  "name": "Eris",
+  "img": "images/eris.jpg",
+  "exists": true,
+  "credit": "NASA/JPL",
+  "nasa": "dwarf planet Eris"
+ },
+ {
+  "id": "sedna",
+  "cat": "planet",
+  "name": "Sedna",
+  "img": "images/sedna.jpg",
+  "exists": true,
+  "credit": "NASA/JPL",
+  "nasa": "Sedna dwarf planet"
+ },
+ {
+  "id": "heliopause",
+  "cat": "reference",
+  "name": "Heliopause",
+  "img": "images/heliopause.jpg",
+  "exists": true,
+  "credit": "NASA",
+  "nasa": "heliopause heliosphere Voyager"
+ },
+ {
+  "id": "pioneer10",
+  "cat": "unmanned",
+  "name": "Pioneer 10",
+  "img": "images/pioneer10.jpg",
+  "exists": true,
+  "credit": "NASA",
+  "nasa": "Pioneer 10 spacecraft plaque"
+ },
+ {
+  "id": "oortcloud",
+  "cat": "reference",
+  "name": "Oort Cloud",
+  "img": "images/oortcloud.jpg",
+  "exists": true,
+  "credit": "NASA",
+  "nasa": "Oort cloud"
+ },
+ {
+  "id": "alphacentauri",
+  "cat": "star",
+  "name": "Alpha Centauri",
+  "img": "images/alphacentauri.jpg",
+  "exists": true,
+  "credit": "NASA/ESA",
+  "nasa": "Alpha Centauri"
+ },
+ {
+  "id": "proximab",
+  "cat": "exoplanet",
+  "name": "Proxima Centauri b",
+  "img": "images/proximab.jpg",
+  "exists": true,
+  "credit": "ESO/M. Kornmesser",
+  "nasa": "Proxima Centauri b"
+ },
+ {
+  "id": "barnard",
+  "cat": "star",
+  "name": "Barnard's Star",
+  "img": "images/barnard.jpg",
+  "exists": true,
+  "credit": "NASA/ESA",
+  "nasa": "Barnard's Star"
+ },
+ {
+  "id": "luhman16",
+  "cat": "star",
+  "name": "Luhman 16",
+  "img": "images/luhman16.jpg",
+  "exists": true,
+  "credit": "NASA/JPL",
+  "nasa": "Luhman 16 brown dwarf"
+ },
+ {
+  "id": "sirius",
+  "cat": "star",
+  "name": "Sirius",
+  "img": "images/sirius.jpg",
+  "exists": true,
+  "credit": "NASA/ESA Hubble",
+  "nasa": "Sirius A B white dwarf"
+ },
+ {
+  "id": "epsiloneridani",
+  "cat": "star",
+  "name": "Epsilon Eridani",
+  "img": "images/epsiloneridani.jpg",
+  "exists": true,
+  "credit": "NASA/JPL",
+  "nasa": "Epsilon Eridani planetary system"
+ },
+ {
+  "id": "tauceti",
+  "cat": "star",
+  "name": "Tau Ceti",
+  "img": "images/tauceti.jpg",
+  "exists": true,
+  "credit": "ESO",
+  "nasa": "Tau Ceti star system"
+ },
+ {
+  "id": "vega",
+  "cat": "star",
+  "name": "Vega",
+  "img": "images/vega.jpg",
+  "exists": true,
+  "credit": "NASA/JPL",
+  "nasa": "Vega star debris disk"
+ },
+ {
+  "id": "trappist1",
+  "cat": "exoplanet",
+  "name": "TRAPPIST-1",
+  "img": "images/trappist1.jpg",
+  "exists": true,
+  "credit": "NASA/JPL",
+  "nasa": "TRAPPIST-1 system"
+ },
+ {
+  "id": "cancri55e",
+  "cat": "exoplanet",
+  "name": "55 Cancri e",
+  "img": "images/cancri55e.jpg",
+  "exists": true,
+  "credit": "NASA/JPL",
+  "nasa": "55 Cancri e lava planet"
+ },
+ {
+  "id": "fiftyonepeg",
+  "cat": "exoplanet",
+  "name": "51 Pegasi b",
+  "img": "images/fiftyonepeg.jpg",
+  "exists": true,
+  "credit": "ESO/M. Kornmesser",
+  "nasa": "51 Pegasi b hot Jupiter"
+ },
+ {
+  "id": "bpm37093",
+  "cat": "star",
+  "name": "'Lucy' – the Diamond Star",
+  "img": "images/bpm37093.jpg",
+  "exists": true,
+  "credit": "NASA",
+  "nasa": "white dwarf crystal diamond star"
+ },
+ {
+  "id": "rogueplanet",
+  "cat": "exoplanet",
+  "name": "Rogue Planet",
+  "img": "images/rogueplanet.jpg",
+  "exists": true,
+  "credit": "NASA/JPL",
+  "nasa": "rogue planet free floating"
+ },
+ {
+  "id": "kepler16b",
+  "cat": "exoplanet",
+  "name": "Kepler-16b 'Tatooine'",
+  "img": "images/kepler16b.jpg",
+  "exists": true,
+  "credit": "NASA/JPL",
+  "nasa": "Kepler-16b two suns"
+ },
+ {
+  "id": "hd189733b",
+  "cat": "exoplanet",
+  "name": "HD 189733 b",
+  "img": "images/hd189733b.jpg",
+  "exists": true,
+  "credit": "NASA/ESA",
+  "nasa": "HD 189733 b blue planet"
+ },
+ {
+  "id": "kelt9b",
+  "cat": "exoplanet",
+  "name": "KELT-9b",
+  "img": "images/kelt9b.jpg",
+  "exists": true,
+  "credit": "NASA/JPL",
+  "nasa": "KELT-9b hottest exoplanet"
+ },
+ {
+  "id": "hyades",
+  "cat": "cluster",
+  "name": "Hyades",
+  "img": "images/hyades.jpg",
+  "exists": true,
+  "credit": "NASA/ESA",
+  "nasa": "Hyades star cluster"
+ },
+ {
+  "id": "pleiades",
+  "cat": "cluster",
+  "name": "Pleiades",
+  "img": "images/pleiades.jpg",
+  "exists": true,
+  "credit": "NASA/ESA",
+  "nasa": "Pleiades star cluster"
+ },
+ {
+  "id": "antares",
+  "cat": "star",
+  "name": "Antares",
+  "img": "images/antares.jpg",
+  "exists": true,
+  "credit": "ESO",
+  "nasa": "Antares red supergiant"
+ },
+ {
+  "id": "helixnebula",
+  "cat": "nebula",
+  "name": "Helix Nebula",
+  "img": "images/helixnebula.jpg",
+  "exists": true,
+  "credit": "NASA/ESA Hubble",
+  "nasa": "Helix Nebula"
+ },
+ {
+  "id": "betelgeuse",
+  "cat": "star",
+  "name": "Betelgeuse",
+  "img": "images/betelgeuse.jpg",
+  "exists": true,
+  "credit": "ESO",
+  "nasa": "Betelgeuse red supergiant"
+ },
+ {
+  "id": "vela",
+  "cat": "nebula",
+  "name": "Vela Supernova Remnant",
+  "img": "images/vela.jpg",
+  "exists": true,
+  "credit": "NASA/ESO",
+  "nasa": "Vela supernova remnant"
+ },
+ {
+  "id": "rigel",
+  "cat": "star",
+  "name": "Rigel",
+  "img": "images/rigel.jpg",
+  "exists": true,
+  "credit": "NASA",
+  "nasa": "Rigel blue supergiant Orion"
+ },
+ {
+  "id": "firstpulsar",
+  "cat": "star",
+  "name": "First Pulsar (LGM-1)",
+  "img": "images/firstpulsar.jpg",
+  "exists": true,
+  "credit": "NASA",
+  "nasa": "pulsar neutron star"
+ },
+ {
+  "id": "orionnebula",
+  "cat": "nebula",
+  "name": "Orion Nebula",
+  "img": "images/orionnebula.jpg",
+  "exists": true,
+  "credit": "NASA/ESA Hubble",
+  "nasa": "Orion Nebula"
+ },
+ {
+  "id": "gaiabh1",
+  "cat": "blackhole",
+  "name": "Gaia BH1",
+  "img": "images/gaiabh1.jpg",
+  "exists": true,
+  "credit": "ESO/NOIRLab",
+  "nasa": "black hole star orbit"
+ },
+ {
+  "id": "pulsarplanets",
+  "cat": "exoplanet",
+  "name": "Pulsar Planets (PSR B1257+12)",
+  "img": "images/pulsarplanets.jpg",
+  "exists": true,
+  "credit": "NASA/JPL",
+  "nasa": "pulsar planets PSR B1257"
+ },
+ {
+  "id": "ringnebula",
+  "cat": "nebula",
+  "name": "Ring Nebula",
+  "img": "images/ringnebula.jpg",
+  "exists": true,
+  "credit": "NASA/ESA JWST",
+  "nasa": "Ring Nebula M57"
+ },
+ {
+  "id": "lagoonnebula",
+  "cat": "nebula",
+  "name": "Lagoon Nebula",
+  "img": "images/lagoonnebula.jpg",
+  "exists": true,
+  "credit": "NASA/ESA Hubble",
+  "nasa": "Lagoon Nebula M8"
+ },
+ {
+  "id": "uyscuti",
+  "cat": "star",
+  "name": "UY Scuti",
+  "img": "images/uyscuti.jpg",
+  "exists": true,
+  "credit": "ESO",
+  "nasa": "UY Scuti red supergiant"
+ }
+]

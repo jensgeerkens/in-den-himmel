@@ -4,9 +4,19 @@ fetch_space_images.py — Holt gemeinfreie Weltraum-Bilder aus der
 NASA Image and Video Library (https://images-api.nasa.gov) für jedes
 kosmische Objekt in data.js (Felder `id` + `nasa`-Suchbegriff).
 
+!!! WARNUNG / LESSON LEARNED !!!
+Eine frühere Version übernahm BLIND den ersten Suchtreffer und lud dabei völlig
+falsche Bilder herunter (u.a. ein Foto von Kindern bei einer Veranstaltung unter
+dem Label „TrES-2b – dunkelster Planet", ein Mars-Krater statt Barnards Stern,
+ein Erd-Foto „Great Lakes" statt „Great Attractor"). Solche Treffer dürfen NIEMALS
+automatisch online gehen.
+Diese Version prüft jeden Treffer per Relevanz- und Negativwort-Filter und LÄSST
+LIEBER AUS (Emoji-Fallback) als ein unsicheres Bild zu übernehmen. Trotzdem gilt:
+JEDES geholte Bild VOR Veröffentlichung visuell kontrollieren.
+
 - Kosmische Bilder werden NICHT freigestellt (auf dunklem Hintergrund ideal).
 - Ergebnis: images/<id>.jpg  (vorhandene Dateien werden übersprungen).
-- Attribution wird in CREDITS_SPACE.md protokolliert.
+- Attribution wird ADDITIV in CREDITS_SPACE.md ergänzt (nichts überschrieben).
 
 Benötigt:  pip install pillow   (urllib/json sind Standardbibliothek)
 Aufruf:    python tools/fetch_space_images.py [--force] [--limit N]
@@ -49,31 +59,67 @@ def fetch_json(url):
         return json.load(r)
 
 
+# Generische Kategorie-Wörter: taugen NICHT als Relevanzbeleg (führen zu Fehlmatches
+# wie "Great Lakes" für "Great Attractor large scale structure").
+STOPWORDS = {
+    "the", "a", "of", "and", "in", "on", "star", "planet", "galaxy", "black", "hole",
+    "large", "scale", "structure", "red", "blue", "supergiant", "hypergiant", "dwarf",
+    "nebula", "cluster", "system", "object", "great", "wall", "space", "deep", "field",
+    "cosmic", "exoplanet", "pulsar", "quasar", "supernova", "remnant", "comet", "asteroid",
+}
+# Negativwörter: tauchen sie im Treffer-Titel auf, ist es mit hoher Wahrscheinlichkeit
+# ein irdisches/personenbezogenes/dokumentarisches Motiv -> ablehnen.
+DENYLIST = (
+    "documentary", "screening", "press", "conference", "interview", "ceremony", "award",
+    "students", "children", "kids", "school", "visit", "tour", "employee", "staff",
+    "administrator", "portrait", "headshot", "crater", "lakes", "lake", "river", "city",
+    "building", "center opening", "groundbreaking", "town hall", "panel", "meeting",
+    "earth observation", "wildfire", "hurricane", "flood",
+)
+
+
+def _term_tokens(term):
+    """Aussagekräftige (nicht-generische) Tokens eines Suchbegriffs, kleingeschrieben."""
+    clean = re.sub(r"[^A-Za-z0-9 ]", " ", term).lower()
+    return [w for w in clean.split() if len(w) >= 4 and w not in STOPWORDS]
+
+
+def is_relevant(term, title):
+    """Treffer nur akzeptieren, wenn der Titel ein aussagekräftiges Token des
+    Suchbegriffs enthält UND kein Negativwort. Verhindert Fremdbild-Fehlgriffe."""
+    if not title:
+        return False
+    t = title.lower()
+    if any(bad in t for bad in DENYLIST):
+        return False
+    tokens = _term_tokens(term)
+    if not tokens:                       # kein distinktives Token -> lieber ablehnen
+        return False
+    return any(tok in t for tok in tokens)
+
+
 def _query(term):
     url = f"{API}?{urllib.parse.urlencode({'q': term, 'media_type': 'image'})}"
     data = fetch_json(url)
+    # Erste RELEVANTE Treffer zurückgeben (nicht blind den ersten).
     for it in data.get("collection", {}).get("items", []):
         links = it.get("links", [])
-        if links and links[0].get("href"):
-            meta = (it.get("data") or [{}])[0]
-            return links[0]["href"], meta.get("title", ""), meta.get("center", "NASA")
+        meta = (it.get("data") or [{}])[0]
+        title = meta.get("title", "")
+        if links and links[0].get("href") and is_relevant(term, title):
+            return links[0]["href"], title, meta.get("center", "NASA")
     return None, None, None
 
 
 def first_image_url(term):
-    # 1) Originalbegriff, 2) ohne Sonderzeichen, 3) nur die ersten beiden Wörter.
+    # Nur konservative Varianten: Originalbegriff und ohne Sonderzeichen.
+    # Die früheren losen Fallbacks (erste 2 Wörter / erstes Großwort) sind ENTFERNT,
+    # weil sie generische Fremdbilder lieferten. Lieber kein Bild als ein falsches.
     clean = re.sub(r"[^A-Za-z0-9 ]", " ", term)
     clean = re.sub(r"\s+", " ", clean).strip()
     candidates = [term]
     if clean != term:
         candidates.append(clean)
-    short = " ".join(clean.split()[:2])
-    if short and short not in candidates:
-        candidates.append(short)
-    # Eigenname-Fallback: nur erstes Wort, wenn es großgeschrieben ist (Proper Noun).
-    words = clean.split()
-    if words and words[0][:1].isupper() and len(words[0]) > 3 and words[0] not in candidates:
-        candidates.append(words[0])
     for q in candidates:
         try:
             res = _query(q)
@@ -110,8 +156,8 @@ def main():
         targets = targets[: args.limit]
     print(f"{len(targets)} Objekte mit NASA-Suchbegriff gefunden.")
 
-    lines = ["# Weltraum-Bildnachweise (NASA Image and Video Library)\n",
-             "Automatisch via images-api.nasa.gov geholt. Gemeinfrei, sofern nicht anders vermerkt.\n"]
+    existing = CREDITS.read_text(encoding="utf-8") if CREDITS.exists() else ""
+    new_lines = []
     ok = fail = skip = 0
     for i, (oid, term) in enumerate(targets, 1):
         dst = OUT / f"{oid}.jpg"
@@ -121,20 +167,28 @@ def main():
         try:
             url, title, center = first_image_url(term)
             if not url:
-                print(f"[{i}/{len(targets)}] {oid}: kein Treffer für '{term}'")
+                print(f"[{i}/{len(targets)}] {oid}: kein RELEVANTER Treffer für '{term}' (übersprungen -> Emoji)")
                 fail += 1
                 continue
             save_image(url, dst)
-            lines.append(f"- **{oid}** — {title or term} ({center}) — Suche: \"{term}\"")
-            print(f"[{i}/{len(targets)}] {oid}: OK")
+            if f"**{oid}**" not in existing:        # additiv: keine Duplikate
+                new_lines.append(f"- **{oid}** — {title or term} ({center}) — Suche: \"{term}\"")
+            print(f"[{i}/{len(targets)}] {oid}: OK — {title}")
+            print(f"    !! Bitte VISUELL prüfen, ob das Bild wirklich '{oid}' zeigt.")
             ok += 1
             time.sleep(0.4)
         except Exception as e:
             print(f"[{i}/{len(targets)}] {oid}: FEHLER {e}")
             fail += 1
-    CREDITS.write_text("\n".join(lines) + "\n", encoding="utf-8")
-    print(f"\nFertig. OK={ok}  übersprungen={skip}  fehlgeschlagen={fail}")
-    print(f"Nachweise: {CREDITS}")
+    if new_lines:
+        header = "" if existing else "# Weltraum-Bildnachweise (NASA Image and Video Library)\n\nGemeinfrei, sofern nicht anders vermerkt.\n"
+        block = header + ("\n" if existing and not existing.endswith("\n") else "")
+        block += f"\n## Lauf {time.strftime('%Y-%m-%d')} (auto, VOR Veröffentlichung visuell prüfen)\n" + "\n".join(new_lines) + "\n"
+        with CREDITS.open("a", encoding="utf-8") as f:
+            f.write(block)
+    print(f"\nFertig. OK={ok}  übersprungen={skip}  abgelehnt/fehlgeschlagen={fail}")
+    print("ERINNERUNG: jedes neue Bild visuell kontrollieren, bevor irgendetwas online geht.")
+    print(f"Nachweise (ergänzt): {CREDITS}")
 
 
 if __name__ == "__main__":

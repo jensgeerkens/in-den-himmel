@@ -17,7 +17,6 @@ const SKY_DATA = [
     note:"typisch",
     fact:{de:"Spatzen fliegen meist nur wenige Meter über dem Boden – ihr Reich ist die Hecke, nicht der Himmel.",
           en:"Sparrows usually fly just a few metres above the ground – their realm is the hedge, not the sky."},
-    img:"images/spatz.png", credit:"Wikimedia Commons", license:"CC BY-SA",
     source:"https://en.wikipedia.org/wiki/House_sparrow" },
 
   { id:"schwalbe", cat:"bird", emoji:"🐦", altitude_m:200,
@@ -25,7 +24,6 @@ const SKY_DATA = [
     note:"typisch",
     fact:{de:"Jagt Insekten im Tiefflug. Bei gutem Wetter steigen die Beuteinsekten höher – und die Schwalben mit ihnen.",
           en:"Hunts insects in low flight. In fine weather its prey rises higher – and the swallows follow."},
-    img:"images/schwalbe.png", credit:"Wikimedia Commons", license:"CC BY-SA",
     source:"https://en.wikipedia.org/wiki/Barn_swallow" },
 
   { id:"marienkaefer", cat:"insect", emoji:"🐞", altitude_m:1100,
@@ -33,7 +31,6 @@ const SKY_DATA = [
     note:"extremwert",
     fact:{de:"Radarstudien zeigten Marienkäfer bis 1.100 m Höhe – die meisten bleiben aber zwischen 150 und 500 m.",
           en:"Radar studies tracked ladybirds up to 1,100 m – though most stay between 150 and 500 m."},
-    img:"images/marienkaefer.png", credit:"Wikimedia Commons", license:"CC BY-SA",
     source:"https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0082278" },
 
   { id:"mauersegler", cat:"bird", emoji:"🐦", altitude_m:3000,
@@ -41,7 +38,6 @@ const SKY_DATA = [
     note:"typisch",
     fact:{de:"Schläft im Flug: Mauersegler steigen abends per Radar nachweisbar bis ~3 km auf und verbringen die Nacht in der Luft.",
           en:"Sleeps on the wing: at dusk swifts climb to ~3 km (radar-confirmed) and spend the whole night airborne."},
-    img:"images/mauersegler.png", credit:"Wikimedia Commons", license:"CC BY-SA",
     source:"https://www.sciencedirect.com/science/article/pii/S0003347212005556" },
 
   { id:"distelfalter", cat:"insect", emoji:"🦋", altitude_m:3000,
@@ -49,7 +45,6 @@ const SKY_DATA = [
     note:"typisch",
     fact:{de:"Zieht in Höhen von 1.000–3.000 m über Tausende Kilometer – einer der weitesten Wanderfalter der Welt.",
           en:"Migrates at 1,000–3,000 m over thousands of kilometres – one of the longest-distance migrating butterflies."},
-    img:"images/distelfalter.png", credit:"Wikimedia Commons", license:"CC BY-SA",
     source:"https://butterfly-conservation.org/news-and-blog/painted-lady-migration-secrets-revealed" },
 
   { id:"fledermaus", cat:"bat", emoji:"🦇", altitude_m:3300,
@@ -57,7 +52,6 @@ const SKY_DATA = [
     note:"typisch",
     fact:{de:"Die höchstfliegende Fledermaus: jagt nachtaktiv Wanderfalter per Radar nachgewiesen bis ~3.300 m.",
           en:"The highest-flying bat: hunts migrating moths at night, radar-tracked up to ~3,300 m."},
-    img:"images/fledermaus.png", credit:"Wikimedia Commons", license:"CC BY-SA",
     source:"https://academic.oup.com/jmammal/article-abstract/54/4/807/844057" },
 
   { id:"monarch", cat:"insect", emoji:"🦋", altitude_m:3600,
@@ -65,7 +59,6 @@ const SKY_DATA = [
     note:"bodenhoehe",
     fact:{de:"Überwintert massenhaft in mexikanischen Oyamel-Wäldern auf 2.400–3.600 m. Das ist Standort­höhe, nicht Flughöhe.",
           en:"Overwinters in masses in Mexican oyamel forests at 2,400–3,600 m. That is ground elevation, not flight altitude."},
-    img:"images/monarch.png", credit:"Wikimedia Commons", license:"CC BY-SA",
     source:"https://en.wikipedia.org/wiki/Monarch_butterfly_migration" },
 
   { id:"spinne", cat:"spider", emoji:"🕷️", altitude_m:4500,
@@ -73,7 +66,6 @@ const SKY_DATA = [
     note:"extremwert",
     fact:{de:"Lässt sich an Seidenfäden vom Wind tragen ('Ballooning'). In Luftproben bis ~4.500 m als Teil des Aeroplanktons gefunden.",
           en:"Drifts on silk threads carried by the wind ('ballooning'). Found in air samples up to ~4,500 m as part of the aeroplankton."},
-    img:"images/spinne.png", credit:"Wikimedia Commons", license:"CC BY-SA",
     source:"https://en.wikipedia.org/wiki/Ballooning_(spider)" },
 
   { id:"steinadler", cat:"bird", emoji:"🦅", altitude_m:4500,
@@ -81,7 +73,6 @@ const SKY_DATA = [
     note:"typisch",
     fact:{de:"Nutzt Thermik und Hangaufwinde und kreist regelmäßig bis ~4.500 m – höher als die meisten Greifvögel.",
           en:"Rides thermals and ridge lift, regularly soaring to ~4,500 m – higher than most birds of prey."},
-    img:"images/steinadler.png", credit:"Wikimedia Commons", license:"CC BY-SA",
     source:"https://pmc.ncbi.nlm.nih.gov/articles/PMC9179650/" },
 
   { id:"bartgeier", cat:"bird", emoji:"🦅", altitude_m:7300,
@@ -89,7 +80,6 @@ const SKY_DATA = [
     note:"typisch",
     fact:{de:"Im Himalaya regelmäßig über 7 km unterwegs. Lässt Knochen aus der Höhe auf Felsen fallen, um an das Mark zu kommen.",
           en:"Regularly flies above 7 km in the Himalayas. Drops bones from height onto rocks to reach the marrow."},
-    img:"images/bartgeier.png", credit:"Wikimedia Commons", license:"CC BY-SA",
     source:"https://en.wikipedia.org/wiki/Bearded_vulture" },
 
   { id:"streifengans", cat:"bird", emoji:"🪿", altitude_m:7290,
@@ -97,7 +87,6 @@ const SKY_DATA = [
     note:"extremwert",
     fact:{de:"Überquert den Himalaya. Eine GPS-Gans erreichte 7.290 m – doch 95 % aller Messungen lagen unter 5.500 m.",
           en:"Crosses the Himalayas. One GPS-tracked goose reached 7,290 m – yet 95% of all fixes were below 5,500 m."},
-    img:"images/streifengans.png", credit:"Wikimedia Commons", license:"CC BY-SA",
     source:"https://www.pnas.org/doi/10.1073/pnas.1017295108" },
 
   { id:"singschwan", cat:"bird", emoji:"🦢", altitude_m:8000,
@@ -105,7 +94,6 @@ const SKY_DATA = [
     note:"extremereignis",
     fact:{de:"Ein Pilot und das Radar erfassten Singschwäne über 8 km über den Britischen Inseln – außergewöhnlich für so schwere Vögel.",
           en:"A pilot and radar recorded whooper swans above 8 km over the British Isles – extraordinary for such heavy birds."},
-    img:"images/singschwan.png", credit:"Wikimedia Commons", license:"CC BY-SA",
     source:"https://en.wikipedia.org/wiki/Whooper_swan" },
 
   { id:"alpendohle", cat:"bird", emoji:"🐦‍⬛", altitude_m:8200,
@@ -113,7 +101,6 @@ const SKY_DATA = [
     note:"extremereignis",
     fact:{de:"Folgte Bergsteigern am Mount Everest bis 8.200 m. Brütet höher als jeder andere Vogel – bis 6.500 m.",
           en:"Followed climbers up Mount Everest to 8,200 m. Nests higher than any other bird – up to 6,500 m."},
-    img:"images/alpendohle.png", credit:"Wikimedia Commons", license:"CC BY-SA",
     source:"https://en.wikipedia.org/wiki/Alpine_chough" },
 
   { id:"doppelschnepfe", cat:"bird", emoji:"🐦", altitude_m:8700,
@@ -121,7 +108,6 @@ const SKY_DATA = [
     note:"extremwert",
     fact:{de:"Ein getracktes Individuum stieg auf 8.700 m – möglicherweise der höchste je per Sender gemessene Zugvogel.",
           en:"One tracked bird climbed to 8,700 m – possibly the highest altitude ever measured for a migrating bird by tag."},
-    img:"images/doppelschnepfe.png", credit:"Wikimedia Commons", license:"CC BY-SA",
     source:"https://www.sciencedirect.com/science/article/pii/S0960982221007454" },
 
   { id:"hummel", cat:"insect", emoji:"🐝", altitude_m:9000,
@@ -129,7 +115,6 @@ const SKY_DATA = [
     note:"laborwert",
     fact:{de:"Im Unterdruck-Kammerversuch (2014) hielten Alpenhummeln Schwebflug bei simulierten über 9.000 m – höher als der Everest.",
           en:"In a 2014 low-pressure chamber test, alpine bumblebees hovered at a simulated 9,000 m+ – higher than Everest."},
-    img:"images/hummel.png", credit:"Wikimedia Commons", license:"CC BY-SA",
     source:"https://royalsocietypublishing.org/doi/10.1098/rsbl.2013.0922" },
 
   { id:"kranich", cat:"bird", emoji:"🐦", altitude_m:10000,
@@ -137,7 +122,6 @@ const SKY_DATA = [
     note:"extremwert",
     fact:{de:"Kann über Gebirgspässe bis ~10.000 m steigen – gilt als zweithöchster Vogel nach dem Sperbergeier. Normal fliegt er viel tiefer.",
           en:"Can climb to ~10,000 m over mountain passes – reckoned the second-highest bird after Rüppell's vulture. Normally flies far lower."},
-    img:"images/kranich.png", credit:"Wikimedia Commons", license:"CC BY-SA",
     source:"https://en.wikipedia.org/wiki/Common_crane" },
 
   { id:"sperbergeier", cat:"bird", emoji:"🦅", altitude_m:11300,
@@ -145,7 +129,6 @@ const SKY_DATA = [
     note:"extremereignis",
     fact:{de:"Hält den Vogel-Höhenrekord: 11.300 m – nachgewiesen 1973 durch eine Kollision mit einem Flugzeugtriebwerk über Westafrika.",
           en:"Holds the bird altitude record: 11,300 m – proven in 1973 by a collision with a jet engine over West Africa."},
-    img:"images/sperbergeier.png", credit:"Wikimedia Commons", license:"CC BY-SA",
     source:"https://www.guinnessworldrecords.com/world-records/70927-highest-flying-birds" },
 
   /* ---------- REFERENZ: BAUWERKE & BERGE ---------- */
@@ -154,7 +137,6 @@ const SKY_DATA = [
     note:"referenz",
     fact:{de:"Mit 828 m das höchste Bauwerk der Welt. Selbst seine Spitze liegt noch im Reich der niedrig fliegenden Vögel.",
           en:"At 828 m the tallest structure on Earth. Even its tip is still in the realm of low-flying birds."},
-    img:"images/burj.png", credit:"Wikimedia Commons", license:"CC BY-SA",
     source:"https://en.wikipedia.org/wiki/Burj_Khalifa" },
 
   { id:"montblanc", cat:"reference", emoji:"⛰️", altitude_m:4808,
@@ -162,7 +144,6 @@ const SKY_DATA = [
     note:"referenz",
     fact:{de:"Höchster Gipfel der Alpen mit 4.808 m – auf dieser Höhe kreisen Steinadler und Bartgeier.",
           en:"The highest Alpine summit at 4,808 m – at this height golden eagles and bearded vultures soar."},
-    img:"images/montblanc.png", credit:"Wikimedia Commons", license:"CC BY-SA",
     source:"https://en.wikipedia.org/wiki/Mont_Blanc" },
 
   { id:"everest", cat:"reference", emoji:"🏔️", altitude_m:8849,
@@ -170,7 +151,6 @@ const SKY_DATA = [
     note:"referenz",
     fact:{de:"Mit 8.849 m der höchste Berg der Erde. Sein Gipfel ragt in die Zone, in der nur noch Geier und Gänse fliegen.",
           en:"At 8,849 m the highest mountain on Earth. Its summit reaches the zone where only vultures and geese still fly."},
-    img:"images/everest.png", credit:"Wikimedia Commons", license:"CC BY-SA",
     source:"https://en.wikipedia.org/wiki/Mount_Everest" },
 
   /* ---------- FLUGZEUGE & LUFTFAHRT ---------- */
@@ -179,7 +159,6 @@ const SKY_DATA = [
     note:"referenz",
     fact:{de:"In der EU dürfen Hobby-Drohnen meist nur bis 120 m steigen – knapp über den Baumwipfeln.",
           en:"In the EU, hobby drones may usually fly only up to 120 m – just above the treetops."},
-    img:"images/drohne.png", credit:"Wikimedia Commons", license:"CC BY-SA",
     source:"https://www.easa.europa.eu/en/domains/civil-drones" },
 
   { id:"jet", cat:"aircraft", emoji:"✈️", altitude_m:11500,
@@ -187,7 +166,6 @@ const SKY_DATA = [
     note:"typisch",
     fact:{de:"Reiseflughöhe der meisten Jets: 10–12 km. Genau hier kollidierte 1973 der Sperbergeier mit einem Triebwerk.",
           en:"Cruising altitude of most jets: 10–12 km. This is exactly where Rüppell's vulture hit an engine in 1973."},
-    img:"images/jet.png", credit:"Wikimedia Commons", license:"CC BY-SA",
     source:"https://www.britannica.com/topic/How-High-Does-An-Airplane-Fly" },
 
   { id:"helikopter", cat:"aircraft", emoji:"🚁", altitude_m:12954,
@@ -195,7 +173,6 @@ const SKY_DATA = [
     note:"extremereignis",
     fact:{de:"Fred North flog 2002 einen Hubschrauber auf 12.954 m. In dieser dünnen Luft finden Rotoren kaum noch Halt.",
           en:"Fred North flew a helicopter to 12,954 m in 2002. In such thin air the rotors barely find any grip."},
-    img:"images/helikopter.png", credit:"Wikimedia Commons", license:"CC BY-SA",
     source:"https://en.wikipedia.org/wiki/List_of_flight_altitude_records" },
 
   { id:"concorde", cat:"aircraft", emoji:"✈️", altitude_m:18000,
@@ -203,7 +180,6 @@ const SKY_DATA = [
     note:"typisch",
     fact:{de:"Das Überschall-Verkehrsflugzeug flog auf bis zu 18 km – so hoch, dass Passagiere die Erdkrümmung sehen konnten.",
           en:"The supersonic airliner cruised at up to 18 km – high enough for passengers to see the curvature of the Earth."},
-    img:"images/concorde.png", credit:"Wikimedia Commons", license:"CC BY-SA",
     source:"https://en.wikipedia.org/wiki/Concorde" },
 
   { id:"u2", cat:"aircraft", emoji:"✈️", altitude_m:21000,
@@ -211,7 +187,6 @@ const SKY_DATA = [
     note:"typisch",
     fact:{de:"Operiert auf über 21 km. Die Piloten tragen Druckanzüge wie Astronauten – am 'Rand des Weltraums'.",
           en:"Operates above 21 km. Its pilots wear pressure suits like astronauts – at the 'edge of space'."},
-    img:"images/u2.png", credit:"Wikimedia Commons", license:"CC BY-SA",
     source:"https://en.wikipedia.org/wiki/Lockheed_U-2" },
 
   { id:"ballon", cat:"aircraft", emoji:"🎈", altitude_m:21290,
@@ -219,7 +194,6 @@ const SKY_DATA = [
     note:"extremereignis",
     fact:{de:"Vijaypat Singhania stieg 2005 mit einem Heißluftballon auf 21.290 m – Weltrekord.",
           en:"Vijaypat Singhania reached 21,290 m in a hot-air balloon in 2005 – a world record."},
-    img:"images/ballon.png", credit:"Wikimedia Commons", license:"CC BY-SA",
     source:"https://www.fai.org/" },
 
   { id:"sr71", cat:"aircraft", emoji:"✈️", altitude_m:25900,
@@ -227,7 +201,6 @@ const SKY_DATA = [
     note:"typisch",
     fact:{de:"Das schnellste je gebaute Strahlflugzeug operierte auf ~25,9 km und mit über dreifacher Schallgeschwindigkeit.",
           en:"The fastest jet aircraft ever built operated at ~25.9 km and over three times the speed of sound."},
-    img:"images/sr71.png", credit:"Wikimedia Commons", license:"Public Domain",
     source:"https://en.wikipedia.org/wiki/Lockheed_SR-71_Blackbird" },
 
   { id:"wetterballon", cat:"aircraft", emoji:"🎈", altitude_m:35000,
@@ -235,7 +208,6 @@ const SKY_DATA = [
     note:"typisch",
     fact:{de:"Steigt bis ~35 km, bis er sich im Vakuum auf Hausgröße aufbläht und platzt. Die Instrumente fallen am Fallschirm zurück.",
           en:"Rises to ~35 km until it swells to the size of a house in near-vacuum and bursts. The instruments parachute back."},
-    img:"images/wetterballon.png", credit:"Wikimedia Commons", license:"CC BY-SA",
     source:"https://en.wikipedia.org/wiki/Weather_balloon" },
 
   { id:"mig25", cat:"aircraft", emoji:"✈️", altitude_m:37650,
@@ -243,7 +215,6 @@ const SKY_DATA = [
     note:"extremereignis",
     fact:{de:"Alexander Fedotow trieb eine MiG-25 1977 auf 37.650 m – bis heute Höhenrekord für Strahljäger im Steigflug.",
           en:"Alexander Fedotov pushed a MiG-25 to 37,650 m in 1977 – still the altitude record for a jet aircraft."},
-    img:"images/mig25.png", credit:"Wikimedia Commons", license:"CC BY-SA",
     source:"https://en.wikipedia.org/wiki/List_of_flight_altitude_records" },
 
   { id:"stratos", cat:"aircraft", emoji:"🪂", altitude_m:39044,
@@ -251,7 +222,6 @@ const SKY_DATA = [
     note:"extremereignis",
     fact:{de:"2012 sprang Felix Baumgartner aus 39.044 m aus einer Ballonkapsel – und durchbrach im freien Fall die Schallmauer.",
           en:"In 2012 Felix Baumgartner jumped from 39,044 m out of a balloon capsule – breaking the sound barrier in free fall."},
-    img:"images/stratos.png", credit:"Wikimedia Commons", license:"CC BY-SA",
     source:"https://en.wikipedia.org/wiki/Red_Bull_Stratos" },
 
   { id:"eustace", cat:"aircraft", emoji:"🪂", altitude_m:41419,
@@ -259,7 +229,6 @@ const SKY_DATA = [
     note:"extremereignis",
     fact:{de:"2014 übertraf Alan Eustace Baumgartner mit einem Sprung aus 41.419 m – höchster Fallschirmsprung der Geschichte.",
           en:"In 2014 Alan Eustace topped Baumgartner with a jump from 41,419 m – the highest parachute jump in history."},
-    img:"images/eustace.png", credit:"Wikimedia Commons", license:"CC BY-SA",
     source:"https://en.wikipedia.org/wiki/Alan_Eustace" },
 
   /* ---------- GRENZE ZUM WELTRAUM ---------- */
@@ -268,7 +237,6 @@ const SKY_DATA = [
     note:"referenz",
     fact:{de:"Bei 100 km gilt offiziell die Grenze zum Weltraum. Darüber gibt es zu wenig Luft, um zu fliegen – man muss eine Umlaufbahn fallen.",
           en:"At 100 km lies the official boundary of space. Above it there is too little air to fly – you must orbit by falling."},
-    img:"images/karman.png", credit:"NASA", license:"Public Domain",
     source:"https://en.wikipedia.org/wiki/K%C3%A1rm%C3%A1n_line" },
 
   /* ---------- RAUMFAHRT KATEGORIE 1: BEMANNT ---------- */
@@ -277,7 +245,6 @@ const SKY_DATA = [
     note:"extremereignis",
     fact:{de:"Das Raketenflugzeug X-15 erreichte 1963 mit Joseph Walker 108 km – ein Flugzeugstart, der bis in den Weltraum führte.",
           en:"The X-15 rocket plane reached 108 km with Joseph Walker in 1963 – an aeroplane that took off and flew into space."},
-    img:"images/x15.png", credit:"NASA", license:"Public Domain",
     source:"https://en.wikipedia.org/wiki/North_American_X-15" },
 
   { id:"iss", cat:"manned", emoji:"🛰️", altitude_m:408000,
@@ -285,7 +252,6 @@ const SKY_DATA = [
     note:"referenz",
     fact:{de:"Seit dem Jahr 2000 dauerhaft bemannt. Sie umkreist die Erde in ~408 km Höhe alle 90 Minuten einmal.",
           en:"Continuously crewed since 2000. It orbits Earth at ~408 km, completing one lap every 90 minutes."},
-    img:"images/iss.png", credit:"NASA", license:"Public Domain",
     source:"https://en.wikipedia.org/wiki/International_Space_Station" },
 
   { id:"gemini11", cat:"manned", emoji:"👨‍🚀", altitude_m:1373000,
@@ -293,7 +259,6 @@ const SKY_DATA = [
     note:"extremereignis",
     fact:{de:"1966 erreichte Gemini 11 einen Bahnscheitel von 1.373 km – die höchste bemannte Erdumlaufbahn vor Apollo.",
           en:"In 1966 Gemini 11 reached an apogee of 1,373 km – the highest crewed Earth orbit before Apollo."},
-    img:"images/gemini11.png", credit:"NASA", license:"Public Domain",
     source:"https://en.wikipedia.org/wiki/Gemini_11" },
 
   { id:"mond", cat:"manned", emoji:"🌕", altitude_m:384400000,
@@ -301,7 +266,6 @@ const SKY_DATA = [
     note:"referenz",
     fact:{de:"384.400 km entfernt. Zwölf Menschen sind zwischen 1969 und 1972 auf ihm gelandet – die bislang fernste Reise.",
           en:"384,400 km away. Twelve humans landed on it between 1969 and 1972 – the farthest journey people have made."},
-    img:"images/mond.png", credit:"NASA", license:"Public Domain",
     source:"https://en.wikipedia.org/wiki/Apollo_program" },
 
   { id:"apollo13", cat:"manned", emoji:"🧑‍🚀", altitude_m:400171000,
@@ -309,7 +273,6 @@ const SKY_DATA = [
     note:"extremereignis",
     fact:{de:"Auf der Notfall-Schleife um den Mond kam Apollo 13 1970 bis 400.171 km von der Erde – der Rekord der größten Menschen-Entfernung.",
           en:"On its emergency loop around the Moon, Apollo 13 reached 400,171 km from Earth in 1970 – the record distance for humans."},
-    img:"images/apollo13.png", credit:"NASA", license:"Public Domain",
     source:"https://en.wikipedia.org/wiki/Apollo_13" },
 
   /* ---------- RAUMFAHRT KATEGORIE 2: UNBEMANNT ---------- */
@@ -318,7 +281,6 @@ const SKY_DATA = [
     note:"referenz",
     fact:{de:"Umkreist die Erde in ~540 km. Astronauten reparierten es fünfmal – das letzte von Menschen gewartete Teleskop.",
           en:"Orbits Earth at ~540 km. Astronauts serviced it five times – the last telescope ever maintained by humans."},
-    img:"images/hubble.png", credit:"NASA", license:"Public Domain",
     source:"https://en.wikipedia.org/wiki/Hubble_Space_Telescope" },
 
   { id:"gps", cat:"unmanned", emoji:"🛰️", altitude_m:20200000,
@@ -326,7 +288,6 @@ const SKY_DATA = [
     note:"referenz",
     fact:{de:"Kreist in 20.200 km Höhe. Seine Atomuhren ticken so präzise, dass Einsteins Relativitätstheorie eingerechnet werden muss.",
           en:"Orbits at 20,200 km. Its atomic clocks are so precise that Einstein's relativity must be factored in."},
-    img:"images/gps.png", credit:"NASA", license:"Public Domain",
     source:"https://en.wikipedia.org/wiki/Global_Positioning_System" },
 
   { id:"geo", cat:"unmanned", emoji:"📡", altitude_m:35786000,
@@ -334,7 +295,6 @@ const SKY_DATA = [
     note:"referenz",
     fact:{de:"In 35.786 km Höhe umkreist ein Satellit die Erde genau einmal pro Tag – und scheint daher am Himmel stillzustehen.",
           en:"At 35,786 km a satellite orbits Earth exactly once a day – so it appears to hang motionless in the sky."},
-    img:"images/geo.png", credit:"NASA", license:"Public Domain",
     source:"https://en.wikipedia.org/wiki/Geostationary_orbit" },
 
   { id:"jwst", cat:"unmanned", emoji:"🔭", altitude_m:1500000000,
@@ -342,7 +302,6 @@ const SKY_DATA = [
     note:"referenz",
     fact:{de:"Steht 1,5 Mio. km von der Erde am Lagrange-Punkt L2 und blickt zurück bis zu den ersten Galaxien des Universums.",
           en:"Sits 1.5 million km from Earth at Lagrange point L2, looking back to the first galaxies of the universe."},
-    img:"images/jwst.png", credit:"NASA", license:"Public Domain",
     source:"https://en.wikipedia.org/wiki/James_Webb_Space_Telescope" },
 
   { id:"curiosity", cat:"unmanned", emoji:"🤖", altitude_m:225000000000,
@@ -350,7 +309,6 @@ const SKY_DATA = [
     note:"referenz",
     fact:{de:"Rollt seit 2012 über den Mars – im Mittel ~225 Mio. km entfernt. Ein Funksignal braucht dorthin bis zu 22 Minuten.",
           en:"Has roamed Mars since 2012 – on average ~225 million km away. A radio signal takes up to 22 minutes to reach it."},
-    img:"images/curiosity.png", credit:"NASA/JPL", license:"Public Domain",
     source:"https://en.wikipedia.org/wiki/Curiosity_(rover)" },
 
   { id:"voyager2", cat:"unmanned", emoji:"🛰️", altitude_m:21400000000000,
@@ -358,7 +316,6 @@ const SKY_DATA = [
     note:"referenz",
     fact:{de:"1977 gestartet, verließ 2018 das Sonnensystem. Stand 2026 rund 21,4 Mrd. km (143 AE) entfernt – und sendet noch immer.",
           en:"Launched in 1977, it left the Solar System in 2018. As of 2026 about 21.4 billion km (143 AU) away – and still transmitting."},
-    img:"images/voyager2.png", credit:"NASA/JPL", license:"Public Domain",
     source:"https://en.wikipedia.org/wiki/Voyager_2" },
 
   { id:"voyager1", cat:"unmanned", emoji:"🛰️", altitude_m:25800000000000,
@@ -366,7 +323,6 @@ const SKY_DATA = [
     note:"extremereignis",
     fact:{de:"Das entfernteste von Menschen gebaute Objekt: Stand 2026 rund 25,8 Mrd. km (173 AE) im interstellaren Raum. Sein Funksignal braucht knapp einen ganzen Tag zu uns.",
           en:"The most distant human-made object: about 25.8 billion km (173 AU) in interstellar space as of 2026. Its radio signal takes almost a full day to reach us."},
-    img:"images/voyager1.png", credit:"NASA/JPL", license:"Public Domain",
     source:"https://en.wikipedia.org/wiki/Voyager_1" },
 
   /* ---------- PLANETEN, SONNE & STERNE (Distanz-Anker) ---------- */
@@ -375,7 +331,6 @@ const SKY_DATA = [
     note:"referenz",
     fact:{de:"149,6 Mio. km entfernt – das ist eine Astronomische Einheit (1 AE). Ihr Licht braucht 8 Minuten und 20 Sekunden bis zu uns.",
           en:"149.6 million km away – that is one Astronomical Unit (1 AU). Its light takes 8 minutes 20 seconds to reach us."},
-    img:"images/sonne.png", credit:"NASA/SDO", license:"Public Domain",
     source:"https://science.nasa.gov/sun/" },
 
   { id:"merkur", cat:"planet", emoji:"🟤", altitude_m:155000000000,
@@ -383,7 +338,6 @@ const SKY_DATA = [
     note:"referenz",
     fact:{de:"Im Mittel ~155 Mio. km entfernt – oft sogar weiter weg als die Sonne, weil er meist auf deren anderer Seite steht.",
           en:"On average ~155 million km away – often even farther than the Sun, because it usually sits on its far side."},
-    img:"images/merkur.png", credit:"NASA", license:"Public Domain",
     source:"https://science.nasa.gov/mercury/" },
 
   { id:"venus", cat:"planet", emoji:"🟡", altitude_m:170000000000,
@@ -391,7 +345,6 @@ const SKY_DATA = [
     note:"referenz",
     fact:{de:"Unser Nachbarplanet, im Mittel ~170 Mio. km entfernt. Bei größter Annäherung (38 Mio. km) kommt uns kein Planet näher.",
           en:"Our neighbouring planet, on average ~170 million km away. At closest approach (38 million km) no planet comes nearer."},
-    img:"images/venus.png", credit:"NASA", license:"Public Domain",
     source:"https://science.nasa.gov/venus/" },
 
   { id:"mars", cat:"planet", emoji:"🔴", altitude_m:225000000000,
@@ -399,7 +352,6 @@ const SKY_DATA = [
     note:"referenz",
     fact:{de:"Der Rote Planet, im Mittel ~225 Mio. km entfernt. Hier arbeiten Rover wie Curiosity – ein Funkbefehl ist bis zu 22 Minuten unterwegs.",
           en:"The Red Planet, on average ~225 million km away. Rovers like Curiosity work here – a radio command takes up to 22 minutes."},
-    img:"images/mars.png", credit:"NASA", license:"Public Domain",
     source:"https://science.nasa.gov/mars/" },
 
   { id:"jupiter", cat:"planet", emoji:"🟠", altitude_m:779000000000,
@@ -407,7 +359,6 @@ const SKY_DATA = [
     note:"referenz",
     fact:{de:"Der größte Planet, ~779 Mio. km entfernt. Hierher fliegt die 2024 gestartete Sonde Europa Clipper – Ankunft 2030.",
           en:"The largest planet, ~779 million km away. The Europa Clipper probe launched in 2024 is heading here – arriving 2030."},
-    img:"images/jupiter.png", credit:"NASA", license:"Public Domain",
     source:"https://science.nasa.gov/jupiter/" },
 
   { id:"saturn", cat:"planet", emoji:"🪐", altitude_m:1432000000000,
@@ -415,7 +366,6 @@ const SKY_DATA = [
     note:"referenz",
     fact:{de:"Der Ringplanet, ~1,4 Mrd. km entfernt. Sein Anblick ist über eine Stunde alt, wenn das Licht bei uns ankommt.",
           en:"The ringed planet, ~1.4 billion km away. Its image is over an hour old by the time the light reaches us."},
-    img:"images/saturn.png", credit:"NASA", license:"Public Domain",
     source:"https://science.nasa.gov/saturn/" },
 
   { id:"uranus", cat:"planet", emoji:"🔵", altitude_m:2884000000000,
@@ -423,7 +373,6 @@ const SKY_DATA = [
     note:"referenz",
     fact:{de:"Ein Eisriese, ~2,9 Mrd. km entfernt. Nur eine einzige Sonde war je dort: Voyager 2 im Jahr 1986.",
           en:"An ice giant, ~2.9 billion km away. Only one probe has ever visited: Voyager 2 in 1986."},
-    img:"images/uranus.png", credit:"NASA", license:"Public Domain",
     source:"https://science.nasa.gov/uranus/" },
 
   { id:"neptun", cat:"planet", emoji:"🔵", altitude_m:4509000000000,
@@ -431,7 +380,6 @@ const SKY_DATA = [
     note:"referenz",
     fact:{de:"Der äußerste Planet, ~4,5 Mrd. km entfernt. Das Sonnenlicht ist hier rund 900-mal schwächer als auf der Erde.",
           en:"The outermost planet, ~4.5 billion km away. Sunlight here is about 900 times weaker than on Earth."},
-    img:"images/neptun.png", credit:"NASA", license:"Public Domain",
     source:"https://science.nasa.gov/neptune/" },
 
   { id:"pluto", cat:"planet", emoji:"⚪", altitude_m:5910000000000,
@@ -439,7 +387,6 @@ const SKY_DATA = [
     note:"referenz",
     fact:{de:"Im Mittel ~5,9 Mrd. km entfernt. Die Sonde New Horizons flog 2015 als erste an ihm vorbei.",
           en:"On average ~5.9 billion km away. The New Horizons probe made the first-ever flyby in 2015."},
-    img:"images/pluto.png", credit:"NASA/JHUAPL", license:"Public Domain",
     source:"https://science.nasa.gov/dwarf-planets/pluto/" },
 
   { id:"proxima", cat:"star", emoji:"⭐", altitude_m:40000000000000000,
@@ -447,7 +394,6 @@ const SKY_DATA = [
     note:"referenz",
     fact:{de:"Der nächste Stern nach der Sonne: 4,24 Lichtjahre bzw. 40 Billionen km entfernt. Selbst Voyager 1 bräuchte dorthin über 70.000 Jahre.",
           en:"The nearest star after the Sun: 4.24 light-years, or 40 trillion km away. Even Voyager 1 would take over 70,000 years to get there."},
-    img:"images/proxima.png", credit:"ESO", license:"CC BY",
     source:"https://www.eso.org/public/" },
 
   /* ---------- NEUERE RAUMFAHRT-EREIGNISSE (2022–2026) ---------- */
@@ -456,7 +402,6 @@ const SKY_DATA = [
     note:"extremereignis",
     fact:{de:"2024 erreichte diese private SpaceX-Mission 1.408 km Höhe – die höchste bemannte Erdumlaufbahn seit Apollo – und führte den ersten kommerziellen Weltraumspaziergang durch.",
           en:"In 2024 this private SpaceX mission reached 1,408 km – the highest crewed Earth orbit since Apollo – and performed the first commercial spacewalk."},
-    img:"images/polaris.png", credit:"SpaceX", license:"CC BY-NC",
     source:"https://www.polarisprogram.com/" },
 
   { id:"changge6", cat:"unmanned", emoji:"🤖", altitude_m:384400000,
@@ -464,7 +409,6 @@ const SKY_DATA = [
     note:"extremereignis",
     fact:{de:"Brachte 2024 erstmals Proben von der erdabgewandten Rückseite des Mondes zurück – fast 2 kg Gestein.",
           en:"In 2024 it returned the first-ever samples from the Moon's far side – nearly 2 kg of rock."},
-    img:"images/changge6.png", credit:"CNSA", license:"—",
     source:"https://en.wikipedia.org/wiki/Chang%27e_6" },
 
   { id:"artemis2", cat:"manned", emoji:"🧑‍🚀", altitude_m:390000000,
@@ -472,7 +416,6 @@ const SKY_DATA = [
     note:"extremereignis",
     fact:{de:"Im April 2026 umrundeten vier Astronauten den Mond – die erste bemannte Mondmission seit Apollo 17 (1972).",
           en:"In April 2026 four astronauts looped around the Moon – the first crewed lunar mission since Apollo 17 (1972)."},
-    img:"images/artemis2.png", credit:"NASA", license:"Public Domain",
     source:"https://www.nasa.gov/mission/artemis-ii/" },
 
   { id:"artemis1", cat:"unmanned", emoji:"🚀", altitude_m:432194000,
@@ -480,7 +423,6 @@ const SKY_DATA = [
     note:"extremereignis",
     fact:{de:"2022 flog die unbemannte Orion-Kapsel 432.194 km weit – weiter als je ein für Menschen gebautes Raumschiff zuvor.",
           en:"In 2022 the uncrewed Orion capsule travelled 432,194 km – farther than any spacecraft built for humans had gone before."},
-    img:"images/artemis1.png", credit:"NASA", license:"Public Domain",
     source:"https://www.nasa.gov/artemis-i/" },
 
   { id:"parker", cat:"unmanned", emoji:"🛰️", altitude_m:143500000000,
@@ -488,7 +430,6 @@ const SKY_DATA = [
     note:"extremereignis",
     fact:{de:"Flog im Dezember 2024 bis auf 6,1 Mio. km an die Sonnenoberfläche heran – und ist mit ~690.000 km/h das schnellste je gebaute Objekt.",
           en:"In December 2024 it flew to within 6.1 million km of the Sun's surface – and at ~690,000 km/h is the fastest object ever built."},
-    img:"images/parker.png", credit:"NASA/JHUAPL", license:"Public Domain",
     source:"https://science.nasa.gov/mission/parker-solar-probe/" },
 
   { id:"newhorizons", cat:"unmanned", emoji:"🛰️", altitude_m:9610000000000,
@@ -496,7 +437,6 @@ const SKY_DATA = [
     note:"referenz",
     fact:{de:"Nach dem Pluto-Vorbeiflug 2015 jetzt ~9,6 Mrd. km entfernt im Kuipergürtel – am äußeren Rand des Sonnensystems.",
           en:"After its 2015 Pluto flyby it is now ~9.6 billion km away in the Kuiper Belt – at the outer edge of the Solar System."},
-    img:"images/newhorizons.png", credit:"NASA/JHUAPL", license:"Public Domain",
     source:"https://science.nasa.gov/mission/new-horizons/" },
 
   /* ---------- PIONIERE DER UdSSR ---------- */
@@ -505,7 +445,6 @@ const SKY_DATA = [
     note:"extremereignis",
     fact:{de:"Der erste künstliche Satellit der Geschichte (UdSSR, 1957). Sein Piepsen läutete das Weltraumzeitalter ein.",
           en:"The first artificial satellite in history (USSR, 1957). Its beeping signal opened the Space Age."},
-    img:"images/sputnik1.png", credit:"—", license:"Public Domain",
     source:"https://en.wikipedia.org/wiki/Sputnik_1" },
 
   { id:"laika", cat:"unmanned", emoji:"🐕", altitude_m:1660000,
@@ -513,7 +452,6 @@ const SKY_DATA = [
     note:"extremereignis",
     fact:{de:"1957 wurde die Hündin Laika an Bord von Sputnik 2 das erste Lebewesen in einer Erdumlaufbahn – das erste Tier, das wirklich die Erde umrundete.",
           en:"In 1957 the dog Laika aboard Sputnik 2 became the first living being in Earth orbit – the first animal to truly circle the planet."},
-    img:"images/laika.png", credit:"—", license:"Public Domain",
     source:"https://en.wikipedia.org/wiki/Laika" },
 
   { id:"belka_strelka", cat:"unmanned", emoji:"🐕", altitude_m:700000,
@@ -521,7 +459,6 @@ const SKY_DATA = [
     note:"extremereignis",
     fact:{de:"1960 kehrten die beiden Hündinnen Belka und Strelka als erste Tiere lebend aus der Erdumlaufbahn zurück.",
           en:"In 1960 the dogs Belka and Strelka became the first animals to return alive from Earth orbit."},
-    img:"images/belka_strelka.png", credit:"—", license:"Public Domain",
     source:"https://en.wikipedia.org/wiki/Belka_and_Strelka" },
 
   { id:"gagarin", cat:"manned", emoji:"🧑‍🚀", altitude_m:327000,
@@ -529,7 +466,6 @@ const SKY_DATA = [
     note:"extremereignis",
     fact:{de:"1961 umrundete Juri Gagarin als erster Mensch die Erde – ein einziger Orbit in 108 Minuten.",
           en:"In 1961 Yuri Gagarin became the first human to orbit Earth – a single orbit in 108 minutes."},
-    img:"images/gagarin.png", credit:"—", license:"Public Domain",
     source:"https://en.wikipedia.org/wiki/Vostok_1" },
 
   { id:"tereshkova", cat:"manned", emoji:"👩‍🚀", altitude_m:231000,
@@ -537,7 +473,6 @@ const SKY_DATA = [
     note:"extremereignis",
     fact:{de:"1963 wurde Walentina Tereschkowa die erste Frau im Weltraum – allein an Bord für fast drei Tage.",
           en:"In 1963 Valentina Tereshkova became the first woman in space – alone aboard for almost three days."},
-    img:"images/tereshkova.png", credit:"—", license:"Public Domain",
     source:"https://en.wikipedia.org/wiki/Vostok_6" },
 
   { id:"mir", cat:"manned", emoji:"🛰️", altitude_m:350000,
@@ -545,7 +480,6 @@ const SKY_DATA = [
     note:"referenz",
     fact:{de:"Die sowjetische Station Mir (1986–2001) war 15 Jahre bemannt und der Vorläufer der ISS.",
           en:"The Soviet station Mir (1986–2001) was crewed for 15 years and the forerunner of the ISS."},
-    img:"images/mir.png", credit:"—", license:"Public Domain",
     source:"https://en.wikipedia.org/wiki/Mir" },
 
   { id:"luna2", cat:"unmanned", emoji:"🌑", altitude_m:384400000,
@@ -553,7 +487,6 @@ const SKY_DATA = [
     note:"extremereignis",
     fact:{de:"1959 schlug Luna 2 als erstes von Menschen gebautes Objekt auf dem Mond ein – das erste Mal, dass wir einen anderen Himmelskörper erreichten.",
           en:"In 1959 Luna 2 became the first human-made object to reach the Moon – the first time we touched another celestial body."},
-    img:"images/luna2.png", credit:"—", license:"Public Domain",
     source:"https://en.wikipedia.org/wiki/Luna_2" },
 
   { id:"venera7", cat:"unmanned", emoji:"🛰️", altitude_m:170000000000,
@@ -561,24 +494,21 @@ const SKY_DATA = [
     note:"extremereignis",
     fact:{de:"1970 landete Venera 7 auf der Venus – die erste weiche Landung auf einem anderen Planeten überhaupt.",
           en:"In 1970 Venera 7 landed on Venus – the first-ever soft landing on another planet."},
-    img:"images/venera7.png", credit:"—", license:"Public Domain",
     source:"https://en.wikipedia.org/wiki/Venera_7" },
 
   /* ---------- KOSMISCHE DISTANZEN ---------- */
   { id:"galaxis", cat:"cosmic", emoji:"🌌", altitude_m:246000000000000000000,
     name:{de:"Zentrum der Milchstraße", en:"Centre of the Milky Way"}, sci:"",
     note:"referenz",
-    fact:{de:"Rund 26.000 Lichtjahre entfernt. Im Herzen unserer Galaxie sitzt ein schwarzes Loch mit 4 Mio. Sonnenmassen.",
-          en:"About 26,000 light-years away. At the heart of our galaxy sits a black hole of 4 million solar masses."},
-    img:"images/galaxis.png", credit:"ESO", license:"CC BY",
+    fact:{de:"Rund 26.000 Lichtjahre entfernt. Im Herzen unserer Galaxie sitzt ein Schwarzes Loch mit ~4,3 Mio. Sonnenmassen.",
+          en:"About 26,000 light-years away. At the heart of our galaxy sits a black hole of ~4.3 million solar masses."},
     source:"https://en.wikipedia.org/wiki/Galactic_Center" },
 
   { id:"andromeda", cat:"cosmic", emoji:"🌌", altitude_m:23650000000000000000000,
     name:{de:"Andromeda-Galaxie", en:"Andromeda Galaxy"}, sci:"",
     note:"referenz",
-    fact:{de:"Die nächste große Galaxie, ~2,5 Mio. Lichtjahre entfernt – das fernste Objekt, das man mit bloßem Auge sehen kann.",
-          en:"The nearest large galaxy, ~2.5 million light-years away – the most distant object visible to the naked eye."},
-    img:"images/andromeda.png", credit:"NASA/ESA", license:"Public Domain",
+    fact:{de:"Die nächste große Galaxie, ~2,5 Mio. Lichtjahre entfernt – das am leichtesten mit bloßem Auge sichtbare ferne Objekt.",
+          en:"The nearest large galaxy, ~2.5 million light-years away – the most easily naked-eye-visible distant object."},
     source:"https://en.wikipedia.org/wiki/Andromeda_Galaxy" },
 
   { id:"universum", cat:"cosmic", emoji:"🌌", altitude_m:439900000000000000000000000,
@@ -586,7 +516,6 @@ const SKY_DATA = [
     note:"extremereignis",
     fact:{de:"Das älteste Licht ist 13,8 Mrd. Jahre alt – doch durch die Ausdehnung des Alls liegt sein Ursprung heute ~46,5 Mrd. Lichtjahre entfernt. Weiter können wir prinzipiell nicht sehen.",
           en:"The oldest light is 13.8 billion years old – but cosmic expansion has carried its origin to ~46.5 billion light-years away today. We cannot see any farther, even in principle."},
-    img:"images/universum.png", credit:"NASA/WMAP", license:"Public Domain",
     source:"https://en.wikipedia.org/wiki/Observable_universe" },
 
   /* ===================== SONNENSYSTEM: KLEINKÖRPER & RAND ===================== */
@@ -608,7 +537,7 @@ const SKY_DATA = [
     name:{de:"Asteroid Psyche", en:"Asteroid Psyche"}, sci:"", note:"referenz",
     fact:{de:"Ein metallreicher Asteroid – vielleicht der freigelegte Eisenkern eines zerstörten Protoplaneten. Eine NASA-Sonde ist unterwegs.",
           en:"A metal-rich asteroid – perhaps the exposed iron core of a shattered protoplanet. A NASA probe is on its way."},
-    img:"images/psyche.jpg", credit:"NASA/JPL", license:"Public Domain", nasa:"asteroid 16 Psyche",
+    img:"images/psyche.jpg", credit:"NASA/JPL-Caltech/ASU", license:"Public Domain",
     source:"https://science.nasa.gov/solar-system/asteroids/16-psyche/" },
 
   { id:"comet67p", cat:"reference", emoji:"☄️", altitude_m:5.7*AU,
@@ -622,7 +551,7 @@ const SKY_DATA = [
     name:{de:"Halleyscher Komet", en:"Halley's Comet"}, sci:"", note:"referenz",
     fact:{de:"Der berühmteste Komet, seit 240 v. Chr. dokumentiert. Alle 76 Jahre kehrt er wieder – nächstes Mal 2061.",
           en:"The most famous comet, recorded since 240 BC. It returns every 76 years – next in 2061."},
-    img:"images/halley.jpg", credit:"NASA", license:"Public Domain", nasa:"Halley's Comet",
+    img:"images/halley.jpg", credit:"ESO", license:"CC BY 4.0",
     source:"https://science.nasa.gov/solar-system/comets/1p-halley/" },
 
   { id:"arrokoth", cat:"reference", emoji:"🪨", altitude_m:44*AU,
@@ -693,7 +622,7 @@ const SKY_DATA = [
     name:{de:"Barnards Stern", en:"Barnard's Star"}, sci:"", note:"referenz",
     fact:{de:"Ein roter Zwerg mit der schnellsten bekannten Eigenbewegung am Himmel – er „rast“ über das Firmament.",
           en:"A red dwarf with the fastest known proper motion in the sky – it visibly races across the heavens."},
-    img:"images/barnard.jpg", credit:"NASA/ESA", license:"Public Domain", nasa:"Barnard's Star",
+    img:"images/barnard.jpg", credit:"ESO/Digitized Sky Survey 2", license:"CC BY 4.0",
     source:"https://science.nasa.gov/exoplanet-catalog/barnards-star-b/" },
 
   { id:"luhman16", cat:"star", emoji:"🟤", altitude_m:6.5*LY,
@@ -707,7 +636,7 @@ const SKY_DATA = [
     name:{de:"Sirius", en:"Sirius"}, sci:"", note:"referenz",
     fact:{de:"Der hellste Stern am Nachthimmel – mit einem winzigen Begleiter, dem Weißen Zwerg Sirius B: Sonnenmasse in Erdgröße.",
           en:"The brightest star in the night sky – with a tiny companion, the white dwarf Sirius B: a Sun's mass squeezed to Earth's size."},
-    img:"images/sirius.jpg", credit:"NASA/ESA Hubble", license:"Public Domain", nasa:"Sirius A B white dwarf",
+    img:"images/sirius.jpg", credit:"NASA/ESA, H. Bond (STScI), M. Barstow", license:"CC BY 4.0",
     source:"https://science.nasa.gov/" },
 
   { id:"epsiloneridani", cat:"star", emoji:"🟠", altitude_m:10.5*LY,
@@ -791,7 +720,7 @@ const SKY_DATA = [
     name:{de:"TrES-2b – der dunkelste Planet", en:"TrES-2b – the darkest planet"}, sci:"", note:"referenz",
     fact:{de:"Schwärzer als Kohle: dieser Planet schluckt über 99 % des Lichts, das auf ihn fällt – glüht aber matt rot.",
           en:"Blacker than coal: this planet swallows over 99% of the light hitting it – yet glows a dim red."},
-    img:"images/tres2b.jpg", credit:"NASA/JPL", license:"Public Domain", nasa:"TrES-2b darkest exoplanet",
+    img:"images/tres2b.jpg", credit:"David A. Aguilar (Harvard-Smithsonian CfA)", license:"CC BY-SA 3.0",
     source:"https://science.nasa.gov/exoplanet-catalog/tres-2-b/" },
 
   /* ===================== DIE MILCHSTRASSE ===================== */
@@ -799,7 +728,7 @@ const SKY_DATA = [
     name:{de:"Hyaden", en:"Hyades"}, sci:"", note:"referenz",
     fact:{de:"Der nächste offene Sternhaufen – eine V-förmige Sternengruppe, die das „Gesicht“ des Stiers bildet.",
           en:"The nearest open star cluster – a V-shaped group of stars forming the 'face' of Taurus the Bull."},
-    img:"images/hyades.jpg", credit:"NASA/ESA", license:"Public Domain", nasa:"Hyades star cluster",
+    img:"images/hyades.jpg", credit:"NASA/ESA/STScI", license:"CC BY 4.0",
     source:"https://science.nasa.gov/" },
 
   { id:"pleiades", cat:"cluster", emoji:"✨", altitude_m:444*LY,
@@ -813,7 +742,7 @@ const SKY_DATA = [
     name:{de:"Antares", en:"Antares"}, sci:"", note:"referenz",
     fact:{de:"Ein roter Überriese mit ~700-fachem Sonnenradius – sein Name bedeutet „Gegen-Mars“ wegen seiner roten Farbe.",
           en:"A red supergiant about 700 times the Sun's radius – its name means 'rival of Mars' for its red colour."},
-    img:"images/antares.jpg", credit:"ESO", license:"CC BY", nasa:"Antares red supergiant",
+    img:"images/antares.jpg", credit:"ESO/K. Ohnaka", license:"CC BY 4.0",
     source:"https://www.eso.org/public/" },
 
   { id:"helixnebula", cat:"nebula", emoji:"🌫️", altitude_m:650*LY,
@@ -841,7 +770,6 @@ const SKY_DATA = [
     name:{de:"Rigel", en:"Rigel"}, sci:"", note:"referenz",
     fact:{de:"Ein blauer Überriese mit ~120.000-facher Sonnenleuchtkraft – der hellste Stern im Orion.",
           en:"A blue supergiant shining about 120,000 times brighter than the Sun – the brightest star in Orion."},
-    img:"images/rigel.jpg", credit:"NASA", license:"Public Domain", nasa:"Rigel blue supergiant Orion",
     source:"https://science.nasa.gov/" },
 
   { id:"firstpulsar", cat:"star", emoji:"⚡", altitude_m:1000*LY,
@@ -888,8 +816,8 @@ const SKY_DATA = [
 
   { id:"uyscuti", cat:"star", emoji:"🔴", altitude_m:5900*LY,
     name:{de:"UY Scuti", en:"UY Scuti"}, sci:"", note:"unsicher",
-    fact:{de:"Einer der größten bekannten Sterne – an die Sonnenstelle gesetzt, reichte er fast bis zur Jupiterbahn.",
-          en:"One of the largest known stars – placed where the Sun is, it would reach nearly to Jupiter's orbit."},
+    fact:{de:"Lange als einer der größten bekannten Sterne gehandelt – nach älteren Schätzungen hätte er an der Sonnenstelle fast bis zur Jupiterbahn gereicht (neuere Gaia-Messungen fallen deutlich kleiner aus).",
+          en:"Long counted among the largest known stars – older estimates had it reaching nearly to Jupiter's orbit if placed where the Sun is (newer Gaia measurements are considerably smaller)."},
     img:"images/uyscuti.jpg", credit:"ESO", license:"CC BY", nasa:"UY Scuti red supergiant",
     source:"https://en.wikipedia.org/wiki/UY_Scuti" },
 
@@ -963,10 +891,10 @@ const SKY_DATA = [
     img:"images/fermibubbles.jpg", credit:"NASA Goddard", license:"Public Domain", nasa:"Fermi Bubbles Milky Way",
     source:"https://www.nasa.gov/" },
 
-  { id:"us708", cat:"star", emoji:"🚀", altitude_m:25000*LY,
+  { id:"us708", cat:"star", emoji:"🚀", altitude_m:62000*LY,
     name:{de:"Hypergeschwindigkeitsstern US 708", en:"Hypervelocity Star US 708"}, sci:"", note:"extremereignis",
-    fact:{de:"Der schnellste bekannte Stern: mit 1.200 km/s verlässt er die Milchstraße für immer – fortgeschleudert von einer Supernova.",
-          en:"The fastest known star: at 1,200 km/s it is leaving the Milky Way forever – flung out by a supernova."},
+    fact:{de:"Einer der schnellsten bekannten Sterne: mit 1.200 km/s verlässt er die Milchstraße für immer – fortgeschleudert von einer Supernova.",
+          en:"One of the fastest known stars: at 1,200 km/s it is leaving the Milky Way forever – flung out by a supernova."},
     img:"images/us708.jpg", credit:"ESO", license:"CC BY", nasa:"hypervelocity star",
     source:"https://en.wikipedia.org/wiki/US_708" },
 
@@ -1074,7 +1002,7 @@ const SKY_DATA = [
     name:{de:"Großer Attraktor", en:"Great Attractor"}, sci:"", note:"unsicher",
     fact:{de:"Eine rätselhafte Massenkonzentration, die unsere gesamte Galaxie und Tausende andere zu sich zieht – verborgen hinter der Milchstraße.",
           en:"A mysterious concentration of mass pulling our entire galaxy and thousands of others toward it – hidden behind the Milky Way."},
-    img:"images/greatattractor.jpg", credit:"NASA", license:"Public Domain", nasa:"Great Attractor large scale structure",
+    img:"images/greatattractor.jpg", credit:"R. B. Tully et al., SDvision/CEA", license:"CC BY 4.0",
     source:"https://en.wikipedia.org/wiki/Great_Attractor" },
 
   { id:"laniakea", cat:"cosmic", emoji:"✦", altitude_m:250e6*LY,
@@ -1093,8 +1021,8 @@ const SKY_DATA = [
 
   { id:"holm15a", cat:"blackhole", emoji:"🕳️", altitude_m:700e6*LY,
     name:{de:"Holm 15A", en:"Holm 15A"}, sci:"", note:"unsicher",
-    fact:{de:"Das massereichste Schwarze Loch im näheren Universum – 40 Milliarden Sonnenmassen, vermutlich aus zwei verschmolzenen entstanden.",
-          en:"The most massive black hole in the nearby universe – 40 billion solar masses, likely born from two that merged."},
+    fact:{de:"Eines der massereichsten Schwarzen Löcher im näheren Universum – rund 40 Milliarden Sonnenmassen, vermutlich aus zwei verschmolzenen entstanden.",
+          en:"One of the most massive black holes in the nearby universe – around 40 billion solar masses, likely born from two that merged."},
     img:"images/holm15a.jpg", credit:"ESO", license:"CC BY", nasa:"Holm 15A black hole",
     source:"https://en.wikipedia.org/wiki/Holmberg_15A" },
 
@@ -1109,14 +1037,13 @@ const SKY_DATA = [
     name:{de:"Sloan Great Wall", en:"Sloan Great Wall"}, sci:"", note:"referenz",
     fact:{de:"Eine gigantische Mauer aus Galaxien, ~1,4 Milliarden Lichtjahre lang – eine der größten Strukturen des Universums.",
           en:"A gigantic wall of galaxies about 1.4 billion light-years long – one of the largest structures in the universe."},
-    img:"images/sloanwall.jpg", credit:"SDSS", license:"CC BY", nasa:"Sloan Great Wall galaxy filament",
+    img:"images/sloanwall.png", credit:"Willem Schaap (2dF Galaxy Redshift Survey)", license:"CC BY-SA 3.0",
     source:"https://en.wikipedia.org/wiki/Sloan_Great_Wall" },
 
   { id:"gw150914", cat:"cosmic", emoji:"〰️", altitude_m:1.3e9*LY,
     name:{de:"Erste Gravitationswelle (GW150914)", en:"First Gravitational Wave (GW150914)"}, sci:"", note:"extremereignis",
     fact:{de:"2015 zum ersten Mal direkt gemessen: das Beben der Raumzeit von zwei verschmelzenden Schwarzen Löchern – 1,3 Mrd. Jahre unterwegs.",
           en:"First directly measured in 2015: the tremor in spacetime from two merging black holes – travelling for 1.3 billion years."},
-    img:"images/gw150914.jpg", credit:"LIGO/Caltech", license:"CC BY", nasa:"gravitational waves black hole merger LIGO",
     source:"https://www.ligo.caltech.edu/" },
 
   /* ===================== FRONTIER & MYSTERIEN ===================== */
@@ -1150,9 +1077,8 @@ const SKY_DATA = [
 
   { id:"herculescorona", cat:"cosmic", emoji:"🧱", altitude_m:10e9*LY,
     name:{de:"Hercules–Corona-Borealis-Mauer", en:"Hercules–Corona Borealis Great Wall"}, sci:"", note:"unsicher",
-    fact:{de:"Die größte bekannte Struktur des Universums – eine Galaxienmauer, die sich über rund 10 Milliarden Lichtjahre erstreckt.",
-          en:"The largest known structure in the universe – a wall of galaxies stretching across some 10 billion light-years."},
-    img:"images/herculescorona.jpg", credit:"NASA", license:"Public Domain", nasa:"large scale structure universe filament",
+    fact:{de:"Eine der größten – und umstrittensten – bekannten Strukturen: eine mutmaßliche Galaxienmauer über rund 10 Milliarden Lichtjahre.",
+          en:"One of the largest – and most disputed – known structures: a putative wall of galaxies spanning some 10 billion light-years."},
     source:"https://en.wikipedia.org/wiki/Hercules%E2%80%93Corona_Borealis_Great_Wall" },
 
   { id:"ton618", cat:"blackhole", emoji:"🕳️", altitude_m:18.2e9*LY,
@@ -1164,8 +1090,8 @@ const SKY_DATA = [
 
   { id:"earendel", cat:"star", emoji:"✨", altitude_m:28e9*LY,
     name:{de:"Earendel – der fernste Stern", en:"Earendel – the most distant star"}, sci:"", note:"extremereignis",
-    fact:{de:"Der fernste je beobachtete Einzelstern – nur durch eine kosmische Gravitationslinse sichtbar, sein Licht ist fast 13 Mrd. Jahre alt.",
-          en:"The most distant single star ever observed – visible only through a cosmic gravitational lens, its light is nearly 13 billion years old."},
+    fact:{de:"Der fernste Kandidat für einen Einzelstern – nur durch eine kosmische Gravitationslinse sichtbar (neuere Daten deuten evtl. auf einen kompakten Sternhaufen); sein Licht ist fast 13 Mrd. Jahre alt.",
+          en:"The most distant candidate for a single star – visible only through a cosmic gravitational lens (newer data may point to a compact star cluster); its light is nearly 13 billion years old."},
     img:"images/earendel.jpg", credit:"NASA/ESA JWST", license:"Public Domain", nasa:"Earendel most distant star",
     source:"https://science.nasa.gov/" },
 
@@ -1173,7 +1099,7 @@ const SKY_DATA = [
     name:{de:"JADES-GS-z14-0 – die fernste Galaxie", en:"JADES-GS-z14-0 – the most distant galaxy"}, sci:"", note:"extremereignis",
     fact:{de:"Die fernste bekannte Galaxie: ihr Licht zeigt uns das Universum nur 295 Millionen Jahre nach dem Urknall.",
           en:"The most distant known galaxy: its light shows us the universe just 295 million years after the Big Bang."},
-    img:"images/jadesz14.jpg", credit:"NASA/ESA JWST", license:"Public Domain", nasa:"JADES most distant galaxy JWST",
+    img:"images/jadesz14.jpg", credit:"NASA/ESA/CSA/STScI", license:"Public Domain",
     source:"https://science.nasa.gov/" },
 
   { id:"cmb", cat:"cosmic", emoji:"🔮", altitude_m:45.6e9*LY,

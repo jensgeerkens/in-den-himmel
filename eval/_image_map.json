@@ -1,0 +1,1397 @@
+[
+ {
+  "id": "spatz",
+  "cat": "bird",
+  "name": "House Sparrow",
+  "img": "images/spatz.png",
+  "exists": false,
+  "credit": "Wikimedia Commons",
+  "nasa": ""
+ },
+ {
+  "id": "schwalbe",
+  "cat": "bird",
+  "name": "Barn Swallow",
+  "img": "images/schwalbe.png",
+  "exists": false,
+  "credit": "Wikimedia Commons",
+  "nasa": ""
+ },
+ {
+  "id": "marienkaefer",
+  "cat": "insect",
+  "name": "Ladybird / Ladybug",
+  "img": "images/marienkaefer.png",
+  "exists": false,
+  "credit": "Wikimedia Commons",
+  "nasa": ""
+ },
+ {
+  "id": "mauersegler",
+  "cat": "bird",
+  "name": "Common Swift",
+  "img": "images/mauersegler.png",
+  "exists": false,
+  "credit": "Wikimedia Commons",
+  "nasa": ""
+ },
+ {
+  "id": "distelfalter",
+  "cat": "insect",
+  "name": "Painted Lady",
+  "img": "images/distelfalter.png",
+  "exists": false,
+  "credit": "Wikimedia Commons",
+  "nasa": ""
+ },
+ {
+  "id": "fledermaus",
+  "cat": "bat",
+  "name": "Mexican Free-tailed Bat",
+  "img": "images/fledermaus.png",
+  "exists": false,
+  "credit": "Wikimedia Commons",
+  "nasa": ""
+ },
+ {
+  "id": "monarch",
+  "cat": "insect",
+  "name": "Monarch Butterfly",
+  "img": "images/monarch.png",
+  "exists": false,
+  "credit": "Wikimedia Commons",
+  "nasa": ""
+ },
+ {
+  "id": "spinne",
+  "cat": "spider",
+  "name": "Ballooning Spider",
+  "img": "images/spinne.png",
+  "exists": false,
+  "credit": "Wikimedia Commons",
+  "nasa": ""
+ },
+ {
+  "id": "steinadler",
+  "cat": "bird",
+  "name": "Golden Eagle",
+  "img": "images/steinadler.png",
+  "exists": false,
+  "credit": "Wikimedia Commons",
+  "nasa": ""
+ },
+ {
+  "id": "bartgeier",
+  "cat": "bird",
+  "name": "Bearded Vulture",
+  "img": "images/bartgeier.png",
+  "exists": false,
+  "credit": "Wikimedia Commons",
+  "nasa": ""
+ },
+ {
+  "id": "streifengans",
+  "cat": "bird",
+  "name": "Bar-headed Goose",
+  "img": "images/streifengans.png",
+  "exists": false,
+  "credit": "Wikimedia Commons",
+  "nasa": ""
+ },
+ {
+  "id": "singschwan",
+  "cat": "bird",
+  "name": "Whooper Swan",
+  "img": "images/singschwan.png",
+  "exists": false,
+  "credit": "Wikimedia Commons",
+  "nasa": ""
+ },
+ {
+  "id": "alpendohle",
+  "cat": "bird",
+  "name": "Alpine Chough",
+  "img": "images/alpendohle.png",
+  "exists": false,
+  "credit": "Wikimedia Commons",
+  "nasa": ""
+ },
+ {
+  "id": "doppelschnepfe",
+  "cat": "bird",
+  "name": "Great Snipe",
+  "img": "images/doppelschnepfe.png",
+  "exists": false,
+  "credit": "Wikimedia Commons",
+  "nasa": ""
+ },
+ {
+  "id": "hummel",
+  "cat": "insect",
+  "name": "Bumblebee",
+  "img": "images/hummel.png",
+  "exists": false,
+  "credit": "Wikimedia Commons",
+  "nasa": ""
+ },
+ {
+  "id": "kranich",
+  "cat": "bird",
+  "name": "Common Crane",
+  "img": "images/kranich.png",
+  "exists": false,
+  "credit": "Wikimedia Commons",
+  "nasa": ""
+ },
+ {
+  "id": "sperbergeier",
+  "cat": "bird",
+  "name": "Rüppell's Vulture",
+  "img": "images/sperbergeier.png",
+  "exists": false,
+  "credit": "Wikimedia Commons",
+  "nasa": ""
+ },
+ {
+  "id": "burj",
+  "cat": "reference",
+  "name": "Burj Khalifa",
+  "img": "images/burj.png",
+  "exists": false,
+  "credit": "Wikimedia Commons",
+  "nasa": ""
+ },
+ {
+  "id": "montblanc",
+  "cat": "reference",
+  "name": "Mont Blanc",
+  "img": "images/montblanc.png",
+  "exists": false,
+  "credit": "Wikimedia Commons",
+  "nasa": ""
+ },
+ {
+  "id": "everest",
+  "cat": "reference",
+  "name": "Mount Everest",
+  "img": "images/everest.png",
+  "exists": false,
+  "credit": "Wikimedia Commons",
+  "nasa": ""
+ },
+ {
+  "id": "drohne",
+  "cat": "aircraft",
+  "name": "Consumer Drone",
+  "img": "images/drohne.png",
+  "exists": false,
+  "credit": "Wikimedia Commons",
+  "nasa": ""
+ },
+ {
+  "id": "jet",
+  "cat": "aircraft",
+  "name": "Airliner",
+  "img": "images/jet.png",
+  "exists": false,
+  "credit": "Wikimedia Commons",
+  "nasa": ""
+ },
+ {
+  "id": "helikopter",
+  "cat": "aircraft",
+  "name": "Helicopter Altitude Record",
+  "img": "images/helikopter.png",
+  "exists": false,
+  "credit": "Wikimedia Commons",
+  "nasa": ""
+ },
+ {
+  "id": "concorde",
+  "cat": "aircraft",
+  "name": "Concorde",
+  "img": "images/concorde.png",
+  "exists": false,
+  "credit": "Wikimedia Commons",
+  "nasa": ""
+ },
+ {
+  "id": "u2",
+  "cat": "aircraft",
+  "name": "U-2 Spy Plane",
+  "img": "images/u2.png",
+  "exists": false,
+  "credit": "Wikimedia Commons",
+  "nasa": ""
+ },
+ {
+  "id": "ballon",
+  "cat": "aircraft",
+  "name": "Hot-air Balloon Record",
+  "img": "images/ballon.png",
+  "exists": false,
+  "credit": "Wikimedia Commons",
+  "nasa": ""
+ },
+ {
+  "id": "sr71",
+  "cat": "aircraft",
+  "name": "SR-71 Blackbird",
+  "img": "images/sr71.png",
+  "exists": false,
+  "credit": "Wikimedia Commons",
+  "nasa": ""
+ },
+ {
+  "id": "wetterballon",
+  "cat": "aircraft",
+  "name": "Weather Balloon",
+  "img": "images/wetterballon.png",
+  "exists": false,
+  "credit": "Wikimedia Commons",
+  "nasa": ""
+ },
+ {
+  "id": "mig25",
+  "cat": "aircraft",
+  "name": "MiG-25 Altitude Record",
+  "img": "images/mig25.png",
+  "exists": false,
+  "credit": "Wikimedia Commons",
+  "nasa": ""
+ },
+ {
+  "id": "stratos",
+  "cat": "aircraft",
+  "name": "Red Bull Stratos (Baumgartner)",
+  "img": "images/stratos.png",
+  "exists": false,
+  "credit": "Wikimedia Commons",
+  "nasa": ""
+ },
+ {
+  "id": "eustace",
+  "cat": "aircraft",
+  "name": "Alan Eustace Stratospheric Jump",
+  "img": "images/eustace.png",
+  "exists": false,
+  "credit": "Wikimedia Commons",
+  "nasa": ""
+ },
+ {
+  "id": "karman",
+  "cat": "reference",
+  "name": "Kármán Line",
+  "img": "images/karman.png",
+  "exists": false,
+  "credit": "NASA",
+  "nasa": ""
+ },
+ {
+  "id": "x15",
+  "cat": "manned",
+  "name": "X-15 (highest crewed aeroplane flight)",
+  "img": "images/x15.png",
+  "exists": false,
+  "credit": "NASA",
+  "nasa": ""
+ },
+ {
+  "id": "iss",
+  "cat": "manned",
+  "name": "International Space Station (ISS)",
+  "img": "images/iss.png",
+  "exists": false,
+  "credit": "NASA",
+  "nasa": ""
+ },
+ {
+  "id": "gemini11",
+  "cat": "manned",
+  "name": "Gemini 11 (highest crewed Earth orbit)",
+  "img": "images/gemini11.png",
+  "exists": false,
+  "credit": "NASA",
+  "nasa": ""
+ },
+ {
+  "id": "mond",
+  "cat": "manned",
+  "name": "The Moon (Apollo landings)",
+  "img": "images/mond.png",
+  "exists": false,
+  "credit": "NASA",
+  "nasa": ""
+ },
+ {
+  "id": "apollo13",
+  "cat": "manned",
+  "name": "Apollo 13 (farthest humans)",
+  "img": "images/apollo13.png",
+  "exists": false,
+  "credit": "NASA",
+  "nasa": ""
+ },
+ {
+  "id": "hubble",
+  "cat": "unmanned",
+  "name": "Hubble Space Telescope",
+  "img": "images/hubble.png",
+  "exists": false,
+  "credit": "NASA",
+  "nasa": ""
+ },
+ {
+  "id": "gps",
+  "cat": "unmanned",
+  "name": "GPS Satellite",
+  "img": "images/gps.png",
+  "exists": false,
+  "credit": "NASA",
+  "nasa": ""
+ },
+ {
+  "id": "geo",
+  "cat": "unmanned",
+  "name": "Geostationary Satellite",
+  "img": "images/geo.png",
+  "exists": false,
+  "credit": "NASA",
+  "nasa": ""
+ },
+ {
+  "id": "jwst",
+  "cat": "unmanned",
+  "name": "James Webb Space Telescope",
+  "img": "images/jwst.png",
+  "exists": false,
+  "credit": "NASA",
+  "nasa": ""
+ },
+ {
+  "id": "curiosity",
+  "cat": "unmanned",
+  "name": "Mars Rover Curiosity",
+  "img": "images/curiosity.png",
+  "exists": false,
+  "credit": "NASA/JPL",
+  "nasa": ""
+ },
+ {
+  "id": "voyager2",
+  "cat": "unmanned",
+  "name": "Voyager 2",
+  "img": "images/voyager2.png",
+  "exists": false,
+  "credit": "NASA/JPL",
+  "nasa": ""
+ },
+ {
+  "id": "voyager1",
+  "cat": "unmanned",
+  "name": "Voyager 1",
+  "img": "images/voyager1.png",
+  "exists": false,
+  "credit": "NASA/JPL",
+  "nasa": ""
+ },
+ {
+  "id": "sonne",
+  "cat": "star",
+  "name": "The Sun",
+  "img": "images/sonne.png",
+  "exists": false,
+  "credit": "NASA/SDO",
+  "nasa": ""
+ },
+ {
+  "id": "merkur",
+  "cat": "planet",
+  "name": "Mercury",
+  "img": "images/merkur.png",
+  "exists": false,
+  "credit": "NASA",
+  "nasa": ""
+ },
+ {
+  "id": "venus",
+  "cat": "planet",
+  "name": "Venus",
+  "img": "images/venus.png",
+  "exists": false,
+  "credit": "NASA",
+  "nasa": ""
+ },
+ {
+  "id": "mars",
+  "cat": "planet",
+  "name": "Mars",
+  "img": "images/mars.png",
+  "exists": false,
+  "credit": "NASA",
+  "nasa": ""
+ },
+ {
+  "id": "jupiter",
+  "cat": "planet",
+  "name": "Jupiter",
+  "img": "images/jupiter.png",
+  "exists": false,
+  "credit": "NASA",
+  "nasa": ""
+ },
+ {
+  "id": "saturn",
+  "cat": "planet",
+  "name": "Saturn",
+  "img": "images/saturn.png",
+  "exists": false,
+  "credit": "NASA",
+  "nasa": ""
+ },
+ {
+  "id": "uranus",
+  "cat": "planet",
+  "name": "Uranus",
+  "img": "images/uranus.png",
+  "exists": false,
+  "credit": "NASA",
+  "nasa": ""
+ },
+ {
+  "id": "neptun",
+  "cat": "planet",
+  "name": "Neptune",
+  "img": "images/neptun.png",
+  "exists": false,
+  "credit": "NASA",
+  "nasa": ""
+ },
+ {
+  "id": "pluto",
+  "cat": "planet",
+  "name": "Pluto (dwarf planet)",
+  "img": "images/pluto.png",
+  "exists": false,
+  "credit": "NASA/JHUAPL",
+  "nasa": ""
+ },
+ {
+  "id": "proxima",
+  "cat": "star",
+  "name": "Proxima Centauri",
+  "img": "images/proxima.png",
+  "exists": false,
+  "credit": "ESO",
+  "nasa": ""
+ },
+ {
+  "id": "polaris",
+  "cat": "manned",
+  "name": "Polaris Dawn",
+  "img": "images/polaris.png",
+  "exists": false,
+  "credit": "SpaceX",
+  "nasa": ""
+ },
+ {
+  "id": "changge6",
+  "cat": "unmanned",
+  "name": "Chang'e 6",
+  "img": "images/changge6.png",
+  "exists": false,
+  "credit": "CNSA",
+  "nasa": ""
+ },
+ {
+  "id": "artemis2",
+  "cat": "manned",
+  "name": "Artemis II",
+  "img": "images/artemis2.png",
+  "exists": false,
+  "credit": "NASA",
+  "nasa": ""
+ },
+ {
+  "id": "artemis1",
+  "cat": "unmanned",
+  "name": "Artemis I (Orion)",
+  "img": "images/artemis1.png",
+  "exists": false,
+  "credit": "NASA",
+  "nasa": ""
+ },
+ {
+  "id": "parker",
+  "cat": "unmanned",
+  "name": "Parker Solar Probe",
+  "img": "images/parker.png",
+  "exists": false,
+  "credit": "NASA/JHUAPL",
+  "nasa": ""
+ },
+ {
+  "id": "newhorizons",
+  "cat": "unmanned",
+  "name": "New Horizons",
+  "img": "images/newhorizons.png",
+  "exists": false,
+  "credit": "NASA/JHUAPL",
+  "nasa": ""
+ },
+ {
+  "id": "sputnik1",
+  "cat": "unmanned",
+  "name": "Sputnik 1",
+  "img": "images/sputnik1.png",
+  "exists": false,
+  "credit": "—",
+  "nasa": ""
+ },
+ {
+  "id": "laika",
+  "cat": "unmanned",
+  "name": "Laika (Sputnik 2)",
+  "img": "images/laika.png",
+  "exists": false,
+  "credit": "—",
+  "nasa": ""
+ },
+ {
+  "id": "belka_strelka",
+  "cat": "unmanned",
+  "name": "Belka & Strelka",
+  "img": "images/belka_strelka.png",
+  "exists": false,
+  "credit": "—",
+  "nasa": ""
+ },
+ {
+  "id": "gagarin",
+  "cat": "manned",
+  "name": "Yuri Gagarin (Vostok 1)",
+  "img": "images/gagarin.png",
+  "exists": false,
+  "credit": "—",
+  "nasa": ""
+ },
+ {
+  "id": "tereshkova",
+  "cat": "manned",
+  "name": "Valentina Tereshkova (Vostok 6)",
+  "img": "images/tereshkova.png",
+  "exists": false,
+  "credit": "—",
+  "nasa": ""
+ },
+ {
+  "id": "mir",
+  "cat": "manned",
+  "name": "Mir Space Station",
+  "img": "images/mir.png",
+  "exists": false,
+  "credit": "—",
+  "nasa": ""
+ },
+ {
+  "id": "luna2",
+  "cat": "unmanned",
+  "name": "Luna 2",
+  "img": "images/luna2.png",
+  "exists": false,
+  "credit": "—",
+  "nasa": ""
+ },
+ {
+  "id": "venera7",
+  "cat": "unmanned",
+  "name": "Venera 7",
+  "img": "images/venera7.png",
+  "exists": false,
+  "credit": "—",
+  "nasa": ""
+ },
+ {
+  "id": "galaxis",
+  "cat": "cosmic",
+  "name": "Centre of the Milky Way",
+  "img": "images/galaxis.png",
+  "exists": false,
+  "credit": "ESO",
+  "nasa": ""
+ },
+ {
+  "id": "andromeda",
+  "cat": "cosmic",
+  "name": "Andromeda Galaxy",
+  "img": "images/andromeda.png",
+  "exists": false,
+  "credit": "NASA/ESA",
+  "nasa": ""
+ },
+ {
+  "id": "universum",
+  "cat": "cosmic",
+  "name": "Edge of the observable universe",
+  "img": "images/universum.png",
+  "exists": false,
+  "credit": "NASA/WMAP",
+  "nasa": ""
+ },
+ {
+  "id": "asteroidbelt",
+  "cat": "reference",
+  "name": "Asteroid Belt",
+  "img": "images/asteroidbelt.jpg",
+  "exists": true,
+  "credit": "NASA",
+  "nasa": "asteroid belt"
+ },
+ {
+  "id": "ceres",
+  "cat": "planet",
+  "name": "Ceres",
+  "img": "images/ceres.jpg",
+  "exists": true,
+  "credit": "NASA/JPL",
+  "nasa": "Ceres Dawn Occator"
+ },
+ {
+  "id": "psyche",
+  "cat": "reference",
+  "name": "Asteroid Psyche",
+  "img": "images/psyche.jpg",
+  "exists": true,
+  "credit": "NASA/JPL",
+  "nasa": "asteroid 16 Psyche"
+ },
+ {
+  "id": "comet67p",
+  "cat": "reference",
+  "name": "Comet 67P",
+  "img": "images/comet67p.jpg",
+  "exists": true,
+  "credit": "ESA/Rosetta",
+  "nasa": "comet 67P Churyumov Gerasimenko"
+ },
+ {
+  "id": "halley",
+  "cat": "reference",
+  "name": "Halley's Comet",
+  "img": "images/halley.jpg",
+  "exists": true,
+  "credit": "NASA",
+  "nasa": "Halley's Comet"
+ },
+ {
+  "id": "arrokoth",
+  "cat": "reference",
+  "name": "Arrokoth",
+  "img": "images/arrokoth.jpg",
+  "exists": true,
+  "credit": "NASA/JHUAPL",
+  "nasa": "Arrokoth New Horizons"
+ },
+ {
+  "id": "oumuamua",
+  "cat": "reference",
+  "name": "ʻOumuamua",
+  "img": "images/oumuamua.jpg",
+  "exists": true,
+  "credit": "ESO/M. Kornmesser",
+  "nasa": "Oumuamua interstellar object"
+ },
+ {
+  "id": "eris",
+  "cat": "planet",
+  "name": "Eris",
+  "img": "images/eris.jpg",
+  "exists": true,
+  "credit": "NASA/JPL",
+  "nasa": "dwarf planet Eris"
+ },
+ {
+  "id": "sedna",
+  "cat": "planet",
+  "name": "Sedna",
+  "img": "images/sedna.jpg",
+  "exists": true,
+  "credit": "NASA/JPL",
+  "nasa": "Sedna dwarf planet"
+ },
+ {
+  "id": "heliopause",
+  "cat": "reference",
+  "name": "Heliopause",
+  "img": "images/heliopause.jpg",
+  "exists": true,
+  "credit": "NASA",
+  "nasa": "heliopause heliosphere Voyager"
+ },
+ {
+  "id": "pioneer10",
+  "cat": "unmanned",
+  "name": "Pioneer 10",
+  "img": "images/pioneer10.jpg",
+  "exists": true,
+  "credit": "NASA",
+  "nasa": "Pioneer 10 spacecraft plaque"
+ },
+ {
+  "id": "oortcloud",
+  "cat": "reference",
+  "name": "Oort Cloud",
+  "img": "images/oortcloud.jpg",
+  "exists": true,
+  "credit": "NASA",
+  "nasa": "Oort cloud"
+ },
+ {
+  "id": "alphacentauri",
+  "cat": "star",
+  "name": "Alpha Centauri",
+  "img": "images/alphacentauri.jpg",
+  "exists": true,
+  "credit": "NASA/ESA",
+  "nasa": "Alpha Centauri"
+ },
+ {
+  "id": "proximab",
+  "cat": "exoplanet",
+  "name": "Proxima Centauri b",
+  "img": "images/proximab.jpg",
+  "exists": true,
+  "credit": "ESO/M. Kornmesser",
+  "nasa": "Proxima Centauri b"
+ },
+ {
+  "id": "barnard",
+  "cat": "star",
+  "name": "Barnard's Star",
+  "img": "images/barnard.jpg",
+  "exists": true,
+  "credit": "NASA/ESA",
+  "nasa": "Barnard's Star"
+ },
+ {
+  "id": "luhman16",
+  "cat": "star",
+  "name": "Luhman 16",
+  "img": "images/luhman16.jpg",
+  "exists": true,
+  "credit": "NASA/JPL",
+  "nasa": "Luhman 16 brown dwarf"
+ },
+ {
+  "id": "sirius",
+  "cat": "star",
+  "name": "Sirius",
+  "img": "images/sirius.jpg",
+  "exists": true,
+  "credit": "NASA/ESA Hubble",
+  "nasa": "Sirius A B white dwarf"
+ },
+ {
+  "id": "epsiloneridani",
+  "cat": "star",
+  "name": "Epsilon Eridani",
+  "img": "images/epsiloneridani.jpg",
+  "exists": true,
+  "credit": "NASA/JPL",
+  "nasa": "Epsilon Eridani planetary system"
+ },
+ {
+  "id": "tauceti",
+  "cat": "star",
+  "name": "Tau Ceti",
+  "img": "images/tauceti.jpg",
+  "exists": true,
+  "credit": "ESO",
+  "nasa": "Tau Ceti star system"
+ },
+ {
+  "id": "vega",
+  "cat": "star",
+  "name": "Vega",
+  "img": "images/vega.jpg",
+  "exists": true,
+  "credit": "NASA/JPL",
+  "nasa": "Vega star debris disk"
+ },
+ {
+  "id": "trappist1",
+  "cat": "exoplanet",
+  "name": "TRAPPIST-1",
+  "img": "images/trappist1.jpg",
+  "exists": true,
+  "credit": "NASA/JPL",
+  "nasa": "TRAPPIST-1 system"
+ },
+ {
+  "id": "cancri55e",
+  "cat": "exoplanet",
+  "name": "55 Cancri e",
+  "img": "images/cancri55e.jpg",
+  "exists": true,
+  "credit": "NASA/JPL",
+  "nasa": "55 Cancri e lava planet"
+ },
+ {
+  "id": "fiftyonepeg",
+  "cat": "exoplanet",
+  "name": "51 Pegasi b",
+  "img": "images/fiftyonepeg.jpg",
+  "exists": true,
+  "credit": "ESO/M. Kornmesser",
+  "nasa": "51 Pegasi b hot Jupiter"
+ },
+ {
+  "id": "bpm37093",
+  "cat": "star",
+  "name": "'Lucy' – the Diamond Star",
+  "img": "images/bpm37093.jpg",
+  "exists": true,
+  "credit": "NASA",
+  "nasa": "white dwarf crystal diamond star"
+ },
+ {
+  "id": "rogueplanet",
+  "cat": "exoplanet",
+  "name": "Rogue Planet",
+  "img": "images/rogueplanet.jpg",
+  "exists": true,
+  "credit": "NASA/JPL",
+  "nasa": "rogue planet free floating"
+ },
+ {
+  "id": "kepler16b",
+  "cat": "exoplanet",
+  "name": "Kepler-16b 'Tatooine'",
+  "img": "images/kepler16b.jpg",
+  "exists": true,
+  "credit": "NASA/JPL",
+  "nasa": "Kepler-16b two suns"
+ },
+ {
+  "id": "hd189733b",
+  "cat": "exoplanet",
+  "name": "HD 189733 b",
+  "img": "images/hd189733b.jpg",
+  "exists": true,
+  "credit": "NASA/ESA",
+  "nasa": "HD 189733 b blue planet"
+ },
+ {
+  "id": "kelt9b",
+  "cat": "exoplanet",
+  "name": "KELT-9b",
+  "img": "images/kelt9b.jpg",
+  "exists": true,
+  "credit": "NASA/JPL",
+  "nasa": "KELT-9b hottest exoplanet"
+ },
+ {
+  "id": "tres2b",
+  "cat": "exoplanet",
+  "name": "TrES-2b – the darkest planet",
+  "img": "images/tres2b.jpg",
+  "exists": false,
+  "credit": "NASA/JPL",
+  "nasa": "TrES-2b darkest exoplanet"
+ },
+ {
+  "id": "hyades",
+  "cat": "cluster",
+  "name": "Hyades",
+  "img": "images/hyades.jpg",
+  "exists": true,
+  "credit": "NASA/ESA",
+  "nasa": "Hyades star cluster"
+ },
+ {
+  "id": "pleiades",
+  "cat": "cluster",
+  "name": "Pleiades",
+  "img": "images/pleiades.jpg",
+  "exists": true,
+  "credit": "NASA/ESA",
+  "nasa": "Pleiades star cluster"
+ },
+ {
+  "id": "antares",
+  "cat": "star",
+  "name": "Antares",
+  "img": "images/antares.jpg",
+  "exists": true,
+  "credit": "ESO",
+  "nasa": "Antares red supergiant"
+ },
+ {
+  "id": "helixnebula",
+  "cat": "nebula",
+  "name": "Helix Nebula",
+  "img": "images/helixnebula.jpg",
+  "exists": true,
+  "credit": "NASA/ESA Hubble",
+  "nasa": "Helix Nebula"
+ },
+ {
+  "id": "betelgeuse",
+  "cat": "star",
+  "name": "Betelgeuse",
+  "img": "images/betelgeuse.jpg",
+  "exists": true,
+  "credit": "ESO",
+  "nasa": "Betelgeuse red supergiant"
+ },
+ {
+  "id": "vela",
+  "cat": "nebula",
+  "name": "Vela Supernova Remnant",
+  "img": "images/vela.jpg",
+  "exists": true,
+  "credit": "NASA/ESO",
+  "nasa": "Vela supernova remnant"
+ },
+ {
+  "id": "rigel",
+  "cat": "star",
+  "name": "Rigel",
+  "img": "images/rigel.jpg",
+  "exists": true,
+  "credit": "NASA",
+  "nasa": "Rigel blue supergiant Orion"
+ },
+ {
+  "id": "firstpulsar",
+  "cat": "star",
+  "name": "First Pulsar (LGM-1)",
+  "img": "images/firstpulsar.jpg",
+  "exists": true,
+  "credit": "NASA",
+  "nasa": "pulsar neutron star"
+ },
+ {
+  "id": "orionnebula",
+  "cat": "nebula",
+  "name": "Orion Nebula",
+  "img": "images/orionnebula.jpg",
+  "exists": true,
+  "credit": "NASA/ESA Hubble",
+  "nasa": "Orion Nebula"
+ },
+ {
+  "id": "gaiabh1",
+  "cat": "blackhole",
+  "name": "Gaia BH1",
+  "img": "images/gaiabh1.jpg",
+  "exists": true,
+  "credit": "ESO/NOIRLab",
+  "nasa": "black hole star orbit"
+ },
+ {
+  "id": "pulsarplanets",
+  "cat": "exoplanet",
+  "name": "Pulsar Planets (PSR B1257+12)",
+  "img": "images/pulsarplanets.jpg",
+  "exists": true,
+  "credit": "NASA/JPL",
+  "nasa": "pulsar planets PSR B1257"
+ },
+ {
+  "id": "ringnebula",
+  "cat": "nebula",
+  "name": "Ring Nebula",
+  "img": "images/ringnebula.jpg",
+  "exists": true,
+  "credit": "NASA/ESA JWST",
+  "nasa": "Ring Nebula M57"
+ },
+ {
+  "id": "lagoonnebula",
+  "cat": "nebula",
+  "name": "Lagoon Nebula",
+  "img": "images/lagoonnebula.jpg",
+  "exists": true,
+  "credit": "NASA/ESA Hubble",
+  "nasa": "Lagoon Nebula M8"
+ },
+ {
+  "id": "uyscuti",
+  "cat": "star",
+  "name": "UY Scuti",
+  "img": "images/uyscuti.jpg",
+  "exists": true,
+  "credit": "ESO",
+  "nasa": "UY Scuti red supergiant"
+ },
+ {
+  "id": "mucephei",
+  "cat": "star",
+  "name": "Mu Cephei (Garnet Star)",
+  "img": "images/mucephei.jpg",
+  "exists": true,
+  "credit": "NASA",
+  "nasa": "Mu Cephei garnet star"
+ },
+ {
+  "id": "crabnebula",
+  "cat": "nebula",
+  "name": "Crab Nebula",
+  "img": "images/crabnebula.jpg",
+  "exists": true,
+  "credit": "NASA/ESA JWST",
+  "nasa": "Crab Nebula"
+ },
+ {
+  "id": "eaglenebula",
+  "cat": "nebula",
+  "name": "Eagle Nebula – Pillars of Creation",
+  "img": "images/eaglenebula.jpg",
+  "exists": true,
+  "credit": "NASA/ESA JWST",
+  "nasa": "Pillars of Creation Eagle Nebula"
+ },
+ {
+  "id": "cygnusx1",
+  "cat": "blackhole",
+  "name": "Cygnus X-1",
+  "img": "images/cygnusx1.jpg",
+  "exists": true,
+  "credit": "NASA/CXC",
+  "nasa": "Cygnus X-1 black hole"
+ },
+ {
+  "id": "carinanebula",
+  "cat": "nebula",
+  "name": "Carina Nebula",
+  "img": "images/carinanebula.jpg",
+  "exists": true,
+  "credit": "NASA/ESA JWST",
+  "nasa": "Carina Nebula Cosmic Cliffs"
+ },
+ {
+  "id": "etacarinae",
+  "cat": "star",
+  "name": "Eta Carinae",
+  "img": "images/etacarinae.jpg",
+  "exists": true,
+  "credit": "NASA/ESA Hubble",
+  "nasa": "Eta Carinae Homunculus"
+ },
+ {
+  "id": "omegacentauri",
+  "cat": "cluster",
+  "name": "Omega Centauri",
+  "img": "images/omegacentauri.jpg",
+  "exists": true,
+  "credit": "NASA/ESA Hubble",
+  "nasa": "Omega Centauri globular cluster"
+ },
+ {
+  "id": "fastestpulsar",
+  "cat": "star",
+  "name": "Fastest Pulsar",
+  "img": "images/fastestpulsar.jpg",
+  "exists": true,
+  "credit": "NASA",
+  "nasa": "millisecond pulsar"
+ },
+ {
+  "id": "stephenson218",
+  "cat": "star",
+  "name": "Stephenson 2-18",
+  "img": "images/stephenson218.jpg",
+  "exists": true,
+  "credit": "NASA",
+  "nasa": "red supergiant largest star"
+ },
+ {
+  "id": "fermibubbles",
+  "cat": "cosmic",
+  "name": "Fermi Bubbles",
+  "img": "images/fermibubbles.jpg",
+  "exists": true,
+  "credit": "NASA Goddard",
+  "nasa": "Fermi Bubbles Milky Way"
+ },
+ {
+  "id": "us708",
+  "cat": "star",
+  "name": "Hypervelocity Star US 708",
+  "img": "images/us708.jpg",
+  "exists": true,
+  "credit": "ESO",
+  "nasa": "hypervelocity star"
+ },
+ {
+  "id": "sgrA",
+  "cat": "blackhole",
+  "name": "Sagittarius A*",
+  "img": "images/sgrA.jpg",
+  "exists": true,
+  "credit": "EHT Collaboration",
+  "nasa": "Sagittarius A* black hole Event Horizon"
+ },
+ {
+  "id": "magnetar",
+  "cat": "star",
+  "name": "Magnetar SGR 1806-20",
+  "img": "images/magnetar.jpg",
+  "exists": true,
+  "credit": "NASA",
+  "nasa": "magnetar SGR 1806-20"
+ },
+ {
+  "id": "milkyway",
+  "cat": "galaxy",
+  "name": "The Milky Way",
+  "img": "images/milkyway.jpg",
+  "exists": true,
+  "credit": "NASA/JPL",
+  "nasa": "Milky Way galaxy"
+ },
+ {
+  "id": "lmc",
+  "cat": "galaxy",
+  "name": "Large Magellanic Cloud",
+  "img": "images/lmc.jpg",
+  "exists": true,
+  "credit": "NASA/ESA",
+  "nasa": "Large Magellanic Cloud"
+ },
+ {
+  "id": "tarantula",
+  "cat": "nebula",
+  "name": "Tarantula Nebula",
+  "img": "images/tarantula.jpg",
+  "exists": true,
+  "credit": "NASA/ESA JWST",
+  "nasa": "Tarantula Nebula 30 Doradus"
+ },
+ {
+  "id": "smc",
+  "cat": "galaxy",
+  "name": "Small Magellanic Cloud",
+  "img": "images/smc.jpg",
+  "exists": true,
+  "credit": "NASA/ESA",
+  "nasa": "Small Magellanic Cloud"
+ },
+ {
+  "id": "triangulum",
+  "cat": "galaxy",
+  "name": "Triangulum Galaxy",
+  "img": "images/triangulum.jpg",
+  "exists": true,
+  "credit": "NASA/ESA Hubble",
+  "nasa": "Triangulum Galaxy M33"
+ },
+ {
+  "id": "centaurusa",
+  "cat": "galaxy",
+  "name": "Centaurus A",
+  "img": "images/centaurusa.jpg",
+  "exists": true,
+  "credit": "ESO",
+  "nasa": "Centaurus A galaxy jet"
+ },
+ {
+  "id": "cigargalaxy",
+  "cat": "galaxy",
+  "name": "Cigar Galaxy (M82)",
+  "img": "images/cigargalaxy.jpg",
+  "exists": true,
+  "credit": "NASA/ESA Hubble",
+  "nasa": "Cigar Galaxy M82 starburst"
+ },
+ {
+  "id": "whirlpool",
+  "cat": "galaxy",
+  "name": "Whirlpool Galaxy",
+  "img": "images/whirlpool.jpg",
+  "exists": true,
+  "credit": "NASA/ESA Hubble",
+  "nasa": "Whirlpool Galaxy M51"
+ },
+ {
+  "id": "sombrero",
+  "cat": "galaxy",
+  "name": "Sombrero Galaxy",
+  "img": "images/sombrero.jpg",
+  "exists": true,
+  "credit": "NASA/ESA Hubble",
+  "nasa": "Sombrero Galaxy M104"
+ },
+ {
+  "id": "virgocluster",
+  "cat": "cosmic",
+  "name": "Virgo Cluster",
+  "img": "images/virgocluster.jpg",
+  "exists": true,
+  "credit": "NASA/ESA",
+  "nasa": "Virgo Cluster galaxies"
+ },
+ {
+  "id": "m87",
+  "cat": "blackhole",
+  "name": "M87* – the first imaged black hole",
+  "img": "images/m87.jpg",
+  "exists": true,
+  "credit": "EHT Collaboration",
+  "nasa": "M87 black hole Event Horizon Telescope"
+ },
+ {
+  "id": "gw170817",
+  "cat": "cosmic",
+  "name": "Kilonova GW170817",
+  "img": "images/gw170817.jpg",
+  "exists": true,
+  "credit": "NASA/ESA",
+  "nasa": "neutron star merger kilonova"
+ },
+ {
+  "id": "greatattractor",
+  "cat": "cosmic",
+  "name": "Great Attractor",
+  "img": "images/greatattractor.jpg",
+  "exists": true,
+  "credit": "NASA",
+  "nasa": "Great Attractor large scale structure"
+ },
+ {
+  "id": "laniakea",
+  "cat": "cosmic",
+  "name": "Laniakea Supercluster",
+  "img": "images/laniakea.jpg",
+  "exists": true,
+  "credit": "Nature/Tully",
+  "nasa": "Laniakea supercluster"
+ },
+ {
+  "id": "comacluster",
+  "cat": "cosmic",
+  "name": "Coma Cluster",
+  "img": "images/comacluster.jpg",
+  "exists": true,
+  "credit": "NASA/ESA Hubble",
+  "nasa": "Coma Cluster galaxies"
+ },
+ {
+  "id": "holm15a",
+  "cat": "blackhole",
+  "name": "Holm 15A",
+  "img": "images/holm15a.jpg",
+  "exists": true,
+  "credit": "ESO",
+  "nasa": "Holm 15A black hole"
+ },
+ {
+  "id": "bootesvoid",
+  "cat": "cosmic",
+  "name": "Boötes Void",
+  "img": "images/bootesvoid.jpg",
+  "exists": true,
+  "credit": "NASA",
+  "nasa": "cosmic void large scale structure"
+ },
+ {
+  "id": "sloanwall",
+  "cat": "cosmic",
+  "name": "Sloan Great Wall",
+  "img": "images/sloanwall.jpg",
+  "exists": true,
+  "credit": "SDSS",
+  "nasa": "Sloan Great Wall galaxy filament"
+ },
+ {
+  "id": "gw150914",
+  "cat": "cosmic",
+  "name": "First Gravitational Wave (GW150914)",
+  "img": "images/gw150914.jpg",
+  "exists": true,
+  "credit": "LIGO/Caltech",
+  "nasa": "gravitational waves black hole merger LIGO"
+ },
+ {
+  "id": "quasar3c273",
+  "cat": "cosmic",
+  "name": "Quasar 3C 273",
+  "img": "images/quasar3c273.jpg",
+  "exists": true,
+  "credit": "NASA/ESA Hubble",
+  "nasa": "quasar 3C 273"
+ },
+ {
+  "id": "frb",
+  "cat": "cosmic",
+  "name": "Fast Radio Bursts",
+  "img": "images/frb.jpg",
+  "exists": true,
+  "credit": "NASA",
+  "nasa": "fast radio burst"
+ },
+ {
+  "id": "darkmatter",
+  "cat": "cosmic",
+  "name": "Dark Matter",
+  "img": "images/darkmatter.jpg",
+  "exists": true,
+  "credit": "NASA/ESA",
+  "nasa": "dark matter map"
+ },
+ {
+  "id": "darkenergy",
+  "cat": "cosmic",
+  "name": "Dark Energy",
+  "img": "images/darkenergy.jpg",
+  "exists": true,
+  "credit": "NASA",
+  "nasa": "dark energy accelerating universe"
+ },
+ {
+  "id": "herculescorona",
+  "cat": "cosmic",
+  "name": "Hercules–Corona Borealis Great Wall",
+  "img": "images/herculescorona.jpg",
+  "exists": true,
+  "credit": "NASA",
+  "nasa": "large scale structure universe filament"
+ },
+ {
+  "id": "ton618",
+  "cat": "blackhole",
+  "name": "TON 618 – the largest black hole",
+  "img": "images/ton618.jpg",
+  "exists": true,
+  "credit": "NASA",
+  "nasa": "quasar supermassive black hole"
+ },
+ {
+  "id": "earendel",
+  "cat": "star",
+  "name": "Earendel – the most distant star",
+  "img": "images/earendel.jpg",
+  "exists": true,
+  "credit": "NASA/ESA JWST",
+  "nasa": "Earendel most distant star"
+ },
+ {
+  "id": "jadesz14",
+  "cat": "galaxy",
+  "name": "JADES-GS-z14-0 – the most distant galaxy",
+  "img": "images/jadesz14.jpg",
+  "exists": true,
+  "credit": "NASA/ESA JWST",
+  "nasa": "JADES most distant galaxy JWST"
+ },
+ {
+  "id": "cmb",
+  "cat": "cosmic",
+  "name": "Cosmic Microwave Background",
+  "img": "images/cmb.jpg",
+  "exists": true,
+  "credit": "ESA/Planck",
+  "nasa": "cosmic microwave background Planck map"
+ }
+]

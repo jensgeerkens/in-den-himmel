@@ -1,0 +1,371 @@
+[
+ {
+  "id": "mucephei",
+  "cat": "star",
+  "name": "Mu Cephei (Garnet Star)",
+  "img": "images/mucephei.jpg",
+  "exists": true,
+  "credit": "NASA",
+  "nasa": "Mu Cephei garnet star"
+ },
+ {
+  "id": "crabnebula",
+  "cat": "nebula",
+  "name": "Crab Nebula",
+  "img": "images/crabnebula.jpg",
+  "exists": true,
+  "credit": "NASA/ESA JWST",
+  "nasa": "Crab Nebula"
+ },
+ {
+  "id": "eaglenebula",
+  "cat": "nebula",
+  "name": "Eagle Nebula – Pillars of Creation",
+  "img": "images/eaglenebula.jpg",
+  "exists": true,
+  "credit": "NASA/ESA JWST",
+  "nasa": "Pillars of Creation Eagle Nebula"
+ },
+ {
+  "id": "cygnusx1",
+  "cat": "blackhole",
+  "name": "Cygnus X-1",
+  "img": "images/cygnusx1.jpg",
+  "exists": true,
+  "credit": "NASA/CXC",
+  "nasa": "Cygnus X-1 black hole"
+ },
+ {
+  "id": "carinanebula",
+  "cat": "nebula",
+  "name": "Carina Nebula",
+  "img": "images/carinanebula.jpg",
+  "exists": true,
+  "credit": "NASA/ESA JWST",
+  "nasa": "Carina Nebula Cosmic Cliffs"
+ },
+ {
+  "id": "etacarinae",
+  "cat": "star",
+  "name": "Eta Carinae",
+  "img": "images/etacarinae.jpg",
+  "exists": true,
+  "credit": "NASA/ESA Hubble",
+  "nasa": "Eta Carinae Homunculus"
+ },
+ {
+  "id": "omegacentauri",
+  "cat": "cluster",
+  "name": "Omega Centauri",
+  "img": "images/omegacentauri.jpg",
+  "exists": true,
+  "credit": "NASA/ESA Hubble",
+  "nasa": "Omega Centauri globular cluster"
+ },
+ {
+  "id": "fastestpulsar",
+  "cat": "star",
+  "name": "Fastest Pulsar",
+  "img": "images/fastestpulsar.jpg",
+  "exists": true,
+  "credit": "NASA",
+  "nasa": "millisecond pulsar"
+ },
+ {
+  "id": "stephenson218",
+  "cat": "star",
+  "name": "Stephenson 2-18",
+  "img": "images/stephenson218.jpg",
+  "exists": true,
+  "credit": "NASA",
+  "nasa": "red supergiant largest star"
+ },
+ {
+  "id": "fermibubbles",
+  "cat": "cosmic",
+  "name": "Fermi Bubbles",
+  "img": "images/fermibubbles.jpg",
+  "exists": true,
+  "credit": "NASA Goddard",
+  "nasa": "Fermi Bubbles Milky Way"
+ },
+ {
+  "id": "us708",
+  "cat": "star",
+  "name": "Hypervelocity Star US 708",
+  "img": "images/us708.jpg",
+  "exists": true,
+  "credit": "ESO",
+  "nasa": "hypervelocity star"
+ },
+ {
+  "id": "sgrA",
+  "cat": "blackhole",
+  "name": "Sagittarius A*",
+  "img": "images/sgrA.jpg",
+  "exists": true,
+  "credit": "EHT Collaboration",
+  "nasa": "Sagittarius A* black hole Event Horizon"
+ },
+ {
+  "id": "magnetar",
+  "cat": "star",
+  "name": "Magnetar SGR 1806-20",
+  "img": "images/magnetar.jpg",
+  "exists": true,
+  "credit": "NASA",
+  "nasa": "magnetar SGR 1806-20"
+ },
+ {
+  "id": "milkyway",
+  "cat": "galaxy",
+  "name": "The Milky Way",
+  "img": "images/milkyway.jpg",
+  "exists": true,
+  "credit": "NASA/JPL",
+  "nasa": "Milky Way galaxy"
+ },
+ {
+  "id": "lmc",
+  "cat": "galaxy",
+  "name": "Large Magellanic Cloud",
+  "img": "images/lmc.jpg",
+  "exists": true,
+  "credit": "NASA/ESA",
+  "nasa": "Large Magellanic Cloud"
+ },
+ {
+  "id": "tarantula",
+  "cat": "nebula",
+  "name": "Tarantula Nebula",
+  "img": "images/tarantula.jpg",
+  "exists": true,
+  "credit": "NASA/ESA JWST",
+  "nasa": "Tarantula Nebula 30 Doradus"
+ },
+ {
+  "id": "smc",
+  "cat": "galaxy",
+  "name": "Small Magellanic Cloud",
+  "img": "images/smc.jpg",
+  "exists": true,
+  "credit": "NASA/ESA",
+  "nasa": "Small Magellanic Cloud"
+ },
+ {
+  "id": "triangulum",
+  "cat": "galaxy",
+  "name": "Triangulum Galaxy",
+  "img": "images/triangulum.jpg",
+  "exists": true,
+  "credit": "NASA/ESA Hubble",
+  "nasa": "Triangulum Galaxy M33"
+ },
+ {
+  "id": "centaurusa",
+  "cat": "galaxy",
+  "name": "Centaurus A",
+  "img": "images/centaurusa.jpg",
+  "exists": true,
+  "credit": "ESO",
+  "nasa": "Centaurus A galaxy jet"
+ },
+ {
+  "id": "cigargalaxy",
+  "cat": "galaxy",
+  "name": "Cigar Galaxy (M82)",
+  "img": "images/cigargalaxy.jpg",
+  "exists": true,
+  "credit": "NASA/ESA Hubble",
+  "nasa": "Cigar Galaxy M82 starburst"
+ },
+ {
+  "id": "whirlpool",
+  "cat": "galaxy",
+  "name": "Whirlpool Galaxy",
+  "img": "images/whirlpool.jpg",
+  "exists": true,
+  "credit": "NASA/ESA Hubble",
+  "nasa": "Whirlpool Galaxy M51"
+ },
+ {
+  "id": "sombrero",
+  "cat": "galaxy",
+  "name": "Sombrero Galaxy",
+  "img": "images/sombrero.jpg",
+  "exists": true,
+  "credit": "NASA/ESA Hubble",
+  "nasa": "Sombrero Galaxy M104"
+ },
+ {
+  "id": "virgocluster",
+  "cat": "cosmic",
+  "name": "Virgo Cluster",
+  "img": "images/virgocluster.jpg",
+  "exists": true,
+  "credit": "NASA/ESA",
+  "nasa": "Virgo Cluster galaxies"
+ },
+ {
+  "id": "m87",
+  "cat": "blackhole",
+  "name": "M87* – the first imaged black hole",
+  "img": "images/m87.jpg",
+  "exists": true,
+  "credit": "EHT Collaboration",
+  "nasa": "M87 black hole Event Horizon Telescope"
+ },
+ {
+  "id": "gw170817",
+  "cat": "cosmic",
+  "name": "Kilonova GW170817",
+  "img": "images/gw170817.jpg",
+  "exists": true,
+  "credit": "NASA/ESA",
+  "nasa": "neutron star merger kilonova"
+ },
+ {
+  "id": "greatattractor",
+  "cat": "cosmic",
+  "name": "Great Attractor",
+  "img": "images/greatattractor.jpg",
+  "exists": true,
+  "credit": "NASA",
+  "nasa": "Great Attractor large scale structure"
+ },
+ {
+  "id": "laniakea",
+  "cat": "cosmic",
+  "name": "Laniakea Supercluster",
+  "img": "images/laniakea.jpg",
+  "exists": true,
+  "credit": "Nature/Tully",
+  "nasa": "Laniakea supercluster"
+ },
+ {
+  "id": "comacluster",
+  "cat": "cosmic",
+  "name": "Coma Cluster",
+  "img": "images/comacluster.jpg",
+  "exists": true,
+  "credit": "NASA/ESA Hubble",
+  "nasa": "Coma Cluster galaxies"
+ },
+ {
+  "id": "holm15a",
+  "cat": "blackhole",
+  "name": "Holm 15A",
+  "img": "images/holm15a.jpg",
+  "exists": true,
+  "credit": "ESO",
+  "nasa": "Holm 15A black hole"
+ },
+ {
+  "id": "bootesvoid",
+  "cat": "cosmic",
+  "name": "Boötes Void",
+  "img": "images/bootesvoid.jpg",
+  "exists": true,
+  "credit": "NASA",
+  "nasa": "cosmic void large scale structure"
+ },
+ {
+  "id": "sloanwall",
+  "cat": "cosmic",
+  "name": "Sloan Great Wall",
+  "img": "images/sloanwall.jpg",
+  "exists": true,
+  "credit": "SDSS",
+  "nasa": "Sloan Great Wall galaxy filament"
+ },
+ {
+  "id": "gw150914",
+  "cat": "cosmic",
+  "name": "First Gravitational Wave (GW150914)",
+  "img": "images/gw150914.jpg",
+  "exists": true,
+  "credit": "LIGO/Caltech",
+  "nasa": "gravitational waves black hole merger LIGO"
+ },
+ {
+  "id": "quasar3c273",
+  "cat": "cosmic",
+  "name": "Quasar 3C 273",
+  "img": "images/quasar3c273.jpg",
+  "exists": true,
+  "credit": "NASA/ESA Hubble",
+  "nasa": "quasar 3C 273"
+ },
+ {
+  "id": "frb",
+  "cat": "cosmic",
+  "name": "Fast Radio Bursts",
+  "img": "images/frb.jpg",
+  "exists": true,
+  "credit": "NASA",
+  "nasa": "fast radio burst"
+ },
+ {
+  "id": "darkmatter",
+  "cat": "cosmic",
+  "name": "Dark Matter",
+  "img": "images/darkmatter.jpg",
+  "exists": true,
+  "credit": "NASA/ESA",
+  "nasa": "dark matter map"
+ },
+ {
+  "id": "darkenergy",
+  "cat": "cosmic",
+  "name": "Dark Energy",
+  "img": "images/darkenergy.jpg",
+  "exists": true,
+  "credit": "NASA",
+  "nasa": "dark energy accelerating universe"
+ },
+ {
+  "id": "herculescorona",
+  "cat": "cosmic",
+  "name": "Hercules–Corona Borealis Great Wall",
+  "img": "images/herculescorona.jpg",
+  "exists": true,
+  "credit": "NASA",
+  "nasa": "large scale structure universe filament"
+ },
+ {
+  "id": "ton618",
+  "cat": "blackhole",
+  "name": "TON 618 – the largest black hole",
+  "img": "images/ton618.jpg",
+  "exists": true,
+  "credit": "NASA",
+  "nasa": "quasar supermassive black hole"
+ },
+ {
+  "id": "earendel",
+  "cat": "star",
+  "name": "Earendel – the most distant star",
+  "img": "images/earendel.jpg",
+  "exists": true,
+  "credit": "NASA/ESA JWST",
+  "nasa": "Earendel most distant star"
+ },
+ {
+  "id": "jadesz14",
+  "cat": "galaxy",
+  "name": "JADES-GS-z14-0 – the most distant galaxy",
+  "img": "images/jadesz14.jpg",
+  "exists": true,
+  "credit": "NASA/ESA JWST",
+  "nasa": "JADES most distant galaxy JWST"
+ },
+ {
+  "id": "cmb",
+  "cat": "cosmic",
+  "name": "Cosmic Microwave Background",
+  "img": "images/cmb.jpg",
+  "exists": true,
+  "credit": "ESA/Planck",
+  "nasa": "cosmic microwave background Planck map"
+ }
+]

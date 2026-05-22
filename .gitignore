@@ -11,3 +11,6 @@ images/raw/
 __pycache__/
 *.pyc
 .venv/
+
+# Audit-Scratch (Daten-Dump, derivativ)
+eval/merged.json

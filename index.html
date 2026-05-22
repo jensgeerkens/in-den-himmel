@@ -28,17 +28,17 @@
   </main>
 
   <!-- Höhenmesser (fixiert) -->
-  <aside id="altimeter" aria-hidden="true">
+  <aside id="altimeter" aria-label="Höhenmesser / Altimeter">
     <div class="alt-value"><span id="alt-number">0</span></div>
     <div class="alt-layer" id="alt-layer-name">Troposphäre</div>
-    <div class="alt-bar"><div class="alt-bar-fill" id="alt-bar-fill"></div></div>
+    <div class="alt-bar" aria-hidden="true"><div class="alt-bar-fill" id="alt-bar-fill"></div></div>
   </aside>
 
   <!-- Sprachschalter + Teleport (fixiert) -->
   <nav id="controls">
-    <div id="lang-toggle" role="group" aria-label="Sprache">
-      <button data-lang="de" class="active">DE</button>
-      <button data-lang="en">EN</button>
+    <div id="lang-toggle" role="group" aria-label="Sprache / Language">
+      <button type="button" data-lang="de" class="active" aria-pressed="true">DE</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
     </div>
     <details id="teleport-menu">
       <summary data-i18n="jump">Springe zu …</summary>
@@ -73,6 +73,7 @@
       <h1 data-i18n="title">In den Himmel</h1>
       <p data-i18n="subtitle">Vom Boden bis ins Weltall — fliegende Tiere, Flugzeuge und Raumfahrt auf ihrer wahren Höhe.</p>
       <button id="start-btn" data-i18n="start">Abheben ↑</button>
+      <p class="overlay-hint" data-i18n="tapHint">Tipp: Objekt antippen oder anklicken für Details.</p>
       <p class="overlay-credit" data-i18n="inspired">Inspiriert von neal.fun/deep-sea</p>
     </div>
   </div>

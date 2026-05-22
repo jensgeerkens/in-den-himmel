@@ -12,7 +12,7 @@ Object.assign(SKY_DETAILS, {
       ],
       en: [
         "The Sun is a thoroughly ordinary star – a yellow dwarf of spectral type G2V – and yet the centre of everything we call home. In its core, some 600 million tonnes of hydrogen fuse into helium every second, and it is this quiet, endless inferno that produces the light warming the Earth.",
-        "At 149.6 million kilometres it defines a unit of measurement all by itself: the Astronomical Unit (1 AU). Even so, its light is not „live“ – it takes 8 minutes and 20 seconds to reach us. What rises in the morning, the Sun has long since left behind.",
+        "At 149.6 million kilometres it defines a unit of measurement all by itself: the Astronomical Unit (1 AU). Even so, its light is not “live” – it takes 8 minutes and 20 seconds to reach us. What rises in the morning, the Sun has long since left behind.",
         "It holds 99.86 percent of the entire mass of the Solar System. Every planet, moon, asteroid and comet combined is merely the tiny remainder left over from its making.",
       ],
     },
@@ -40,7 +40,7 @@ Object.assign(SKY_DETAILS, {
       ],
       en: [
         "Proxima Centauri is the closest star to the Sun – a tiny red dwarf of spectral type M5.5V, just one eighth of a solar mass. Despite its proximity it is invisible to the naked eye, shining roughly 600 times more faintly than our Sun.",
-        "„Close“ is relative here: 4.24 light-years amount to about 40 trillion kilometres. Even the fastest spacecraft ever built, Voyager 1, would need over 70,000 years to cross that gap.",
+        "“Close” is relative here: 4.24 light-years amount to about 40 trillion kilometres. Even the fastest spacecraft ever built, Voyager 1, would need over 70,000 years to cross that gap.",
         "Proxima is loosely bound to the triple system Alpha Centauri and is notorious for its violent flares – a red dwarf that, despite its tiny size, can hurl out enormous bursts of radiation.",
       ],
     },
@@ -67,7 +67,7 @@ Object.assign(SKY_DETAILS, {
       ],
       en: [
         "Alpha Centauri is the nearest star system to us – not a single star but three: the Sun-like Alpha Centauri A (G2V) and B (K1V), orbiting each other closely, plus the distant red dwarf Proxima Centauri.",
-        "At 4.37 light-years it is something like humanity's cosmic garden fence. That is exactly why it is the favoured target of projects such as „Breakthrough Starshot“, which aims to send tiny light-sail probes there.",
+        "At 4.37 light-years it is something like humanity's cosmic garden fence. That is exactly why it is the favoured target of projects such as “Breakthrough Starshot”, which aims to send tiny light-sail probes there.",
         "A and B are remarkably similar to our Sun – were we to stand on a planet there, the sky would look almost familiar, only with two suns instead of one.",
       ],
     },
@@ -93,7 +93,7 @@ Object.assign(SKY_DETAILS, {
       ],
       en: [
         "Barnard's Star is a red dwarf of spectral type M4V and, after the Alpha Centauri system, the nearest single star – just under 6 light-years away. Even so it is invisible to the naked eye; it is among the faintest stars we know well at all.",
-        "Its signature is the fastest known proper motion in the entire sky: in about 180 years it appears to travel the width of the full Moon across the heavens. Astronomers therefore call it the „runaway star“.",
+        "Its signature is the fastest known proper motion in the entire sky: in about 180 years it appears to travel the width of the full Moon across the heavens. Astronomers therefore call it the “runaway star”.",
         "In 2024, after decades of searching, a planet orbiting it was confirmed – an old, quiet stellar system right on our cosmic doorstep.",
       ],
     },
@@ -121,9 +121,9 @@ Object.assign(SKY_DETAILS, {
         "Astronomen konnten sogar eine grobe „Wetterkarte“ erstellen: helle und dunkle Wolkenfelder, die mit der Rotation auftauchen und verschwinden. Sterne, die fast Planeten sind – und Planeten, die fast Sterne sind, treffen sich hier in der Mitte.",
       ],
       en: [
-        "Luhman 16 is the nearest pair of brown dwarfs to us – „failed stars“ too massive to be planets yet too light to sustain hydrogen fusion in their cores. Discovered only in 2013, this binary lies just 6.5 light-years away, making it the third-closest known system of any kind.",
-        "Both components belong to the rare L/T transition types. Across their lukewarm „surfaces“ drift cloud bands of iron droplets and hot minerals – weather more reminiscent of Jupiter than of a star.",
-        "Astronomers have even produced a rough „weather map“: bright and dark cloud patches that appear and vanish with rotation. Stars that are almost planets – and planets that are almost stars – meet here in the middle.",
+        "Luhman 16 is the nearest pair of brown dwarfs to us – “failed stars” too massive to be planets yet too light to sustain hydrogen fusion in their cores. Discovered only in 2013, this binary lies just 6.5 light-years away, making it the third-closest known system of any kind.",
+        "Both components belong to the rare L/T transition types. Across their lukewarm “surfaces” drift cloud bands of iron droplets and hot minerals – weather more reminiscent of Jupiter than of a star.",
+        "Astronomers have even produced a rough “weather map”: bright and dark cloud patches that appear and vanish with rotation. Stars that are almost planets – and planets that are almost stars – meet here in the middle.",
       ],
     },
     groups: [
@@ -259,9 +259,9 @@ Object.assign(SKY_DETAILS, {
         "Mit etwa 53 Lichtjahren liegt er in kosmischer Nachbarschaft. Astronomen lasen seine innere Struktur an winzigen Pulsationen ab – ein Stern, der leise „klingt“ wie eine Glocke und so seinen kristallinen Kern verrät.",
       ],
       en: [
-        "BPM 37093 – affectionately nicknamed „Lucy“ after the Beatles song „Lucy in the Sky with Diamonds“ – is a white dwarf, the remnant of a burnt-out Sun-like star. As it cooled, its hot carbon-oxygen core partly crystallised.",
-        "Crystallised carbon is nothing other than diamond. „Lucy“ is therefore, loosely speaking, an Earth-sized diamond of about one solar mass – the largest „gemstone“ we know of.",
-        "At roughly 53 light-years it lies in cosmic neighbourhood. Astronomers read its internal structure from tiny pulsations – a star that quietly „rings“ like a bell, betraying its crystalline core.",
+        "BPM 37093 – affectionately nicknamed “Lucy” after the Beatles song “Lucy in the Sky with Diamonds” – is a white dwarf, the remnant of a burnt-out Sun-like star. As it cooled, its hot carbon-oxygen core partly crystallised.",
+        "Crystallised carbon is nothing other than diamond. “Lucy” is therefore, loosely speaking, an Earth-sized diamond of about one solar mass – the largest “gemstone” we know of.",
+        "At roughly 53 light-years it lies in cosmic neighbourhood. Astronomers read its internal structure from tiny pulsations – a star that quietly “rings” like a bell, betraying its crystalline core.",
       ],
     },
     groups: [
@@ -287,7 +287,7 @@ Object.assign(SKY_DETAILS, {
       ],
       en: [
         "Antares is the lead star of Scorpius and a red supergiant of type M1.5 – at about 700 solar radii so large that, placed where the Sun is, it would reach almost to the orbit of Mars. Its deep red is unmistakable even to the naked eye.",
-        "Its name means „rival of Ares“ or „rival of Mars“: because of its reddish colour it was repeatedly mistaken for the planet Mars in antiquity – both glow red when they meet in the sky.",
+        "Its name means “rival of Ares” or “rival of Mars”: because of its reddish colour it was repeatedly mistaken for the planet Mars in antiquity – both glow red when they meet in the sky.",
         "At about 550 light-years we are looking deep into the past: the light reaching us today set out around the late Middle Ages. Antares is nearing the end of its life and will one day explode as a supernova.",
       ],
     },
@@ -314,8 +314,8 @@ Object.assign(SKY_DETAILS, {
       ],
       en: [
         "Betelgeuse marks the left shoulder of Orion and is a red supergiant of type M1–2 – one of the largest and brightest stars we can see with the naked eye. Placed where the Sun is, it would reach beyond the orbit of Mars and swallow both Earth and Mars.",
-        "Despite „only“ about 15 solar masses, it is hugely bloated – a star at the end of its life. Its brightness varies visibly; in 2019/2020 it dimmed so dramatically (the „Great Dimming“) that many suspected an imminent supernova.",
-        "Betelgeuse will one day explode as a supernova – „soon“ in astronomical terms, meaning sometime within the next 100,000 years. At about 640 light-years we see it as it looked in the late Middle Ages; if it has already exploded, we would not yet know.",
+        "Despite “only” about 15 solar masses, it is hugely bloated – a star at the end of its life. Its brightness varies visibly; in 2019/2020 it dimmed so dramatically (the “Great Dimming”) that many suspected an imminent supernova.",
+        "Betelgeuse will one day explode as a supernova – “soon” in astronomical terms, meaning sometime within the next 100,000 years. At about 640 light-years we see it as it looked in the late Middle Ages; if it has already exploded, we would not yet know.",
       ],
     },
     groups: [
@@ -368,7 +368,7 @@ Object.assign(SKY_DETAILS, {
       ],
       en: [
         "PSR B1919+21 was the first pulsar ever discovered – a rapidly rotating neutron star that, like a cosmic lighthouse, sweeps a beam of radio waves over us at regular intervals. Jocelyn Bell Burnell stumbled upon the signal in 1967 as a doctoral student.",
-        "The pulses were so eerily precise – a „tick“ every 1.337 seconds – that the team half-jokingly dubbed them „LGM-1“: „Little Green Men“. For a moment it seemed someone had picked up a signal from aliens.",
+        "The pulses were so eerily precise – a “tick” every 1.337 seconds – that the team half-jokingly dubbed them “LGM-1”: “Little Green Men”. For a moment it seemed someone had picked up a signal from aliens.",
         "It soon became clear: not a transmitter of an alien civilisation but a new kind of star. Pulsars are stellar corpses – the hyper-dense cores of exploded stars, barely larger than a major city yet heavier than the Sun.",
       ],
     },
@@ -406,7 +406,7 @@ Object.assign(SKY_DETAILS, {
         { label: { de: "Typ",        en: "Type" },          value: { de: "Roter Überriese/Hyperriese", en: "Red supergiant/hypergiant" } },
         { label: { de: "Entfernung", en: "Distance" },      value: { de: "≈ 5.900 Lichtjahre (unsicher)", en: "≈ 5,900 light-years (uncertain)" } },
         { label: { de: "Sternbild",  en: "Constellation" }, value: { de: "Schild (Scutum)", en: "Scutum" } },
-        { label: { de: "Radius",     en: "Radius" },         value: { de: "≈ 1.700 Sonnenradien (Schätzung)", en: "≈ 1,700 solar radii (estimate)" } },
+        { label: { de: "Radius",     en: "Radius" },         value: { de: "≈ 755–1.700 Sonnenradien (je nach Distanz; neuere Gaia-Messungen kleiner)", en: "≈ 755–1,700 solar radii (depending on distance; newer Gaia measurements smaller)" } },
       ]},
       { title: { de: "Blick in die Vergangenheit", en: "Looking back in time" }, rows: [
         { label: { de: "Lichtlaufzeit", en: "Light travel time" }, value: { de: "≈ 5.900 Jahre", en: "≈ 5,900 years" } },
@@ -423,7 +423,7 @@ Object.assign(SKY_DETAILS, {
       ],
       en: [
         "Mu Cephei is a red hypergiant in the constellation Cepheus and one of the largest and most luminous stars in the Milky Way – about 100,000 times as luminous as the Sun, with a radius of over 1,000 solar radii.",
-        "William Herschel was so struck by its intense red colour that he named it the „Garnet Star“ – a spark like a glowing gemstone, conspicuous even through binoculars.",
+        "William Herschel was so struck by its intense red colour that he named it the “Garnet Star” – a spark like a glowing gemstone, conspicuous even through binoculars.",
         "At about 6,000 light-years Mu Cephei stands at the edge of its life. Its light is several millennia old; what we see today set out long before the first great civilisations. This giant, too, will end as a supernova.",
       ],
     },
@@ -450,7 +450,7 @@ Object.assign(SKY_DETAILS, {
       ],
       en: [
         "Eta Carinae is one of the most unstable and energetic star systems in the Milky Way – a binary whose primary component ranks among the most massive known stars (about 100 solar masses) and shines millions of times brighter than the Sun.",
-        "In 1843 the system suffered its „Great Eruption“: Eta Carinae briefly became the second-brightest star in the entire sky, hurling out several solar masses of material. This debris now forms the glowing „Homunculus Nebula“ of two giant dust lobes.",
+        "In 1843 the system suffered its “Great Eruption”: Eta Carinae briefly became the second-brightest star in the entire sky, hurling out several solar masses of material. This debris now forms the glowing “Homunculus Nebula” of two giant dust lobes.",
         "At about 7,500 light-years Eta Carinae is a prime supernova – or hypernova – candidate. It may already have exploded without the news reaching us yet, since its light has been travelling for over seven millennia.",
       ],
     },
@@ -478,9 +478,9 @@ Object.assign(SKY_DETAILS, {
         "Mit rund 18.000 Lichtjahren Entfernung blicken wir auf ein Objekt tief in der Milchstraße. Solche „Millisekundenpulsare“ wurden durch Materie von einem Begleitstern auf ihr extremes Tempo aufgedreht – kosmische Kreisel, gespeist von ihrem Nachbarn.",
       ],
       en: [
-        "PSR J1748-2446ad is the fastest known pulsar – a neutron star spinning an incredible 716 times per second about its axis. Its „day“ lasts less than one and a half thousandths of a second.",
+        "PSR J1748-2446ad is the fastest known pulsar – a neutron star spinning an incredible 716 times per second about its axis. Its “day” lasts less than one and a half thousandths of a second.",
         "At that insane pace its equator races at nearly a quarter of the speed of light – close to the limit beyond which such a star would simply be torn apart by centrifugal force. It lies in the globular cluster Terzan 5 in the constellation Sagittarius.",
-        "At about 18,000 light-years we are looking at an object deep within the Milky Way. Such „millisecond pulsars“ were spun up to their extreme speed by matter from a companion star – cosmic tops fed by their neighbour.",
+        "At about 18,000 light-years we are looking at an object deep within the Milky Way. Such “millisecond pulsars” were spun up to their extreme speed by matter from a companion star – cosmic tops fed by their neighbour.",
       ],
     },
     groups: [
@@ -530,25 +530,25 @@ Object.assign(SKY_DETAILS, {
       de: [
         "US 708 ist einer der schnellsten bekannten Sterne der Milchstraße – ein heißer, kompakter Heliumstern, der mit rund 1.200 km/s durch den Raum rast. Das ist so schnell, dass ihn die Schwerkraft der Galaxie nicht mehr halten kann: Er verlässt die Milchstraße für immer.",
         "Sein Schicksal ist eine kosmische Schleuder: US 708 war einst Teil eines engen Doppelsternsystems. Als sein Begleiter als Supernova explodierte, wurde er wie ein Stein aus einer Steinschleuder fortgeschleudert.",
-        "Bei rund 25.000 Lichtjahren liegt US 708 weit draußen im galaktischen Halo. Solche „Hypergeschwindigkeitssterne“ sind seltene Boten gewaltiger Explosionen – einsame Ausreißer auf dem Weg in die intergalaktische Leere.",
+        "Bei rund 62.000 Lichtjahren liegt US 708 weit draußen im galaktischen Halo. Solche „Hypergeschwindigkeitssterne“ sind seltene Boten gewaltiger Explosionen – einsame Ausreißer auf dem Weg in die intergalaktische Leere.",
       ],
       en: [
         "US 708 is one of the fastest known stars in the Milky Way – a hot, compact helium star tearing through space at about 1,200 km/s. That is so fast that the galaxy's gravity can no longer hold it: it is leaving the Milky Way forever.",
         "Its fate is a cosmic slingshot: US 708 was once part of a close binary system. When its companion exploded as a supernova, it was flung away like a stone from a sling.",
-        "At about 25,000 light-years US 708 lies far out in the galactic halo. Such „hypervelocity stars“ are rare messengers of violent explosions – lonely runaways bound for the intergalactic void.",
+        "At about 62,000 light-years US 708 lies far out in the galactic halo. Such “hypervelocity stars” are rare messengers of violent explosions – lonely runaways bound for the intergalactic void.",
       ],
     },
     groups: [
       { title: { de: "Eckdaten", en: "At a glance" }, rows: [
         { label: { de: "Typ",        en: "Type" },          value: { de: "Hypergeschwindigkeitsstern (heißer Heliumstern)", en: "Hypervelocity star (hot helium star)" } },
-        { label: { de: "Entfernung", en: "Distance" },      value: { de: "≈ 25.000 Lichtjahre", en: "≈ 25,000 light-years" } },
+        { label: { de: "Entfernung", en: "Distance" },      value: { de: "≈ 62.000 Lichtjahre", en: "≈ 62,000 light-years" } },
         { label: { de: "Geschwindigkeit", en: "Velocity" }, value: { de: "≈ 1.200 km/s", en: "≈ 1,200 km/s" } },
       ]},
       { title: { de: "Entdeckung", en: "Discovery" }, rows: [
         { label: { de: "Jahr", en: "Year" }, value: { de: "2005 (Hirsch et al., SDSS)", en: "2005 (Hirsch et al., SDSS)" } },
       ]},
       { title: { de: "Blick in die Vergangenheit", en: "Looking back in time" }, rows: [
-        { label: { de: "Lichtlaufzeit", en: "Light travel time" }, value: { de: "≈ 25.000 Jahre", en: "≈ 25,000 years" } },
+        { label: { de: "Lichtlaufzeit", en: "Light travel time" }, value: { de: "≈ 62.000 Jahre", en: "≈ 62,000 years" } },
       ]},
     ],
   },
@@ -562,7 +562,7 @@ Object.assign(SKY_DETAILS, {
       ],
       en: [
         "SGR 1806-20 is a magnetar – a neutron star with the strongest magnetic field we know of in the universe. It is roughly a quadrillion times stronger than Earth's; getting anywhere near it would tear apart the very atoms in a human body.",
-        "On 27 December 2004 a „starquake“ shook its crust and triggered a gigantic burst of gamma rays: in just 0.2 seconds it released more energy than the Sun does in 250,000 years. Even from about 50,000 light-years away the flash measurably disturbed Earth's atmosphere.",
+        "On 27 December 2004 a “starquake” shook its crust and triggered a gigantic burst of gamma rays: in just 0.2 seconds it released more energy than the Sun does in 250,000 years. Even from about 50,000 light-years away the flash measurably disturbed Earth's atmosphere.",
         "The light and radiation from that quake had been travelling toward us for about 50,000 years – the event itself happened when Neanderthals still walked the Earth. Magnetars are among the most extreme objects the universe produces.",
       ],
     },
@@ -590,8 +590,8 @@ Object.assign(SKY_DETAILS, {
         "Sein Licht war fast 13 Milliarden Jahre zu uns unterwegs – wir sehen Earendel so, wie er im jungen Universum aussah, lange bevor Sonne, Erde oder gar unsere Galaxie in ihrer heutigen Form existierten. Der Stern selbst ist längst vergangen.",
       ],
       en: [
-        "Earendel is the most distant single star (or very small stellar system) ever observed – a massive, hot star whose light dates from a time when the universe was only about 900 million years old. Its name comes from an Old English word for „morning star“.",
-        "It became visible only through a cosmic stroke of luck: a massive galaxy cluster lies precisely between us and it, acting as a gravitational lens that magnifies the starlight a thousand- to ten-thousand-fold. In 2022 the Hubble Telescope spotted it within a thread-like „Sunrise Arc“, and the James Webb Telescope confirmed it.",
+        "Earendel is the most distant single star (or very small stellar system) ever observed – a massive, hot star whose light dates from a time when the universe was only about 900 million years old. Its name comes from an Old English word for “morning star”.",
+        "It became visible only through a cosmic stroke of luck: a massive galaxy cluster lies precisely between us and it, acting as a gravitational lens that magnifies the starlight a thousand- to ten-thousand-fold. In 2022 the Hubble Telescope spotted it within a thread-like “Sunrise Arc”, and the James Webb Telescope confirmed it.",
         "Its light had been travelling toward us for almost 13 billion years – we see Earendel as it looked in the young universe, long before the Sun, Earth, or even our galaxy in its present form existed. The star itself is long gone.",
       ],
     },
@@ -623,7 +623,7 @@ Object.assign(SKY_DETAILS, {
       en: [
         "Proxima Centauri b is the closest exoplanet to Earth of all – a world of roughly Earth mass orbiting the Sun's nearest star, the red dwarf Proxima Centauri, in just 11.2 days. Despite this tight orbit it lies in the habitable zone, because its star is so cool.",
         "In the habitable zone, liquid water could persist on the surface – the basic prerequisite for life as we know it. Whether the planet is actually hospitable, however, depends on whether it survives the violent flares of its star.",
-        "At just 4.24 light-years, Proxima b is the most obvious candidate for future interstellar exploration. It was discovered in 2016 by the radial velocity method – through the tiny „wobble“ its gravity induces in the star.",
+        "At just 4.24 light-years, Proxima b is the most obvious candidate for future interstellar exploration. It was discovered in 2016 by the radial velocity method – through the tiny “wobble” its gravity induces in the star.",
       ],
     },
     groups: [
@@ -683,8 +683,8 @@ Object.assign(SKY_DETAILS, {
         "Bei rund 41 Lichtjahren ist 55 Cancri e nah genug, dass das James-Webb-Teleskop seine Atmosphäre untersuchen kann. Die Hinweise deuten auf eine dünne, möglicherweise vulkanisch erneuerte Gashülle über einem ewig brodelnden Magmaozean.",
       ],
       en: [
-        "55 Cancri e is a glowing „super-Earth“ – a rocky planet a little over twice Earth's size and about eight times its mass, orbiting its star in just 18 hours. So close that its dayside is likely an ocean of molten rock.",
-        "Early models suggested the planet might be especially carbon-rich – giving rise to the idea of a „diamond planet“ with a diamond core. Newer measurements are more cautious, but the glowing lava world remains one of the most bizarre known.",
+        "55 Cancri e is a glowing “super-Earth” – a rocky planet a little over twice Earth's size and about eight times its mass, orbiting its star in just 18 hours. So close that its dayside is likely an ocean of molten rock.",
+        "Early models suggested the planet might be especially carbon-rich – giving rise to the idea of a “diamond planet” with a diamond core. Newer measurements are more cautious, but the glowing lava world remains one of the most bizarre known.",
         "At about 41 light-years, 55 Cancri e is close enough for the James Webb Telescope to study its atmosphere. The clues point to a thin, possibly volcanically renewed gas envelope over a perpetually seething magma ocean.",
       ],
     },
@@ -715,7 +715,7 @@ Object.assign(SKY_DETAILS, {
       ],
       en: [
         "51 Pegasi b was, in 1995, the first exoplanet ever discovered around a Sun-like star – a moment that turned astronomy on its head. Suddenly it was clear: other stars have planets, and Earth is not alone.",
-        "The planet is a „hot Jupiter“: a gas giant of about half Jupiter's mass orbiting its star in just over four days – so close that its cloud deck glows above 1,000 °C. A kind of world that simply does not exist in the Solar System and that theorists at first thought impossible.",
+        "The planet is a “hot Jupiter”: a gas giant of about half Jupiter's mass orbiting its star in just over four days – so close that its cloud deck glows above 1,000 °C. A kind of world that simply does not exist in the Solar System and that theorists at first thought impossible.",
         "For their discovery using the radial velocity method, Michel Mayor and Didier Queloz received the 2019 Nobel Prize in Physics. 51 Pegasi b lies about 50 light-years away in the constellation Pegasus.",
       ],
     },
@@ -746,7 +746,7 @@ Object.assign(SKY_DETAILS, {
         "Schätzungen zufolge gibt es in der Milchstraße womöglich mehr solcher heimatloser Planeten als Sterne. Sie sind extrem schwer zu finden, weil sie kein eigenes Licht aussenden – meist verraten sie sich nur, wenn sie als Gravitationslinse kurz das Licht eines dahinterliegenden Sterns verstärken.",
       ],
       en: [
-        "Rogue planets – also called „free-floating“ or „vagabond“ planets – are worlds without a star. They drift alone through the darkness between the stars, with no sun to warm them or to which they are bound.",
+        "Rogue planets – also called “free-floating” or “vagabond” planets – are worlds without a star. They drift alone through the darkness between the stars, with no sun to warm them or to which they are bound.",
         "Some were flung out of young planetary systems, others may have formed free-floating from the start, like tiny failed stars. On their surfaces reign eternal night and biting cold – yet beneath an icy crust, internal heat could in theory allow liquid water.",
         "By some estimates the Milky Way may hold more such rogue planets than stars. They are extremely hard to find because they emit no light of their own – usually they betray themselves only when they act as a gravitational lens, briefly brightening the light of a star behind them.",
       ],
@@ -771,7 +771,7 @@ Object.assign(SKY_DETAILS, {
         "Der Planet selbst ist ein kühler Gasriese von etwa Saturngröße – wahrscheinlich kein gemütlicher Wüstenplanet wie sein Filmvorbild. Er liegt rund 245 Lichtjahre entfernt im Sternbild Schwan und wurde vom Kepler-Weltraumteleskop per Transitmethode entdeckt.",
       ],
       en: [
-        "Kepler-16b is a planet with two suns in its sky – the real-world counterpart of Luke Skywalker's home world Tatooine from „Star Wars“. It orbits not one but two stars circling each other (a „circumbinary“ planet).",
+        "Kepler-16b is a planet with two suns in its sky – the real-world counterpart of Luke Skywalker's home world Tatooine from “Star Wars”. It orbits not one but two stars circling each other (a “circumbinary” planet).",
         "On its surface, at sunset you would see two suns sinking toward the horizon, each casting its own shadow. Such a thing was long considered pure science fiction; in 2011 Kepler-16b was the first clear proof that such double-sun worlds really exist.",
         "The planet itself is a cool gas giant about the size of Saturn – probably not a cosy desert world like its movie inspiration. It lies about 245 light-years away in the constellation Cygnus and was discovered by the Kepler Space Telescope via the transit method.",
       ],
@@ -801,9 +801,9 @@ Object.assign(SKY_DETAILS, {
         "Mit rund 64 Lichtjahren liegt HD 189733 b nah genug, dass Teleskope sein Licht und sogar Spuren seiner Atmosphäre direkt analysieren konnten – einer der ersten Exoplaneten, dessen „Wetter“ und Farbe man bestimmen konnte.",
       ],
       en: [
-        "HD 189733 b is one of the best-studied exoplanets – a „hot Jupiter“ so close to its star that one side glows perpetually. From afar it appears in a deep, cobalt-blue hue.",
+        "HD 189733 b is one of the best-studied exoplanets – a “hot Jupiter” so close to its star that one side glows perpetually. From afar it appears in a deep, cobalt-blue hue.",
         "But the blue is a trap: it arises not from water as on Earth, but from silicate particles in the atmosphere – tiny grains of glass. At temperatures around 1,000 °C and winds of about 7,000 km/h, it probably rains molten glass there, blown sideways.",
-        "At about 64 light-years HD 189733 b is close enough for telescopes to analyse its light and even traces of its atmosphere directly – one of the first exoplanets whose „weather“ and colour could be determined.",
+        "At about 64 light-years HD 189733 b is close enough for telescopes to analyse its light and even traces of its atmosphere directly – one of the first exoplanets whose “weather” and colour could be determined.",
       ],
     },
     groups: [
@@ -812,7 +812,7 @@ Object.assign(SKY_DETAILS, {
         { label: { de: "Entfernung", en: "Distance" },      value: { de: "≈ 64 Lichtjahre", en: "≈ 64 light-years" } },
         { label: { de: "Sternbild",  en: "Constellation" }, value: { de: "Füchschen (Vulpecula)", en: "Vulpecula" } },
         { label: { de: "Masse",      en: "Mass" },           value: { de: "≈ 1,1 Jupitermassen", en: "≈ 1.1 Jupiter masses" } },
-        { label: { de: "Besonderheit", en: "Notable" },     value: { de: "tiefblau, „Glasregen“ bei 7.000 km/h", en: "deep blue, „glass rain“ at 7,000 km/h" } },
+        { label: { de: "Besonderheit", en: "Notable" },     value: { de: "tiefblau, „Glasregen“ bei 7.000 km/h", en: "deep blue, “glass rain” at 7,000 km/h" } },
       ]},
       { title: { de: "Entdeckung", en: "Discovery" }, rows: [
         { label: { de: "Jahr",     en: "Year" },   value: { de: "2005", en: "2005" } },
@@ -832,7 +832,7 @@ Object.assign(SKY_DETAILS, {
         "KELT-9b umrundet diesen Stern in nur anderthalb Tagen und wird dabei langsam verdampft – ein Planet, der buchstäblich verbrennt. Er liegt rund 670 Lichtjahre entfernt im Sternbild Schwan.",
       ],
       en: [
-        "KELT-9b is the hottest known planet of all – an extreme „ultra-hot Jupiter“ whose dayside glows at about 4,300 °C. That is hotter than the surface of many real stars; in terms of temperature this planet is more star-like than planet-like.",
+        "KELT-9b is the hottest known planet of all – an extreme “ultra-hot Jupiter” whose dayside glows at about 4,300 °C. That is hotter than the surface of many real stars; in terms of temperature this planet is more star-like than planet-like.",
         "At such heat the atmosphere can no longer hold molecules together: iron and titanium vaporise and stream around the planet as glowing metal vapour. Its star is a hot, blue giant that grills it with radiation like no other.",
         "KELT-9b circles this star in just a day and a half and is slowly being vaporised in the process – a planet literally burning away. It lies about 670 light-years away in the constellation Cygnus.",
       ],
@@ -894,7 +894,7 @@ Object.assign(SKY_DETAILS, {
       ],
       en: [
         "The planets around the pulsar PSR B1257+12 were, in 1992, the very first exoplanets ever discovered – three years before 51 Pegasi b. They orbit not a sun, however, but a dead, furiously spinning neutron star: the burnt-out core of an exploded star.",
-        "Aleksander Wolszczan and Dale Frail found them through tiny variations in the pulsar's ultra-precise „ticking“ – a detection of astonishing accuracy. It was proof that planets can exist even in the most hostile places in the universe.",
+        "Aleksander Wolszczan and Dale Frail found them through tiny variations in the pulsar's ultra-precise “ticking” – a detection of astonishing accuracy. It was proof that planets can exist even in the most hostile places in the universe.",
         "These are graveyard worlds: they circle a stellar corpse, bathed in lethal radiation. They may even have formed after the supernova, from its debris – planets born of their star's death. The system lies about 2,300 light-years away in the constellation Virgo.",
       ],
     },

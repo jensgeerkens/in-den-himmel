@@ -1,0 +1,108 @@
+{
+  "targets": [
+    {
+      "id": "tres2b",
+      "name": "TrES-2b – dunkelster Exoplanet",
+      "what": "Künstlerische Darstellung eines extrem dunklen, glühend rot schimmernden Hot-Jupiter-Gasriesen.",
+      "allowed_type": "official_illustration",
+      "hints": ["NASA artist concept TrES-2b darkest exoplanet", "hot Jupiter dark exoplanet illustration NASA"],
+      "note": "Kein echtes Foto möglich. NUR offizielle NASA/JPL/ESO Artist-Impression eines dunklen Hot Jupiter."
+    },
+    {
+      "id": "psyche",
+      "name": "Asteroid 16 Psyche",
+      "what": "Künstlerische Darstellung des metallreichen Asteroiden 16 Psyche (oder NASA-Sonde Psyche am Asteroiden).",
+      "allowed_type": "official_illustration",
+      "hints": ["NASA JPL artist concept asteroid 16 Psyche metal", "Psyche spacecraft asteroid illustration"],
+      "note": "Asteroid noch nicht besucht – KEIN echtes Foto. NUR NASA/JPL Artist-Concept. KEINE Pressekonferenz/Person."
+    },
+    {
+      "id": "halley",
+      "name": "Halleyscher Komet",
+      "what": "Echtes Foto: Komet Halley mit Schweif (z.B. 1986 Erscheinung) ODER Giotto-Aufnahme des Kometenkerns.",
+      "allowed_type": "real_photo",
+      "hints": ["Halley's Comet 1986 photograph", "Giotto Halley nucleus image ESA", "comet Halley tail photo Wikimedia"],
+      "note": "Echtes Foto existiert (1986 / Giotto). KEIN Astronaut, KEIN Shuttle-Innenraum."
+    },
+    {
+      "id": "sloanwall",
+      "name": "Sloan Great Wall",
+      "what": "Daten-Visualisierung / Karte der großräumigen Galaxienverteilung (SDSS-Kartierung, Filament-Struktur).",
+      "allowed_type": "data_viz",
+      "hints": ["Sloan Great Wall SDSS galaxy map visualization", "large scale structure galaxy filaments survey map"],
+      "note": "Keine fotografierbare Struktur. Daten-Karte/Survey-Visualisierung. KEINE irdische Landschaft (Great Lakes!)."
+    },
+    {
+      "id": "jadesz14",
+      "name": "JADES-GS-z14-0 – fernste Galaxie",
+      "what": "Echtes JWST-Bild: JADES Deep Field mit der markierten fernen Galaxie (kleines rotes Objekt + Ausschnitt).",
+      "allowed_type": "real_photo",
+      "hints": ["JADES-GS-z14-0 JWST image NASA ESA", "JWST most distant galaxy deep field JADES"],
+      "note": "Echtes JWST-Bild existiert. KEINE Personen im Labor."
+    },
+    {
+      "id": "barnard",
+      "name": "Barnards Stern",
+      "what": "Echte Aufnahme von Barnards Stern (roter Zwerg) ODER offizielle Darstellung eines roten Zwergsterns.",
+      "allowed_type": "real_photo_or_illustration",
+      "hints": ["Barnard's Star image proper motion", "Barnard's Star red dwarf ESO Hubble", "red dwarf star artist concept ESO"],
+      "note": "Echtes Foto unscheinbar – Finder/Eigenbewegungs-Bild oder ESO-Rotzwerg-Darstellung. KEIN Mars-Krater."
+    },
+    {
+      "id": "sirius",
+      "name": "Sirius (A + Weißer Zwerg B)",
+      "what": "Echtes Hubble-Bild von Sirius A mit dem kleinen weißen Begleiter Sirius B.",
+      "allowed_type": "real_photo",
+      "hints": ["Sirius A B Hubble image white dwarf", "Sirius binary star Hubble NASA ESA"],
+      "note": "Berühmtes Hubble-Bild existiert. NICHT Eta Carinae oder anderer Stern."
+    },
+    {
+      "id": "hyades",
+      "name": "Hyaden (offener Sternhaufen)",
+      "what": "Echtes Weitfeld-Foto des Hyaden-Sternhaufens (V-Form im Stier, evtl. mit Aldebaran).",
+      "allowed_type": "real_photo",
+      "hints": ["Hyades star cluster wide field photo", "Hyades open cluster Taurus astrophotography Wikimedia"],
+      "note": "Echtes Sternhaufen-Foto. Keine UI/Karte."
+    },
+    {
+      "id": "antares",
+      "name": "Antares (roter Überriese)",
+      "what": "ESO/VLT-Bild von Antares (rekonstruierte Oberfläche) ODER Weitfeld der Rho-Ophiuchi-Region mit Antares.",
+      "allowed_type": "real_photo",
+      "hints": ["Antares ESO VLT surface image", "Antares Rho Ophiuchi region wide field ESO", "Antares red supergiant photo"],
+      "note": "ESO-Aufnahme/Rekonstruktion. Roter Stern muss erkennbar sein."
+    },
+    {
+      "id": "rigel",
+      "name": "Rigel (blauer Überriese im Orion)",
+      "what": "Foto von Rigel / Orion-Region mit dem hellen blauen Stern ODER offizielle Blauüberriesen-Darstellung.",
+      "allowed_type": "real_photo_or_illustration",
+      "hints": ["Rigel star Orion photo", "Rigel blue supergiant ESO", "blue supergiant star artist concept"],
+      "note": "Blauer Stern erkennbar. Keine Person/UI."
+    },
+    {
+      "id": "greatattractor",
+      "name": "Großer Attraktor",
+      "what": "Daten-Visualisierung der Laniakea-/Great-Attractor-Massenströmung (Geschwindigkeitsfeld-Karte).",
+      "allowed_type": "data_viz",
+      "hints": ["Laniakea supercluster Great Attractor visualization", "Great Attractor velocity flow map cosmography"],
+      "note": "Nur Daten-Viz/Karte. KEINE irdische Landschaft (Great Lakes!), keine Sonnenkorona."
+    },
+    {
+      "id": "gw150914",
+      "name": "Erste Gravitationswelle GW150914",
+      "what": "LIGO-Signalplot von GW150914 ODER Simulations-Standbild zweier verschmelzender Schwarzer Löcher.",
+      "allowed_type": "data_viz",
+      "hints": ["GW150914 LIGO signal plot", "binary black hole merger simulation SXS LIGO image", "numerical relativity black hole merger still"],
+      "note": "Signalplot ODER BH-Merger-Simulation. KEINE Erdaufnahme."
+    },
+    {
+      "id": "herculescorona",
+      "name": "Hercules–Corona-Borealis-Mauer",
+      "what": "Daten-Visualisierung/Sternkarte der mutmaßlichen Galaxienmauer (Gamma-Ray-Burst-Verteilung / Himmelskarte).",
+      "allowed_type": "data_viz",
+      "hints": ["Hercules Corona Borealis Great Wall map", "large scale structure gamma ray burst sky map visualization"],
+      "note": "Nur Karte/Daten-Viz. KEINE Sonnenkorona, keine irdische Struktur."
+    }
+  ]
+}

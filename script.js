@@ -92,6 +92,7 @@
     inspired:   { de: "Inspiriert von neal.fun/deep-sea", en: "Inspired by neal.fun/deep-sea" },
     jump:       { de: "Springe zu …", en: "Jump to …" },
     scrollHint: { de: "↑ Scrolle nach oben, um aufzusteigen", en: "↑ Scroll up to ascend" },
+    tapHint:    { de: "Tipp: Objekt antippen oder anklicken für Details.", en: "Tip: tap or click any object for details." },
     ground:     { de: "Meereshöhe · 0 m", en: "Sea level · 0 m" },
   };
 
@@ -149,10 +150,13 @@
       const badge = note ? `<span class="note-badge note-${it.note}">${note[lang]}</span>` : "";
       const yr = SPACE_YEARS[it.id] ? `<span class="year">${SPACE_YEARS[it.id]}</span>` : "";
 
+      const imgTag = it.img
+        ? `<img src="${it.img}" alt="${it.name[lang]}" loading="lazy" decoding="async"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">`
+        : "";
       el.innerHTML = `
-        <img src="${it.img}" alt="${it.name[lang]}" loading="lazy" decoding="async"
-             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-        <div class="placeholder" style="display:none">${it.emoji}</div>
+        ${imgTag}
+        <div class="placeholder" style="display:${it.img ? "none" : "flex"}">${it.emoji}</div>
         <figcaption>
           <span class="name">${it.name[lang]}${yr}</span>
           <span class="alt">${formatAlt(it.altitude_m)}</span>
@@ -272,11 +276,16 @@
     STARS.length = 0;
     const maxY = SPACE_PX + GROUND_PX * 0.35;   // bis knapp in die obere Atmosphäre
     for (let i = 0; i < 560; i++) {
+      const ydom = Math.random() * maxY;
+      const base = Math.random() * 0.6 + 0.4;
+      // Alpha hängt nur an der (festen) Höhe des Sterns -> einmalig vorberechnen,
+      // statt pro Frame groundPxToAlt()+starAlpha() für jeden Stern aufzurufen.
+      const a = starAlpha(groundPxToAlt(TOTAL_HEIGHT - ydom)) * base;
       STARS.push({
         x: Math.random(),
-        ydom: Math.random() * maxY,
+        ydom,
         r: Math.random() * 1.4 + 0.3,
-        base: Math.random() * 0.6 + 0.4,
+        a,
         c: STAR_TINTS[(Math.random() * STAR_TINTS.length) | 0],
       });
     }
@@ -294,14 +303,12 @@
     ctx.fillStyle = g;
     ctx.fillRect(0, 0, vw, vh);
 
-    // Sterne
+    // Sterne (Alpha ist vorberechnet, s. buildStars)
     for (const s of STARS) {
+      if (s.a <= 0.01) continue;
       const screenY = s.ydom - st;
       if (screenY < -2 || screenY > vh + 2) continue;
-      const altHere = groundPxToAlt(TOTAL_HEIGHT - s.ydom);
-      const a = starAlpha(altHere) * s.base;
-      if (a <= 0.01) continue;
-      ctx.globalAlpha = a;
+      ctx.globalAlpha = s.a;
       ctx.fillStyle = s.c;
       ctx.beginPath();
       ctx.arc(s.x * vw, screenY, s.r, 0, Math.PI * 2);
@@ -333,6 +340,7 @@
   }
 
   function updateParallax(st) {
+    if (prefersReduced()) return;        // keine Parallax-Bewegung bei reduzierter Bewegung
     for (const el of cloudEls) {
       const f = parseFloat(el.dataset.factor);
       el.style.transform = `translateY(${st * f}px)`;
@@ -410,8 +418,18 @@
     const noteTxt = note ? ` · ${note[lang]}` : "";
     const credit = it.credit ? `${it.credit}${it.license ? " (" + it.license + ")" : ""}` : "";
     const srcLabel = lang === "de" ? "Quelle" : "Source";
-    modal.querySelector(".modal-meta").innerHTML =
-      `${credit}${noteTxt}` + (it.source ? ` · <a href="${it.source}" target="_blank" rel="noopener">${srcLabel}</a>` : "");
+    // Meta sicher per DOM-API aufbauen (kein innerHTML mit interpolierter URL).
+    const meta = modal.querySelector(".modal-meta");
+    meta.textContent = `${credit}${noteTxt}`;
+    if (it.source) {
+      meta.appendChild(document.createTextNode(" · "));
+      const a = document.createElement("a");
+      a.href = it.source;
+      a.target = "_blank";
+      a.rel = "noopener";
+      a.textContent = srcLabel;
+      meta.appendChild(a);
+    }
     modal.hidden = false;
     sceneEl.setAttribute("aria-hidden", "true");
     modalBody.scrollTop = 0;
@@ -525,13 +543,16 @@
     const frag = document.createDocumentFragment();
     for (const t of TELEPORT_TARGETS) {
       const li = document.createElement("li");
-      li.textContent = t.label[lang];
-      li.addEventListener("click", () => {
+      const btn = document.createElement("button");       // echtes Button = nativ tastaturbedienbar
+      btn.type = "button";
+      btn.textContent = t.label[lang];
+      btn.addEventListener("click", () => {
         const targetTop = altToY(t.alt);                 // DOM-top des Ziels
         const y = Math.max(0, targetTop - window.innerHeight / 2);
         document.getElementById("teleport-menu").removeAttribute("open");
         window.scrollTo({ top: y, behavior: prefersReduced() ? "auto" : "smooth" });
       });
+      li.appendChild(btn);
       frag.appendChild(li);
     }
     teleportList.replaceChildren(frag);
@@ -545,8 +566,11 @@
     if (newLang === lang) return;
     lang = newLang;
     const keepGpx = TOTAL_HEIGHT - window.scrollY;       // Scrollposition (Boden-px) merken
-    document.querySelectorAll("#lang-toggle button").forEach((b) =>
-      b.classList.toggle("active", b.dataset.lang === lang));
+    document.querySelectorAll("#lang-toggle button").forEach((b) => {
+      const on = b.dataset.lang === lang;
+      b.classList.toggle("active", on);
+      b.setAttribute("aria-pressed", on ? "true" : "false");
+    });
     applyStaticI18n();
     buildScene();
     buildAtmosphere();

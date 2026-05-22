@@ -20,7 +20,7 @@ Object.assign(SKY_DETAILS, {
       { title: { de: "Eckdaten", en: "At a glance" }, rows: [
         { label: { de: "Typ", en: "Type" }, value: { de: "Galaktisches Zentrum (Schütze A*)", en: "Galactic centre (Sagittarius A*)" } },
         { label: { de: "Entfernung", en: "Distance" }, value: { de: "≈ 26.000 Lichtjahre", en: "≈ 26,000 light-years" } },
-        { label: { de: "Zentrales Schwarzes Loch", en: "Central black hole" }, value: { de: "~4 Mio. Sonnenmassen", en: "~4 million solar masses" } },
+        { label: { de: "Zentrales Schwarzes Loch", en: "Central black hole" }, value: { de: "~4,3 Mio. Sonnenmassen", en: "~4.3 million solar masses" } },
       ]},
       { title: { de: "Entdeckung", en: "Discovery" }, rows: [
         { label: { de: "Sternbild", en: "Constellation" }, value: { de: "Schütze (Sagittarius)", en: "Sagittarius" } },
@@ -34,12 +34,12 @@ Object.assign(SKY_DETAILS, {
   andromeda: {
     desc: {
       de: [
-        "Die Andromeda-Galaxie (M31) ist die nächste große Spiralgalaxie und das fernste Objekt, das man mit bloßem Auge sehen kann – als schwacher, milchiger Fleck am Herbsthimmel.",
+        "Die Andromeda-Galaxie (M31) ist die nächste große Spiralgalaxie und das am leichtesten mit bloßem Auge sichtbare ferne Objekt – als schwacher, milchiger Fleck am Herbsthimmel. (Unter perfekt dunklem Himmel reicht der Blick mit bloßem Auge sogar noch etwas weiter, bis zur Dreiecksgalaxie M33.)",
         "Sie ist größer als unsere Milchstraße und enthält rund eine Billion Sterne. Andromeda und die Milchstraße rasen aufeinander zu und werden in etwa 4,5 Milliarden Jahren zu einer einzigen riesigen Galaxie verschmelzen.",
         "Ihr Licht ist rund 2,5 Millionen Jahre zu uns unterwegs – es brach auf, als auf der Erde die ersten Vertreter der Gattung Mensch ihre Werkzeuge schlugen.",
       ],
       en: [
-        "The Andromeda Galaxy (M31) is the nearest large spiral galaxy and the most distant object visible to the naked eye – a faint, milky smudge in the autumn sky.",
+        "The Andromeda Galaxy (M31) is the nearest large spiral galaxy and the most easily naked-eye-visible distant object – a faint, milky smudge in the autumn sky. (Under perfectly dark skies the unaided eye reaches even a little farther, to the Triangulum Galaxy M33.)",
         "It is larger than our own Milky Way and holds about a trillion stars. Andromeda and the Milky Way are racing toward each other and will merge into a single giant galaxy in roughly 4.5 billion years.",
         "Its light has travelled for about 2.5 million years – it set out when the first members of the human genus were chipping their earliest tools on Earth.",
       ],
@@ -434,19 +434,19 @@ Object.assign(SKY_DETAILS, {
   herculescorona: {
     desc: {
       de: [
-        "Die Hercules–Corona-Borealis-Mauer gilt als die größte bekannte Struktur des Universums – eine Ansammlung von Galaxien, die sich über rund 10 Milliarden Lichtjahre erstrecken soll, fast ein Zehntel des beobachtbaren Universums.",
+        "Die Hercules–Corona-Borealis-Mauer gilt als eine der größten – wenn auch umstrittenen – bekannten Strukturen des Universums: eine Ansammlung von Galaxien, die sich über rund 10 Milliarden Lichtjahre erstrecken soll, fast ein Zehntel des beobachtbaren Universums.",
         "Sie wurde 2013 aufgespürt, weil sich in einer riesigen Himmelsregion ungewöhnlich viele Gammastrahlenausbrüche – die hellsten Explosionen des Kosmos – auf ähnlicher Entfernung häuften. Ist sie real, sprengt sie die Grenze dessen, was die Theorien zur Strukturbildung eigentlich für möglich halten.",
         "Ihr Licht ist Milliarden Jahre zu uns unterwegs – wir blicken in eine Epoche, als das Universum erst halb so alt war wie heute und die ersten großen Galaxien gerade heranwuchsen.",
       ],
       en: [
-        "The Hercules–Corona Borealis Great Wall is considered the largest known structure in the universe – a collection of galaxies said to stretch across some 10 billion light-years, almost a tenth of the observable universe.",
+        "The Hercules–Corona Borealis Great Wall is considered one of the largest – though disputed – known structures in the universe: a collection of galaxies said to stretch across some 10 billion light-years, almost a tenth of the observable universe.",
         "It was detected in 2013 because an unusually large number of gamma-ray bursts – the brightest explosions in the cosmos – clustered at similar distances in one huge region of the sky. If it is real, it pushes beyond the limit of what structure-formation theories actually deem possible.",
         "Its light has travelled billions of years to reach us – we look into an era when the universe was only half its present age and the first great galaxies were just maturing.",
       ],
     },
     groups: [
       { title: { de: "Eckdaten", en: "At a glance" }, rows: [
-        { label: { de: "Typ", en: "Type" }, value: { de: "Galaxienmauer (Größtstruktur)", en: "Galaxy wall (largest structure)" } },
+        { label: { de: "Typ", en: "Type" }, value: { de: "Galaxienmauer (umstrittene Größtstruktur)", en: "Galaxy wall (disputed largest structure)" } },
         { label: { de: "Entfernung", en: "Distance" }, value: { de: "~10 Mrd. Lichtjahre (Lichtlaufzeit)", en: "~10 billion light-years (light travel)" } },
         { label: { de: "Ausdehnung", en: "Extent" }, value: { de: "~10 Mrd. Lichtjahre", en: "~10 billion light-years" } },
       ]},
