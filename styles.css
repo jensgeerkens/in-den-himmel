@@ -434,8 +434,10 @@ html:not(.ready) #scene{ visibility: hidden; }
   position: relative;
   max-width: 480px;
   width: calc(100% - 40px);
-  max-height: calc(100vh - 48px);
+  max-height: calc(100dvh - 48px);     /* dvh = dynamic viewport — robust gegen mobile address bar */
   overflow-y: auto;
+  overscroll-behavior: contain;        /* Wheel/Touch im Modal scrollt NICHT die Seite dahinter */
+  -webkit-overflow-scrolling: touch;   /* iOS-Trägheit */
   background: linear-gradient(160deg, #14213f, #0a1430);
   border: 1px solid var(--ui-border);
   border-radius: 16px;
