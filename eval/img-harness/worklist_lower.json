@@ -1,0 +1,169 @@
+{
+  "_meta": {
+    "purpose": "Untere Ebene (Tiere, Aircraft, Referenz-Bauwerke) — Bild-Beschaffung Multi-Agenten-Pipeline.",
+    "rules": "Wikimedia Commons bevorzugt (PD/CC0/CC-BY/CC-BY-SA). Motiv MUSS klar erkennbar, möglichst freistehend (Tiere) bzw. eindeutiger Kontext (Aircraft/Bauwerke). Keine Personen-Selfies, Logos, Pressefotos. Hochauflösend bevorzugt, JPG/PNG.",
+    "output": "candidates_lower.json — pro target: 1-3 candidates mit direct_url, source_page, license, author, description.",
+    "excluded": "rigel — falscher altitude-Eintrag im Parser (ist tatsächlich 860*LY, nicht 860 m). Stern, gehört nicht zur unteren Ebene."
+  },
+  "targets": [
+    { "id": "spatz", "name": "Haussperling (Passer domesticus)",
+      "what": "Einzelner Spatz, scharf, möglichst freistehend / klarer Hintergrund.",
+      "allowed_type": "real_photo",
+      "hints": ["Passer domesticus Wikimedia Commons male", "House Sparrow profile photograph"],
+      "note": "Männchen mit kräftiger Färbung bevorzugt. Kein Bild aus Schwarm."
+    },
+    { "id": "schwalbe", "name": "Rauchschwalbe (Hirundo rustica)",
+      "what": "Einzelne Schwalbe, idealerweise im Flug oder auf Drahtleitung.",
+      "allowed_type": "real_photo",
+      "hints": ["Hirundo rustica Wikimedia Commons", "Barn Swallow photograph profile"]
+    },
+    { "id": "marienkaefer", "name": "Marienkäfer (Coccinellidae)",
+      "what": "Klassischer roter Marienkäfer mit schwarzen Punkten, Nahaufnahme.",
+      "allowed_type": "real_photo",
+      "hints": ["Coccinella septempunctata macro Wikimedia", "Ladybug seven spot photograph"]
+    },
+    { "id": "mauersegler", "name": "Mauersegler (Apus apus)",
+      "what": "Mauersegler im Flug, charakteristische Sichelflügel-Silhouette.",
+      "allowed_type": "real_photo",
+      "hints": ["Apus apus in flight Wikimedia", "Common Swift flight photograph"]
+    },
+    { "id": "distelfalter", "name": "Distelfalter (Vanessa cardui)",
+      "what": "Distelfalter mit ausgebreiteten Flügeln, Oberseite sichtbar.",
+      "allowed_type": "real_photo",
+      "hints": ["Vanessa cardui open wings Wikimedia", "Painted Lady butterfly photograph"]
+    },
+    { "id": "fledermaus", "name": "Mexikanische Bulldoggfledermaus (Tadarida brasiliensis)",
+      "what": "Einzelne Fledermaus, möglichst im Flug oder Detailaufnahme.",
+      "allowed_type": "real_photo",
+      "hints": ["Tadarida brasiliensis Wikimedia", "Mexican free-tailed bat photograph"]
+    },
+    { "id": "monarch", "name": "Monarchfalter (Danaus plexippus)",
+      "what": "Monarchfalter mit gut sichtbarem orange-schwarzen Flügelmuster.",
+      "allowed_type": "real_photo",
+      "hints": ["Danaus plexippus open wings Wikimedia", "Monarch butterfly photograph"]
+    },
+    { "id": "spinne", "name": "Ballooning Spider (Spinnen-Luftballonisten)",
+      "what": "Kleine Spinne mit Spinnfaden (Altweibersommer) ODER Symbolfoto kleine Spinne.",
+      "allowed_type": "real_photo",
+      "hints": ["spider ballooning gossamer Wikimedia", "Linyphiidae spider macro"]
+    },
+    { "id": "steinadler", "name": "Steinadler (Aquila chrysaetos)",
+      "what": "Steinadler im Flug oder Profilaufnahme, klar erkennbarer Greifvogel.",
+      "allowed_type": "real_photo",
+      "hints": ["Aquila chrysaetos in flight Wikimedia", "Golden Eagle photograph"]
+    },
+    { "id": "bartgeier", "name": "Bartgeier (Gypaetus barbatus)",
+      "what": "Bartgeier mit charakteristischem rotem Bauchgefieder.",
+      "allowed_type": "real_photo",
+      "hints": ["Gypaetus barbatus Wikimedia", "Bearded Vulture photograph adult"]
+    },
+    { "id": "streifengans", "name": "Streifengans (Anser indicus)",
+      "what": "Streifengans, gut erkennbare Kopfstreifen, einzeln oder in V-Formation.",
+      "allowed_type": "real_photo",
+      "hints": ["Anser indicus Wikimedia", "Bar-headed Goose photograph"]
+    },
+    { "id": "singschwan", "name": "Singschwan (Cygnus cygnus)",
+      "what": "Singschwan, gelb-schwarzer Schnabel deutlich sichtbar.",
+      "allowed_type": "real_photo",
+      "hints": ["Cygnus cygnus Wikimedia", "Whooper Swan photograph adult"]
+    },
+    { "id": "alpendohle", "name": "Alpendohle (Pyrrhocorax graculus)",
+      "what": "Alpendohle, schwarzes Gefieder mit gelbem Schnabel, hochalpines Setting bevorzugt.",
+      "allowed_type": "real_photo",
+      "hints": ["Pyrrhocorax graculus Wikimedia", "Alpine Chough photograph"]
+    },
+    { "id": "doppelschnepfe", "name": "Doppelschnepfe (Gallinago media)",
+      "what": "Doppelschnepfe, langer Schnabel deutlich, in Vegetation.",
+      "allowed_type": "real_photo",
+      "hints": ["Gallinago media Wikimedia", "Great Snipe photograph"]
+    },
+    { "id": "hummel", "name": "Hummel (Bombus)",
+      "what": "Hummel auf Blüte, klassisches Motiv, Nahaufnahme.",
+      "allowed_type": "real_photo",
+      "hints": ["Bombus terrestris flower macro Wikimedia", "Bumblebee photograph"]
+    },
+    { "id": "kranich", "name": "Kranich (Grus grus)",
+      "what": "Kranich im Flug oder stehend, charakteristische rot-weiße Kopfzeichnung.",
+      "allowed_type": "real_photo",
+      "hints": ["Grus grus Wikimedia", "Common Crane photograph adult"]
+    },
+    { "id": "sperbergeier", "name": "Sperbergeier (Gyps rueppellii)",
+      "what": "Sperbergeier im Flug, charakteristisches Schuppen-Federmuster.",
+      "allowed_type": "real_photo",
+      "hints": ["Gyps rueppellii Wikimedia", "Rüppell's Vulture photograph"]
+    },
+    { "id": "burj", "name": "Burj Khalifa (Dubai)",
+      "what": "Burj Khalifa Vollansicht, freistehend gegen Himmel, idealerweise Tag.",
+      "allowed_type": "real_photo",
+      "hints": ["Burj Khalifa full tower Wikimedia", "Burj Khalifa Dubai photograph"],
+      "note": "Keine Skyline-Aufnahme mit anderen Hochhäusern dominant."
+    },
+    { "id": "montblanc", "name": "Mont Blanc Gipfel",
+      "what": "Mont-Blanc-Gipfelpanorama, schneebedeckt, klare Sicht.",
+      "allowed_type": "real_photo",
+      "hints": ["Mont Blanc summit Wikimedia", "Mont Blanc photograph snow"]
+    },
+    { "id": "everest", "name": "Mount Everest",
+      "what": "Mount Everest Gipfelpyramide, klassischer Blick.",
+      "allowed_type": "real_photo",
+      "hints": ["Mount Everest summit Wikimedia", "Everest photograph from Kala Patthar"]
+    },
+    { "id": "drohne", "name": "Consumer-Drohne",
+      "what": "Quadrocopter-Drohne (z.B. DJI-Style) im Flug oder freistehend, Symbolfoto.",
+      "allowed_type": "real_photo",
+      "hints": ["consumer drone quadcopter Wikimedia", "DJI drone photograph"]
+    },
+    { "id": "jet", "name": "Verkehrsflugzeug (Airliner)",
+      "what": "Großraum-Verkehrsflugzeug in Flug oder Steigflug (Boeing/Airbus), kein Logo dominant.",
+      "allowed_type": "real_photo",
+      "hints": ["airliner in flight Wikimedia", "Boeing 747 Airbus A320 flight photograph"]
+    },
+    { "id": "helikopter", "name": "Hubschrauber",
+      "what": "Hubschrauber im Flug, klassische Silhouette mit Rotor.",
+      "allowed_type": "real_photo",
+      "hints": ["helicopter in flight Wikimedia", "helicopter photograph rotor"]
+    },
+    { "id": "concorde", "name": "Concorde",
+      "what": "Concorde im Flug oder im Steigflug, charakteristische Delta-Silhouette.",
+      "allowed_type": "real_photo",
+      "hints": ["Concorde in flight Wikimedia", "Concorde supersonic photograph"]
+    },
+    { "id": "u2", "name": "Lockheed U-2",
+      "what": "U-2 Spionageflugzeug im Flug, schwarze schlanke Silhouette mit langen Flügeln.",
+      "allowed_type": "real_photo",
+      "hints": ["Lockheed U-2 in flight Wikimedia USAF", "U-2 spy plane photograph"]
+    },
+    { "id": "ballon", "name": "Heißluftballon-Höhenrekord-Ballon (oder Stratosphären-Ballon)",
+      "what": "Stratosphären-Heißluftballon im Steigen oder hoch oben sichtbar (z.B. Vijaypat Singhania-Style).",
+      "allowed_type": "real_photo",
+      "hints": ["stratospheric balloon Wikimedia", "high altitude balloon photograph"]
+    },
+    { "id": "sr71", "name": "SR-71 Blackbird",
+      "what": "SR-71 Blackbird im Flug, schwarze schlanke Silhouette.",
+      "allowed_type": "real_photo",
+      "hints": ["SR-71 Blackbird in flight Wikimedia USAF", "SR-71 photograph"]
+    },
+    { "id": "wetterballon", "name": "Wetterballon (Radiosonde)",
+      "what": "Wetterballon mit Radiosonde, beim Aufstieg oder am Boden vor Start.",
+      "allowed_type": "real_photo",
+      "hints": ["weather balloon radiosonde Wikimedia NOAA", "weather balloon launch photograph"]
+    },
+    { "id": "mig25", "name": "MiG-25 Foxbat",
+      "what": "MiG-25 im Flug, klar erkennbare Silhouette mit zwei vertikalen Leitwerken.",
+      "allowed_type": "real_photo",
+      "hints": ["MiG-25 Foxbat Wikimedia", "Mikoyan MiG-25 photograph"]
+    },
+    { "id": "stratos", "name": "Red Bull Stratos (Felix Baumgartner)",
+      "what": "Stratosphären-Sprungkapsel im Aufstieg, oder Baumgartner an Kapselkante (PD/CC).",
+      "allowed_type": "real_photo",
+      "hints": ["Red Bull Stratos balloon Wikimedia", "Felix Baumgartner stratosphere Wikimedia"],
+      "note": "Wenn keine PD/CC verfügbar: Symbolbild Stratosphärenballon (siehe ballon-Eintrag wiederverwenden) — oder fallback Emoji belassen."
+    },
+    { "id": "eustace", "name": "Alan Eustace StratEx-Sprung",
+      "what": "StratEx Sprungplattform oder Eustace im Anzug am Ballon.",
+      "allowed_type": "real_photo",
+      "hints": ["Alan Eustace StratEx Wikimedia", "StratEx stratospheric jump photograph"],
+      "note": "Vermutlich kaum PD/CC-Material — wenn nichts: fallback Emoji belassen."
+    }
+  ]
+}

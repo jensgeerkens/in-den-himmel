@@ -1,0 +1,329 @@
+{
+  "batch": "fauna",
+  "candidates": [
+    {
+      "id": "spatz",
+      "candidates": [
+        {
+          "direct_url": "https://upload.wikimedia.org/wikipedia/commons/4/4a/House_sparrow_head_close_up.jpg",
+          "source_page": "https://commons.wikimedia.org/wiki/File:House_sparrow_head_close_up.jpg",
+          "license": "CC BY-SA 3.0",
+          "author": "Karthik Easvur",
+          "description": "Nahaufnahme eines maennlichen Haussperlings (Passer domesticus), Profil mit klarem Hintergrund.",
+          "why_good": "Sehr scharfes Portrait, klassisches Profilfoto, kraeftige Maennchen-Faerbung gut sichtbar."
+        },
+        {
+          "direct_url": "https://upload.wikimedia.org/wikipedia/commons/0/0d/Passer-domesticus-sparrow-male-closeup-0b.jpg",
+          "source_page": "https://commons.wikimedia.org/wiki/File:Passer-domesticus-sparrow-male-closeup-0b.jpg",
+          "license": "CC BY-SA 3.0",
+          "author": "Adamantios",
+          "description": "Close-up eines maennlichen Haussperlings, Berlin 2008, 2816x2112.",
+          "why_good": "Hochaufloesendes Close-up, freistehender Vogel, klare Erkennbarkeit der Spatzen-Merkmale."
+        }
+      ]
+    },
+    {
+      "id": "schwalbe",
+      "candidates": [
+        {
+          "direct_url": "https://upload.wikimedia.org/wikipedia/commons/8/85/Hirundo_rustica_hunting.jpg",
+          "source_page": "https://commons.wikimedia.org/wiki/File:Hirundo_rustica_hunting.jpg",
+          "license": "CC BY-SA 3.0",
+          "author": "DDd",
+          "description": "Rauchschwalbe (Hirundo rustica) im Flug beim Jagen, Hannover 2010.",
+          "why_good": "Dynamisches Flugbild, freistehend gegen Himmel, scharf trotz 1/2500s."
+        },
+        {
+          "direct_url": "https://upload.wikimedia.org/wikipedia/commons/7/7c/2013.06.23.-12-Wesenberg-Rauchschwalbe.jpg",
+          "source_page": "https://commons.wikimedia.org/wiki/File:2013.06.23.-12-Wesenberg-Rauchschwalbe.jpg",
+          "license": "CC BY-SA 4.0",
+          "author": "Andreas Eichler",
+          "description": "Rauchschwalbe Portrait, Wesenberg/Mecklenburg-Vorpommern, Quality Image.",
+          "why_good": "Quality-Image-Zertifizierung, sauberer Hintergrund, gute Detailerkennung."
+        }
+      ]
+    },
+    {
+      "id": "marienkaefer",
+      "candidates": [
+        {
+          "direct_url": "https://upload.wikimedia.org/wikipedia/commons/e/e3/Coccinella_septempunctata_-_front_%28aka%29.jpg",
+          "source_page": "https://commons.wikimedia.org/wiki/File:Coccinella_septempunctata_-_front_(aka).jpg",
+          "license": "CC BY-SA 2.5",
+          "author": "Andre Karwath (Aka)",
+          "description": "Frontalansicht eines Siebenpunkt-Marienkaefers (Coccinella septempunctata), Makroaufnahme.",
+          "why_good": "Top-Makro-Reputation des Fotografen Aka, scharf, klassisches rot-schwarz-Motiv."
+        }
+      ]
+    },
+    {
+      "id": "mauersegler",
+      "candidates": [
+        {
+          "direct_url": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Apus_apus_01.jpg",
+          "source_page": "https://commons.wikimedia.org/wiki/File:Apus_apus_01.jpg",
+          "license": "CC BY-SA 3.0",
+          "author": "Pawel Kuzniar (Jojo)",
+          "description": "Mauersegler (Apus apus) im Flug, 19.07.2006, 1200x1600.",
+          "why_good": "Klassisches Sichelfluegel-Profil gegen Himmel, freistehend, gute Aufloesung."
+        },
+        {
+          "direct_url": "https://upload.wikimedia.org/wikipedia/commons/7/7f/Apus_apus_inflight.jpg",
+          "source_page": "https://commons.wikimedia.org/wiki/File:Apus_apus_inflight.jpg",
+          "license": "CC BY-SA 3.0",
+          "author": "S. Seyfert",
+          "description": "Zwei Mauersegler im Flug, Mai 2006.",
+          "why_good": "Charakteristische Sichelfluegel-Silhouette, klar gegen hellen Himmel."
+        }
+      ]
+    },
+    {
+      "id": "distelfalter",
+      "candidates": [
+        {
+          "direct_url": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Painted_lady_%28Vanessa_cardui%29_2.jpg",
+          "source_page": "https://commons.wikimedia.org/wiki/File:Painted_lady_(Vanessa_cardui)_2.jpg",
+          "license": "CC BY-SA 4.0",
+          "author": "Charles J. Sharp",
+          "description": "Distelfalter (Vanessa cardui), Bernwood Forest, Oxfordshire, 4220x2814, Quality Image.",
+          "why_good": "Hochaufloesend, Quality Image, Sharp ist ein renommierter Wildlife-Fotograf, Fluegel offen."
+        },
+        {
+          "direct_url": "https://upload.wikimedia.org/wikipedia/commons/2/2d/2013.08.02.-19-Kirschgartshaeuser_Schlaege_Mannheim-Distelfalter.jpg",
+          "source_page": "https://commons.wikimedia.org/wiki/File:2013.08.02.-19-Kirschgartshaeuser_Schlaege_Mannheim-Distelfalter.jpg",
+          "license": "CC BY-SA 3.0",
+          "author": "Andreas Eichler",
+          "description": "Distelfalter auf Distelbluete, Mannheim 2013, 3076x2401, Quality Image.",
+          "why_good": "Quality Image, klassisches Motiv Falter+Distel, hochaufloesend."
+        }
+      ]
+    },
+    {
+      "id": "fledermaus",
+      "candidates": [
+        {
+          "direct_url": "https://upload.wikimedia.org/wikipedia/commons/b/b5/Mexican_free-tailed_bat_%288006856842%29.jpg",
+          "source_page": "https://commons.wikimedia.org/wiki/File:Mexican_free-tailed_bat_(8006856842).jpg",
+          "license": "CC BY 2.0",
+          "author": "U.S. Fish and Wildlife Service",
+          "description": "Mexikanische Bulldoggfledermaus (Tadarida brasiliensis), USFWS-Aufnahme 2012, 3888x2592.",
+          "why_good": "Hochaufloesendes Einzeltier-Foto, offizielle USFWS-Quelle, freie Lizenz."
+        }
+      ]
+    },
+    {
+      "id": "monarch",
+      "candidates": [
+        {
+          "direct_url": "https://upload.wikimedia.org/wikipedia/commons/b/b5/Monarch_Butterfly_Danaus_plexippus_on_Echinacea_purpurea_2800px.jpg",
+          "source_page": "https://commons.wikimedia.org/wiki/File:Monarch_Butterfly_Danaus_plexippus_on_Echinacea_purpurea_2800px.jpg",
+          "license": "GFDL 1.2",
+          "author": "Derek Ramsey (Ram-Man)",
+          "description": "Monarchfalter auf Echinacea purpurea, Tyler Arboretum, Pennsylvania 2007, 2800x2000.",
+          "why_good": "Featured Picture, sehr scharf, Fluegelmuster komplett sichtbar, ikonisches Motiv."
+        },
+        {
+          "direct_url": "https://upload.wikimedia.org/wikipedia/commons/3/31/Danaus_plexippus%2C_monarch_butterfly.jpg",
+          "source_page": "https://commons.wikimedia.org/wiki/File:Danaus_plexippus,_monarch_butterfly.jpg",
+          "license": "CC BY 2.0",
+          "author": "liz west (Muffet)",
+          "description": "Monarchfalter auf Blutweiderich, Concord/Massachusetts 2007, 2808x1747.",
+          "why_good": "Klares orange-schwarz-Muster, freistehend auf Bluete, gute Aufloesung."
+        }
+      ]
+    },
+    {
+      "id": "spinne",
+      "candidates": [
+        {
+          "direct_url": "https://upload.wikimedia.org/wikipedia/commons/1/12/Ballooning_spiderlings.jpg",
+          "source_page": "https://commons.wikimedia.org/wiki/File:Ballooning_spiderlings.jpg",
+          "license": "CC BY 3.0",
+          "author": "Little Grove Farms",
+          "description": "Spiderlings beim Ballooning in den Santa Cruz Mountains, 1920x1080.",
+          "why_good": "Direkt thematisch passend (Spinnen-Luftballonisten), seltenes Motiv, HD-Aufloesung."
+        },
+        {
+          "direct_url": "https://upload.wikimedia.org/wikipedia/commons/c/ca/Threads_of_silk_following_a_mass_spider_ballooning.jpg",
+          "source_page": "https://commons.wikimedia.org/wiki/File:Threads_of_silk_following_a_mass_spider_ballooning.jpg",
+          "license": "CC BY 2.0",
+          "author": "Stephen Michael Barnett",
+          "description": "Spinnfaeden nach Massen-Ballooning, 3456x2304.",
+          "why_good": "Atmosphaerisches Altweibersommer-Motiv, hochaufloesend."
+        }
+      ]
+    },
+    {
+      "id": "steinadler",
+      "candidates": [
+        {
+          "direct_url": "https://upload.wikimedia.org/wikipedia/commons/c/c2/Maakotka_%28Aquila_chrysaetos%29_by_Jarkko_J%C3%A4rvinen.jpg",
+          "source_page": "https://commons.wikimedia.org/wiki/File:Maakotka_(Aquila_chrysaetos)_by_Jarkko_J%C3%A4rvinen.jpg",
+          "license": "CC BY-SA 2.0",
+          "author": "Jarkko Jaervinen",
+          "description": "Steinadler (Aquila chrysaetos) mit Beute, Utajaervi, Finnland 2014, 2802x2048.",
+          "why_good": "Detailreiches Wildtier-Foto, klar erkennbarer Greifvogel, natuerlicher Lebensraum."
+        },
+        {
+          "direct_url": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Golden_Eagle_%28Aquila_chrysaetos%29_%2813667937583%29.jpg",
+          "source_page": "https://commons.wikimedia.org/wiki/File:Golden_Eagle_(Aquila_chrysaetos)_(13667937583).jpg",
+          "license": "CC BY 2.0",
+          "author": "Ron Knight",
+          "description": "Steinadler in Skandinavien, April 2014, 2272x1514.",
+          "why_good": "Klares Profil, scharf, freie CC-BY-Lizenz."
+        }
+      ]
+    },
+    {
+      "id": "bartgeier",
+      "candidates": [
+        {
+          "direct_url": "https://upload.wikimedia.org/wikipedia/commons/2/23/Bartgeier_Gypaetus_barbatus_front_Richard_Bartz.jpg",
+          "source_page": "https://commons.wikimedia.org/wiki/File:Bartgeier_Gypaetus_barbatus_front_Richard_Bartz.jpg",
+          "license": "CC BY-SA 2.5",
+          "author": "Richard Bartz",
+          "description": "Bartgeier (Gypaetus barbatus) im Portrait, Tirol, 1231x1800, Featured Picture.",
+          "why_good": "Wikimedia Picture of the Day, professionelle Studio-Qualitaet, rotes Bauchgefieder klar sichtbar."
+        },
+        {
+          "direct_url": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Gipeto_adulto.jpg",
+          "source_page": "https://commons.wikimedia.org/wiki/File:Gipeto_adulto.jpg",
+          "license": "CC BY-SA 4.0",
+          "author": "Luca Casale",
+          "description": "Bartgeier im Flug, Gran-Paradiso-Nationalpark, Italien 2018, 2500x1664.",
+          "why_good": "Wiki Loves Earth 2018 Preistraeger, Flugbild im natuerlichen Hochgebirgs-Habitat."
+        },
+        {
+          "direct_url": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Lammergeier_or_Bearded_Vulture%2C_Gypaetus_barbatus.jpg",
+          "source_page": "https://commons.wikimedia.org/wiki/File:Lammergeier_or_Bearded_Vulture,_Gypaetus_barbatus.jpg",
+          "license": "CC BY-SA 3.0",
+          "author": "BirdingInSpain",
+          "description": "Adulter Bartgeier im Flug, Pre-Pyrenaeen, Lleida, Katalonien.",
+          "why_good": "Adultes Tier im Flug, charakteristische Faerbung sichtbar."
+        }
+      ]
+    },
+    {
+      "id": "streifengans",
+      "candidates": [
+        {
+          "direct_url": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Anser_indicus_Kaziranga.jpg",
+          "source_page": "https://commons.wikimedia.org/wiki/File:Anser_indicus_Kaziranga.jpg",
+          "license": "CC BY-SA 2.0",
+          "author": "Ajay Panachickal",
+          "description": "Zwei Streifengaense (Anser indicus) in Kaziranga, Assam, Indien 2009, 1024x710.",
+          "why_good": "Kopfstreifen gut sichtbar, beide Tiere scharf, freilizenziert."
+        }
+      ]
+    },
+    {
+      "id": "singschwan",
+      "candidates": [
+        {
+          "direct_url": "https://upload.wikimedia.org/wikipedia/commons/6/66/Couple_Whooper_Swan.jpg",
+          "source_page": "https://commons.wikimedia.org/wiki/File:Couple_Whooper_Swan.jpg",
+          "license": "CC BY-SA 2.5",
+          "author": "Andreas Trepte",
+          "description": "Singschwan-Paar (Cygnus cygnus), Januar 2015, 3024x2016.",
+          "why_good": "Sehr hohe Aufloesung, klassisches Trepte-Vogelfoto, gelb-schwarzer Schnabel klar erkennbar."
+        },
+        {
+          "direct_url": "https://upload.wikimedia.org/wikipedia/commons/1/10/Whooper_Swan_at_Big_Waters.jpg",
+          "source_page": "https://commons.wikimedia.org/wiki/File:Whooper_Swan_at_Big_Waters.jpg",
+          "license": "CC BY-SA 2.0",
+          "author": "Sciadopitys (Flickr)",
+          "description": "Singschwan in Big Waters, Northumberland 2011, 1641x1786.",
+          "why_good": "Einzeltier, klare Schnabelzeichnung, gute Aufloesung."
+        }
+      ]
+    },
+    {
+      "id": "alpendohle",
+      "candidates": [
+        {
+          "direct_url": "https://upload.wikimedia.org/wikipedia/commons/5/51/2017.01.20.-86-Paradiski-La_Plagne-Roche_de_Mio--Alpendohle.jpg",
+          "source_page": "https://commons.wikimedia.org/wiki/File:2017.01.20.-86-Paradiski-La_Plagne-Roche_de_Mio--Alpendohle.jpg",
+          "license": "CC BY-SA 4.0",
+          "author": "Andreas Eichler",
+          "description": "Alpendohle (Pyrrhocorax graculus) bei La Plagne, Savoie 2017, 2017x2158.",
+          "why_good": "Hochalpiner Kontext, scharf, freie Lizenz, schwarzes Gefieder mit gelbem Schnabel deutlich."
+        },
+        {
+          "direct_url": "https://upload.wikimedia.org/wikipedia/commons/a/a4/Pyrrhocorax_graculus_%E2%80%93_chocard_%C3%A0_bec_jaune%2C_France%2C_2005.jpg",
+          "source_page": "https://commons.wikimedia.org/wiki/File:Pyrrhocorax_graculus_%E2%80%93_chocard_%C3%A0_bec_jaune,_France,_2005.jpg",
+          "license": "CC BY-SA 3.0",
+          "author": "Jean-Pol GRANDMONT",
+          "description": "Alpendohle an der Aiguille du Midi, Chamonix-Mont-Blanc, 2005, 2238x1492.",
+          "why_good": "Ikonisches Hochgebirgs-Setting (Aiguille du Midi), gut sichtbarer gelber Schnabel."
+        },
+        {
+          "direct_url": "https://upload.wikimedia.org/wikipedia/commons/6/64/Alpine_Chough.jpg",
+          "source_page": "https://commons.wikimedia.org/wiki/File:Alpine_Chough.jpg",
+          "license": "CC BY-SA 3.0",
+          "author": "Pethan",
+          "description": "Alpendohle in der Schweiz, Juni 2004, 2048x1536.",
+          "why_good": "Klares Profilbild, alpine Umgebung, freie Lizenz."
+        }
+      ]
+    },
+    {
+      "id": "doppelschnepfe",
+      "candidates": []
+    },
+    {
+      "id": "hummel",
+      "candidates": [
+        {
+          "direct_url": "https://upload.wikimedia.org/wikipedia/commons/2/22/Trzmiel_ziemny_zbieraj%C4%85cy_py%C5%82ek.jpg",
+          "source_page": "https://commons.wikimedia.org/wiki/File:Trzmiel_ziemny_zbieraj%C4%85cy_py%C5%82ek.jpg",
+          "license": "CC BY-SA 3.0",
+          "author": "Grzegorz Pietrzak (Vindicator)",
+          "description": "Erdhummel (Bombus terrestris) sammelt Pollen auf einer Bluete, Polen 2006, 1200x900.",
+          "why_good": "Klassisches Hummel-auf-Bluete-Motiv, scharf, gute Detailerkennung."
+        },
+        {
+          "direct_url": "https://upload.wikimedia.org/wikipedia/commons/d/d7/Phacelia_tanacetifolia_with_Bombus_terrestris.jpg",
+          "source_page": "https://commons.wikimedia.org/wiki/File:Phacelia_tanacetifolia_with_Bombus_terrestris.jpg",
+          "license": "CC BY-SA 3.0",
+          "author": "Rasbak (Jan Bakker)",
+          "description": "Erdhummel-Koenigin auf Phacelia-Bluete, 2007, 946x1148.",
+          "why_good": "Hummel auf bunter Bluete, klassische Bestaeubungs-Szene."
+        }
+      ]
+    },
+    {
+      "id": "kranich",
+      "candidates": [
+        {
+          "direct_url": "https://upload.wikimedia.org/wikipedia/commons/3/37/Grus_grus_head.jpg",
+          "source_page": "https://commons.wikimedia.org/wiki/File:Grus_grus_head.jpg",
+          "license": "CC BY 2.0",
+          "author": "Peter Mulligan",
+          "description": "Kranich-Kopfportrait (Grus grus), 2009, 1898x2411.",
+          "why_good": "Sehr detailreich, charakteristische rot-weisse Kopfzeichnung perfekt sichtbar."
+        },
+        {
+          "direct_url": "https://upload.wikimedia.org/wikipedia/commons/d/d1/Common_Crane-Mindaugas_Urbonas-1.jpg",
+          "source_page": "https://commons.wikimedia.org/wiki/File:Common_Crane-Mindaugas_Urbonas-1.jpg",
+          "license": "CC BY-SA 2.5",
+          "author": "Mindaugas Urbonas",
+          "description": "Kraniche im Novaraistis-Naturreservat, Litauen 2007, 2048x1536.",
+          "why_good": "Gruppenbild mit klaren Silhouetten, gute Aufloesung."
+        }
+      ]
+    },
+    {
+      "id": "sperbergeier",
+      "candidates": [
+        {
+          "direct_url": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Gyps_rueppellii_2010.JPG",
+          "source_page": "https://commons.wikimedia.org/wiki/File:Gyps_rueppellii_2010.JPG",
+          "license": "CC BY-SA 3.0",
+          "author": "4028mdk09",
+          "description": "Sperbergeier (Gyps rueppellii), Wildpark Tripsdrill, 3648x2736.",
+          "why_good": "Hohe Aufloesung, charakteristisches Schuppenmuster im Gefieder sichtbar."
+        }
+      ]
+    }
+  ]
+}

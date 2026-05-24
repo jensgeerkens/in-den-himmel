@@ -1,6 +1,35 @@
 # Projekt-Status & Handoff — "In den Himmel"
 
-> Übergabe-Dokument. Stand: 2026-05-21. Nach `/clear` hier weiterlesen.
+> Übergabe-Dokument. Stand: 2026-05-24. Nach `/clear` hier weiterlesen.
+
+## UPDATE 2026-05-24 — Untere Ebene bebildert (29 neue Bilder)
+Pipeline `eval/img-harness/` erweitert um `worklist_lower.json`,
+`candidates_lower_fauna.json`, `candidates_lower_tech.json`, `picks_lower.json`.
+2 Researcher-Agenten (Fauna 17 / Tech 14) → Kritiker → Download (`tools/fetch_lower_images.py`)
+→ Verarbeitung (`tools/prep_lower_images.py`: rembg für Fauna→PNG, Skalierung für Tech→JPG,
+640px max) → Injection in data.js (`tools/inject_lower_img_fields.py`).
+
+**Ergebnis:** 29 neue `img:` (16 Fauna + 13 Tech). 110/155 Objekte tragen jetzt ein Bild
+(vorher 81). Quellen in **CREDITS_GROUND.md**. Visual-Check via Playwright (spatz, helikopter,
+sr71) bestanden. **Emoji-Fallback** bleibt für `doppelschnepfe` (kein passendes Commons-Bild)
+und `eustace` (kein PD/CC-Material) — bewusst dokumentiert.
+
+## UPDATE 2026-05-22 — Bild-Audit-Remediation (committed 0f93fa4)
+7-Agenten-Audit (`eval/`) fand ein unpassendes blind geholtes Bild → 14 Fehlgriffe entfernt,
+`fetch_space_images.py` gehärtet, Fakten/A11y/Perf/Code korrigiert. **Danach Ersatzbilder
+über Multi-Agenten-Pipeline** (`eval/img-harness/`: Researcher → Kritiker → visuelle
+Endkontrolle jeder Datei) beschafft:
+- **10 verifizierte Ersatzbilder** drin (tres2b, psyche, halley, sloanwall[invertiert],
+  jadesz14, barnard, sirius, hyades, antares, greatattractor) — Quellen NASA/ESA-Hubble/ESO/
+  Wikimedia, PD/CC, in `CREDITS_SPACE.md`. (psyche/halley waren noch falsch — jetzt korrekt.)
+- **rigel, gw150914, herculescorona** bewusst Emoji-Fallback (kein gutes Thumbnail-Bild).
+- **404-Churn weg:** `script.js` rendert `<img>` nur bei vorhandenem `it.img`; `data.js`
+  img-Refs auf nie existierende Dateien entfernt (~70 Tier-/Flugzeug-Platzhalter + die 3).
+  155 Objekte intakt, 81 img-Refs zeigen alle auf existierende Dateien, 0 defekte Bilder.
+- Pipeline reproduzierbar über `eval/img-harness/worklist.json` + `candidates.json`.
+- **Offen:** Tier-/Flugzeug-Fotos (untere Ebene, weiter Emoji) bei Bedarf via gleicher Pipeline
+  + `prep_images.py`. favicon.ico fehlt (harmlos). Wikimedia-Commons-Bilder (Backlog #9) noch
+  nicht visuell gegengeprüft.
 
 ## Was es ist
 Interaktive Scroll-Seite (Gegenstück zu neal.fun/deep-sea): vom Boden hoch durch

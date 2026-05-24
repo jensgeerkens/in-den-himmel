@@ -1,0 +1,4 @@
+{
+  "_meta": "Manuelle Picks: überschreibt den Default (erster Kandidat aus candidates_lower_*.json). Nur Einträge eintragen, wo NICHT der erste Kandidat genommen werden soll.",
+  "monarch": "https://upload.wikimedia.org/wikipedia/commons/3/31/Danaus_plexippus%2C_monarch_butterfly.jpg"
+}

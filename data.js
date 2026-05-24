@@ -17,6 +17,7 @@ const SKY_DATA = [
     note:"typisch",
     fact:{de:"Spatzen fliegen meist nur wenige Meter über dem Boden – ihr Reich ist die Hecke, nicht der Himmel.",
           en:"Sparrows usually fly just a few metres above the ground – their realm is the hedge, not the sky."},
+    img:"images/spatz.png", credit:"Karthik Easvur", license:"CC BY-SA 3.0",
     source:"https://en.wikipedia.org/wiki/House_sparrow" },
 
   { id:"schwalbe", cat:"bird", emoji:"🐦", altitude_m:200,
@@ -24,6 +25,7 @@ const SKY_DATA = [
     note:"typisch",
     fact:{de:"Jagt Insekten im Tiefflug. Bei gutem Wetter steigen die Beuteinsekten höher – und die Schwalben mit ihnen.",
           en:"Hunts insects in low flight. In fine weather its prey rises higher – and the swallows follow."},
+    img:"images/schwalbe.png", credit:"DDd", license:"CC BY-SA 3.0",
     source:"https://en.wikipedia.org/wiki/Barn_swallow" },
 
   { id:"marienkaefer", cat:"insect", emoji:"🐞", altitude_m:1100,
@@ -31,6 +33,7 @@ const SKY_DATA = [
     note:"extremwert",
     fact:{de:"Radarstudien zeigten Marienkäfer bis 1.100 m Höhe – die meisten bleiben aber zwischen 150 und 500 m.",
           en:"Radar studies tracked ladybirds up to 1,100 m – though most stay between 150 and 500 m."},
+    img:"images/marienkaefer.png", credit:"Andre Karwath (Aka)", license:"CC BY-SA 2.5",
     source:"https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0082278" },
 
   { id:"mauersegler", cat:"bird", emoji:"🐦", altitude_m:3000,
@@ -38,6 +41,7 @@ const SKY_DATA = [
     note:"typisch",
     fact:{de:"Schläft im Flug: Mauersegler steigen abends per Radar nachweisbar bis ~3 km auf und verbringen die Nacht in der Luft.",
           en:"Sleeps on the wing: at dusk swifts climb to ~3 km (radar-confirmed) and spend the whole night airborne."},
+    img:"images/mauersegler.png", credit:"Pawel Kuzniar (Jojo)", license:"CC BY-SA 3.0",
     source:"https://www.sciencedirect.com/science/article/pii/S0003347212005556" },
 
   { id:"distelfalter", cat:"insect", emoji:"🦋", altitude_m:3000,
@@ -45,6 +49,7 @@ const SKY_DATA = [
     note:"typisch",
     fact:{de:"Zieht in Höhen von 1.000–3.000 m über Tausende Kilometer – einer der weitesten Wanderfalter der Welt.",
           en:"Migrates at 1,000–3,000 m over thousands of kilometres – one of the longest-distance migrating butterflies."},
+    img:"images/distelfalter.png", credit:"Charles J. Sharp", license:"CC BY-SA 4.0",
     source:"https://butterfly-conservation.org/news-and-blog/painted-lady-migration-secrets-revealed" },
 
   { id:"fledermaus", cat:"bat", emoji:"🦇", altitude_m:3300,
@@ -52,6 +57,7 @@ const SKY_DATA = [
     note:"typisch",
     fact:{de:"Die höchstfliegende Fledermaus: jagt nachtaktiv Wanderfalter per Radar nachgewiesen bis ~3.300 m.",
           en:"The highest-flying bat: hunts migrating moths at night, radar-tracked up to ~3,300 m."},
+    img:"images/fledermaus.png", credit:"U.S. Fish and Wildlife Service", license:"CC BY 2.0",
     source:"https://academic.oup.com/jmammal/article-abstract/54/4/807/844057" },
 
   { id:"monarch", cat:"insect", emoji:"🦋", altitude_m:3600,
@@ -59,6 +65,7 @@ const SKY_DATA = [
     note:"bodenhoehe",
     fact:{de:"Überwintert massenhaft in mexikanischen Oyamel-Wäldern auf 2.400–3.600 m. Das ist Standort­höhe, nicht Flughöhe.",
           en:"Overwinters in masses in Mexican oyamel forests at 2,400–3,600 m. That is ground elevation, not flight altitude."},
+    img:"images/monarch.png", credit:"liz west (Muffet)", license:"CC BY 2.0",
     source:"https://en.wikipedia.org/wiki/Monarch_butterfly_migration" },
 
   { id:"spinne", cat:"spider", emoji:"🕷️", altitude_m:4500,
@@ -66,6 +73,7 @@ const SKY_DATA = [
     note:"extremwert",
     fact:{de:"Lässt sich an Seidenfäden vom Wind tragen ('Ballooning'). In Luftproben bis ~4.500 m als Teil des Aeroplanktons gefunden.",
           en:"Drifts on silk threads carried by the wind ('ballooning'). Found in air samples up to ~4,500 m as part of the aeroplankton."},
+    img:"images/spinne.png", credit:"Little Grove Farms", license:"CC BY 3.0",
     source:"https://en.wikipedia.org/wiki/Ballooning_(spider)" },
 
   { id:"steinadler", cat:"bird", emoji:"🦅", altitude_m:4500,
@@ -73,6 +81,7 @@ const SKY_DATA = [
     note:"typisch",
     fact:{de:"Nutzt Thermik und Hangaufwinde und kreist regelmäßig bis ~4.500 m – höher als die meisten Greifvögel.",
           en:"Rides thermals and ridge lift, regularly soaring to ~4,500 m – higher than most birds of prey."},
+    img:"images/steinadler.png", credit:"Jarkko Jaervinen", license:"CC BY-SA 2.0",
     source:"https://pmc.ncbi.nlm.nih.gov/articles/PMC9179650/" },
 
   { id:"bartgeier", cat:"bird", emoji:"🦅", altitude_m:7300,
@@ -80,6 +89,7 @@ const SKY_DATA = [
     note:"typisch",
     fact:{de:"Im Himalaya regelmäßig über 7 km unterwegs. Lässt Knochen aus der Höhe auf Felsen fallen, um an das Mark zu kommen.",
           en:"Regularly flies above 7 km in the Himalayas. Drops bones from height onto rocks to reach the marrow."},
+    img:"images/bartgeier.png", credit:"Richard Bartz", license:"CC BY-SA 2.5",
     source:"https://en.wikipedia.org/wiki/Bearded_vulture" },
 
   { id:"streifengans", cat:"bird", emoji:"🪿", altitude_m:7290,
@@ -87,6 +97,7 @@ const SKY_DATA = [
     note:"extremwert",
     fact:{de:"Überquert den Himalaya. Eine GPS-Gans erreichte 7.290 m – doch 95 % aller Messungen lagen unter 5.500 m.",
           en:"Crosses the Himalayas. One GPS-tracked goose reached 7,290 m – yet 95% of all fixes were below 5,500 m."},
+    img:"images/streifengans.png", credit:"Ajay Panachickal", license:"CC BY-SA 2.0",
     source:"https://www.pnas.org/doi/10.1073/pnas.1017295108" },
 
   { id:"singschwan", cat:"bird", emoji:"🦢", altitude_m:8000,
@@ -94,6 +105,7 @@ const SKY_DATA = [
     note:"extremereignis",
     fact:{de:"Ein Pilot und das Radar erfassten Singschwäne über 8 km über den Britischen Inseln – außergewöhnlich für so schwere Vögel.",
           en:"A pilot and radar recorded whooper swans above 8 km over the British Isles – extraordinary for such heavy birds."},
+    img:"images/singschwan.png", credit:"Andreas Trepte", license:"CC BY-SA 2.5",
     source:"https://en.wikipedia.org/wiki/Whooper_swan" },
 
   { id:"alpendohle", cat:"bird", emoji:"🐦‍⬛", altitude_m:8200,
@@ -101,6 +113,7 @@ const SKY_DATA = [
     note:"extremereignis",
     fact:{de:"Folgte Bergsteigern am Mount Everest bis 8.200 m. Brütet höher als jeder andere Vogel – bis 6.500 m.",
           en:"Followed climbers up Mount Everest to 8,200 m. Nests higher than any other bird – up to 6,500 m."},
+    img:"images/alpendohle.png", credit:"Andreas Eichler", license:"CC BY-SA 4.0",
     source:"https://en.wikipedia.org/wiki/Alpine_chough" },
 
   { id:"doppelschnepfe", cat:"bird", emoji:"🐦", altitude_m:8700,
@@ -115,6 +128,7 @@ const SKY_DATA = [
     note:"laborwert",
     fact:{de:"Im Unterdruck-Kammerversuch (2014) hielten Alpenhummeln Schwebflug bei simulierten über 9.000 m – höher als der Everest.",
           en:"In a 2014 low-pressure chamber test, alpine bumblebees hovered at a simulated 9,000 m+ – higher than Everest."},
+    img:"images/hummel.png", credit:"Grzegorz Pietrzak (Vindicator)", license:"CC BY-SA 3.0",
     source:"https://royalsocietypublishing.org/doi/10.1098/rsbl.2013.0922" },
 
   { id:"kranich", cat:"bird", emoji:"🐦", altitude_m:10000,
@@ -122,6 +136,7 @@ const SKY_DATA = [
     note:"extremwert",
     fact:{de:"Kann über Gebirgspässe bis ~10.000 m steigen – gilt als zweithöchster Vogel nach dem Sperbergeier. Normal fliegt er viel tiefer.",
           en:"Can climb to ~10,000 m over mountain passes – reckoned the second-highest bird after Rüppell's vulture. Normally flies far lower."},
+    img:"images/kranich.png", credit:"Peter Mulligan", license:"CC BY 2.0",
     source:"https://en.wikipedia.org/wiki/Common_crane" },
 
   { id:"sperbergeier", cat:"bird", emoji:"🦅", altitude_m:11300,
@@ -129,6 +144,7 @@ const SKY_DATA = [
     note:"extremereignis",
     fact:{de:"Hält den Vogel-Höhenrekord: 11.300 m – nachgewiesen 1973 durch eine Kollision mit einem Flugzeugtriebwerk über Westafrika.",
           en:"Holds the bird altitude record: 11,300 m – proven in 1973 by a collision with a jet engine over West Africa."},
+    img:"images/sperbergeier.png", credit:"4028mdk09", license:"CC BY-SA 3.0",
     source:"https://www.guinnessworldrecords.com/world-records/70927-highest-flying-birds" },
 
   /* ---------- REFERENZ: BAUWERKE & BERGE ---------- */
@@ -137,6 +153,7 @@ const SKY_DATA = [
     note:"referenz",
     fact:{de:"Mit 828 m das höchste Bauwerk der Welt. Selbst seine Spitze liegt noch im Reich der niedrig fliegenden Vögel.",
           en:"At 828 m the tallest structure on Earth. Even its tip is still in the realm of low-flying birds."},
+    img:"images/burj.jpg", credit:"Gfilip", license:"CC BY-SA 4.0",
     source:"https://en.wikipedia.org/wiki/Burj_Khalifa" },
 
   { id:"montblanc", cat:"reference", emoji:"⛰️", altitude_m:4808,
@@ -144,6 +161,7 @@ const SKY_DATA = [
     note:"referenz",
     fact:{de:"Höchster Gipfel der Alpen mit 4.808 m – auf dieser Höhe kreisen Steinadler und Bartgeier.",
           en:"The highest Alpine summit at 4,808 m – at this height golden eagles and bearded vultures soar."},
+    img:"images/montblanc.jpg", credit:"yannick puybaret", license:"Public domain (released by author)",
     source:"https://en.wikipedia.org/wiki/Mont_Blanc" },
 
   { id:"everest", cat:"reference", emoji:"🏔️", altitude_m:8849,
@@ -151,6 +169,7 @@ const SKY_DATA = [
     note:"referenz",
     fact:{de:"Mit 8.849 m der höchste Berg der Erde. Sein Gipfel ragt in die Zone, in der nur noch Geier und Gänse fliegen.",
           en:"At 8,849 m the highest mountain on Earth. Its summit reaches the zone where only vultures and geese still fly."},
+    img:"images/everest.jpg", credit:"shrimpo1967 / Papa Lima Whiskey 2 (edit)", license:"CC BY-SA 2.0",
     source:"https://en.wikipedia.org/wiki/Mount_Everest" },
 
   /* ---------- FLUGZEUGE & LUFTFAHRT ---------- */
@@ -159,6 +178,7 @@ const SKY_DATA = [
     note:"referenz",
     fact:{de:"In der EU dürfen Hobby-Drohnen meist nur bis 120 m steigen – knapp über den Baumwipfeln.",
           en:"In the EU, hobby drones may usually fly only up to 120 m – just above the treetops."},
+    img:"images/drohne.jpg", credit:"Josh Sorenson", license:"CC0",
     source:"https://www.easa.europa.eu/en/domains/civil-drones" },
 
   { id:"jet", cat:"aircraft", emoji:"✈️", altitude_m:11500,
@@ -166,6 +186,7 @@ const SKY_DATA = [
     note:"typisch",
     fact:{de:"Reiseflughöhe der meisten Jets: 10–12 km. Genau hier kollidierte 1973 der Sperbergeier mit einem Triebwerk.",
           en:"Cruising altitude of most jets: 10–12 km. This is exactly where Rüppell's vulture hit an engine in 1973."},
+    img:"images/jet.jpg", credit:"SAS Scandinavian Airlines", license:"Public domain (Sweden, pre-1976, below originality threshold)",
     source:"https://www.britannica.com/topic/How-High-Does-An-Airplane-Fly" },
 
   { id:"helikopter", cat:"aircraft", emoji:"🚁", altitude_m:12954,
@@ -173,6 +194,7 @@ const SKY_DATA = [
     note:"extremereignis",
     fact:{de:"Fred North flog 2002 einen Hubschrauber auf 12.954 m. In dieser dünnen Luft finden Rotoren kaum noch Halt.",
           en:"Fred North flew a helicopter to 12,954 m in 2002. In such thin air the rotors barely find any grip."},
+    img:"images/helikopter.jpg", credit:"Fly45yt", license:"CC BY 4.0",
     source:"https://en.wikipedia.org/wiki/List_of_flight_altitude_records" },
 
   { id:"concorde", cat:"aircraft", emoji:"✈️", altitude_m:18000,
@@ -180,6 +202,7 @@ const SKY_DATA = [
     note:"typisch",
     fact:{de:"Das Überschall-Verkehrsflugzeug flog auf bis zu 18 km – so hoch, dass Passagiere die Erdkrümmung sehen konnten.",
           en:"The supersonic airliner cruised at up to 18 km – high enough for passengers to see the curvature of the Earth."},
+    img:"images/concorde.jpg", credit:"Eduard Marmet", license:"CC BY-SA 3.0 / GFDL",
     source:"https://en.wikipedia.org/wiki/Concorde" },
 
   { id:"u2", cat:"aircraft", emoji:"✈️", altitude_m:21000,
@@ -187,6 +210,7 @@ const SKY_DATA = [
     note:"typisch",
     fact:{de:"Operiert auf über 21 km. Die Piloten tragen Druckanzüge wie Astronauten – am 'Rand des Weltraums'.",
           en:"Operates above 21 km. Its pilots wear pressure suits like astronauts – at the 'edge of space'."},
+    img:"images/u2.jpg", credit:"Ken Hackman, USAF / AAVS/DOOJ", license:"Public domain (USAF)",
     source:"https://en.wikipedia.org/wiki/Lockheed_U-2" },
 
   { id:"ballon", cat:"aircraft", emoji:"🎈", altitude_m:21290,
@@ -194,6 +218,7 @@ const SKY_DATA = [
     note:"extremereignis",
     fact:{de:"Vijaypat Singhania stieg 2005 mit einem Heißluftballon auf 21.290 m – Weltrekord.",
           en:"Vijaypat Singhania reached 21,290 m in a hot-air balloon in 2005 – a world record."},
+    img:"images/ballon.jpg", credit:"NASA / Bill Rodman", license:"Public domain (NASA)",
     source:"https://www.fai.org/" },
 
   { id:"sr71", cat:"aircraft", emoji:"✈️", altitude_m:25900,
@@ -201,6 +226,7 @@ const SKY_DATA = [
     note:"typisch",
     fact:{de:"Das schnellste je gebaute Strahlflugzeug operierte auf ~25,9 km und mit über dreifacher Schallgeschwindigkeit.",
           en:"The fastest jet aircraft ever built operated at ~25.9 km and over three times the speed of sound."},
+    img:"images/sr71.jpg", credit:"USAF / Judson Brohmer", license:"Public domain (USAF)",
     source:"https://en.wikipedia.org/wiki/Lockheed_SR-71_Blackbird" },
 
   { id:"wetterballon", cat:"aircraft", emoji:"🎈", altitude_m:35000,
@@ -208,6 +234,7 @@ const SKY_DATA = [
     note:"typisch",
     fact:{de:"Steigt bis ~35 km, bis er sich im Vakuum auf Hausgröße aufbläht und platzt. Die Instrumente fallen am Fallschirm zurück.",
           en:"Rises to ~35 km until it swells to the size of a house in near-vacuum and bursts. The instruments parachute back."},
+    img:"images/wetterballon.jpg", credit:"NOAA / NSSL", license:"Public domain (NOAA)",
     source:"https://en.wikipedia.org/wiki/Weather_balloon" },
 
   { id:"mig25", cat:"aircraft", emoji:"✈️", altitude_m:37650,
@@ -215,6 +242,7 @@ const SKY_DATA = [
     note:"extremereignis",
     fact:{de:"Alexander Fedotow trieb eine MiG-25 1977 auf 37.650 m – bis heute Höhenrekord für Strahljäger im Steigflug.",
           en:"Alexander Fedotov pushed a MiG-25 to 37,650 m in 1977 – still the altitude record for a jet aircraft."},
+    img:"images/mig25.jpg", credit:"U.S. Navy", license:"Public domain (US Navy)",
     source:"https://en.wikipedia.org/wiki/List_of_flight_altitude_records" },
 
   { id:"stratos", cat:"aircraft", emoji:"🪂", altitude_m:39044,
@@ -222,6 +250,7 @@ const SKY_DATA = [
     note:"extremereignis",
     fact:{de:"2012 sprang Felix Baumgartner aus 39.044 m aus einer Ballonkapsel – und durchbrach im freien Fall die Schallmauer.",
           en:"In 2012 Felix Baumgartner jumped from 39,044 m out of a balloon capsule – breaking the sound barrier in free fall."},
+    img:"images/stratos.jpg", credit:"Balon Greyjoy", license:"CC0",
     source:"https://en.wikipedia.org/wiki/Red_Bull_Stratos" },
 
   { id:"eustace", cat:"aircraft", emoji:"🪂", altitude_m:41419,

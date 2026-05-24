@@ -1,0 +1,247 @@
+{
+  "batch": "tech",
+  "_meta": {
+    "scope": "14 IDs: drohne, jet, helikopter, concorde, u2, ballon, sr71, wetterballon, mig25, stratos, eustace, burj, montblanc, everest",
+    "license_filter": "PD / CC0 / CC-BY / CC-BY-SA only",
+    "notes": "stratos: nur Museums-/Display-Bilder verfügbar (Kapsel im Udvar-Hazy, Mock-up in Salzburg) - kein PD/CC vom echten Sprung. eustace: nur das Anzug-Display als CC0 - leer gelassen, da Anzug ohne Kontext nicht aussagekraeftig (Fallback Emoji wie in worklist note)."
+  },
+  "candidates": [
+    {
+      "id": "drohne",
+      "candidates": [
+        {
+          "direct_url": "https://upload.wikimedia.org/wikipedia/commons/6/6a/Quadcopter_camera_drone_in_flight.jpg",
+          "source_page": "https://commons.wikimedia.org/wiki/File:Quadcopter_camera_drone_in_flight.jpg",
+          "license": "CC0",
+          "author": "Josh Sorenson",
+          "description": "DJI Phantom Quadrocopter im Flug, klassische Consumer-Drohnen-Silhouette.",
+          "why_good": "Hochaufloesend (5472x3648), CC0, klare freistehende DJI-Drohne im Flug - perfektes Symbolbild."
+        }
+      ]
+    },
+    {
+      "id": "jet",
+      "candidates": [
+        {
+          "direct_url": "https://upload.wikimedia.org/wikipedia/commons/5/54/Boeing_747_rollout_%283%29.jpg",
+          "source_page": "https://commons.wikimedia.org/wiki/File:Boeing_747_rollout_(3).jpg",
+          "license": "Public domain (Sweden, pre-1976, below originality threshold)",
+          "author": "SAS Scandinavian Airlines",
+          "description": "Boeing 747 Prototype beim Rollout 1968 in Everett, Washington.",
+          "why_good": "Public Domain, hochaufloesend, historisches Bild des ikonischsten Widebody-Jets - klare Silhouette."
+        }
+      ]
+    },
+    {
+      "id": "helikopter",
+      "candidates": [
+        {
+          "direct_url": "https://upload.wikimedia.org/wikipedia/commons/7/70/VH-SUF_Taking_Off.jpg",
+          "source_page": "https://commons.wikimedia.org/wiki/File:VH-SUF_Taking_Off.jpg",
+          "license": "CC BY 4.0",
+          "author": "Fly45yt",
+          "description": "Bell 214 (McDermott Aviation) im Start, Rotor klar sichtbar.",
+          "why_good": "Hochaufloesend (4262x2841), CC BY 4.0, klassische Helikopter-Silhouette mit aktivem Rotor."
+        }
+      ]
+    },
+    {
+      "id": "concorde",
+      "candidates": [
+        {
+          "direct_url": "https://upload.wikimedia.org/wikipedia/commons/e/eb/British_Airways_Concorde_G-BOAC_03.jpg",
+          "source_page": "https://commons.wikimedia.org/wiki/File:British_Airways_Concorde_G-BOAC_03.jpg",
+          "license": "CC BY-SA 3.0 / GFDL",
+          "author": "Eduard Marmet",
+          "description": "British Airways Concorde G-BOAC kurz nach dem Start 1986, Fahrwerk noch ausgefahren.",
+          "why_good": "Charakteristische Delta-Silhouette deutlich, ikonisches Concorde-Foto von renommiertem Aviation-Fotograf."
+        }
+      ]
+    },
+    {
+      "id": "u2",
+      "candidates": [
+        {
+          "direct_url": "https://upload.wikimedia.org/wikipedia/commons/9/95/Usaf.u2.750pix.jpg",
+          "source_page": "https://commons.wikimedia.org/wiki/File:Usaf.u2.750pix.jpg",
+          "license": "Public domain (USAF)",
+          "author": "Ken Hackman, USAF / AAVS/DOOJ",
+          "description": "Lockheed U-2 im Flug, schwarze schlanke Silhouette mit langen Fluegeln.",
+          "why_good": "PD-USAF, das auf Wikipedia als Haupt-Infobox-Bild verwendete klassische U-2-Foto."
+        },
+        {
+          "direct_url": "https://upload.wikimedia.org/wikipedia/commons/4/48/US_Air_Force_030411-F-9528H-014_Dragon_Lady_takes_flight.jpg",
+          "source_page": "https://commons.wikimedia.org/wiki/File:US_Air_Force_030411-F-9528H-014_Dragon_Lady_takes_flight.jpg",
+          "license": "Public domain (USAF)",
+          "author": "Staff Sgt. Matthew Hannen, USAF",
+          "description": "U-2 Dragon Lady startet 2003 (Operation Iraqi Freedom).",
+          "why_good": "PD-USAF, hochaufloesend (3008x1960), alternative Perspektive falls Hauptbild zu klein."
+        }
+      ]
+    },
+    {
+      "id": "ballon",
+      "candidates": [
+        {
+          "direct_url": "https://upload.wikimedia.org/wikipedia/commons/4/40/NASA_Super_Pressure_Balloon_Begins_Globetrotting_Journey_%2826978370252%29.jpg",
+          "source_page": "https://commons.wikimedia.org/wiki/File:NASA_Super_Pressure_Balloon_Begins_Globetrotting_Journey_(26978370252).jpg",
+          "license": "Public domain (NASA)",
+          "author": "NASA / Bill Rodman",
+          "description": "NASA Super Pressure Balloon beim Aufstieg vom Wanaka Airport, Neuseeland, 2016.",
+          "why_good": "PD-NASA, 4K-Aufloesung, zeigt riesigen Stratosphaerenballon dramatisch beim Aufstieg gegen den Himmel."
+        },
+        {
+          "direct_url": "https://upload.wikimedia.org/wikipedia/commons/4/42/BLAST_on_flightline_balloon_filling_kiruna_2005.jpeg",
+          "source_page": "https://commons.wikimedia.org/wiki/File:BLAST_on_flightline_balloon_filling_kiruna_2005.jpeg",
+          "license": "CC BY-SA 3.0 / GFDL",
+          "author": "Mtruch",
+          "description": "BLAST Stratosphaerenballon kurz vor dem Start in Kiruna, Schweden, Juni 2005.",
+          "why_good": "Wissenschaftlicher Ballon vor Start, charakteristische tropfenfoermige Fuellung sichtbar."
+        }
+      ]
+    },
+    {
+      "id": "sr71",
+      "candidates": [
+        {
+          "direct_url": "https://upload.wikimedia.org/wikipedia/commons/9/97/Lockheed_SR-71_Blackbird.jpg",
+          "source_page": "https://commons.wikimedia.org/wiki/File:Lockheed_SR-71_Blackbird.jpg",
+          "license": "Public domain (USAF)",
+          "author": "USAF / Judson Brohmer",
+          "description": "SR-71B Trainer ueber der Sierra Nevada 1994, schwarze Silhouette gegen Berge.",
+          "why_good": "PD-USAF, hochaufloesend (5100x3996), ikonisches Bild der Blackbird im Flug."
+        },
+        {
+          "direct_url": "https://upload.wikimedia.org/wikipedia/commons/3/3e/SR-71_in_flight.jpg",
+          "source_page": "https://commons.wikimedia.org/wiki/File:SR-71_in_flight.jpg",
+          "license": "Public domain (NASA)",
+          "author": "NASA",
+          "description": "NASA 844 SR-71A im Flug ueber den Tehachapi Mountains, 1992.",
+          "why_good": "PD-NASA, klassische Profilansicht im Flug, sauberer Hintergrund."
+        }
+      ]
+    },
+    {
+      "id": "wetterballon",
+      "candidates": [
+        {
+          "direct_url": "https://upload.wikimedia.org/wikipedia/commons/f/fb/Nssl0020.jpg",
+          "source_page": "https://commons.wikimedia.org/wiki/File:Nssl0020.jpg",
+          "license": "Public domain (NOAA)",
+          "author": "NOAA / NSSL",
+          "description": "Radiosonde-Wetterballon direkt nach dem Loslassen, mit Fallschirm und Instrumentenbox an der Schnur.",
+          "why_good": "PD-NOAA, zeigt klassischen Wetterballon mit Radiosonde - genau das Motiv aus Worklist."
+        }
+      ]
+    },
+    {
+      "id": "mig25",
+      "candidates": [
+        {
+          "direct_url": "https://upload.wikimedia.org/wikipedia/commons/0/0e/Libyan_MiG-25_in_flight_c1985.jpg",
+          "source_page": "https://commons.wikimedia.org/wiki/File:Libyan_MiG-25_in_flight_c1985.jpg",
+          "license": "Public domain (US Navy)",
+          "author": "U.S. Navy",
+          "description": "Libysche MiG-25PD im Flug, photographiert ca. 1985 von der USS Coral Sea.",
+          "why_good": "PD-US-Navy, echte In-flight-Aufnahme mit klar erkennbarer Foxbat-Silhouette (zwei vertikale Leitwerke)."
+        }
+      ]
+    },
+    {
+      "id": "stratos",
+      "candidates": [
+        {
+          "direct_url": "https://upload.wikimedia.org/wikipedia/commons/6/6e/20180328_Stratos_capsule_Udvar-Hazy.jpg",
+          "source_page": "https://commons.wikimedia.org/wiki/File:20180328_Stratos_capsule_Udvar-Hazy.jpg",
+          "license": "CC0",
+          "author": "Balon Greyjoy",
+          "description": "Original Red-Bull-Stratos-Sprungkapsel im Steven F. Udvar-Hazy Center Museum.",
+          "why_good": "CC0, hochaufloesend (3717x5575), echte historische Kapsel in der Felix Baumgartner sprang."
+        },
+        {
+          "direct_url": "https://upload.wikimedia.org/wikipedia/commons/2/23/Red_Bull_Stratos.jpg",
+          "source_page": "https://commons.wikimedia.org/wiki/File:Red_Bull_Stratos.jpg",
+          "license": "CC BY-SA 4.0",
+          "author": "FlugKerl2",
+          "description": "Red Bull Stratos Kapsel auf Ausstellung 2014.",
+          "why_good": "CC BY-SA, alternative Perspektive falls Udvar-Hazy-Bild zu studio-haft wirkt."
+        }
+      ]
+    },
+    {
+      "id": "eustace",
+      "candidates": []
+    },
+    {
+      "id": "burj",
+      "candidates": [
+        {
+          "direct_url": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Burj_Khalifa_from_Safa_Park.jpg",
+          "source_page": "https://commons.wikimedia.org/wiki/File:Burj_Khalifa_from_Safa_Park.jpg",
+          "license": "CC BY-SA 4.0",
+          "author": "Gfilip",
+          "description": "Burj Khalifa vom Safa Park aus gesehen, Januar 2024.",
+          "why_good": "CC BY-SA, Tageslichtaufnahme aus Park-Perspektive ohne dominante Nachbarhochhaeuser, keine UAE-Panorama-Warnung."
+        },
+        {
+          "direct_url": "https://upload.wikimedia.org/wikipedia/commons/7/71/An_image_of_Burj_Khalifa.jpg",
+          "source_page": "https://commons.wikimedia.org/wiki/File:An_image_of_Burj_Khalifa.jpg",
+          "license": "CC BY-SA 4.0",
+          "author": "Changdervishal1999",
+          "description": "Burj Khalifa, einzelne Turm-Aufnahme.",
+          "why_good": "CC BY-SA, freistehende Turm-Aufnahme, keine UAE-Panorama-Warnung auf Dateiseite."
+        }
+      ]
+    },
+    {
+      "id": "montblanc",
+      "candidates": [
+        {
+          "direct_url": "https://upload.wikimedia.org/wikipedia/commons/c/c6/Mont_Blanc_2005_118.jpg",
+          "source_page": "https://commons.wikimedia.org/wiki/File:Mont_Blanc_2005_118.jpg",
+          "license": "Public domain (released by author)",
+          "author": "yannick puybaret",
+          "description": "Mont Blanc bei kurzer Aufklarung waehrend des Abstiegs, November 2005.",
+          "why_good": "Public Domain, hochaufloesend (2272x1704), schneebedeckter Gipfel mit dramatischer Wolkenstimmung."
+        },
+        {
+          "direct_url": "https://upload.wikimedia.org/wikipedia/commons/4/41/Sommet-Mont-Blanc-2007.JPG",
+          "source_page": "https://commons.wikimedia.org/wiki/File:Sommet-Mont-Blanc-2007.JPG",
+          "license": "CC BY-SA 3.0 / GFDL",
+          "author": "Amedeo",
+          "description": "Mont-Blanc-Gipfel von Saint-Gervais-les-Bains aus, August 2007.",
+          "why_good": "CC BY-SA, klare Sicht auf den schneebedeckten Gipfel, hochaufloesend."
+        }
+      ]
+    },
+    {
+      "id": "everest",
+      "candidates": [
+        {
+          "direct_url": "https://upload.wikimedia.org/wikipedia/commons/d/d1/Mount_Everest_as_seen_from_Drukair2_PLW_edit.jpg",
+          "source_page": "https://commons.wikimedia.org/wiki/File:Mount_Everest_as_seen_from_Drukair2_PLW_edit.jpg",
+          "license": "CC BY-SA 2.0",
+          "author": "shrimpo1967 / Papa Lima Whiskey 2 (edit)",
+          "description": "Mount Everest aus einem Drukair-Flugzeug aufgenommen, Februar 2012.",
+          "why_good": "CC BY-SA, Featured Picture auf Wikipedia, hochaufloesend (2971x1615), klassische Gipfelpyramide ueber Nuptse-Lhotse-Grat."
+        },
+        {
+          "direct_url": "https://upload.wikimedia.org/wikipedia/commons/1/15/Mt._Everest_from_Gokyo_Ri_November_5%2C_2012.jpg",
+          "source_page": "https://commons.wikimedia.org/wiki/File:Mt._Everest_from_Gokyo_Ri_November_5,_2012.jpg",
+          "license": "CC BY-SA 3.0 / GFDL",
+          "author": "Rdevany",
+          "description": "Mount Everest vom Gokyo Ri (5300 m) in Nepal, November 2012.",
+          "why_good": "CC BY-SA, klassische West-Perspektive vom Gokyo Ri auf den Everest-Gipfel."
+        },
+        {
+          "direct_url": "https://upload.wikimedia.org/wikipedia/commons/3/39/Everest_panorama_from_Kala_Patthar.jpg",
+          "source_page": "https://commons.wikimedia.org/wiki/File:Everest_panorama_from_Kala_Patthar.jpg",
+          "license": "CC BY-SA 3.0",
+          "author": "Markrosenrosen",
+          "description": "Panorama vom Kala Patthar, Everest in Bildmitte, 12993x2839.",
+          "why_good": "CC BY-SA, ikonische Kala-Patthar-Perspektive (die klassische Trekker-Sicht), extrem hochaufloesend."
+        }
+      ]
+    }
+  ]
+}

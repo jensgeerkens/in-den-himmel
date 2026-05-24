@@ -12,5 +12,8 @@ __pycache__/
 *.pyc
 .venv/
 
+# Daten-Backups von Inject/Migrations-Skripten
+*.bak
+
 # Audit-Scratch (Daten-Dump, derivativ)
 eval/merged.json
