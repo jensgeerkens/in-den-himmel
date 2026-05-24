@@ -51,6 +51,12 @@
     <span data-i18n="scrollHint">↑ Scrolle nach oben, um aufzusteigen</span>
   </div>
 
+  <!-- Pfeil-Navigation: nächstes/voriges Objekt (fixiert) -->
+  <div id="object-nav" aria-label="Objekt-Navigation">
+    <button type="button" id="next-object" title="Nächstes Objekt nach oben (Pfeil ↑)" aria-label="Nächstes Objekt höher">↑</button>
+    <button type="button" id="prev-object" title="Voriges Objekt nach unten (Pfeil ↓)" aria-label="Voriges Objekt tiefer">↓</button>
+  </div>
+
   <!-- Hover-Popup (ein wiederverwendetes Element, per JS befüllt/positioniert) -->
   <div id="hover-popup" hidden aria-hidden="true"></div>
 
@@ -86,6 +92,6 @@
   <script src="dd_solar.js"></script>
   <script src="dd_stellar.js"></script>
   <script src="dd_deep.js"></script>
-  <script src="script.js"></script>
+  <script src="script.js?v=2"></script>
 </body>
 </html>

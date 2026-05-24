@@ -560,6 +560,63 @@
   const prefersReduced = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* ---------------------------------------------------------------------
+     7b) OBJEKT-NAVIGATION — Pfeil-Buttons + Tastatur
+     Springt zum nächsthöheren / nächsttieferen Item in SKY_DATA, bezogen auf
+     die aktuelle Viewport-Mitte. Komplementär zum Teleport (Akt-Sprung).
+     --------------------------------------------------------------------- */
+  const SORTED_BY_ALT = SKY_DATA.slice().sort((a, b) => a.altitude_m - b.altitude_m);
+  const navUpBtn   = document.getElementById("next-object");   // ↑ = höher
+  const navDownBtn = document.getElementById("prev-object");   // ↓ = tiefer
+
+  function currentScrollAlt() {
+    const centerY = window.scrollY + window.innerHeight / 2;
+    const groundPx = TOTAL_HEIGHT - centerY;
+    return groundPxToAlt(Math.max(0, groundPx));
+  }
+
+  function jumpObject(dir) {                       // +1 = höher, -1 = tiefer
+    const alt = currentScrollAlt();
+    const EPS = Math.max(1, alt * 1e-4);           // robust gegen Rundungsfehler in log-skala
+    let target = null;
+    if (dir > 0) {
+      target = SORTED_BY_ALT.find((it) => it.altitude_m > alt + EPS);
+    } else {
+      for (let i = SORTED_BY_ALT.length - 1; i >= 0; i--) {
+        if (SORTED_BY_ALT[i].altitude_m < alt - EPS) { target = SORTED_BY_ALT[i]; break; }
+      }
+    }
+    if (!target) return;
+    const y = Math.max(0, altToY(target.altitude_m) - window.innerHeight / 2);
+    window.scrollTo({ top: y, behavior: prefersReduced() ? "auto" : "smooth" });
+  }
+
+  function updateNavButtons() {
+    const alt = currentScrollAlt();
+    const EPS = Math.max(1, alt * 1e-4);
+    navUpBtn.disabled   = !SORTED_BY_ALT.some((it) => it.altitude_m > alt + EPS);
+    navDownBtn.disabled = !SORTED_BY_ALT.some((it) => it.altitude_m < alt - EPS);
+  }
+
+  navUpBtn.addEventListener("click", () => jumpObject(+1));
+  navDownBtn.addEventListener("click", () => jumpObject(-1));
+
+  document.addEventListener("keydown", (e) => {
+    if (!modal.hidden) return;                     // Modal offen -> dessen Tastatur-Logik gilt
+    const ae = document.activeElement;
+    if (ae && /^(INPUT|TEXTAREA|SELECT)$/.test(ae.tagName)) return;
+    if (e.key === "ArrowUp")   { e.preventDefault(); jumpObject(+1); }
+    if (e.key === "ArrowDown") { e.preventDefault(); jumpObject(-1); }
+  });
+
+  let navTickQueued = false;
+  window.addEventListener("scroll", () => {
+    if (navTickQueued) return;
+    navTickQueued = true;
+    requestAnimationFrame(() => { navTickQueued = false; updateNavButtons(); });
+  }, { passive: true });
+  updateNavButtons();
+
+  /* ---------------------------------------------------------------------
      8) SPRACHE
      --------------------------------------------------------------------- */
   function setLang(newLang) {

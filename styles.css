@@ -3,8 +3,8 @@
    ========================================================================== */
 
 :root{
-  --ui-bg: rgba(10, 18, 35, 0.6);
-  --ui-border: rgba(255,255,255,0.18);
+  --ui-bg: rgba(10, 18, 35, 0.78);       /* opaker -> sichtbar gegen schwarzen Weltraum UND blauen Himmel */
+  --ui-border: rgba(140, 200, 255, 0.45); /* leicht blau angehaucht -> klarer Akzent gegen jeden Hintergrund */
   --ui-text: #eaf2ff;
   --accent: #6fc4ff;
   --font: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
@@ -266,6 +266,7 @@ html:not(.ready) #scene{ visibility: hidden; }
   border-radius: 12px;
   backdrop-filter: blur(8px);
   text-align: right;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.45);   /* klare Abhebung gegen jeden Hintergrund */
 }
 #altimeter .alt-value{
   font-size: 1.5rem;
@@ -360,6 +361,44 @@ html:not(.ready) #scene{ visibility: hidden; }
 }
 #teleport-list li button:hover{ background: rgba(255,255,255,0.12); }
 #teleport-list li button:focus-visible{ outline: 2px solid var(--accent); outline-offset: -2px; }
+
+/* --- Objekt-Navigation (Pfeil-Buttons unten Mitte) --- */
+#object-nav{
+  position: fixed;
+  bottom: 22px;
+  right: 16px;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+#object-nav button{
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--ui-bg);
+  border: 1px solid var(--ui-border);
+  color: var(--ui-text);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+  transition: transform 0.12s ease, background 0.12s ease;
+}
+#object-nav button:hover{
+  background: rgba(30, 50, 95, 0.85);
+  transform: translateY(-2px);
+}
+#object-nav button:focus-visible{
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+#object-nav button:disabled{
+  opacity: 0.35;
+  cursor: default;
+  transform: none;
+}
 
 /* --- Scroll-Hinweis --- */
 #scroll-hint{
@@ -515,6 +554,7 @@ html:not(.ready) #scene{ visibility: hidden; }
   .sky-item.side-right{ left: 72%; }
   #altimeter{ width: 116px; padding: 9px 10px; }
   #altimeter .alt-value{ font-size: 1.15rem; }
+  #object-nav button{ width: 42px; height: 42px; font-size: 1.2rem; }
 }
 
 @media (prefers-reduced-motion: reduce){
