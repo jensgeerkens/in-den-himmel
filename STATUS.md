@@ -1,6 +1,51 @@
 # Projekt-Status & Handoff — "In den Himmel"
 
-> Übergabe-Dokument. Stand: 2026-05-24. Nach `/clear` hier weiterlesen.
+> Übergabe-Dokument. Stand: 2026-05-31. Nach `/clear` hier weiterlesen.
+
+## QUICK-START NÄCHSTE SESSION
+1. `cd C:\Users\geeje\in-den-himmel` und `python -m http.server 8000`
+2. Browser: `http://127.0.0.1:8000/` (Strg+F5 wenn Cache zickt)
+3. Showcase-Klicks zum schnellen Reinkommen:
+   - **`ton618`** — Murmel-Skala (Berlin→Hamburg) + 4-stufige SVG-Treppe
+   - **`milkyway`** — Murmel-Skala (überfordert) + SVG-Treppe Erde→Sonnensystem→Stern→Milchstraße
+   - **`spatz`** — Murmel-Skala zeigt: Spatz wäre kleiner als ein Atom
+4. Aktueller HEAD: `f5f2976` (Größenvergleichs-Komponente). Tag-Marker
+   `pre-size-compare-v1` zeigt auf `ba8fbde` als Sicherheitsnetz.
+5. ZIP-Backup: `C:\Users\geeje\in-den-himmel_backup_2026-05-24_size-compare.zip` (68 MB).
+
+## UPDATE 2026-05-31 — Größenvergleichs-Komponente (committed f5f2976)
+Universelle "Wenn-die-Erde-eine-Murmel-wäre"-Box im Modal + SVG-Treppe für Mega-Objekte.
+
+- **`sizes.js`** (NEU): `SIZES_M[id] = {size_m, ref, note}` für **151 von 155** Objekten
+  aus 11 Kategorien. Bewusst ohne size_m: `darkmatter`, `darkenergy` (Konzepte),
+  `karman` (Linie ohne Ausdehnung).
+- **`script.js` → `buildScaleSection`**: Berechnet `size_m * 7,85e-10` (Erde=1cm)
+  und übersetzt via 22-Bin-Wörterbuch (Nanometer→Sandkorn→Bakterie→Hochhaus→
+  Berlin→Hamburg→…). Distanz nur, wenn skaliert < 5e7 m sinnvoll bleibt;
+  sonst `"echte Distanz sprengt die Murmel-Skala vollständig"`-Hinweis.
+- **`dd_compare.js`** (NEU) + **`buildCompareSection`**: SVG-Treppe für 10 Mega-
+  Objekte (sgrA, m87, holm15a, **ton618**, uyscuti, stephenson218, milkyway,
+  andromeda, laniakea, universum). Pro Stufenpaar zwei Kreise (sqrt-skaliert),
+  Ratio + Pfeil in der Mitte, Highlight-Stufe in orangem Akzent.
+- **`styles.css`**: `.scale-card` (blau) + `.compare-card` (lila) als klar
+  abgegrenzte Boxen oben im Modal, mit box-shadow für Tiefe.
+- **Cache-Bust**: `styles.css?v=5`, `script.js?v=5`, **`dd_compare.js` muss VOR
+  `script.js` geladen werden** (steht in index.html nach den anderen dd_*.js).
+
+## UPDATE 2026-05-31 — Cache-Bust + Modal-Scroll robust (ba8fbde)
+- Bug: alte styles.css gecached → Höhenmesser fast ausserhalb, UI schrumpft.
+  Fix: `styles.css?v=3` (jetzt `?v=5`).
+- `.modal-card`: `overscroll-behavior: contain` (Wheel scrollt nicht mehr durch
+  zur Hauptseite), `dvh` statt `vh` (mobile Address-Bar), iOS-Touch-Trägheit.
+
+## UPDATE 2026-05-31 — Höhenmesser + Objekt-Navigation (8ba117c)
+- `--ui-bg` opaker (0.78), `--ui-border` heller-blau, `#altimeter` mit box-shadow
+  → sichtbar gegen schwarzen Weltraum UND blauen Himmel.
+- **Neue Pfeil-Buttons** `#next-object` (↑) / `#prev-object` (↓) unten rechts.
+  `jumpObject(±1)`: nächst-höheres/tieferes Item in SKY_DATA (Viewport-Mitte).
+- Tasten **ArrowUp**/**ArrowDown** als Shortcut (modal-aware, input-aware).
+- Buttons disabled an den Enden (Boden / Universumsrand), rAF-debounced
+  Live-Update via Scroll-Event.
 
 ## UPDATE 2026-05-24 — Untere Ebene bebildert (29 neue Bilder)
 Pipeline `eval/img-harness/` erweitert um `worklist_lower.json`,
@@ -67,8 +112,39 @@ Lokal: `python -m http.server 8000` im Projektordner → `http://127.0.0.1:8000/
 Schnellcheck im Browser-Console: `document.querySelectorAll('.sky-item').length` → 155.
 
 ## Backups
-- Git: `git log --oneline` (zuletzt `1af5c3d`). Wiederherstellen: `git checkout <hash>`.
-- ZIP: `C:\Users\geeje\in-den-himmel_backup_2026-05-21.zip`.
+- Git: `git log --oneline` (zuletzt `f5f2976`, Größenvergleich). Tag `pre-size-compare-v1`
+  zeigt auf `ba8fbde` als letzter Stand vor dem Größenvergleichs-Block.
+- ZIP (heute): `C:\Users\geeje\in-den-himmel_backup_2026-05-24_size-compare.zip` (68 MB).
+- ZIP (alt):   `C:\Users\geeje\in-den-himmel_backup_2026-05-21.zip`.
+
+## Offene Punkte für nächste Session
+**Erledigt seit 2026-05-22:**
+- ✓ Tier-/Flugzeug-Fotos untere Ebene (29 Bilder, doppelschnepfe + eustace
+  bewusst Emoji)
+- ✓ Höhenmesser-Sichtbarkeit + Objekt-Navigation (↑/↓-Buttons, Pfeil-Tasten)
+- ✓ Modal-Scroll robust (overscroll, dvh, iOS-Touch)
+- ✓ Größenvergleichs-Komponente (Murmel-Skala für 151/155, SVG-Treppe für 10
+  Mega-Objekte)
+
+**Noch offen / Kandidaten:**
+- **Mobile/Touch-Test** (Backlog #4): Banner-Größe, Lane-Abstände, Höhenmesser,
+  Modal-Scroll, Pfeil-Buttons auf Touchscreen. Per Playwright + mobile Viewport.
+- **Wikimedia-Bild-Audit** (Backlog #9): die 10 Wikimedia-Bilder aus Phase 4
+  noch nicht visuell durch das Audit-Harness gelaufen.
+- **Größenvergleichs-Polish**:
+  - Wörterbuch in `script.js` ggf. um lokale-deutsche Anker erweitern (z. B.
+    "Berlin nach Frankfurt", "Größe Saarland") wenn UX-Bedarf da ist.
+  - Mehr Mega-Objekte für `SKY_COMPARE` (aktuell 10) — Kandidaten: betelgeuse,
+    antares, virgocluster, comacluster, sloanwall, herculescorona, quasar3c273.
+  - Phase C aus dem UX-Konzept (interaktiver Vergleichs-Spielplatz mit
+    Objekt A / Objekt B Auswahl) — wäre eigenes Feature.
+- **Faktencheck-Durchlauf** (Backlog #9 alt) über die ~95 kosmischen Einträge.
+- **Bilder noch fehlend**: arrokoth, luhman16, tauceti, fiftyonepeg, rogueplanet,
+  uyscuti, mucephei, us708, laniakea, earendel — via gleicher Multi-Agenten-
+  Pipeline wie für die Tiere/Aircraft (Pattern in `eval/img-harness/`
+  ausreichend dokumentiert).
+- **Performance-Re-Trace** mit chrome-devtools-MCP: nach +29 PNG-Tier-Bildern
+  prüfen, ob LCP/CLS noch im grünen Bereich sind.
 
 ## Optimierung — Fortschritt (alle 5 Phasen FERTIG & verifiziert, Stand 2026-05-21)
 - **Phase 1 — Datenmodell + Hover/Detail-UI:**
