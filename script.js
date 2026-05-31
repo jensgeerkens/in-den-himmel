@@ -364,11 +364,231 @@
   const modalBody = modal.querySelector(".modal-body");
   let modalReturnFocus = null;          // Element, das beim Schließen Fokus zurückbekommt
 
+  /* ---------------------------------------------------------------------
+     6c) GRÖSSEN-SKALA — "Wenn die Erde eine Murmel wäre…"
+     Universelle Vergleichs-Box. Erscheint im Modal als erste Sektion,
+     sobald SIZES_M[id] gepflegt ist. Skaliert size_m und altitude_m
+     auf den Maßstab Erde=1cm und übersetzt in Alltags-Anker.
+     --------------------------------------------------------------------- */
+  function _scaleLookup(m, lg, table) {
+    const loc = lg === "de" ? "de-DE" : "en-US";
+    const num = (x, d = 2) => x.toLocaleString(loc, { maximumFractionDigits: d });
+    for (const [maxV, phrase] of table) {
+      if (m < maxV) return phrase(m, num, lg);
+    }
+    return table[table.length - 1][1](m, num, lg);
+  }
+
+  // Wörterbuch für GRÖSSEN ("…wäre wie …")
+  const SIZE_PHRASES = [
+    [1e-9,  (m, num, lg) => lg === "de" ? `unsichtbar klein (~${num(m * 1e9, 2)} Nanometer)` : `invisibly small (~${num(m * 1e9, 2)} nm)`],
+    [1e-7,  (m, num, lg) => lg === "de" ? `kleiner als sichtbares Licht (~${num(m * 1e9, 0)} nm)` : `smaller than visible light (~${num(m * 1e9, 0)} nm)`],
+    [1e-5,  (m, num, lg) => lg === "de" ? `wie eine Bakterie (~${num(m * 1e6, 1)} µm)` : `like a bacterium (~${num(m * 1e6, 1)} µm)`],
+    [1e-4,  (m, num, lg) => lg === "de" ? `wie ein Pollenkorn (~${num(m * 1e6, 0)} µm)` : `like a pollen grain (~${num(m * 1e6, 0)} µm)`],
+    [1e-3,  (m, num, lg) => lg === "de" ? `wie eine Hautzelle (~${num(m * 1000, 2)} mm)` : `like a skin cell (~${num(m * 1000, 2)} mm)`],
+    [5e-3,  (m, num, lg) => lg === "de" ? `wie ein Sandkorn (${num(m * 1000, 1)} mm)` : `like a grain of sand (${num(m * 1000, 1)} mm)`],
+    [0.02,  (m, num, lg) => lg === "de" ? `wie eine Erbse (${num(m * 1000, 0)} mm)` : `like a pea (${num(m * 1000, 0)} mm)`],
+    [0.06,  (m, num, lg) => lg === "de" ? `wie ein Tischtennisball (${num(m * 100, 1)} cm)` : `like a ping-pong ball (${num(m * 100, 1)} cm)`],
+    [0.15,  (m, num, lg) => lg === "de" ? `wie ein Tennisball (${num(m * 100, 0)} cm)` : `like a tennis ball (${num(m * 100, 0)} cm)`],
+    [0.5,   (m, num, lg) => lg === "de" ? `wie ein Fußball (${num(m * 100, 0)} cm)` : `like a football (${num(m * 100, 0)} cm)`],
+    [2,     (m, num, lg) => lg === "de" ? `wie ein Beach Ball (${num(m, 2)} m)` : `like a beach ball (${num(m, 2)} m)`],
+    [10,    (m, num, lg) => lg === "de" ? `wie ein Auto (${num(m, 1)} m)` : `like a car (${num(m, 1)} m)`],
+    [30,    (m, num, lg) => lg === "de" ? `wie ein Reisebus (${num(m, 0)} m)` : `like a bus (${num(m, 0)} m)`],
+    [100,   (m, num, lg) => lg === "de" ? `wie ein Hochhaus (${num(m, 0)} m)` : `like a tall building (${num(m, 0)} m)`],
+    [500,   (m, num, lg) => lg === "de" ? `wie ein Wolkenkratzer (${num(m, 0)} m)` : `like a skyscraper (${num(m, 0)} m)`],
+    [5e3,   (m, num, lg) => lg === "de" ? `wie ein Stadtviertel (${num(m / 1000, 2)} km)` : `like a city block (${num(m / 1000, 2)} km)`],
+    [50e3,  (m, num, lg) => lg === "de" ? `wie eine Großstadt (${num(m / 1000, 0)} km)` : `like a large city (${num(m / 1000, 0)} km)`],
+    [200e3, (m, num, lg) => lg === "de" ? `wie ein Bundesland (~${num(m / 1000, 0)} km)` : `like a province (~${num(m / 1000, 0)} km)`],
+    [700e3, (m, num, lg) => lg === "de" ? `Strecke Berlin → Hamburg (~${num(m / 1000, 0)} km)` : `Berlin to Hamburg (~${num(m / 1000, 0)} km)`],
+    [3e6,   (m, num, lg) => lg === "de" ? `Mitteleuropa quer (~${num(m / 1000, 0)} km)` : `across central Europe (~${num(m / 1000, 0)} km)`],
+    [15e6,  (m, num, lg) => lg === "de" ? `1/3 Erdumfang (~${num(m / 1000, 0)} km)` : `1/3 Earth's circumference (~${num(m / 1000, 0)} km)`],
+    [1e9,   (m, num, lg) => lg === "de" ? `~${num(m / 1e6, 1)} Mio km — Erdoberfläche-Skala gesprengt!` : `~${num(m / 1e6, 1)} million km — beyond Earth scale!`],
+    [Infinity, (m, num, lg) => lg === "de" ? `~${num(m / 1e9, 2)} Mrd km — selbst die Skala bricht zusammen` : `~${num(m / 1e9, 2)} billion km — even the scale breaks down`],
+  ];
+
+  // Wörterbuch für DISTANZEN ("…wäre … entfernt")
+  const DIST_PHRASES = [
+    [1e-3,  (m, num, lg) => lg === "de" ? `direkt anliegend (${num(m * 1000, 2)} mm)` : `touching (${num(m * 1000, 2)} mm)`],
+    [0.05,  (m, num, lg) => lg === "de" ? `in der Hand (${num(m * 100, 1)} cm)` : `in your hand (${num(m * 100, 1)} cm)`],
+    [1,     (m, num, lg) => lg === "de" ? `auf dem Tisch (${num(m * 100, 0)} cm)` : `on the table (${num(m * 100, 0)} cm)`],
+    [10,    (m, num, lg) => lg === "de" ? `im Zimmer (${num(m, 1)} m)` : `across the room (${num(m, 1)} m)`],
+    [100,   (m, num, lg) => lg === "de" ? `wie ein Fußballfeld weit (${num(m, 0)} m)` : `a football field away (${num(m, 0)} m)`],
+    [1500,  (m, num, lg) => lg === "de" ? `wenige Gehminuten weit (${num(m, 0)} m)` : `a short walk away (${num(m, 0)} m)`],
+    [15e3,  (m, num, lg) => lg === "de" ? `Großstadt-quer (${num(m / 1000, 1)} km)` : `across a city (${num(m / 1000, 1)} km)`],
+    [200e3, (m, num, lg) => lg === "de" ? `Nachbarbundesland (${num(m / 1000, 0)} km)` : `to the next region (${num(m / 1000, 0)} km)`],
+    [3e6,   (m, num, lg) => lg === "de" ? `Mitteleuropa weit (${num(m / 1000, 0)} km)` : `across central Europe (${num(m / 1000, 0)} km)`],
+    [4e7,   (m, num, lg) => lg === "de" ? `einmal um die Erde (${num(m / 1000, 0)} km)` : `around the Earth (${num(m / 1000, 0)} km)`],
+    [Infinity, (m, num, lg) => lg === "de" ? `~${num(m / 1e6, 1)} Mio km — jenseits aller Alltagsentfernungen` : `~${num(m / 1e6, 1)} million km — beyond everyday scale`],
+  ];
+
+  function formatScaledLength(m, lg) { return _scaleLookup(m, lg, SIZE_PHRASES); }
+  function formatScaledDistance(m, lg) { return _scaleLookup(m, lg, DIST_PHRASES); }
+
+  // Größen-Treppe als SVG-Paar-Sequenz (für ausgewählte Mega-Objekte aus dd_compare.js).
+  // Pro Schritt-Paar (prev, curr) ein Mini-SVG mit zwei proportional skalierten Kreisen.
+  // Sqrt-Skala für visuell angenehme Größenverhältnisse, Mindestradius 1px gegen "verschwinden".
+  function buildCompareSection(it) {
+    if (typeof SKY_COMPARE === "undefined") return null;
+    const data = SKY_COMPARE[it.id];
+    if (!data || !data.steps || data.steps.length < 2) return null;
+
+    const SVG_NS = "http://www.w3.org/2000/svg";
+    const W = 380, H = 100;
+    const PAD = 14;
+    const MAX_R = 36;
+    const MIN_R = 1.5;
+
+    const sec = document.createElement("section");
+    sec.className = "compare-card";
+    const h = document.createElement("h3");
+    h.className = "compare-card-title";
+    h.textContent = lang === "de" ? "Größen-Treppe" : "Size ladder";
+    sec.appendChild(h);
+
+    const loc = lang === "de" ? "de-DE" : "en-US";
+    const fmtRatio = (r) => {
+      const n = r >= 1000 ? Math.round(r / 100) * 100 : Math.round(r);
+      return n.toLocaleString(loc) + (lang === "de" ? "×" : "×");
+    };
+
+    for (let i = 0; i < data.steps.length - 1; i++) {
+      const a = data.steps[i], b = data.steps[i + 1];
+      const ratio = b.size_m / a.size_m;
+      // sqrt-Skala: bei ratio=100 sieht prev ~10% von curr; bei ratio=10.000 sieht prev ~1% von curr.
+      const bigR = MAX_R;
+      const smallR = Math.max(MIN_R, MAX_R / Math.sqrt(ratio));
+
+      const row = document.createElement("div");
+      row.className = "compare-step";
+
+      const svg = document.createElementNS(SVG_NS, "svg");
+      svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+      svg.setAttribute("role", "img");
+      svg.setAttribute("aria-label",
+        (lang === "de" ? `${a.label.de} im Vergleich zu ${b.label.de}, ${fmtRatio(ratio)} größer`
+                       : `${a.label.en} compared to ${b.label.en}, ${fmtRatio(ratio)} larger`));
+
+      const circA = document.createElementNS(SVG_NS, "circle");
+      circA.setAttribute("cx", PAD + MAX_R);
+      circA.setAttribute("cy", H / 2 - 6);
+      circA.setAttribute("r", smallR);
+      circA.setAttribute("fill", "rgba(150, 205, 255, 0.85)");
+      circA.setAttribute("stroke", "rgba(255,255,255,0.6)");
+      circA.setAttribute("stroke-width", "0.8");
+      svg.appendChild(circA);
+
+      const labelA = document.createElementNS(SVG_NS, "text");
+      labelA.setAttribute("x", PAD + MAX_R);
+      labelA.setAttribute("y", H - 8);
+      labelA.setAttribute("text-anchor", "middle");
+      labelA.setAttribute("fill", "rgba(220,235,255,0.85)");
+      labelA.setAttribute("font-size", "11");
+      labelA.textContent = a.label[lang];
+      svg.appendChild(labelA);
+
+      // Ratio-Text Mitte
+      const ratioTxt = document.createElementNS(SVG_NS, "text");
+      ratioTxt.setAttribute("x", W / 2);
+      ratioTxt.setAttribute("y", H / 2 - 4);
+      ratioTxt.setAttribute("text-anchor", "middle");
+      ratioTxt.setAttribute("fill", "var(--accent)");
+      ratioTxt.setAttribute("font-size", "14");
+      ratioTxt.setAttribute("font-weight", "700");
+      ratioTxt.textContent = fmtRatio(ratio);
+      svg.appendChild(ratioTxt);
+
+      // Pfeil
+      const arrow = document.createElementNS(SVG_NS, "text");
+      arrow.setAttribute("x", W / 2);
+      arrow.setAttribute("y", H / 2 + 14);
+      arrow.setAttribute("text-anchor", "middle");
+      arrow.setAttribute("fill", "rgba(180,210,255,0.55)");
+      arrow.setAttribute("font-size", "12");
+      arrow.textContent = "→";
+      svg.appendChild(arrow);
+
+      const circB = document.createElementNS(SVG_NS, "circle");
+      circB.setAttribute("cx", W - PAD - MAX_R);
+      circB.setAttribute("cy", H / 2 - 6);
+      circB.setAttribute("r", bigR);
+      circB.setAttribute("fill", b.highlight ? "rgba(255, 180, 90, 0.85)" : "rgba(150, 205, 255, 0.85)");
+      circB.setAttribute("stroke", "rgba(255,255,255,0.6)");
+      circB.setAttribute("stroke-width", "0.8");
+      svg.appendChild(circB);
+
+      const labelB = document.createElementNS(SVG_NS, "text");
+      labelB.setAttribute("x", W - PAD - MAX_R);
+      labelB.setAttribute("y", H - 8);
+      labelB.setAttribute("text-anchor", "middle");
+      labelB.setAttribute("fill", b.highlight ? "rgba(255,210,140,1)" : "rgba(220,235,255,0.95)");
+      labelB.setAttribute("font-size", "11");
+      labelB.setAttribute("font-weight", b.highlight ? "700" : "400");
+      labelB.textContent = b.label[lang];
+      svg.appendChild(labelB);
+
+      row.appendChild(svg);
+      sec.appendChild(row);
+    }
+    return sec;
+  }
+
+  function buildScaleSection(it) {
+    const data = (typeof SIZES_M !== "undefined") ? SIZES_M[it.id] : null;
+    if (!data) return null;
+
+    const SCALE = 1e-2 / EARTH_DIAMETER_M;             // 1 cm pro Erddurchmesser
+    const scaledSize = data.size_m * SCALE;
+    const scaledDist = it.altitude_m * SCALE;
+
+    const sec = document.createElement("section");
+    sec.className = "scale-card";
+
+    const h = document.createElement("h3");
+    h.className = "scale-card-title";
+    h.textContent = lang === "de"
+      ? "Wenn die Erde so groß wäre wie eine Murmel (1 cm) …"
+      : "If Earth were the size of a marble (1 cm) …";
+    sec.appendChild(h);
+
+    const addRow = (labelTxt, valueTxt, extraCls) => {
+      const row = document.createElement("div");
+      row.className = "scale-row" + (extraCls ? " " + extraCls : "");
+      const lbl = document.createElement("span");
+      lbl.className = "scale-row-label";
+      lbl.textContent = labelTxt;
+      const val = document.createElement("span");
+      val.className = "scale-row-value";
+      val.textContent = valueTxt;
+      row.append(lbl, val);
+      sec.appendChild(row);
+    };
+
+    addRow(data.note[lang], formatScaledLength(scaledSize, lang));
+
+    if (scaledDist > 0 && scaledDist < 5e7) {
+      addRow(lang === "de" ? "Distanz von uns" : "Distance from us", formatScaledDistance(scaledDist, lang));
+    } else if (scaledDist >= 5e7) {
+      const note = document.createElement("div");
+      note.className = "scale-row--note";
+      note.textContent = lang === "de"
+        ? "Die echte Distanz sprengt die Murmel-Skala vollständig."
+        : "The actual distance breaks the marble scale completely.";
+      sec.appendChild(note);
+    }
+    return sec;
+  }
+
   // Baut den ausführlichen Rumpf: Beschreibungs-Absätze + kategorisierte Key-Fact-Gruppen.
   // Fällt sauber auf `fact` zurück, wenn kein SKY_DETAILS-Eintrag existiert.
   function renderModalBody(it) {
     const det = (typeof SKY_DETAILS !== "undefined") ? SKY_DETAILS[it.id] : null;
     const frag = document.createDocumentFragment();
+
+    // GRÖSSEN-SKALA + ggf. GRÖSSEN-TREPPE als erste Blöcke (wenn vorhanden)
+    const scaleBox = buildScaleSection(it);
+    if (scaleBox) frag.appendChild(scaleBox);
+    const compareBox = buildCompareSection(it);
+    if (compareBox) frag.appendChild(compareBox);
 
     const paragraphs = det && det.desc && det.desc[lang] && det.desc[lang].length
       ? det.desc[lang]

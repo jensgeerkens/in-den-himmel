@@ -490,6 +490,75 @@ html:not(.ready) #scene{ visibility: hidden; }
 .modal-meta{ margin: 14px 0 0; font-size: 0.8rem; color: rgba(255,255,255,0.5); }
 .modal-meta a{ color: var(--accent); }
 
+/* --- Größen-Skala (Murmel-Vergleich) --- */
+.scale-card{
+  margin: 0 0 18px;
+  padding: 14px 16px;
+  background: linear-gradient(160deg, rgba(40, 70, 130, 0.55), rgba(20, 36, 78, 0.55));
+  border: 1px solid rgba(140, 200, 255, 0.35);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+}
+.scale-card-title{
+  margin: 0 0 10px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.scale-row{
+  display: grid;
+  grid-template-columns: minmax(120px, auto) 1fr;
+  column-gap: 14px;
+  row-gap: 4px;
+  margin: 6px 0;
+  align-items: baseline;
+}
+.scale-row-label{
+  color: rgba(255,255,255,0.7);
+  font-size: 0.85rem;
+}
+.scale-row-value{
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+.scale-row--note{
+  display: block;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.6);
+  font-style: italic;
+  margin-top: 8px;
+}
+
+/* --- Größen-Treppe (SVG-Paar-Sequenz für Mega-Objekte) --- */
+.compare-card{
+  margin: 0 0 18px;
+  padding: 14px 14px 10px;
+  background: linear-gradient(160deg, rgba(50, 30, 80, 0.45), rgba(20, 16, 50, 0.55));
+  border: 1px solid rgba(200, 160, 255, 0.35);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+}
+.compare-card-title{
+  margin: 0 0 8px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(220, 190, 255, 0.95);
+}
+.compare-step{
+  margin: 4px 0;
+}
+.compare-step svg{
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 /* --- Hover-Popup (kompakte Vorschau) --- */
 #hover-popup{
   position: fixed;
