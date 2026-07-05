@@ -5,12 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>In den Himmel — Wie hoch fliegen Tiere?</title>
   <meta name="description" content="Scrolle vom Boden bis ins Weltall und entdecke fliegende Tiere, Flugzeuge und Raumfahrt auf ihrer wahren Höhe.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=11">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=11">
+  <link rel="apple-touch-icon" href="favicon-180.png?v=11">
+  <meta name="theme-color" content="#060c20">
+
+  <!-- Open Graph / Twitter (Texte werden bei Sprachwechsel per JS mitgezogen) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="In den Himmel">
+  <meta property="og:url" content="https://in-den-himmel.pages.dev/">
+  <meta property="og:title" content="In den Himmel — Wie hoch fliegen Tiere?">
+  <meta property="og:description" content="Scrolle vom Boden bis ins Weltall und entdecke fliegende Tiere, Flugzeuge und Raumfahrt auf ihrer wahren Höhe.">
+  <meta property="og:image" content="https://in-den-himmel.pages.dev/og-image.png?v=11">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="In den Himmel — Wie hoch fliegen Tiere?">
+  <meta name="twitter:description" content="Scrolle vom Boden bis ins Weltall und entdecke fliegende Tiere, Flugzeuge und Raumfahrt auf ihrer wahren Höhe.">
+  <meta name="twitter:image" content="https://in-den-himmel.pages.dev/og-image.png?v=11">
   <script>
     /* Verhindert, dass der Browser eine alte Scrollposition wiederherstellt –
        wir starten kontrolliert am Boden (ganz unten). */
     if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
   </script>
-  <link rel="stylesheet" href="styles.css?v=5">
+  <link rel="stylesheet" href="styles.css?v=11">
 </head>
 <body class="is-loading">
 
@@ -22,9 +42,40 @@
     <div id="atmosphere-layer"></div>
     <div id="section-layer"></div>
     <div id="cloud-layer"></div>
+    <div id="tick-layer"></div>
     <div id="milestone-layer"></div>
+    <div id="gapfact-layer"></div>
     <div id="objects-layer"></div>
-    <div id="ground"><span class="ground-label" data-i18n="ground">Meereshöhe · 0 m</span></div>
+    <div id="karman-layer"></div>
+    <div id="finale-layer"></div>
+    <div id="ground">
+      <svg id="ground-scene" viewBox="0 0 1440 300" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+        <!-- ferne Hügel -->
+        <path class="gs-hills" d="M0,150 C180,120 320,175 500,150 C700,120 860,178 1040,152 C1220,128 1360,168 1440,150 L1440,300 L0,300 Z"/>
+        <!-- Baumreihe am Horizont -->
+        <g class="gs-trees">
+          <path d="M120,168 q10,-42 20,0 z"/><path d="M150,170 q13,-52 26,0 z"/>
+          <path d="M188,168 q9,-38 18,0 z"/><path d="M1240,170 q12,-48 24,0 z"/>
+          <path d="M1272,168 q10,-40 20,0 z"/><path d="M1300,171 q13,-54 26,0 z"/>
+        </g>
+        <!-- Häuserzeile -->
+        <g class="gs-houses">
+          <path d="M560,182 h58 v40 h-58 z M560,182 l29,-24 l29,24 z"/>
+          <path d="M628,192 h44 v30 h-44 z M628,192 l22,-18 l22,18 z"/>
+          <path d="M760,188 h50 v34 h-50 z M760,188 l25,-20 l25,20 z"/>
+          <rect x="734" y="150" width="7" height="72"/><!-- Kirchturm -->
+          <path d="M730,150 l7,-20 l7,20 z"/>
+        </g>
+        <!-- Wiese vorn -->
+        <path class="gs-grass" d="M0,206 C240,196 480,214 720,206 C960,198 1200,214 1440,204 L1440,300 L0,300 Z"/>
+        <!-- Mensch als Maßstab -->
+        <g class="gs-person" transform="translate(392,196)">
+          <circle cx="0" cy="0" r="4.4"/>
+          <path d="M0,4 L0,20 M0,8 L-7,15 M0,8 L7,15 M0,20 L-6,32 M0,20 L6,32" stroke-width="3" stroke-linecap="round" fill="none"/>
+        </g>
+      </svg>
+      <span class="ground-label" data-i18n="ground">Meereshöhe · 0 m</span>
+    </div>
   </main>
 
   <!-- Höhenmesser (fixiert) -->
@@ -57,43 +108,81 @@
     <button type="button" id="prev-object" title="Voriges Objekt nach unten (Pfeil ↓)" aria-label="Voriges Objekt tiefer">↓</button>
   </div>
 
+  <!-- Vertikale Journey-Bar (Fortschritt + klickbare Zonen) -->
+  <nav id="journey-bar" aria-label="Reise-Fortschritt">
+    <div class="jb-track" id="jb-track"></div>
+    <div class="jb-dot" id="jb-dot" aria-hidden="true"></div>
+  </nav>
+
+  <!-- Warp-Overlay für Teleport-Übergänge (rein dekorativ) -->
+  <div id="warp-overlay" aria-hidden="true"></div>
+
   <!-- Hover-Popup (ein wiederverwendetes Element, per JS befüllt/positioniert) -->
-  <div id="hover-popup" hidden aria-hidden="true"></div>
+  <div id="hover-popup" hidden role="tooltip"></div>
 
   <!-- Detail-Modal -->
   <div id="detail-modal" hidden>
     <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-name-h">
       <button class="modal-close" aria-label="Schließen">×</button>
-      <div class="modal-emoji" aria-hidden="true"></div>
-      <h2 class="modal-name" id="modal-name-h"></h2>
-      <p class="modal-sci"></p>
-      <p class="modal-alt"></p>
-      <div class="modal-body"></div>
-      <p class="modal-meta"></p>
+      <div class="modal-hero">
+        <img class="modal-hero-img" alt="" hidden>
+        <div class="modal-emoji" aria-hidden="true"></div>
+      </div>
+      <div class="modal-content">
+        <h2 class="modal-name" id="modal-name-h"></h2>
+        <p class="modal-sci"></p>
+        <p class="modal-alt"></p>
+        <p class="modal-fact"></p>
+        <div class="modal-body"></div>
+        <p class="modal-meta"></p>
+      </div>
+      <div class="modal-toolbar">
+        <button type="button" class="modal-prev" aria-label="Voriges Objekt (tiefer)">‹ <span class="mt-label">Tiefer</span></button>
+        <button type="button" class="modal-share" aria-label="Link teilen"><span class="mt-label">Teilen</span></button>
+        <button type="button" class="modal-next" aria-label="Nächstes Objekt (höher)"><span class="mt-label">Höher</span> ›</button>
+      </div>
     </div>
   </div>
 
   <!-- Start-Overlay (deckt den Init-Sprung ab) -->
   <div id="start-overlay">
+    <!-- Motiv-Silhouette: Aufstieg vom Boden in den Himmel -->
+    <svg id="hero-scene" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+      <circle class="hs-sun" cx="1120" cy="230" r="90"/>
+      <path class="hs-hill hs-hill-back" d="M0,720 C260,660 520,742 780,700 C1040,660 1240,730 1440,700 L1440,900 L0,900 Z"/>
+      <g class="hs-trees">
+        <path d="M180,700 q16,-70 32,0 z"/><path d="M228,704 q20,-86 40,0 z"/>
+        <path d="M282,700 q15,-64 30,0 z"/><path d="M1180,704 q18,-78 36,0 z"/>
+        <path d="M1224,700 q20,-88 40,0 z"/>
+      </g>
+      <path class="hs-hill hs-hill-front" d="M0,780 C300,740 600,806 900,772 C1140,746 1300,796 1440,776 L1440,900 L0,900 Z"/>
+      <g class="hs-person" transform="translate(470,742)">
+        <circle cx="0" cy="0" r="9"/>
+        <path d="M0,9 L0,42 M0,17 L-15,32 M0,17 L15,32 M0,42 L-13,68 M0,42 L13,68" stroke-width="6.5" stroke-linecap="round" fill="none"/>
+      </g>
+      <g class="hs-birds" fill="none" stroke-width="3.5" stroke-linecap="round">
+        <path d="M560,300 q14,-14 28,0 q14,-14 28,0"/>
+        <path d="M700,240 q11,-11 22,0 q11,-11 22,0"/>
+        <path d="M640,360 q9,-9 18,0 q9,-9 18,0"/>
+      </g>
+    </svg>
     <div class="overlay-inner">
       <h1 data-i18n="title">In den Himmel</h1>
-      <p data-i18n="subtitle">Vom Boden bis ins Weltall — fliegende Tiere, Flugzeuge und Raumfahrt auf ihrer wahren Höhe.</p>
+      <p data-i18n="subtitle">Vom Boden bis ins Weltall: fliegende Tiere, Flugzeuge und Raumfahrt auf ihrer wahren Höhe.</p>
       <button id="start-btn" data-i18n="start">Abheben ↑</button>
       <p class="overlay-hint" data-i18n="tapHint">Tipp: Objekt antippen oder anklicken für Details.</p>
+      <p class="overlay-keys" data-i18n="keysHint">Tastatur: ↑ / ↓ springen von Objekt zu Objekt, ← / → blättern im geöffneten Detail.</p>
       <p class="overlay-credit" data-i18n="inspired">Inspiriert von neal.fun/deep-sea</p>
     </div>
   </div>
 
-  <script src="data.js"></script>
-  <script src="sizes.js"></script>
-  <script src="data_details.js"></script>
-  <script src="dd_life.js"></script>
-  <script src="dd_tech1.js"></script>
-  <script src="dd_space.js"></script>
-  <script src="dd_solar.js"></script>
-  <script src="dd_stellar.js"></script>
-  <script src="dd_deep.js"></script>
-  <script src="dd_compare.js"></script>
-  <script src="script.js?v=5"></script>
+  <!-- Kern: für den ersten Frame nötig -->
+  <script src="data.js?v=11"></script>
+  <script src="images/manifest.js?v=11"></script>
+  <script src="visuals.js?v=11"></script>
+  <script src="sizes.js?v=11"></script>
+  <!-- Detail-Daten (dd_*.js + data_details.js, ~390 KB) werden erst NACH init()
+       dynamisch nachgeladen (siehe loadDetailData() in script.js). -->
+  <script src="script.js?v=11"></script>
 </body>
 </html>

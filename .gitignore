@@ -17,3 +17,6 @@ __pycache__/
 
 # Audit-Scratch (Daten-Dump, derivativ)
 eval/merged.json
+
+# Wrangler-Cache (lokal)
+.wrangler/

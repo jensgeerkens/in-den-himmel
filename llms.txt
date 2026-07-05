@@ -1,0 +1,24 @@
+# In den Himmel / Into the Sky
+
+> Eine zweisprachige (DE/EN) Vanilla-JS-Scroll-Erfahrung: Man scrollt vom Boden bis zum
+> Rand des beobachtbaren Universums und begegnet 155 Objekten (fliegende Tiere, Flugzeuge,
+> Raumfahrt, Himmelskörper) auf ihrer wahren, maßstabsgetreuen Höhe. Ohne Framework,
+> ohne Build-Step, komplett statisch auf Cloudflare Pages.
+
+> A bilingual (DE/EN) vanilla-JS scroll experience: scroll from the ground to the edge of
+> the observable universe and meet 155 objects (flying animals, aircraft, spacecraft,
+> celestial bodies) at their true, to-scale altitude. No framework, no build step, fully
+> static on Cloudflare Pages.
+
+## Links
+
+- [Live-Seite / Live site](https://in-den-himmel.pages.dev/)
+- [Deutsch](https://in-den-himmel.pages.dev/?lang=de)
+- [English](https://in-den-himmel.pages.dev/?lang=en)
+
+## Über das Projekt / About
+
+- Skala: unten linear in Metern, oben logarithmisch bis 46,5 Mrd. Lichtjahre.
+- Alle Höhen und Größen sind wissenschaftlich belegt; Quellen sind pro Objekt im Detail-Modal verlinkt.
+- Barrierefrei (WCAG AA), respektiert `prefers-reduced-motion`, tastaturbedienbar (↑/↓ springen zwischen Objekten).
+- Diese Seite ist ein öffentliches Showcase dafür, wie gut KI (Claude) vollständige Webseiten baut.
