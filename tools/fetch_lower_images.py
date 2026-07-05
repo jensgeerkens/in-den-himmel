@@ -26,7 +26,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 HARNESS = ROOT / "eval" / "img-harness"
 RAW = ROOT / "images" / "raw"
-UA = "in-den-himmel/1.0 (educational/non-commercial; contact: geejens@googlemail.com)"
+UA = "in-den-himmel/1.0 (educational/non-commercial; contact: jens@geerkens.ai)"
 
 def load_cands() -> dict[str, list[dict]]:
     """Liefert {id: [candidate, ...]} aus beiden batch-Dateien zusammen."""
