@@ -66,3 +66,6 @@ Pro Eintrag in `data.js` im Feld `source` verlinkt. Wichtigste:
 - Hummel — Royal Society Biology Letters 2014 (Unterdruckkammer, Laborwert)
 - Marienkäfer — PLOS ONE (Rothamsted-Radar)
 - Höhenrekorde Luftfahrt — Wikipedia "List of flight altitude records"
+
+## Schriften
+- Space Grotesk (Display-Schrift, self-hosted WOFF2) — Florian Karsten, SIL Open Font License 1.1

@@ -86,14 +86,29 @@
 
   const I18N = {
     title:      { de: "In den Himmel", en: "Into the Sky" },
-    subtitle:   { de: "Vom Boden bis ins Weltall — fliegende Tiere, Flugzeuge und Raumfahrt auf ihrer wahren Höhe.",
-                  en: "From the ground to outer space — flying animals, aircraft and spacecraft at their true altitude." },
+    subtitle:   { de: "Vom Boden bis ins Weltall: fliegende Tiere, Flugzeuge und Raumfahrt auf ihrer wahren Höhe.",
+                  en: "From the ground to outer space: flying animals, aircraft and spacecraft at their true altitude." },
     start:      { de: "Abheben ↑", en: "Lift off ↑" },
     inspired:   { de: "Inspiriert von neal.fun/deep-sea", en: "Inspired by neal.fun/deep-sea" },
     jump:       { de: "Springe zu …", en: "Jump to …" },
     scrollHint: { de: "↑ Scrolle nach oben, um aufzusteigen", en: "↑ Scroll up to ascend" },
     tapHint:    { de: "Tipp: Objekt antippen oder anklicken für Details.", en: "Tip: tap or click any object for details." },
     ground:     { de: "Meereshöhe · 0 m", en: "Sea level · 0 m" },
+  };
+
+  /* Texte für die inszenierten Momente (Kármán-Payoff + Finale). */
+  const MOMENTS = {
+    karmanKicker:  { de: "100 Kilometer", en: "100 kilometres" },
+    karmanTitle:   { de: "Die Grenze zum Weltraum", en: "The Edge of Space" },
+    karmanSub:     { de: "Kármán-Linie. Ab hier trägt die Luft keine Flügel mehr, nur noch Bahnen.",
+                     en: "The Kármán line. Beyond it air no longer carries wings, only orbits." },
+    finaleKicker:  { de: "Ende der Reise", en: "End of the journey" },
+    finaleTitle:   { de: "46,5 Milliarden Lichtjahre", en: "46.5 billion light-years" },
+    finaleText:    { de: "Weiter sehen wir nicht. Nicht weil das Universum hier endet, sondern weil das Licht nicht älter ist als 13,8 Milliarden Jahre. Es hatte schlicht noch keine Zeit, uns von weiter draußen zu erreichen.",
+                     en: "This is as far as we can see. Not because the universe ends here, but because light is no older than 13.8 billion years. It simply has not had time to reach us from farther out." },
+    finaleStatObj: { de: "Objekte auf der Reise", en: "objects on the way" },
+    finaleStatSpan:{ de: "vom Boden bis zum Rand", en: "from the ground to the edge" },
+    backToGround:  { de: "Zurück zum Boden ↓", en: "Back to the ground ↓" },
   };
 
   function applyStaticI18n() {
@@ -114,6 +129,8 @@
   const cloudLayer= document.getElementById("cloud-layer");
   const msLayer   = document.getElementById("milestone-layer");
   const secLayer  = document.getElementById("section-layer");
+  const karmanLayer = document.getElementById("karman-layer");
+  const finaleLayer = document.getElementById("finale-layer");
 
   const LANE_X = [50, 30, 70, 16, 84];     // Prozent: Mitte zuerst, dann auffächern
   const ITEM_H = 215;                       // ungefähre Item-Höhe inkl. Beschriftung
@@ -207,12 +224,87 @@
     for (const s of SECTIONS) {
       if (s.from <= 0) continue;                 // "Atmosphäre" am Boden braucht kein Banner
       const el = document.createElement("div");
-      el.className = "section-banner";
+      el.className = "section-banner" + (s.from === KARMAN_ALT ? " section-karman" : "");
       el.style.top = altToY(s.from) + "px";
       el.innerHTML = `<span class="section-title">${s.name[lang]}</span>`;
       frag.appendChild(el);
     }
     secLayer.replaceChildren(frag);
+  }
+
+  /* Kármán-Payoff bei 100 km: Erdkrümmung als flacher SVG-Bogen mit blauer
+     Atmosphären-Linie + Airglow. Rein dekorativ, im Szenen-Layer verankert. */
+  const KARMAN_ALT = 100000;
+  function buildKarman() {
+    const y = altToY(KARMAN_ALT);
+    const wrap = document.createElement("div");
+    wrap.className = "karman-scene";
+    wrap.style.top = y + "px";                     // die 100-km-Linie liegt am oberen Rand des Bogens
+    wrap.setAttribute("aria-hidden", "true");
+    wrap.innerHTML = `
+      <svg class="karman-svg" viewBox="0 0 1440 520" preserveAspectRatio="xMidYMin slice" focusable="false">
+        <defs>
+          <radialGradient id="karmanEarth" cx="50%" cy="150%" r="90%">
+            <stop offset="0%" stop-color="#0a1f4a"/>
+            <stop offset="60%" stop-color="#040c22"/>
+            <stop offset="100%" stop-color="#02060f"/>
+          </radialGradient>
+          <linearGradient id="karmanGlow" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="rgba(90,170,255,0)"/>
+            <stop offset="55%" stop-color="rgba(90,175,255,0.28)"/>
+            <stop offset="82%" stop-color="rgba(150,220,255,0.55)"/>
+            <stop offset="100%" stop-color="rgba(120,255,215,0.30)"/>
+          </linearGradient>
+        </defs>
+        <!-- Atmosphären-Glow über der Kante -->
+        <path d="M0,300 C360,214 1080,214 1440,300 L1440,470 C1080,398 360,398 0,470 Z" fill="url(#karmanGlow)"/>
+        <!-- Erdkörper (gekrümmt) -->
+        <path d="M0,318 C360,232 1080,232 1440,318 L1440,520 L0,520 Z" fill="url(#karmanEarth)"/>
+        <!-- dünne blaue Atmosphären-Linie auf der Kante -->
+        <path d="M0,318 C360,232 1080,232 1440,318" fill="none" stroke="#9fd8ff" stroke-width="2.4" stroke-linecap="round" opacity="0.9"/>
+        <!-- feiner Airglow-Faden knapp darüber -->
+        <path d="M0,300 C360,214 1080,214 1440,300" fill="none" stroke="rgba(150,255,215,0.5)" stroke-width="1.2"/>
+      </svg>`;
+    karmanLayer.replaceChildren(wrap);
+  }
+
+  /* Finale am Universumsrand: CMB-Textur + große zweisprachige Schluss-Card. */
+  function buildFinale() {
+    const topAlt = SECTIONS[SECTIONS.length - 1].to;      // 50 Mrd. Lj (oberste Dekade)
+    const dropAlt = 14e9 * 9.4607e15;                     // Beginn der obersten Dekade
+    const top = altToY(topAlt);
+    const bottom = altToY(dropAlt);
+    const wrap = document.createElement("div");
+    wrap.className = "finale-scene";
+    wrap.style.top = top + "px";
+    wrap.style.height = (bottom - top) + "px";
+    wrap.setAttribute("aria-hidden", "false");
+
+    const kicker = MOMENTS.finaleKicker[lang];
+    const title  = MOMENTS.finaleTitle[lang];
+    const text   = MOMENTS.finaleText[lang];
+    const objN   = SKY_DATA.length.toLocaleString(lang === "de" ? "de-DE" : "en-US");
+    const statObj = MOMENTS.finaleStatObj[lang];
+    const statSpan = MOMENTS.finaleStatSpan[lang];
+    const spanVal = formatAlt(4.399e26);        // 46,5 Mrd. Lj — konsistent mit dem Meilenstein
+
+    wrap.innerHTML = `
+      <div class="finale-cmb" aria-hidden="true"></div>
+      <div class="finale-card">
+        <p class="finale-kicker">${kicker}</p>
+        <h2 class="finale-title">${title}</h2>
+        <p class="finale-text">${text}</p>
+        <div class="finale-stats">
+          <div class="finale-stat"><span class="finale-stat-num">${objN}</span><span class="finale-stat-lbl">${statObj}</span></div>
+          <div class="finale-stat"><span class="finale-stat-num">${spanVal}</span><span class="finale-stat-lbl">${statSpan}</span></div>
+        </div>
+        <button type="button" class="finale-back" id="finale-back-btn">${MOMENTS.backToGround[lang]}</button>
+      </div>`;
+    finaleLayer.replaceChildren(wrap);
+    const btn = wrap.querySelector("#finale-back-btn");
+    btn.addEventListener("click", () => {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: prefersReduced() ? "auto" : "smooth" });
+    });
   }
 
   // Name des aktuellen Akts (für den Höhenmesser).
@@ -235,9 +327,13 @@
       const el = document.createElement("div");
       el.className = "cloud";
       el.textContent = c.emoji;
-      el.style.top = altToY(c.alt) + "px";
+      // Wolken liegen im linearen Boden-Bereich; DOM-top auf [TOTAL_HEIGHT-GROUND_PX, TOTAL_HEIGHT]
+      // clampen, damit die Parallax-Verschiebung sie nie unter den Boden schiebt (Void-Bug).
+      const baseTop = Math.min(TOTAL_HEIGHT, Math.max(0, altToY(c.alt)));
+      el.style.top = baseTop + "px";
       el.style.left = c.x + "%";
       el.dataset.factor = c.factor;
+      el.dataset.baseTop = baseTop;
       frag.appendChild(el);
       return el;
     });
@@ -252,8 +348,15 @@
   let vw = 0, vh = 0;
 
   function resize() {
-    vw = canvas.width = window.innerWidth;
-    vh = canvas.height = window.innerHeight;
+    vw = window.innerWidth;
+    vh = window.innerHeight;
+    // Hi-DPI-Schärfe: Backing-Store auf min(dpr, 2) skalieren, CSS-Größe bleibt in CSS-Pixeln.
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = Math.round(vw * dpr);
+    canvas.height = Math.round(vh * dpr);
+    canvas.style.width = vw + "px";
+    canvas.style.height = vh + "px";
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);   // Zeichnen weiter in CSS-Pixel-Koordinaten (vw/vh)
   }
 
   const clamp01 = (t) => Math.max(0, Math.min(1, t));
@@ -343,7 +446,10 @@
     if (prefersReduced()) return;        // keine Parallax-Bewegung bei reduzierter Bewegung
     for (const el of cloudEls) {
       const f = parseFloat(el.dataset.factor);
-      el.style.transform = `translateY(${st * f}px)`;
+      const baseTop = parseFloat(el.dataset.baseTop);
+      // Verschiebung so begrenzen, dass die Wolke nie unter die Szenen-Unterkante rutscht.
+      const shift = Math.max(-baseTop, Math.min(st * f, TOTAL_HEIGHT - baseTop));
+      el.style.transform = `translateY(${shift}px)`;
     }
   }
 
@@ -853,6 +959,8 @@
     buildAtmosphere();
     buildMilestones();
     buildSections();
+    buildKarman();
+    buildFinale();
     buildTeleport();
     const h = document.documentElement; const wasReady = h.classList.contains("ready");
     h.classList.remove("ready");                          // Smooth aus, sonst springt es
@@ -866,6 +974,24 @@
   /* ---------------------------------------------------------------------
      9) INIT
      --------------------------------------------------------------------- */
+  // Sanfter Aufstieg mit ease-in-out über eine feste Dauer (rAF-getweent).
+  function animateAscent(targetY, duration) {
+    const startY = window.scrollY;
+    const dist = targetY - startY;
+    if (Math.abs(dist) < 2) { requestFrame(); return; }
+    const t0 = performance.now();
+    const ease = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+    function step(now) {
+      const p = Math.min(1, (now - t0) / duration);
+      // behavior:'auto' überschreibt das CSS scroll-behavior:smooth der .ready-Phase,
+      // sonst würde jeder Frame eine eigene Smooth-Animation auslösen (Ruckeln).
+      window.scrollTo({ top: startY + dist * ease(p), behavior: "auto" });
+      requestFrame();
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
   function init() {
     sceneEl.style.height = TOTAL_HEIGHT + "px";
     resize();
@@ -875,6 +1001,8 @@
     buildAtmosphere();
     buildMilestones();
     buildSections();
+    buildKarman();
+    buildFinale();
     buildClouds();
     buildTeleport();
     setupInteraction();                 // Event-Delegation + Hover-Popup (einmalig)
@@ -890,13 +1018,20 @@
       window.addEventListener("resize", () => { resize(); requestFrame(); });
     });
 
-    // Start-Overlay
+    // Start-Overlay: "Abheben" löst einen erlebten Aufstieg aus (~1,5 s),
+    // der die inverse Scroll-Richtung durch Bewegung lehrt.
     const overlay = document.getElementById("start-overlay");
+    const ASCENT_TARGET = Math.max(0, altToY(50) - window.innerHeight / 2);   // Haussperling (50 m)
     const hideOverlay = () => {
       overlay.classList.add("hide");
       document.body.classList.remove("is-loading");
-      window.scrollTo(0, document.body.scrollHeight);     // sicher am Boden bleiben
-      requestFrame();
+      window.scrollTo(0, document.body.scrollHeight);     // sicher am Boden starten
+      if (prefersReduced()) {
+        window.scrollTo(0, ASCENT_TARGET);                // direkter Sprung ohne Animation
+        requestFrame();
+        return;
+      }
+      animateAscent(ASCENT_TARGET, 1500);
     };
     document.getElementById("start-btn").addEventListener("click", hideOverlay);
 
