@@ -156,9 +156,10 @@ html:not(.ready) #scene{ visibility: hidden; }
   width: 100%;
   height: clamp(220px, 34vw, 460px);
 }
-/* Das Sonnensystem-Banner sitzt an derselben Höhe wie die Kármán-Kante:
-   ihm etwas mehr Luft geben, damit Titel und Linie nicht kollidieren. */
-.section-banner.section-karman .section-title{ margin-top: 8px; }
+/* Das Sonnensystem-Banner sitzt an derselben Höhe wie die Kármán-Kante und das
+   X-15-Objekt. Titel weit nach unten in das leere Dunkelband unter dem Bogen
+   schieben, damit er weder das Objekt-Label noch den 100-km-Chip überlagert. */
+.section-banner.section-karman .section-title{ margin-top: clamp(72px, 11vw, 120px); }
 
 /* --- Finale am Universumsrand --- */
 .finale-scene{

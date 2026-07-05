@@ -85,6 +85,10 @@
   };
 
   const I18N = {
+    pageTitle:  { de: "In den Himmel — Wie hoch fliegen Tiere?",
+                  en: "Into the Sky — How high do animals fly?" },
+    pageDesc:   { de: "Scrolle vom Boden bis ins Weltall und entdecke fliegende Tiere, Flugzeuge und Raumfahrt auf ihrer wahren Höhe.",
+                  en: "Scroll from the ground to outer space and discover flying animals, aircraft and spacecraft at their true altitude." },
     title:      { de: "In den Himmel", en: "Into the Sky" },
     subtitle:   { de: "Vom Boden bis ins Weltall: fliegende Tiere, Flugzeuge und Raumfahrt auf ihrer wahren Höhe.",
                   en: "From the ground to outer space: flying animals, aircraft and spacecraft at their true altitude." },
@@ -113,6 +117,9 @@
 
   function applyStaticI18n() {
     document.documentElement.lang = lang;
+    document.title = I18N.pageTitle[lang];
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute("content", I18N.pageDesc[lang]);
     document.querySelectorAll("[data-i18n]").forEach((el) => {
       const key = el.getAttribute("data-i18n");
       if (I18N[key]) el.textContent = I18N[key][lang];
