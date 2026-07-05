@@ -34,7 +34,7 @@ body{
   font-family: var(--font);
   color: var(--ui-text);
   background: #060c20;
-  overflow-x: hidden;
+  overflow-x: clip;                 /* clip statt hidden: kein Scroll-Container, kein 5-px-Wackeln */
 }
 
 /* --- Hintergrund-Canvas --- */
@@ -48,7 +48,7 @@ body{
 }
 
 /* --- Szene --- */
-#scene{ position: relative; width: 100%; }
+#scene{ position: relative; width: 100%; overflow-x: clip; }   /* Parallax-Wolken nie horizontal überlaufen lassen */
 /* Szene erst zeigen, wenn der Aufbau fertig ist (verhindert Layout-Shift beim Init) */
 html:not(.ready) #scene{ visibility: hidden; }
 
@@ -120,7 +120,7 @@ html:not(.ready) #scene{ visibility: hidden; }
   font-size: 0.78rem;
   letter-spacing: 0.32em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.42);
+  color: #8b90a0;                  /* ≥ 4.5:1 auf #060c20 (WCAG 1.4.3), verwaschener Look bleibt */
   white-space: nowrap;
 }
 
@@ -506,7 +506,9 @@ html:not(.ready) #scene{ visibility: hidden; }
 }
 #altimeter .alt-bar-fill{
   height: 100%;
-  width: 0%;
+  width: 100%;
+  transform: scaleX(0);            /* JS setzt scaleX() -> layout-frei, kein Reflow pro Frame */
+  transform-origin: left center;
   background: linear-gradient(90deg, #2a4a9a, var(--accent));
   border-radius: 3px;
 }

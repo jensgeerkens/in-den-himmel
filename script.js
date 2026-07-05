@@ -172,10 +172,16 @@
   const karmanLayer = document.getElementById("karman-layer");
   const finaleLayer = document.getElementById("finale-layer");
 
-  const LANE_X = [50, 30, 70, 16, 84];     // Prozent: Mitte zuerst, dann auffächern
-  const ITEM_H = 215;                       // ungefähre Item-Höhe inkl. Beschriftung
+  const LANE_X_WIDE = [50, 30, 70, 16, 84]; // Prozent: Mitte zuerst, dann auffächern
+  const LANE_X_NARROW = [50, 26, 74];       // < 480 px: nur 3 Spuren gegen Label-Kollisionen
+  const ITEM_H_WIDE = 215;                  // ungefähre Item-Höhe inkl. Beschriftung
+  const ITEM_H_NARROW = 264;                // mehr vertikaler Abstand auf schmalen Screens
 
   function buildScene() {
+    // Schmale Viewports: weniger Spuren + größere Item-Höhe (Streifengans/Bartgeier-Kollisionen).
+    const narrow = window.innerWidth < 480;
+    const LANE_X = narrow ? LANE_X_NARROW : LANE_X_WIDE;
+    const ITEM_H = narrow ? ITEM_H_NARROW : ITEM_H_WIDE;
     // 1) Position berechnen und von oben (große Höhe) nach unten sortieren
     const nodes = SKY_DATA
       .map((it) => ({ it, y: altToY(it.altitude_m) }))
@@ -201,11 +207,13 @@
       el.dataset.id = it.id;
       el.tabIndex = 0;
       el.setAttribute("role", "button");
-      el.setAttribute("aria-label", `${it.name[lang]} – ${formatAlt(it.altitude_m)}`);
+      // WCAG 2.5.3: sichtbarer Name = Name + Jahres-Badge -> Jahr muss ins aria-label.
+      const yrRaw = SPACE_YEARS[it.id] ? String(SPACE_YEARS[it.id]) : "";
+      el.setAttribute("aria-label", `${it.name[lang]}${yrRaw} – ${formatAlt(it.altitude_m)}`);
 
       const note = NOTE_LABELS[it.note];
       const badge = note ? `<span class="note-badge note-${it.note}">${note[lang]}</span>` : "";
-      const yr = SPACE_YEARS[it.id] ? `<span class="year">${SPACE_YEARS[it.id]}</span>` : "";
+      const yr = yrRaw ? `<span class="year">${yrRaw}</span>` : "";
 
       // Foto -> WebP (max. 320 px) mit echten width/height gegen CLS; Emoji bleibt onerror-Fallback.
       const webp = it.img ? it.img.replace(/\.(jpe?g|png)$/i, ".webp") : "";
@@ -574,8 +582,8 @@
     }
   }
 
-  function drawBg(now) {
-    const st = window.scrollY;
+  function drawBg(now, st) {
+    if (st == null) st = window.scrollY;
     const altTop = groundPxToAlt(TOTAL_HEIGHT - st);
     const altBottom = groundPxToAlt(TOTAL_HEIGHT - (st + vh));
     const g = ctx.createLinearGradient(0, 0, 0, vh);
@@ -649,23 +657,21 @@
   }
 
   /* Twinkle-Loop: Dauer-rAF NUR wenn erlaubt (kein reduced-motion, Tab sichtbar,
-     Sichthöhe > ~30 km, also Sterne überhaupt sichtbar). Sonst still. */
-  let twinkleRAF = null;
+     Sichthöhe > ~30 km, also Sterne überhaupt sichtbar). Sonst still.
+     Nutzt denselben renderFrame() wie der Scroll-Pfad -> ein einziger Frame-Pfad. */
+  let contRAF = null;                     // Handle des Dauer-Loops (Twinkle)
   function twinkleActive() {
     return !reducedMotion && !document.hidden && currentScrollAlt() > 30000;
   }
-  function twinkleLoop(now) {
-    drawBg(now);
-    updateAltimeter();
-    updateParallax(window.scrollY);
-    updateJourneyDot(window.scrollY);
-    twinkleRAF = twinkleActive() ? requestAnimationFrame(twinkleLoop) : null;
+  function contLoop(now) {
+    renderFrame(now);
+    contRAF = twinkleActive() ? requestAnimationFrame(contLoop) : null;
   }
   function maybeStartTwinkle() {
-    if (!twinkleRAF && twinkleActive()) twinkleRAF = requestAnimationFrame(twinkleLoop);
+    if (!contRAF && twinkleActive()) contRAF = requestAnimationFrame(contLoop);
   }
   document.addEventListener("visibilitychange", () => {
-    if (document.hidden) { if (twinkleRAF) { cancelAnimationFrame(twinkleRAF); twinkleRAF = null; } }
+    if (document.hidden) { if (contRAF) { cancelAnimationFrame(contRAF); contRAF = null; } }
     else maybeStartTwinkle();
   });
 
@@ -681,18 +687,20 @@
     return ATMOSPHERE_LAYERS[ATMOSPHERE_LAYERS.length - 1].name[lang];
   }
 
-  function updateAltimeter() {
-    const st = window.scrollY;
+  function updateAltimeter(st) {
+    if (st == null) st = window.scrollY;
     const gpxMid = TOTAL_HEIGHT - (st + vh / 2);
     const alt = Math.max(0, groundPxToAlt(gpxMid));
     altNumber.textContent = formatAlt(alt);
     altLayerName.textContent = alt < 100000 ? currentLayerName(alt) : currentSectionName(alt);
-    const pct = clamp01(altToGroundPx(alt) / TOTAL_HEIGHT) * 100;
-    altBarFill.style.width = pct.toFixed(1) + "%";
+    const pct = clamp01(altToGroundPx(alt) / TOTAL_HEIGHT);
+    // Layout-frei: scaleX statt width (kein Reflow, nur Compositing).
+    altBarFill.style.transform = "scaleX(" + pct.toFixed(4) + ")";
   }
 
   function updateParallax(st) {
     if (reducedMotion) return;           // keine Parallax-Bewegung bei reduzierter Bewegung
+    if (st == null) st = window.scrollY;
     for (const c of cloudEls) {
       // Verschiebung so begrenzen, dass die Wolke nie unter die Szenen-Unterkante rutscht.
       const shift = Math.max(-c.baseTop, Math.min(st * c.factor, TOTAL_HEIGHT - c.baseTop));
@@ -700,17 +708,25 @@
     }
   }
 
+  /* Ein einziger Frame-Pfad: scrollY genau EINMAL pro Frame lesen und an alle
+     Verbraucher durchreichen (kein Read-after-Write-Thrashing mehr). */
+  function renderFrame(now) {
+    const st = window.scrollY;
+    drawBg(now, st);
+    updateAltimeter(st);
+    updateParallax(st);
+    updateJourneyDot(st);
+    updateNavButtons(st);
+  }
+
   let ticking = false;
-  function onFrame() {
+  function onFrame(now) {
     ticking = false;
-    if (twinkleRAF) return;              // Twinkle-Loop rendert bereits jeden Frame
-    drawBg();
-    updateAltimeter();
-    updateParallax(window.scrollY);
-    updateJourneyDot(window.scrollY);
+    if (contRAF) return;                 // Dauer-Loop rendert bereits jeden Frame
+    renderFrame(now);
     maybeStartTwinkle();                 // beim Scrollen in den Weltraum den Funkel-Loop starten
   }
-  function requestFrame() { if (!ticking) { requestAnimationFrame(onFrame); ticking = true; } }
+  function requestFrame() { if (!ticking && !contRAF) { ticking = true; requestAnimationFrame(onFrame); } }
 
   /* ---------------------------------------------------------------------
      6) DETAIL-MODAL  (kategorisierte Sektionen, barrierefrei)
@@ -1259,7 +1275,7 @@
       if (hit) { hoverItemEl = hit.el; showPopup(hit.el, hit.it); }
     });
     objLayer.addEventListener("focusout", hidePopup);
-    window.addEventListener("scroll", hidePopup, { passive: true });   // Popup ist fixed → bei Scroll ausblenden
+    // Popup-Ausblenden beim Scrollen läuft im konsolidierten Scroll-Handler (init).
   }
 
   /* ---------------------------------------------------------------------
@@ -1299,11 +1315,18 @@
   const navUpBtn   = document.getElementById("next-object");   // ↑ = höher
   const navDownBtn = document.getElementById("prev-object");   // ↓ = tiefer
 
-  function currentScrollAlt() {
-    const centerY = window.scrollY + window.innerHeight / 2;
-    const groundPx = TOTAL_HEIGHT - centerY;
+  // Höhe der Viewport-Mitte aus einem gegebenen scrollY (vh gecacht -> kein Reflow).
+  function scrollAlt(st) {
+    const groundPx = TOTAL_HEIGHT - (st + vh / 2);
     return groundPxToAlt(Math.max(0, groundPx));
   }
+  function currentScrollAlt() { return scrollAlt(window.scrollY); }
+
+  // Extremwerte einmalig: navUp aktiv solange es ein höheres Objekt gibt, navDown
+  // solange ein tieferes. `.some()` über alle Items ist äquivalent zum Vergleich
+  // mit Max/Min -> O(1) statt O(n) pro Frame.
+  const MIN_ALT = SORTED_BY_ALT[0].altitude_m;
+  const MAX_ALT = SORTED_BY_ALT[SORTED_BY_ALT.length - 1].altitude_m;
 
   function jumpObject(dir) {                       // +1 = höher, -1 = tiefer
     const alt = currentScrollAlt();
@@ -1322,11 +1345,15 @@
     pulseTarget(target.id);              // Highlight-Puls, sonst bei Mini-Sprüngen unsichtbar
   }
 
-  function updateNavButtons() {
-    const alt = currentScrollAlt();
+  // Ändert die disabled-Zustände nur bei tatsächlichem Wechsel (billig, DOM-schonend).
+  function updateNavButtons(st) {
+    if (st == null) st = window.scrollY;
+    const alt = scrollAlt(st);
     const EPS = Math.max(1, alt * 1e-4);
-    navUpBtn.disabled   = !SORTED_BY_ALT.some((it) => it.altitude_m > alt + EPS);
-    navDownBtn.disabled = !SORTED_BY_ALT.some((it) => it.altitude_m < alt - EPS);
+    const upDis = !(MAX_ALT > alt + EPS);
+    const downDis = !(MIN_ALT < alt - EPS);
+    if (upDis !== navUpBtn.disabled) navUpBtn.disabled = upDis;
+    if (downDis !== navDownBtn.disabled) navDownBtn.disabled = downDis;
   }
 
   navUpBtn.addEventListener("click", () => jumpObject(+1));
@@ -1340,12 +1367,7 @@
     if (e.key === "ArrowDown") { e.preventDefault(); jumpObject(-1); }
   });
 
-  let navTickQueued = false;
-  window.addEventListener("scroll", () => {
-    if (navTickQueued) return;
-    navTickQueued = true;
-    requestAnimationFrame(() => { navTickQueued = false; updateNavButtons(); });
-  }, { passive: true });
+  // updateNavButtons läuft jetzt im gemeinsamen renderFrame() mit (kein eigener Scroll-Listener).
   updateNavButtons();
 
   /* ---------------------------------------------------------------------
@@ -1409,6 +1431,26 @@
     requestAnimationFrame(step);
   }
 
+  // Detail-Daten (~390 KB) erst NACH init() nachladen. Reihenfolge erhalten
+  // (data_details.js definiert SKY_DETAILS, dd_*.js machen Object.assign darauf) →
+  // async=false erzwingt Ausführung in Einfüge-Reihenfolge. Modal fällt bis dahin
+  // sauber auf die Basis-Infos zurück (typeof-Guards in renderModalBody).
+  const DETAIL_FILES = [
+    "data_details.js", "dd_life.js", "dd_tech1.js", "dd_space.js",
+    "dd_solar.js", "dd_stellar.js", "dd_deep.js", "dd_compare.js",
+  ];
+  let detailLoadStarted = false;
+  function loadDetailData() {
+    if (detailLoadStarted) return;
+    detailLoadStarted = true;
+    for (const f of DETAIL_FILES) {
+      const s = document.createElement("script");
+      s.src = f + "?v=10";
+      s.async = false;                    // Reihenfolge garantieren
+      document.body.appendChild(s);
+    }
+  }
+
   // Startsprache aus ?lang= bzw. localStorage (URL hat Vorrang), sonst DE.
   function resolveInitialLang() {
     let urlLang = null;
@@ -1456,10 +1498,20 @@
     drawBg();
     updateAltimeter();
 
+    // EIN konsolidierter Scroll-Handler: Frame anfordern, Popup ausblenden,
+    // Scroll-Hinweis beim ersten Scrollen einmalig verstecken.
+    const hint = document.getElementById("scroll-hint");
+    let hintHidden = false;
+    function onScroll() {
+      requestFrame();
+      hidePopup();
+      if (!hintHidden && hint) { hint.style.opacity = "0"; hintHidden = true; }
+    }
     requestAnimationFrame(() => {
       document.documentElement.classList.add("ready");
-      window.addEventListener("scroll", requestFrame, { passive: true });
+      window.addEventListener("scroll", onScroll, { passive: true });
       window.addEventListener("resize", () => { resize(); requestFrame(); });
+      loadDetailData();                 // Detail-Daten nach dem ersten Frame nachladen
     });
 
     // Start-Overlay: "Abheben" löst einen erlebten Aufstieg aus (~1,5 s),
@@ -1483,17 +1535,12 @@
     if (deepItem) {
       overlay.classList.add("hide");
       document.body.classList.remove("is-loading");
+      loadDetailData();                 // Deep-Link öffnet direkt ein Modal → Details sofort holen
       scrollToAlt(deepItem.altitude_m, false);
       requestFrame();
       requestAnimationFrame(() => openModal(deepItem));
     }
 
-    // Scroll-Hinweis nach erstem Scrollen ausblenden
-    const hint = document.getElementById("scroll-hint");
-    window.addEventListener("scroll", function once() {
-      hint.style.opacity = "0";
-      window.removeEventListener("scroll", once);
-    }, { passive: true });
   }
 
   if (document.readyState === "loading") {
