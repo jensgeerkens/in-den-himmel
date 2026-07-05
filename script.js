@@ -425,6 +425,7 @@
     { alt: 1500, img: "cloud-a", x: 40, w: 220, op: 0.92, factor: 0.24, layer: 1 },
     { alt: 2400, img: "cloud-c", x: 78, w: 170, op: 0.6,  factor: 0.10, layer: 0 },
     { alt: 3200, img: "cloud-b", x: 30, w: 240, op: 0.9,  factor: 0.26, layer: 1 },
+    { alt: 4200, img: "cloud-a", x: 66, w: 200, op: 0.7,  factor: 0.18, layer: 1 },
     { alt: 5200, img: "cloud-a", x: 62, w: 150, op: 0.55, factor: 0.11, layer: 0 },
     { alt: 6500, img: "cloud-c", x: 24, w: 260, op: 0.85, factor: 0.28, layer: 1 },
     { alt: 9000, img: "cloud-c", x: 72, w: 200, op: 0.45, factor: 0.09, layer: 0 },
@@ -548,8 +549,9 @@
       const ydom = STAR_TOP_Y + Math.random() * span;
       const alt = groundPxToAlt(TOTAL_HEIGHT - ydom);
       const depth = clamp01(1 - (ydom - STAR_TOP_Y) / span);   // 1 = ganz oben (tief im All)
-      // tief im All: mehr, kleinere, hellere Sterne; nahe Atmosphäre: dünner
-      if (Math.random() > 0.35 + depth * 0.65) continue;
+      // tief im All: mehr, kleinere, hellere Sterne; nahe Atmosphäre: dünner.
+      // Grundhelligkeit angehoben (Floor 0.5), damit die Sonnensystem-Dekaden nicht schwarz wirken.
+      if (Math.random() > 0.5 + depth * 0.5) continue;
       const base = Math.random() * 0.6 + 0.4;
       const a = starAlpha(alt) * base;
       // dichteres, helleres Band in der Milchstraßen-Region
