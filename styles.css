@@ -464,7 +464,7 @@ html:not(.ready) #scene{ visibility: hidden; }
 #altimeter{
   position: fixed;
   top: 16px; right: 16px;
-  z-index: 20;
+  z-index: 40;                            /* z-Ordnung: Menüs > Tooltips > Banner > Objekte */
   width: 168px;
   padding: 12px 14px 13px;
   background: linear-gradient(160deg, rgba(12,22,44,0.86), rgba(8,14,32,0.82));
@@ -515,7 +515,7 @@ html:not(.ready) #scene{ visibility: hidden; }
 #controls{
   position: fixed;
   top: 16px; left: 16px;
-  z-index: 20;
+  z-index: 45;                            /* Menüs ganz oben (über Tooltip/Banner) */
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -563,19 +563,31 @@ html:not(.ready) #scene{ visibility: hidden; }
 }
 #teleport-list li{ margin: 0; }
 #teleport-list li button{
-  display: block;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
   width: 100%;
+  min-height: 44px;                       /* Tap-Target ≥ 44 px */
   text-align: left;
   background: none;
   border: none;
   color: var(--ui-text);
   font-family: var(--font);
   font-size: 0.88rem;
-  padding: 6px 8px;
+  padding: 6px 10px;
   border-radius: 6px;
   cursor: pointer;
 }
+#teleport-list li button .tp-name{ font-weight: 600; }
+#teleport-list li button .tp-alt{
+  font-size: 0.76rem;
+  color: rgba(160,205,255,0.75);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
 #teleport-list li button:hover{ background: rgba(255,255,255,0.12); }
+#teleport-list li button:hover .tp-alt{ color: var(--accent); }
 #teleport-list li button:focus-visible{ outline: 2px solid var(--accent); outline-offset: -2px; }
 
 /* --- Objekt-Navigation (Pfeil-Buttons unten Mitte) --- */
@@ -583,7 +595,7 @@ html:not(.ready) #scene{ visibility: hidden; }
   position: fixed;
   bottom: 22px;
   right: 16px;
-  z-index: 20;
+  z-index: 40;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -638,7 +650,7 @@ html:not(.ready) #scene{ visibility: hidden; }
 #detail-modal{
   position: fixed;
   inset: 0;
-  z-index: 50;
+  z-index: 60;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -648,7 +660,7 @@ html:not(.ready) #scene{ visibility: hidden; }
 #detail-modal[hidden]{ display: none; }
 .modal-card{
   position: relative;
-  max-width: 480px;
+  max-width: 500px;
   width: calc(100% - 40px);
   max-height: calc(100dvh - 48px);     /* dvh = dynamic viewport — robust gegen mobile address bar */
   overflow-y: auto;
@@ -656,29 +668,115 @@ html:not(.ready) #scene{ visibility: hidden; }
   -webkit-overflow-scrolling: touch;   /* iOS-Trägheit */
   background: linear-gradient(160deg, #14213f, #0a1430);
   border: 1px solid var(--ui-border);
-  border-radius: 16px;
-  padding: 28px;
+  border-radius: 18px;
+  padding: 0;                          /* Hero läuft randlos, Padding sitzt im Content */
   box-shadow: 0 24px 60px rgba(0,0,0,0.55);
+  scrollbar-width: thin;               /* Custom-Scrollbar (Firefox) */
+  scrollbar-color: var(--accent) rgba(255,255,255,0.06);
 }
+/* Custom-Scrollbar (WebKit/Blink) */
+.modal-card::-webkit-scrollbar{ width: 10px; }
+.modal-card::-webkit-scrollbar-track{ background: rgba(255,255,255,0.05); border-radius: 0 18px 18px 0; }
+.modal-card::-webkit-scrollbar-thumb{
+  background: linear-gradient(180deg, #3a6bd0, var(--accent));
+  border-radius: 8px;
+  border: 2px solid rgba(10,18,35,0.6);
+}
+
+/* Bild-Hero oben (volle Kartenbreite, weicher Verlauf ins Panel) */
+.modal-hero{
+  position: relative;
+  width: 100%;
+  height: clamp(150px, 30vh, 230px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 80% 90% at 50% 30%, rgba(60,100,175,0.35), transparent 70%),
+    linear-gradient(160deg, #1a2c52, #101d3c);
+  border-radius: 18px 18px 0 0;
+}
+.modal-hero-img{
+  max-width: 84%;
+  max-height: 82%;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 22px rgba(0,0,0,0.45));
+}
+.modal-hero-img[hidden]{ display: none; }
+.modal-hero::after{           /* weicher Verlauf ins Panel */
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 64px;
+  background: linear-gradient(to bottom, transparent, #14213f);
+  pointer-events: none;
+}
+.modal-emoji{ font-size: 4.4rem; line-height: 1; display: flex; }
+
 .modal-close{
-  position: sticky;          /* bleibt bei langen Inhalten oben sichtbar */
-  top: 0;
-  float: right;
-  margin: -6px -6px 0 8px;
-  width: 36px; height: 36px;
-  background: rgba(10,18,35,0.55); border: 1px solid var(--ui-border);
+  position: absolute;                  /* über dem Hero, immer erreichbar */
+  top: 12px; right: 12px;
+  z-index: 2;
+  width: 44px; height: 44px;           /* Tap-Target ≥ 44 px */
+  background: rgba(8,14,30,0.7); border: 1px solid var(--ui-border);
   border-radius: 50%;
   color: var(--ui-text);
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   cursor: pointer;
   line-height: 1;
+  backdrop-filter: blur(4px);
 }
-.modal-close:hover{ background: rgba(30,44,75,0.7); }
+.modal-close:hover{ background: rgba(30,44,75,0.85); }
 .modal-close:focus-visible{ outline: 2px solid var(--accent); outline-offset: 2px; }
-.modal-emoji{ font-size: 3rem; }
-.modal-name{ margin: 8px 0 2px; font-size: 1.4rem; }
-.modal-sci{ margin: 0 0 10px; font-style: italic; color: rgba(255,255,255,0.6); }
-.modal-alt{ margin: 0 0 14px; color: var(--accent); font-weight: 600; font-size: 1.1rem; }
+
+.modal-content{ padding: 14px 26px 4px; }
+.modal-name{ margin: 8px 0 2px; font-family: var(--font-display); font-size: 1.5rem; line-height: 1.15; }
+.modal-sci{ margin: 0 0 8px; font-style: italic; color: rgba(255,255,255,0.6); }
+.modal-sci[hidden]{ display: none; }
+.modal-alt{ margin: 0 0 10px; color: var(--accent); font-weight: 600; font-size: 1.15rem; font-variant-numeric: tabular-nums; }
+/* Kurzfakt als hervorgehobene erste Zeile (Touch-Parität zum Hover-Popup) */
+.modal-fact{
+  margin: 0 0 16px;
+  padding: 10px 14px;
+  border-left: 3px solid var(--accent);
+  background: rgba(110,196,255,0.08);
+  border-radius: 0 8px 8px 0;
+  line-height: 1.55;
+  color: rgba(233,242,255,0.92);
+}
+.modal-meta[hidden]{ display: none; }
+
+/* Toolbar unten: Vor/Zurück + Teilen, klebt am unteren Rand */
+.modal-toolbar{
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  gap: 8px;
+  padding: 12px 16px;
+  margin-top: 6px;
+  background: linear-gradient(to top, #0a1430 70%, rgba(10,20,48,0));
+  border-radius: 0 0 18px 18px;
+}
+.modal-toolbar button{
+  flex: 1 1 auto;
+  min-height: 44px;
+  padding: 8px 12px;
+  background: var(--ui-bg);
+  border: 1px solid var(--ui-border);
+  border-radius: 10px;
+  color: var(--ui-text);
+  font-family: var(--font);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.14s ease, transform 0.14s ease;
+}
+.modal-toolbar .modal-share{ flex: 0 0 auto; color: var(--accent); }
+.modal-toolbar button:hover:not(:disabled){ background: rgba(30,50,95,0.85); transform: translateY(-1px); }
+.modal-toolbar button:focus-visible{ outline: 2px solid var(--accent); outline-offset: 2px; }
+.modal-toolbar button:disabled{ opacity: 0.35; cursor: default; }
 
 /* Ausführlicher Rumpf: Beschreibungs-Absätze + kategorisierte Key-Facts */
 .modal-body{ margin: 0 0 14px; }
@@ -778,8 +876,8 @@ html:not(.ready) #scene{ visibility: hidden; }
 /* --- Hover-Popup (kompakte Vorschau) --- */
 #hover-popup{
   position: fixed;
-  z-index: 40;
-  max-width: 260px;
+  z-index: 30;                            /* Tooltip unter den Menüs, über Bannern/Objekten */
+  max-width: 240px;
   padding: 10px 14px;
   background: var(--ui-bg);
   border: 1px solid var(--ui-border);
@@ -866,6 +964,109 @@ html:not(.ready) #scene{ visibility: hidden; }
 .overlay-hint{ font-size: 0.95rem !important; opacity: 0.92; margin: 0 0 6px !important; }
 .overlay-credit{ font-size: 0.85rem !important; opacity: 0.75; margin-top: 26px !important; }
 
+/* --- Scroll-Lock bei offenem Modal (programmatisches scrollTo bleibt möglich) --- */
+html.modal-open{ overflow: hidden; }
+[inert]{ pointer-events: none; }          /* Fallback für Browser ohne native inert-Deko */
+
+/* --- Vertikale Journey-Bar (Fortschritt + klickbare Zonen) --- */
+#journey-bar{
+  position: fixed;
+  right: 8px;
+  top: 132px;                             /* unter dem Altimeter */
+  bottom: 140px;                          /* über der Objekt-Navigation */
+  width: 12px;
+  z-index: 40;
+  border-radius: 8px;
+  overflow: visible;
+}
+.jb-track{
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+}
+.jb-zone{
+  position: absolute;
+  left: 0; right: 0;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  opacity: 0.55;
+  transition: opacity 0.15s ease;
+}
+.jb-zone:hover, .jb-zone:focus-visible{ opacity: 1; }
+.jb-zone:focus-visible{ outline: 2px solid #fff; outline-offset: 1px; z-index: 1; }
+.jb-dot{
+  position: absolute;
+  left: 50%;
+  width: 18px; height: 18px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid var(--accent);
+  box-shadow: 0 0 0 3px rgba(6,12,32,0.7), 0 0 14px rgba(111,196,255,0.8);
+  pointer-events: none;
+  animation: jb-pulse 2.4s ease-in-out infinite;
+}
+@keyframes jb-pulse{ 0%,100%{ box-shadow: 0 0 0 3px rgba(6,12,32,0.7), 0 0 8px rgba(111,196,255,0.6);} 50%{ box-shadow: 0 0 0 3px rgba(6,12,32,0.7), 0 0 18px rgba(111,196,255,0.95);} }
+
+/* --- Warp-Overlay (Teleport-Übergang) --- */
+#warp-overlay{
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  pointer-events: none;
+  opacity: 0;
+  background:
+    radial-gradient(ellipse 60% 120% at 50% 50%, rgba(180,220,255,0.0) 30%, rgba(120,180,255,0.18) 70%, rgba(200,230,255,0.5) 100%),
+    repeating-linear-gradient(90deg, rgba(255,255,255,0) 0 6px, rgba(200,225,255,0.05) 6px 7px);
+}
+#warp-overlay.active{ animation: warp-flash 0.44s ease-out; }
+@keyframes warp-flash{
+  0%{ opacity: 0; transform: scale(1); }
+  35%{ opacity: 1; transform: scale(1.04); }
+  100%{ opacity: 0; transform: scale(1.08); }
+}
+
+/* --- Highlight-Puls am Zielobjekt (Pfeiltasten-Sprung) --- */
+.sky-item.pulse{ animation: sky-pulse 0.9s ease-out; z-index: 2; }
+@keyframes sky-pulse{
+  0%{ filter: drop-shadow(0 0 0 rgba(120,200,255,0)); }
+  25%{ filter: drop-shadow(0 0 18px rgba(140,215,255,0.95)); }
+  100%{ filter: drop-shadow(0 0 0 rgba(120,200,255,0)); }
+}
+
+/* --- Finale: Aktions-Zeile (Zurück + Teilen) --- */
+.finale-actions{
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.finale-share{
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 13px 26px;
+  min-height: 44px;
+  border: 1px solid var(--ui-border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ui-text);
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+.finale-share:hover{ transform: translateY(-2px); background: rgba(255,255,255,0.08); }
+.finale-share:focus-visible{ outline: 2px solid #fff; outline-offset: 3px; }
+
+/* --- Tastatur-Hinweis im Start-Overlay --- */
+.overlay-keys{
+  font-size: 0.9rem !important;
+  opacity: 0.85;
+  margin: 0 0 4px !important;
+}
+
 /* --- Responsive --- */
 @media (max-width: 600px){
   .sky-item{ width: 140px; contain-intrinsic-size: 140px 170px; }
@@ -881,6 +1082,12 @@ html:not(.ready) #scene{ visibility: hidden; }
   .finale-stats{ gap: 20px; }
   .finale-text{ font-size: 0.95rem; }
   .section-banner .section-title{ font-size: clamp(1.2rem, 6vw, 2rem); }
+  /* Journey-Bar schmaler, weicht Altimeter/Objekt-Nav aus */
+  #journey-bar{ width: 8px; right: 6px; top: 118px; bottom: 130px; }
+  .jb-dot{ width: 14px; height: 14px; }
+  .modal-content{ padding: 12px 18px 4px; }
+  .modal-hero{ height: clamp(130px, 26vh, 190px); }
+  .modal-name{ font-size: 1.3rem; }
 }
 
 @media (prefers-reduced-motion: reduce){
@@ -888,6 +1095,10 @@ html:not(.ready) #scene{ visibility: hidden; }
   #scroll-hint{ animation: none; }
   .cloud{ will-change: auto; }
   #hover-popup{ animation: none; }
-  #start-btn, .finale-back, #object-nav button{ transition: none; }
+  #start-btn, .finale-back, .finale-share, #object-nav button, .modal-toolbar button, .jb-zone{ transition: none; }
   #start-overlay{ transition: opacity 0.2s linear; }
+  /* Delight-Animationen aus */
+  #warp-overlay, #warp-overlay.active{ animation: none; opacity: 0; }
+  .sky-item.pulse{ animation: none; }
+  .jb-dot{ animation: none; }
 }

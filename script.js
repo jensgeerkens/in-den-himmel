@@ -66,9 +66,10 @@
   function formatAlt(m, lg = lang) {
     const loc = lg === "de" ? "de-DE" : "en-US";
     const fmt = (x, d) => x.toLocaleString(loc, { maximumFractionDigits: d, minimumFractionDigits: d });
-    if (m < 100000) return Math.round(m).toLocaleString(loc) + " m";   // bis 100 km in Metern
+    if (m < 10000) return Math.round(m).toLocaleString(loc) + " m";    // bis 10 km in Metern
     const km = m / 1000;
-    if (km < LY_KM) {                       // bis ~1 Lichtjahr in Kilometern
+    if (km < LY_KM) {                       // darüber in Kilometern (fixt "99.996 m")
+      if (km < 100) return fmt(km, 1) + " km";               // 10–100 km mit einer Nachkommastelle
       if (km < 1e6) return Math.round(km).toLocaleString(loc) + " km";
       if (km < 1e9) return fmt(km / 1e6, 1) + (lg === "de" ? " Mio. km" : " million km");
       return fmt(km / 1e9, 1) + (lg === "de" ? " Mrd. km" : " billion km");
@@ -104,7 +105,18 @@
     jump:       { de: "Springe zu …", en: "Jump to …" },
     scrollHint: { de: "↑ Scrolle nach oben, um aufzusteigen", en: "↑ Scroll up to ascend" },
     tapHint:    { de: "Tipp: Objekt antippen oder anklicken für Details.", en: "Tip: tap or click any object for details." },
+    keysHint:   { de: "Tastatur: ↑ / ↓ springen von Objekt zu Objekt, ← / → blättern im geöffneten Detail.",
+                  en: "Keyboard: ↑ / ↓ jump from object to object, ← / → page through the open detail." },
     ground:     { de: "Meereshöhe · 0 m", en: "Sea level · 0 m" },
+    close:      { de: "Schließen", en: "Close" },
+    prevObj:    { de: "Tiefer", en: "Lower" },
+    nextObj:    { de: "Höher", en: "Higher" },
+    share:      { de: "Teilen", en: "Share" },
+    shareCopied:{ de: "Link kopiert ✓", en: "Link copied ✓" },
+    prevAria:   { de: "Voriges Objekt (tiefer)", en: "Previous object (lower)" },
+    nextAria:   { de: "Nächstes Objekt (höher)", en: "Next object (higher)" },
+    shareAria:  { de: "Link zu diesem Objekt teilen", en: "Share a link to this object" },
+    journeyAria:{ de: "Reise-Fortschritt", en: "Journey progress" },
   };
 
   /* Texte für die inszenierten Momente (Kármán-Payoff + Finale). */
@@ -122,11 +134,25 @@
     backToGround:  { de: "Zurück zum Boden ↓", en: "Back to the ground ↓" },
   };
 
+  function setMeta(sel, attr, val) {
+    const el = document.querySelector(sel);
+    if (el) el.setAttribute(attr, val);
+  }
+
   function applyStaticI18n() {
     document.documentElement.lang = lang;
     document.title = I18N.pageTitle[lang];
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) metaDesc.setAttribute("content", I18N.pageDesc[lang]);
+    // Open-Graph / Twitter ziehen mit der Sprache mit (sonst rendert der Share leer/DE).
+    setMeta('meta[property="og:title"]', "content", I18N.pageTitle[lang]);
+    setMeta('meta[property="og:description"]', "content", I18N.pageDesc[lang]);
+    setMeta('meta[name="twitter:title"]', "content", I18N.pageTitle[lang]);
+    setMeta('meta[name="twitter:description"]', "content", I18N.pageDesc[lang]);
+    setMeta('meta[property="og:locale"]', "content", lang === "de" ? "de_DE" : "en_US");
+    setMeta('meta[property="og:locale:alternate"]', "content", lang === "de" ? "en_US" : "de_DE");
+    const jb = document.getElementById("journey-bar");
+    if (jb) jb.setAttribute("aria-label", I18N.journeyAria[lang]);
     document.querySelectorAll("[data-i18n]").forEach((el) => {
       const key = el.getAttribute("data-i18n");
       if (I18N[key]) el.textContent = I18N[key][lang];
@@ -363,12 +389,17 @@
           <div class="finale-stat"><span class="finale-stat-num">${objN}</span><span class="finale-stat-lbl">${statObj}</span></div>
           <div class="finale-stat"><span class="finale-stat-num">${spanVal}</span><span class="finale-stat-lbl">${statSpan}</span></div>
         </div>
-        <button type="button" class="finale-back" id="finale-back-btn">${MOMENTS.backToGround[lang]}</button>
+        <div class="finale-actions">
+          <button type="button" class="finale-back" id="finale-back-btn">${MOMENTS.backToGround[lang]}</button>
+          <button type="button" class="finale-share" id="finale-share-btn"><span class="mt-label">${I18N.share[lang]}</span></button>
+        </div>
       </div>`;
     finaleLayer.replaceChildren(wrap);
-    const btn = wrap.querySelector("#finale-back-btn");
-    btn.addEventListener("click", () => {
+    wrap.querySelector("#finale-back-btn").addEventListener("click", () => {
       window.scrollTo({ top: document.body.scrollHeight, behavior: prefersReduced() ? "auto" : "smooth" });
+    });
+    wrap.querySelector("#finale-share-btn").addEventListener("click", (e) => {
+      shareCurrent(e.currentTarget);                    // teilt die Reise (kein Objekt-Anker)
     });
   }
 
@@ -412,6 +443,38 @@
       return { el, factor: c.factor, baseTop };
     });
     cloudLayer.replaceChildren(frag);
+  }
+
+  /* Vertikale Journey-Bar: farbige Zonen je Akt (oben = Rand des Alls, unten = Boden),
+     klickbar zum Springen, mit Positionspunkt. Ergänzt die kleine Altimeter-Leiste. */
+  const JOURNEY_COLORS = ["#63a6e6", "#3f74d6", "#5a4fd6", "#7b45c6", "#9c40ac", "#8a3f84", "#54406f", "#241f48"];
+  const jbTrack = document.getElementById("jb-track");
+  const jbDot = document.getElementById("jb-dot");
+  function buildJourneyBar() {
+    const frag = document.createDocumentFragment();
+    SECTIONS.forEach((s, i) => {
+      const topY = altToY(s.to), botY = altToY(s.from);
+      const topPct = Math.max(0, Math.min(1, topY / TOTAL_HEIGHT)) * 100;
+      const hPct = Math.max(0, Math.min(1, (botY - topY) / TOTAL_HEIGHT)) * 100;
+      const z = document.createElement("button");
+      z.type = "button";
+      z.className = "jb-zone";
+      z.style.top = topPct + "%";
+      z.style.height = hPct + "%";
+      z.style.background = JOURNEY_COLORS[i % JOURNEY_COLORS.length];
+      z.title = s.name[lang];
+      z.setAttribute("aria-label", s.name[lang]);
+      z.addEventListener("click", () => {
+        const y = Math.max(0, (topY + botY) / 2 - window.innerHeight / 2);
+        runWarp(() => { window.scrollTo({ top: y, behavior: "auto" }); updateAltimeter(); requestFrame(); });
+      });
+      frag.appendChild(z);
+    });
+    jbTrack.replaceChildren(frag);
+  }
+  function updateJourneyDot(st) {
+    const pct = Math.max(0, Math.min(1, (st + vh / 2) / TOTAL_HEIGHT)) * 100;
+    jbDot.style.top = pct + "%";
   }
 
   /* ---------------------------------------------------------------------
@@ -595,6 +658,7 @@
     drawBg(now);
     updateAltimeter();
     updateParallax(window.scrollY);
+    updateJourneyDot(window.scrollY);
     twinkleRAF = twinkleActive() ? requestAnimationFrame(twinkleLoop) : null;
   }
   function maybeStartTwinkle() {
@@ -643,6 +707,7 @@
     drawBg();
     updateAltimeter();
     updateParallax(window.scrollY);
+    updateJourneyDot(window.scrollY);
     maybeStartTwinkle();                 // beim Scrollen in den Weltraum den Funkel-Loop starten
   }
   function requestFrame() { if (!ticking) { requestAnimationFrame(onFrame); ticking = true; } }
@@ -653,7 +718,35 @@
   const modal = document.getElementById("detail-modal");
   const modalCard = modal.querySelector(".modal-card");
   const modalBody = modal.querySelector(".modal-body");
+  const modalHeroImg = modal.querySelector(".modal-hero-img");
+  const modalEmoji = modal.querySelector(".modal-emoji");
+  const modalFact = modal.querySelector(".modal-fact");
+  const modalPrevBtn = modal.querySelector(".modal-prev");
+  const modalNextBtn = modal.querySelector(".modal-next");
+  const modalShareBtn = modal.querySelector(".modal-share");
   let modalReturnFocus = null;          // Element, das beim Schließen Fokus zurückbekommt
+  let currentModalId = null;            // aktuell gezeigtes Objekt (für Vor/Zurück + Sprachwechsel)
+
+  // Reihenfolge Vor/Zurück = Höhe (SORTED_BY_ALT wird in §7b definiert, hier nur lazy genutzt).
+  const modalOrder = () => (typeof SORTED_BY_ALT !== "undefined" ? SORTED_BY_ALT : SKY_DATA);
+
+  // Scroll-Lock: Seite hinter dem Modal darf nicht scrollen (programmatisches
+  // window.scrollTo für die Hintergrund-Navigation bleibt trotz overflow:hidden möglich).
+  const INERT_TARGETS = ["scene", "controls", "altimeter", "object-nav", "journey-bar", "scroll-hint"];
+  function setBackgroundInert(on) {
+    document.documentElement.classList.toggle("modal-open", on);
+    for (const id of INERT_TARGETS) {
+      const el = document.getElementById(id);
+      if (!el) continue;
+      if (on) el.setAttribute("inert", "");
+      else el.removeAttribute("inert");
+    }
+  }
+
+  // Das auslösende .sky-item im DOM finden (für korrekten Fokus-Restore + Highlight).
+  function skyItemEl(id) {
+    return objLayer.querySelector('.sky-item[data-id="' + (window.CSS && CSS.escape ? CSS.escape(id) : id) + '"]');
+  }
 
   /* ---------------------------------------------------------------------
      6c) GRÖSSEN-SKALA — "Wenn die Erde eine Murmel wäre…"
@@ -883,7 +976,7 @@
 
     const paragraphs = det && det.desc && det.desc[lang] && det.desc[lang].length
       ? det.desc[lang]
-      : [it.fact[lang]];                // Rückfall: der bestehende Kurzfakt
+      : [];                             // Kurzfakt steht bereits als erste Zeile (.modal-fact)
     for (const p of paragraphs) {
       const para = document.createElement("p");
       para.className = "modal-para";
@@ -916,62 +1009,188 @@
     modalBody.replaceChildren(frag);
   }
 
-  function openModal(it) {
-    if (!it) return;
-    modalReturnFocus = document.activeElement;
-    modal.querySelector(".modal-emoji").textContent = it.emoji;
+  const modalClose = modal.querySelector(".modal-close");
+
+  // Statischer Modal-Rahmen (Vor/Zurück/Teilen/Schließen) folgt der Sprache.
+  function syncModalChrome() {
+    modalPrevBtn.querySelector(".mt-label").textContent = I18N.prevObj[lang];
+    modalNextBtn.querySelector(".mt-label").textContent = I18N.nextObj[lang];
+    modalShareBtn.querySelector(".mt-label").textContent = I18N.share[lang];
+    modalPrevBtn.setAttribute("aria-label", I18N.prevAria[lang]);
+    modalNextBtn.setAttribute("aria-label", I18N.nextAria[lang]);
+    modalShareBtn.setAttribute("aria-label", I18N.shareAria[lang]);
+    modalClose.setAttribute("aria-label", I18N.close[lang]);
+  }
+
+  // Zieladresse für Deep-Links / Teilen (Sprache + Objekt-Anker).
+  function buildShareUrl(id) {
+    try {
+      const u = new URL(location.href);
+      u.searchParams.set("lang", lang);
+      u.hash = id ? id : "";
+      return u.href;
+    } catch (e) { return location.href; }
+  }
+  function shareCurrent(btn) {
+    const url = buildShareUrl(currentModalId);
+    const flash = () => {
+      const lbl = btn && btn.querySelector(".mt-label");
+      if (!lbl) return;
+      const old = lbl.textContent;
+      lbl.textContent = I18N.shareCopied[lang];
+      setTimeout(() => { lbl.textContent = old; }, 1600);
+    };
+    if (navigator.share) { navigator.share({ title: I18N.pageTitle[lang], url }).catch(() => {}); return; }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(flash).catch(() => window.prompt(I18N.share[lang], url));
+    } else { window.prompt(I18N.share[lang], url); }
+  }
+
+  // Warp-Übergang beim Teleport/Sprung: kurzer Sternen-Streak, Aktion in der Mitte.
+  const warpOverlay = document.getElementById("warp-overlay");
+  let warpMid = null, warpEnd = null;
+  function runWarp(action) {
+    if (prefersReduced()) { action(); return; }
+    warpOverlay.classList.add("active");
+    clearTimeout(warpMid); clearTimeout(warpEnd);
+    warpMid = setTimeout(action, 190);                                   // Sprung unter dem Flash
+    warpEnd = setTimeout(() => warpOverlay.classList.remove("active"), 440);
+  }
+
+  // Highlight-Puls am Zielobjekt (sonst bei log-Skala-Mini-Sprüngen unsichtbar).
+  let pulseEl = null, pulseTimer = null;
+  function pulseTarget(id) {
+    if (prefersReduced()) return;
+    const el = skyItemEl(id);
+    if (!el) return;
+    if (pulseEl) pulseEl.classList.remove("pulse");
+    clearTimeout(pulseTimer);
+    void el.offsetWidth;                                                 // Reflow -> Animation neu starten
+    el.classList.add("pulse");
+    pulseEl = el;
+    pulseTimer = setTimeout(() => { el.classList.remove("pulse"); if (pulseEl === el) pulseEl = null; }, 950);
+  }
+
+  function scrollToAlt(alt, smooth) {
+    const y = Math.max(0, altToY(alt) - window.innerHeight / 2);
+    window.scrollTo({ top: y, behavior: smooth && !prefersReduced() ? "smooth" : "auto" });
+  }
+
+  // Füllt alle Modal-Felder für ein Objekt (kein Fokus-/Scroll-Lock-Handling).
+  function renderModal(it) {
+    currentModalId = it.id;
+    // Bild-Hero (WebP), Emoji nur Fallback.
+    const webp = it.img ? it.img.replace(/\.(jpe?g|png)$/i, ".webp") : "";
+    if (webp) {
+      modalHeroImg.onerror = () => { modalHeroImg.hidden = true; modalEmoji.style.display = "flex"; };
+      modalHeroImg.src = webp;
+      modalHeroImg.alt = it.name[lang];
+      modalHeroImg.hidden = false;
+      modalEmoji.style.display = "none";
+      modal.classList.add("has-hero");
+    } else {
+      modalHeroImg.hidden = true;
+      modalHeroImg.removeAttribute("src");
+      modalEmoji.style.display = "flex";
+      modal.classList.remove("has-hero");
+    }
+    modalEmoji.textContent = it.emoji;
+
     const yr = SPACE_YEARS[it.id] ? `  ·  ${SPACE_YEARS[it.id]}` : "";
     modal.querySelector(".modal-name").textContent = it.name[lang] + yr;
-    modal.querySelector(".modal-sci").textContent = it.sci || "";
+    const sciEl = modal.querySelector(".modal-sci");
+    sciEl.textContent = it.sci || "";
+    sciEl.hidden = !it.sci;                                              // leeres <p> nicht rendern
     modal.querySelector(".modal-alt").textContent = formatAlt(it.altitude_m);
+    modalFact.textContent = it.fact[lang];                              // Kurzfakt als erste Zeile (Touch-Parität)
     renderModalBody(it);
+
     const note = NOTE_LABELS[it.note];
     const noteTxt = note ? ` · ${note[lang]}` : "";
     const credit = it.credit ? `${it.credit}${it.license ? " (" + it.license + ")" : ""}` : "";
     const srcLabel = lang === "de" ? "Quelle" : "Source";
-    // Meta sicher per DOM-API aufbauen (kein innerHTML mit interpolierter URL).
     const meta = modal.querySelector(".modal-meta");
     meta.textContent = `${credit}${noteTxt}`;
     if (it.source) {
-      meta.appendChild(document.createTextNode(" · "));
+      meta.appendChild(document.createTextNode(credit || noteTxt ? " · " : ""));
       const a = document.createElement("a");
-      a.href = it.source;
-      a.target = "_blank";
-      a.rel = "noopener";
+      a.href = it.source; a.target = "_blank"; a.rel = "noopener";
       a.textContent = srcLabel;
       meta.appendChild(a);
     }
-    modal.hidden = false;
-    sceneEl.setAttribute("aria-hidden", "true");
+    meta.hidden = !meta.textContent && !it.source;
+
+    const order = modalOrder();
+    const idx = order.findIndex((o) => o.id === it.id);
+    modalPrevBtn.disabled = idx <= 0;
+    modalNextBtn.disabled = idx < 0 || idx >= order.length - 1;
+
+    try { history.replaceState(null, "", "#" + it.id); } catch (e) { /* file:// */ }
     modalBody.scrollTop = 0;
     modalCard.scrollTop = 0;
-    modal.querySelector(".modal-close").focus();
+  }
+
+  function openModal(it, opts) {
+    if (!it) return;
+    opts = opts || {};
+    // Fokus-Restore bevorzugt das auslösende .sky-item (nicht das evtl. versteckte activeElement).
+    modalReturnFocus = skyItemEl(it.id) || opts.returnFocus ||
+      (document.activeElement && document.activeElement !== document.body ? document.activeElement : null);
+    syncModalChrome();
+    renderModal(it);
+    if (modal.hidden) { modal.hidden = false; setBackgroundInert(true); }
+    modalClose.focus();
+  }
+
+  // Vor/Zurück im Modal (dir: +1 höher, -1 tiefer). Szene scrollt im Hintergrund mit.
+  function navigateModal(dir) {
+    const order = modalOrder();
+    const idx = order.findIndex((o) => o.id === currentModalId);
+    if (idx < 0) return;
+    const next = order[idx + dir];
+    if (!next) return;
+    modalReturnFocus = skyItemEl(next.id) || modalReturnFocus;
+    runWarp(() => {
+      renderModal(next);
+      scrollToAlt(next.altitude_m, false);
+      updateAltimeter();
+      requestFrame();
+    });
   }
 
   function closeModal() {
     if (modal.hidden) return;
     modal.hidden = true;
-    sceneEl.removeAttribute("aria-hidden");
-    if (modalReturnFocus && typeof modalReturnFocus.focus === "function") modalReturnFocus.focus();
+    setBackgroundInert(false);
+    const rf = modalReturnFocus;
     modalReturnFocus = null;
+    currentModalId = null;
+    if (rf && typeof rf.focus === "function" && document.contains(rf)) rf.focus();
   }
 
   // Fokusfalle: Tab zykliert innerhalb der Modal-Card.
   function trapFocus(e) {
     if (modal.hidden || e.key !== "Tab") return;
-    const focusables = modalCard.querySelectorAll(
-      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+    const focusables = [...modalCard.querySelectorAll(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])')]
+      .filter((el) => !el.disabled && el.offsetParent !== null);
     if (!focusables.length) return;
     const first = focusables[0], last = focusables[focusables.length - 1];
     if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
     else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
   }
 
-  modal.querySelector(".modal-close").addEventListener("click", closeModal);
+  modalClose.addEventListener("click", closeModal);
+  modalPrevBtn.addEventListener("click", () => navigateModal(-1));
+  modalNextBtn.addEventListener("click", () => navigateModal(+1));
+  modalShareBtn.addEventListener("click", () => shareCurrent(modalShareBtn));
   modal.addEventListener("click", (e) => { if (e.target === modal) closeModal(); });
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") closeModal();
-    else trapFocus(e);
+    if (modal.hidden) return;
+    if (e.key === "Escape") { closeModal(); return; }
+    if (e.key === "ArrowRight") { e.preventDefault(); navigateModal(+1); return; }
+    if (e.key === "ArrowLeft") { e.preventDefault(); navigateModal(-1); return; }
+    trapFocus(e);
   });
 
   /* ---------------------------------------------------------------------
@@ -981,23 +1200,20 @@
   const supportsHover = window.matchMedia("(hover: hover)").matches;
   let hoverItemEl = null;
 
-  function hidePopup() { hoverPopup.hidden = true; hoverItemEl = null; }
+  function hidePopup() {
+    hoverPopup.hidden = true;
+    if (hoverItemEl) hoverItemEl.removeAttribute("aria-describedby");   // Tooltip-Bezug lösen
+    hoverItemEl = null;
+  }
 
+  // Popup ist auf den Kurzfakt reduziert (Name + Höhe stehen bereits im Objekt-Label).
   function showPopup(el, it) {
-    const yr = SPACE_YEARS[it.id] ? ` · ${SPACE_YEARS[it.id]}` : "";
-    const frag = document.createDocumentFragment();
-    const name = document.createElement("div");
-    name.className = "hp-name";
-    name.textContent = it.name[lang] + yr;
-    const alt = document.createElement("div");
-    alt.className = "hp-alt";
-    alt.textContent = formatAlt(it.altitude_m);
     const fact = document.createElement("div");
     fact.className = "hp-fact";
     fact.textContent = it.fact[lang];
-    frag.append(name, alt, fact);
-    hoverPopup.replaceChildren(frag);
+    hoverPopup.replaceChildren(fact);
     hoverPopup.hidden = false;
+    el.setAttribute("aria-describedby", "hover-popup");                 // A11y: statt permanentem aria-hidden
     positionPopup(el);
   }
 
@@ -1056,12 +1272,16 @@
       const li = document.createElement("li");
       const btn = document.createElement("button");       // echtes Button = nativ tastaturbedienbar
       btn.type = "button";
-      btn.textContent = t.label[lang];
+      const nameSpan = document.createElement("span");
+      nameSpan.className = "tp-name";
+      nameSpan.textContent = t.label[lang];
+      const altSpan = document.createElement("span");
+      altSpan.className = "tp-alt";
+      altSpan.textContent = formatAlt(t.alt);             // Höhenangabe pro Ziel
+      btn.append(nameSpan, altSpan);
       btn.addEventListener("click", () => {
-        const targetTop = altToY(t.alt);                 // DOM-top des Ziels
-        const y = Math.max(0, targetTop - window.innerHeight / 2);
         document.getElementById("teleport-menu").removeAttribute("open");
-        window.scrollTo({ top: y, behavior: prefersReduced() ? "auto" : "smooth" });
+        runWarp(() => { scrollToAlt(t.alt, false); updateAltimeter(); requestFrame(); });
       });
       li.appendChild(btn);
       frag.appendChild(li);
@@ -1099,6 +1319,7 @@
     if (!target) return;
     const y = Math.max(0, altToY(target.altitude_m) - window.innerHeight / 2);
     window.scrollTo({ top: y, behavior: prefersReduced() ? "auto" : "smooth" });
+    pulseTarget(target.id);              // Highlight-Puls, sonst bei Mini-Sprüngen unsichtbar
   }
 
   function updateNavButtons() {
@@ -1133,6 +1354,9 @@
   function setLang(newLang) {
     if (newLang === lang) return;
     lang = newLang;
+    try { localStorage.setItem("idh-lang", lang); } catch (e) { /* privacy mode */ }
+    try { const u = new URL(location.href); u.searchParams.set("lang", lang); history.replaceState(null, "", u.href); }
+    catch (e) { /* file:// */ }
     const keepGpx = TOTAL_HEIGHT - window.scrollY;       // Scrollposition (Boden-px) merken
     document.querySelectorAll("#lang-toggle button").forEach((b) => {
       const on = b.dataset.lang === lang;
@@ -1149,6 +1373,12 @@
     buildKarman();
     buildFinale();
     buildTeleport();
+    buildJourneyBar();
+    // Offenes Modal in der neuen Sprache neu rendern (Deep-Link/History bleibt erhalten).
+    if (!modal.hidden && currentModalId) {
+      const it = ITEM_BY_ID.get(currentModalId);
+      if (it) { syncModalChrome(); renderModal(it); }
+    }
     const h = document.documentElement; const wasReady = h.classList.contains("ready");
     h.classList.remove("ready");                          // Smooth aus, sonst springt es
     window.scrollTo(0, TOTAL_HEIGHT - keepGpx);           // Position unverändert lassen
@@ -1179,9 +1409,28 @@
     requestAnimationFrame(step);
   }
 
+  // Startsprache aus ?lang= bzw. localStorage (URL hat Vorrang), sonst DE.
+  function resolveInitialLang() {
+    let urlLang = null;
+    try { urlLang = new URLSearchParams(location.search).get("lang"); } catch (e) { /* file:// */ }
+    if (urlLang === "de" || urlLang === "en") return urlLang;
+    let stored = null;
+    try { stored = localStorage.getItem("idh-lang"); } catch (e) { /* privacy mode */ }
+    return (stored === "de" || stored === "en") ? stored : "de";
+  }
+
   function init() {
     sceneEl.style.height = TOTAL_HEIGHT + "px";
     resize();
+
+    // Sprache VOR dem Aufbau festlegen, damit alle Texte gleich in der Zielsprache erscheinen.
+    lang = resolveInitialLang();
+    document.querySelectorAll("#lang-toggle button").forEach((b) => {
+      const on = b.dataset.lang === lang;
+      b.classList.toggle("active", on);
+      b.setAttribute("aria-pressed", on ? "true" : "false");
+    });
+
     applyStaticI18n();
     buildStars();
     buildScene();
@@ -1194,7 +1443,13 @@
     buildFinale();
     buildClouds();
     buildTeleport();
+    buildJourneyBar();
     setupInteraction();                 // Event-Delegation + Hover-Popup (einmalig)
+
+    // Deep-Link: #objekt-id -> beim Laden hinscrollen + Modal öffnen (überspringt den Ground-Start).
+    let deepItem = null;
+    const hashId = (location.hash || "").replace(/^#/, "");
+    if (hashId && ITEM_BY_ID.has(hashId)) deepItem = ITEM_BY_ID.get(hashId);
 
     // Start am Boden (ganz unten), bevor irgendetwas sichtbar wird.
     window.scrollTo(0, document.body.scrollHeight);
@@ -1223,6 +1478,15 @@
       animateAscent(ASCENT_TARGET, 1500);
     };
     document.getElementById("start-btn").addEventListener("click", hideOverlay);
+
+    // Geteilter Deep-Link: Overlay direkt weg, zum Objekt springen, Modal öffnen.
+    if (deepItem) {
+      overlay.classList.add("hide");
+      document.body.classList.remove("is-loading");
+      scrollToAlt(deepItem.altitude_m, false);
+      requestFrame();
+      requestAnimationFrame(() => openModal(deepItem));
+    }
 
     // Scroll-Hinweis nach erstem Scrollen ausblenden
     const hint = document.getElementById("scroll-hint");

@@ -1201,7 +1201,7 @@ const TELEPORT_TARGETS = [
   { alt:1344*9.4607e15,     label:{de:"Milchstraße",   en:"Milky Way"} },
   { alt:2.5e6*9.4607e15,    label:{de:"Galaxien",      en:"Galaxies"} },
   { alt:250e6*9.4607e15,    label:{de:"Superhaufen",   en:"Superclusters"} },
-  { alt:33.6e9*9.4607e15,   label:{de:"Frontier",      en:"Frontier"} },
+  { alt:33.6e9*9.4607e15,   label:{de:"Ferne Grenze",  en:"Frontier"} },
   { alt:439900000000000000000000000, label:{de:"Rand des Universums", en:"Edge of the universe"} },
 ];
 

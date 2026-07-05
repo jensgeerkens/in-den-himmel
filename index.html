@@ -5,13 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>In den Himmel — Wie hoch fliegen Tiere?</title>
   <meta name="description" content="Scrolle vom Boden bis ins Weltall und entdecke fliegende Tiere, Flugzeuge und Raumfahrt auf ihrer wahren Höhe.">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230b1026'/%3E%3Ccircle cx='16' cy='11' r='6' fill='%23ffd66b'/%3E%3Cpath d='M6 26c3-4 6-6 10-6s7 2 10 6' fill='none' stroke='%235da2ff' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=9">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=9">
+  <link rel="apple-touch-icon" href="favicon-180.png?v=9">
+  <meta name="theme-color" content="#060c20">
+
+  <!-- Open Graph / Twitter (Texte werden bei Sprachwechsel per JS mitgezogen) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="In den Himmel">
+  <meta property="og:url" content="https://in-den-himmel.pages.dev/">
+  <meta property="og:title" content="In den Himmel — Wie hoch fliegen Tiere?">
+  <meta property="og:description" content="Scrolle vom Boden bis ins Weltall und entdecke fliegende Tiere, Flugzeuge und Raumfahrt auf ihrer wahren Höhe.">
+  <meta property="og:image" content="https://in-den-himmel.pages.dev/og-image.png?v=9">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="In den Himmel — Wie hoch fliegen Tiere?">
+  <meta name="twitter:description" content="Scrolle vom Boden bis ins Weltall und entdecke fliegende Tiere, Flugzeuge und Raumfahrt auf ihrer wahren Höhe.">
+  <meta name="twitter:image" content="https://in-den-himmel.pages.dev/og-image.png?v=9">
   <script>
     /* Verhindert, dass der Browser eine alte Scrollposition wiederherstellt –
        wir starten kontrolliert am Boden (ganz unten). */
     if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
   </script>
-  <link rel="stylesheet" href="styles.css?v=8">
+  <link rel="stylesheet" href="styles.css?v=9">
 </head>
 <body class="is-loading">
 
@@ -89,19 +108,39 @@
     <button type="button" id="prev-object" title="Voriges Objekt nach unten (Pfeil ↓)" aria-label="Voriges Objekt tiefer">↓</button>
   </div>
 
+  <!-- Vertikale Journey-Bar (Fortschritt + klickbare Zonen) -->
+  <nav id="journey-bar" aria-label="Reise-Fortschritt">
+    <div class="jb-track" id="jb-track"></div>
+    <div class="jb-dot" id="jb-dot" aria-hidden="true"></div>
+  </nav>
+
+  <!-- Warp-Overlay für Teleport-Übergänge (rein dekorativ) -->
+  <div id="warp-overlay" aria-hidden="true"></div>
+
   <!-- Hover-Popup (ein wiederverwendetes Element, per JS befüllt/positioniert) -->
-  <div id="hover-popup" hidden aria-hidden="true"></div>
+  <div id="hover-popup" hidden role="tooltip"></div>
 
   <!-- Detail-Modal -->
   <div id="detail-modal" hidden>
     <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-name-h">
       <button class="modal-close" aria-label="Schließen">×</button>
-      <div class="modal-emoji" aria-hidden="true"></div>
-      <h2 class="modal-name" id="modal-name-h"></h2>
-      <p class="modal-sci"></p>
-      <p class="modal-alt"></p>
-      <div class="modal-body"></div>
-      <p class="modal-meta"></p>
+      <div class="modal-hero">
+        <img class="modal-hero-img" alt="" hidden>
+        <div class="modal-emoji" aria-hidden="true"></div>
+      </div>
+      <div class="modal-content">
+        <h2 class="modal-name" id="modal-name-h"></h2>
+        <p class="modal-sci"></p>
+        <p class="modal-alt"></p>
+        <p class="modal-fact"></p>
+        <div class="modal-body"></div>
+        <p class="modal-meta"></p>
+      </div>
+      <div class="modal-toolbar">
+        <button type="button" class="modal-prev" aria-label="Voriges Objekt (tiefer)">‹ <span class="mt-label">Tiefer</span></button>
+        <button type="button" class="modal-share" aria-label="Link teilen"><span class="mt-label">Teilen</span></button>
+        <button type="button" class="modal-next" aria-label="Nächstes Objekt (höher)"><span class="mt-label">Höher</span> ›</button>
+      </div>
     </div>
   </div>
 
@@ -132,22 +171,23 @@
       <p data-i18n="subtitle">Vom Boden bis ins Weltall: fliegende Tiere, Flugzeuge und Raumfahrt auf ihrer wahren Höhe.</p>
       <button id="start-btn" data-i18n="start">Abheben ↑</button>
       <p class="overlay-hint" data-i18n="tapHint">Tipp: Objekt antippen oder anklicken für Details.</p>
+      <p class="overlay-keys" data-i18n="keysHint">Tastatur: ↑ / ↓ springen von Objekt zu Objekt, ← / → blättern im geöffneten Detail.</p>
       <p class="overlay-credit" data-i18n="inspired">Inspiriert von neal.fun/deep-sea</p>
     </div>
   </div>
 
-  <script src="data.js?v=8"></script>
-  <script src="images/manifest.js?v=8"></script>
-  <script src="visuals.js?v=8"></script>
-  <script src="sizes.js"></script>
-  <script src="data_details.js"></script>
-  <script src="dd_life.js"></script>
-  <script src="dd_tech1.js"></script>
-  <script src="dd_space.js"></script>
-  <script src="dd_solar.js"></script>
-  <script src="dd_stellar.js"></script>
-  <script src="dd_deep.js"></script>
-  <script src="dd_compare.js"></script>
-  <script src="script.js?v=8"></script>
+  <script src="data.js?v=9"></script>
+  <script src="images/manifest.js?v=9"></script>
+  <script src="visuals.js?v=9"></script>
+  <script src="sizes.js?v=9"></script>
+  <script src="data_details.js?v=9"></script>
+  <script src="dd_life.js?v=9"></script>
+  <script src="dd_tech1.js?v=9"></script>
+  <script src="dd_space.js?v=9"></script>
+  <script src="dd_solar.js?v=9"></script>
+  <script src="dd_stellar.js?v=9"></script>
+  <script src="dd_deep.js?v=9"></script>
+  <script src="dd_compare.js?v=9"></script>
+  <script src="script.js?v=9"></script>
 </body>
 </html>
