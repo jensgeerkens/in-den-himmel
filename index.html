@@ -11,7 +11,7 @@
        wir starten kontrolliert am Boden (ganz unten). */
     if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
   </script>
-  <link rel="stylesheet" href="styles.css?v=7">
+  <link rel="stylesheet" href="styles.css?v=8">
 </head>
 <body class="is-loading">
 
@@ -23,7 +23,9 @@
     <div id="atmosphere-layer"></div>
     <div id="section-layer"></div>
     <div id="cloud-layer"></div>
+    <div id="tick-layer"></div>
     <div id="milestone-layer"></div>
+    <div id="gapfact-layer"></div>
     <div id="objects-layer"></div>
     <div id="karman-layer"></div>
     <div id="finale-layer"></div>
@@ -134,7 +136,9 @@
     </div>
   </div>
 
-  <script src="data.js"></script>
+  <script src="data.js?v=8"></script>
+  <script src="images/manifest.js?v=8"></script>
+  <script src="visuals.js?v=8"></script>
   <script src="sizes.js"></script>
   <script src="data_details.js"></script>
   <script src="dd_life.js"></script>
@@ -144,6 +148,6 @@
   <script src="dd_stellar.js"></script>
   <script src="dd_deep.js"></script>
   <script src="dd_compare.js"></script>
-  <script src="script.js?v=7"></script>
+  <script src="script.js?v=8"></script>
 </body>
 </html>

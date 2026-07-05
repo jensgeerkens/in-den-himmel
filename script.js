@@ -55,6 +55,13 @@
      --------------------------------------------------------------------- */
   let lang = "de";
 
+  // Reduced-Motion einmal cachen (kein matchMedia pro Frame) und bei Änderung nachziehen.
+  const reduceMQ = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let reducedMotion = reduceMQ.matches;
+  const onReduceChange = () => { reducedMotion = reduceMQ.matches; };
+  if (reduceMQ.addEventListener) reduceMQ.addEventListener("change", onReduceChange);
+  else if (reduceMQ.addListener) reduceMQ.addListener(onReduceChange);
+
   const LY_KM = 9.4607e12;                 // Kilometer pro Lichtjahr
   function formatAlt(m, lg = lang) {
     const loc = lg === "de" ? "de-DE" : "en-US";
@@ -174,13 +181,21 @@
       const badge = note ? `<span class="note-badge note-${it.note}">${note[lang]}</span>` : "";
       const yr = SPACE_YEARS[it.id] ? `<span class="year">${SPACE_YEARS[it.id]}</span>` : "";
 
+      // Foto -> WebP (max. 320 px) mit echten width/height gegen CLS; Emoji bleibt onerror-Fallback.
+      const webp = it.img ? it.img.replace(/\.(jpe?g|png)$/i, ".webp") : "";
+      const dim = (typeof IMG_DIMS !== "undefined" && it.img && IMG_DIMS[it.img]) ? IMG_DIMS[it.img] : null;
+      const dimAttr = dim ? ` width="${dim[0]}" height="${dim[1]}"` : "";
       const imgTag = it.img
-        ? `<img src="${it.img}" alt="${it.name[lang]}" loading="lazy" decoding="async"
+        ? `<img src="${webp}"${dimAttr} alt="${it.name[lang]}" loading="lazy" decoding="async"
              onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">`
         : "";
+      // Kein Foto -> freigestellte SVG-Bildsprache (Kugeln/Icons); Emoji nur noch stiller Fallback.
+      const svg = (!it.img && typeof skyVisual === "function") ? skyVisual(it.id) : null;
+      const visualTag = svg ? `<div class="sky-visual" aria-hidden="true">${svg}</div>` : "";
+      const showPh = !it.img && !svg;
       el.innerHTML = `
-        ${imgTag}
-        <div class="placeholder" style="display:${it.img ? "none" : "flex"}">${it.emoji}</div>
+        ${imgTag}${visualTag}
+        <div class="placeholder" style="display:${showPh ? "flex" : "none"}">${it.emoji}</div>
         <figcaption>
           <span class="name">${it.name[lang]}${yr}</span>
           <span class="alt">${formatAlt(it.altitude_m)}</span>
@@ -207,10 +222,18 @@
 
   const MILESTONES = [
     { alt: 8849,  label: { de: "Mount Everest", en: "Mount Everest" } },
+    { alt: 12000, label: { de: "Reiseflughöhe Jets", en: "Airliner cruise" } },
+    { alt: 19000, label: { de: "Armstrong-Grenze", en: "Armstrong limit" } },
     { alt: 100000, label: { de: "Grenze zum Weltraum", en: "Edge of space" } },
+    { alt: 408000, label: { de: "Raumstation ISS", en: "ISS orbit" } },
+    { alt: 35786000, label: { de: "Geostationäre Bahn", en: "Geostationary orbit" } },
     { alt: 384400000, label: { de: "Mondbahn", en: "Moon's orbit" } },
     { alt: 149600000000, label: { de: "Die Sonne (1 AE)", en: "The Sun (1 AU)" } },
+    { alt: 5910000000000, label: { de: "Pluto-Bahn", en: "Pluto's orbit" } },
+    { alt: 25800000000000, label: { de: "Voyager 1", en: "Voyager 1" } },
     { alt: 40000000000000000, label: { de: "Nächster Stern", en: "Nearest star" } },
+    { alt: 246000000000000000000, label: { de: "Zentrum der Milchstraße", en: "Milky Way centre" } },
+    { alt: 2.365e22, label: { de: "Andromeda-Galaxie", en: "Andromeda galaxy" } },
     { alt: 439900000000000000000000000, label: { de: "Rand des Universums", en: "Edge of the universe" } },
   ];
   function buildMilestones() {
@@ -223,6 +246,41 @@
       frag.appendChild(el);
     }
     msLayer.replaceChildren(frag);
+  }
+
+  // Dezente Höhen-Ticks am linken Rand (jede Zehnerpotenz), rein orientierend.
+  const tickLayer = document.getElementById("tick-layer");
+  function buildTicks() {
+    const frag = document.createDocumentFragment();
+    for (let e = 2; e <= 26; e++) {              // 100 m … 1e26 m
+      const alt = Math.pow(10, e);
+      const y = altToY(alt);
+      if (y < 0 || y > TOTAL_HEIGHT) continue;
+      const el = document.createElement("div");
+      el.className = "height-tick";
+      el.style.top = y + "px";
+      el.innerHTML = `<span class="tick-label">${formatAlt(alt)}</span>`;
+      frag.appendChild(el);
+    }
+    tickLayer.replaceChildren(frag);
+  }
+
+  // Beiläufige Zwischen-Facts in den langen Lücken (rein additiv, aus data.js GAP_FACTS).
+  const gapLayer = document.getElementById("gapfact-layer");
+  function buildGapFacts() {
+    if (typeof GAP_FACTS === "undefined") return;
+    const frag = document.createDocumentFragment();
+    for (const f of GAP_FACTS) {
+      const el = document.createElement("div");
+      el.className = "gap-fact";
+      el.style.top = altToY(f.alt) + "px";
+      const txt = document.createElement("p");
+      txt.className = "gap-fact-text";
+      txt.textContent = f[lang];
+      el.appendChild(txt);
+      frag.appendChild(el);
+    }
+    gapLayer.replaceChildren(frag);
   }
 
   // Große Akt-Banner an den Übergängen (Eintritt = untere Grenze `from`).
@@ -320,29 +378,38 @@
     return SECTIONS[SECTIONS.length - 1].name[lang];
   }
 
+  // Weiche PNG-Wolken in zwei Tiefenebenen (fern/nah). factor = Parallax-Stärke.
+  // layer 0 = fern (klein, blass, langsam), layer 1 = nah (groß, kräftig, schnell).
   const CLOUDS = [
-    { alt: 700,  emoji: "☁️", x: 18, factor: 0.12 },
-    { alt: 1400, emoji: "☁️", x: 70, factor: 0.18 },
-    { alt: 2600, emoji: "🌥️", x: 40, factor: 0.10 },
-    { alt: 5500, emoji: "☁️", x: 82, factor: 0.20 },
-    { alt: 9000, emoji: "🌫️", x: 25, factor: 0.14 },
+    { alt: 600,  img: "cloud-b", x: 22, w: 190, op: 0.9,  factor: 0.22, layer: 1 },
+    { alt: 900,  img: "cloud-a", x: 68, w: 150, op: 0.7,  factor: 0.12, layer: 0 },
+    { alt: 1500, img: "cloud-a", x: 40, w: 220, op: 0.92, factor: 0.24, layer: 1 },
+    { alt: 2400, img: "cloud-c", x: 78, w: 170, op: 0.6,  factor: 0.10, layer: 0 },
+    { alt: 3200, img: "cloud-b", x: 30, w: 240, op: 0.9,  factor: 0.26, layer: 1 },
+    { alt: 5200, img: "cloud-a", x: 62, w: 150, op: 0.55, factor: 0.11, layer: 0 },
+    { alt: 6500, img: "cloud-c", x: 24, w: 260, op: 0.85, factor: 0.28, layer: 1 },
+    { alt: 9000, img: "cloud-c", x: 72, w: 200, op: 0.45, factor: 0.09, layer: 0 },
   ];
-  let cloudEls = [];
+  let cloudEls = [];       // [{ el, factor, baseTop }] — Faktoren einmalig gecacht (kein dataset-Parse pro Frame)
   function buildClouds() {
     const frag = document.createDocumentFragment();
     cloudEls = CLOUDS.map((c) => {
-      const el = document.createElement("div");
-      el.className = "cloud";
-      el.textContent = c.emoji;
-      // Wolken liegen im linearen Boden-Bereich; DOM-top auf [TOTAL_HEIGHT-GROUND_PX, TOTAL_HEIGHT]
-      // clampen, damit die Parallax-Verschiebung sie nie unter den Boden schiebt (Void-Bug).
+      const el = document.createElement("img");
+      el.className = "cloud cloud-l" + c.layer;
+      el.src = "images/clouds/" + c.img + ".png";
+      el.alt = "";
+      el.setAttribute("aria-hidden", "true");
+      el.decoding = "async";
+      el.loading = "lazy";
+      el.style.width = c.w + "px";
+      el.style.opacity = c.op;
+      // Wolken liegen im linearen Boden-Bereich; DOM-top clampen, damit die Parallax-
+      // Verschiebung sie nie unter den Boden schiebt (Void-Bug).
       const baseTop = Math.min(TOTAL_HEIGHT, Math.max(0, altToY(c.alt)));
       el.style.top = baseTop + "px";
       el.style.left = c.x + "%";
-      el.dataset.factor = c.factor;
-      el.dataset.baseTop = baseTop;
       frag.appendChild(el);
-      return el;
+      return { el, factor: c.factor, baseTop };
     });
     cloudLayer.replaceChildren(frag);
   }
@@ -378,32 +445,73 @@
     return SKY_COLORS[SKY_COLORS.length - 1].c;
   }
 
-  // Festes Sternenfeld im DOM-Koordinatenraum (oberer/Weltraum-Bereich).
-  // Dezente Farbtöne (überwiegend weiß, einige bläulich/gelblich) für Tiefe.
-  const STAR_TINTS = ["#ffffff", "#ffffff", "#ffffff", "#dfe9ff", "#fff1d6", "#ffe3c8"];
+  function starAlpha(alt) { return clamp01((alt - 30000) / (120000 - 30000)); }
+
+  // DOM-y-Bereich des Weltraums (ab ~30 km sichtbar) für höhenabhängige Sterndichte.
+  const STAR_TOP_Y = 0;                                   // Rand des Universums (ganz oben)
+  const STAR_BOTTOM_Y = SPACE_PX + GROUND_PX * 0.35;      // knapp in die obere Atmosphäre
+  // DOM-y-Bänder markanter Regionen (aus SECTIONS-Höhen, rein präsentativ).
+  const MW_Y0 = altToY(130000 * 9.4607e15);              // Milchstraße (obere Grenze)
+  const MW_Y1 = altToY(140 * 9.4607e15);                 // Milchstraße (untere Grenze)
+  const SUN_Y = altToY(149600000000);                    // 1 AE — Zodiakallicht
+  // Weiche Nebel-Farbfelder in den Deep-Space-Dekaden (DOM-y, Farbe, Radius).
+  const NEBULAE = [
+    { y: altToY(1e3 * 9.4607e15), x: 0.30, r: 360, c: [120, 90, 200] },
+    { y: altToY(2e4 * 9.4607e15), x: 0.72, r: 300, c: [210, 90, 150] },
+    { y: altToY(5e6 * 9.4607e15), x: 0.42, r: 420, c: [80, 120, 210] },
+    { y: altToY(2e8 * 9.4607e15), x: 0.62, r: 380, c: [150, 110, 210] },
+    { y: altToY(6e9 * 9.4607e15), x: 0.36, r: 460, c: [90, 100, 180] },
+  ];
+
+  // Festes Sternenfeld im DOM-Koordinatenraum. Drei Parallax-Schichten (f) für Tiefe,
+  // höhenabhängige Dichte (mehr/kleiner tief im All, weniger/größer nahe der Atmosphäre).
+  const STAR_TINTS = ["#ffffff", "#ffffff", "#ffffff", "#dfe9ff", "#cfe0ff", "#fff1d6", "#ffe3c8"];
+  const STAR_LAYERS = [0.90, 0.96, 1.0];
   const STARS = [];
+  let noisePattern = null;
   function buildStars() {
     STARS.length = 0;
-    const maxY = SPACE_PX + GROUND_PX * 0.35;   // bis knapp in die obere Atmosphäre
-    for (let i = 0; i < 560; i++) {
-      const ydom = Math.random() * maxY;
+    const span = STAR_BOTTOM_Y - STAR_TOP_Y;
+    const N = 1000;
+    for (let i = 0; i < N; i++) {
+      const ydom = STAR_TOP_Y + Math.random() * span;
+      const alt = groundPxToAlt(TOTAL_HEIGHT - ydom);
+      const depth = clamp01(1 - (ydom - STAR_TOP_Y) / span);   // 1 = ganz oben (tief im All)
+      // tief im All: mehr, kleinere, hellere Sterne; nahe Atmosphäre: dünner
+      if (Math.random() > 0.35 + depth * 0.65) continue;
       const base = Math.random() * 0.6 + 0.4;
-      // Alpha hängt nur an der (festen) Höhe des Sterns -> einmalig vorberechnen,
-      // statt pro Frame groundPxToAlt()+starAlpha() für jeden Stern aufzurufen.
-      const a = starAlpha(groundPxToAlt(TOTAL_HEIGHT - ydom)) * base;
+      const a = starAlpha(alt) * base;
+      // dichteres, helleres Band in der Milchstraßen-Region
+      const inMW = ydom >= MW_Y0 && ydom <= MW_Y1;
+      const layer = (Math.random() * STAR_LAYERS.length) | 0;
       STARS.push({
         x: Math.random(),
         ydom,
-        r: Math.random() * 1.4 + 0.3,
-        a,
+        r: (Math.random() * 1.2 + 0.25) * (1 - depth * 0.35),
+        a: Math.min(1, a * (inMW ? 1.35 : 1)),
         c: STAR_TINTS[(Math.random() * STAR_TINTS.length) | 0],
+        f: STAR_LAYERS[layer],
+        tw: Math.random() < 0.28,             // Teilmenge funkelt (gegated)
+        ph: Math.random() * Math.PI * 2,
       });
+    }
+    // 64×64-Rauschkachel einmalig für Dithering gegen Banding im Gradient.
+    if (!noisePattern) {
+      const nc = document.createElement("canvas");
+      nc.width = nc.height = 64;
+      const nx = nc.getContext("2d");
+      const img = nx.createImageData(64, 64);
+      for (let i = 0; i < img.data.length; i += 4) {
+        const v = (Math.random() * 255) | 0;
+        img.data[i] = img.data[i + 1] = img.data[i + 2] = v;
+        img.data[i + 3] = 10;                 // sehr niedriges Alpha
+      }
+      nx.putImageData(img, 0, 0);
+      noisePattern = ctx.createPattern(nc, "repeat");
     }
   }
 
-  function starAlpha(alt) { return clamp01((alt - 30000) / (120000 - 30000)); }
-
-  function drawBg() {
+  function drawBg(now) {
     const st = window.scrollY;
     const altTop = groundPxToAlt(TOTAL_HEIGHT - st);
     const altBottom = groundPxToAlt(TOTAL_HEIGHT - (st + vh));
@@ -413,12 +521,62 @@
     ctx.fillStyle = g;
     ctx.fillRect(0, 0, vw, vh);
 
-    // Sterne (Alpha ist vorberechnet, s. buildStars)
+    // Dithering: feine Rauschkachel über den Verlauf legen (killt Banding).
+    if (noisePattern) {
+      ctx.globalAlpha = 0.5;
+      ctx.fillStyle = noisePattern;
+      ctx.fillRect(0, 0, vw, vh);
+      ctx.globalAlpha = 1;
+    }
+
+    // Zodiakallicht: warmer, weicher Kegel nahe der Sonne (1 AE).
+    const sunScreen = SUN_Y - st;
+    if (sunScreen > -vh && sunScreen < vh * 2) {
+      const zg = ctx.createRadialGradient(vw * 0.5, sunScreen, 0, vw * 0.5, sunScreen, vh * 0.9);
+      zg.addColorStop(0, "rgba(255,225,170,0.10)");
+      zg.addColorStop(1, "rgba(255,225,170,0)");
+      ctx.fillStyle = zg;
+      ctx.fillRect(0, 0, vw, vh);
+    }
+
+    // Nebel-Farbfelder (weiche radiale Blobs) in den Deep-Space-Dekaden.
+    for (const n of NEBULAE) {
+      const sy = n.y - st;
+      if (sy < -n.r || sy > vh + n.r) continue;
+      const ng = ctx.createRadialGradient(n.x * vw, sy, 0, n.x * vw, sy, n.r);
+      ng.addColorStop(0, `rgba(${n.c[0]},${n.c[1]},${n.c[2]},0.16)`);
+      ng.addColorStop(0.5, `rgba(${n.c[0]},${n.c[1]},${n.c[2]},0.06)`);
+      ng.addColorStop(1, `rgba(${n.c[0]},${n.c[1]},${n.c[2]},0)`);
+      ctx.fillStyle = ng;
+      ctx.fillRect(0, 0, vw, vh);
+    }
+
+    // Milchstraßen-Band: diagonaler, weicher Lichtstreifen in der Milchstraßen-Region.
+    const mwTop = MW_Y0 - st, mwBot = MW_Y1 - st;
+    if (mwBot > 0 && mwTop < vh) {
+      ctx.save();
+      const cy = (mwTop + mwBot) / 2;
+      ctx.translate(vw / 2, cy);
+      ctx.rotate(-0.32);
+      const bandH = Math.min(vh * 0.9, Math.max(140, (mwBot - mwTop) * 0.5));
+      const bg = ctx.createLinearGradient(0, -bandH, 0, bandH);
+      bg.addColorStop(0, "rgba(180,195,255,0)");
+      bg.addColorStop(0.5, "rgba(200,210,255,0.10)");
+      bg.addColorStop(1, "rgba(180,195,255,0)");
+      ctx.fillStyle = bg;
+      ctx.fillRect(-vw, -bandH, vw * 2, bandH * 2);
+      ctx.restore();
+    }
+
+    // Sterne (Alpha vorberechnet). Parallax-Faktor pro Schicht; Twinkle nur gegated.
+    const doTwinkle = !reducedMotion && !document.hidden && now != null;
     for (const s of STARS) {
       if (s.a <= 0.01) continue;
-      const screenY = s.ydom - st;
+      const screenY = s.ydom - st * (reducedMotion ? 1 : s.f);
       if (screenY < -2 || screenY > vh + 2) continue;
-      ctx.globalAlpha = s.a;
+      let a = s.a;
+      if (doTwinkle && s.tw) a *= 0.7 + 0.3 * Math.sin(now * 0.002 + s.ph);
+      ctx.globalAlpha = a;
       ctx.fillStyle = s.c;
       ctx.beginPath();
       ctx.arc(s.x * vw, screenY, s.r, 0, Math.PI * 2);
@@ -426,6 +584,26 @@
     }
     ctx.globalAlpha = 1;
   }
+
+  /* Twinkle-Loop: Dauer-rAF NUR wenn erlaubt (kein reduced-motion, Tab sichtbar,
+     Sichthöhe > ~30 km, also Sterne überhaupt sichtbar). Sonst still. */
+  let twinkleRAF = null;
+  function twinkleActive() {
+    return !reducedMotion && !document.hidden && currentScrollAlt() > 30000;
+  }
+  function twinkleLoop(now) {
+    drawBg(now);
+    updateAltimeter();
+    updateParallax(window.scrollY);
+    twinkleRAF = twinkleActive() ? requestAnimationFrame(twinkleLoop) : null;
+  }
+  function maybeStartTwinkle() {
+    if (!twinkleRAF && twinkleActive()) twinkleRAF = requestAnimationFrame(twinkleLoop);
+  }
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) { if (twinkleRAF) { cancelAnimationFrame(twinkleRAF); twinkleRAF = null; } }
+    else maybeStartTwinkle();
+  });
 
   /* ---------------------------------------------------------------------
      5) HÖHENMESSER + PARALLAX (im rAF-Loop)
@@ -450,22 +628,22 @@
   }
 
   function updateParallax(st) {
-    if (prefersReduced()) return;        // keine Parallax-Bewegung bei reduzierter Bewegung
-    for (const el of cloudEls) {
-      const f = parseFloat(el.dataset.factor);
-      const baseTop = parseFloat(el.dataset.baseTop);
+    if (reducedMotion) return;           // keine Parallax-Bewegung bei reduzierter Bewegung
+    for (const c of cloudEls) {
       // Verschiebung so begrenzen, dass die Wolke nie unter die Szenen-Unterkante rutscht.
-      const shift = Math.max(-baseTop, Math.min(st * f, TOTAL_HEIGHT - baseTop));
-      el.style.transform = `translateY(${shift}px)`;
+      const shift = Math.max(-c.baseTop, Math.min(st * c.factor, TOTAL_HEIGHT - c.baseTop));
+      c.el.style.transform = `translateY(${shift}px)`;
     }
   }
 
   let ticking = false;
   function onFrame() {
+    ticking = false;
+    if (twinkleRAF) return;              // Twinkle-Loop rendert bereits jeden Frame
     drawBg();
     updateAltimeter();
     updateParallax(window.scrollY);
-    ticking = false;
+    maybeStartTwinkle();                 // beim Scrollen in den Weltraum den Funkel-Loop starten
   }
   function requestFrame() { if (!ticking) { requestAnimationFrame(onFrame); ticking = true; } }
 
@@ -965,6 +1143,8 @@
     buildScene();
     buildAtmosphere();
     buildMilestones();
+    buildTicks();
+    buildGapFacts();
     buildSections();
     buildKarman();
     buildFinale();
@@ -1007,6 +1187,8 @@
     buildScene();
     buildAtmosphere();
     buildMilestones();
+    buildTicks();
+    buildGapFacts();
     buildSections();
     buildKarman();
     buildFinale();

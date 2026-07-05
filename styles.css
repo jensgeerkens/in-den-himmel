@@ -54,7 +54,9 @@ html:not(.ready) #scene{ visibility: hidden; }
 
 #atmosphere-layer,
 #cloud-layer,
+#tick-layer,
 #milestone-layer,
+#gapfact-layer,
 #karman-layer,
 #finale-layer,
 #objects-layer{
@@ -174,7 +176,7 @@ html:not(.ready) #scene{ visibility: hidden; }
 .finale-cmb{
   position: absolute;
   inset: 0;
-  background-image: url("images/cmb.jpg");
+  background-image: url("images/cmb.webp");
   background-size: cover;
   background-position: center top;
   opacity: 0.5;
@@ -256,16 +258,17 @@ html:not(.ready) #scene{ visibility: hidden; }
 .finale-back:hover{ transform: translateY(-2px); background: #8ad2ff; }
 .finale-back:focus-visible{ outline: 2px solid #fff; outline-offset: 3px; }
 
-/* --- Wolken --- */
+/* --- Wolken (weiche PNGs, zwei Tiefenebenen via Parallax-Faktor) --- */
 .cloud{
   position: absolute;
-  font-size: 4rem;
-  filter: blur(0.3px) drop-shadow(0 6px 18px rgba(0,0,0,0.15));
-  opacity: 0.9;
+  height: auto;
+  filter: drop-shadow(0 8px 22px rgba(20,40,80,0.18));
   pointer-events: none;
   user-select: none;
   will-change: transform;
 }
+.cloud-l0{ filter: blur(1.2px) drop-shadow(0 6px 16px rgba(20,40,80,0.12)); }   /* fern */
+.cloud-l1{ filter: drop-shadow(0 10px 26px rgba(20,40,80,0.22)); }             /* nah */
 
 /* --- Meilenstein-Marker --- */
 .milestone{
@@ -284,6 +287,47 @@ html:not(.ready) #scene{ visibility: hidden; }
   padding: 2px 8px;
   border-radius: 6px;
   backdrop-filter: blur(4px);
+}
+
+/* --- Höhen-Ticks am linken Rand (dezent, orientierend) --- */
+.height-tick{
+  position: absolute;
+  left: 0;
+  width: 100%;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  pointer-events: none;
+}
+.height-tick .tick-label{
+  position: absolute;
+  left: 10px;
+  top: 3px;
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  font-variant-numeric: tabular-nums;
+  color: rgba(200,220,255,0.34);
+  white-space: nowrap;
+}
+
+/* --- Zwischen-Facts in den leeren Strecken --- */
+.gap-fact{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(560px, 82vw);
+  text-align: center;
+  pointer-events: none;
+  z-index: 2;
+}
+.gap-fact-text{
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(0.9rem, 2vw, 1.15rem);
+  font-weight: 400;
+  line-height: 1.5;
+  color: rgba(226,238,255,0.62);
+  text-shadow: 0 2px 14px rgba(0,0,0,0.6);
+  font-style: italic;
 }
 
 /* --- Fliegende Objekte --- */
@@ -314,9 +358,29 @@ html:not(.ready) #scene{ visibility: hidden; }
   height: 150px;                /* feste Höhe reserviert Platz -> kein Layout-Shift beim Lazy-Load */
   margin: 0 auto 8px;
   object-fit: contain;
+  /* Harte Foto-Rechtecke weich ins Dunkel maskieren -> kein Rechteck mehr vor dem Himmel.
+     Zentrale Motive bleiben voll sichtbar, nur die Kanten faden aus. */
+  -webkit-mask-image: radial-gradient(ellipse 72% 72% at 50% 46%, #000 62%, transparent 100%);
+          mask-image: radial-gradient(ellipse 72% 72% at 50% 46%, #000 62%, transparent 100%);
 }
 
-/* Emoji-Platzhalter (wenn kein Bild geladen werden kann) */
+/* Freigestellte SVG-Bildsprache (Kugeln/Icons) — kein Chip-Rahmen, nur das Motiv. */
+.sky-visual{
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sky-visual .sv{
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  filter: drop-shadow(0 4px 14px rgba(0,0,0,0.35));
+}
+
+/* Emoji-Platzhalter: nur noch stiller onerror-Fallback, ohne Kreis-Chip. */
 .sky-item .placeholder{
   width: 120px;
   height: 120px;
@@ -325,9 +389,6 @@ html:not(.ready) #scene{ visibility: hidden; }
   align-items: center;
   justify-content: center;
   font-size: 3.6rem;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, rgba(255,255,255,0.18), rgba(255,255,255,0.03));
-  border: 1px solid rgba(255,255,255,0.12);
 }
 
 /* Dunkle Plakette hinter der Beschriftung -> lesbarer Kontrast unabhängig vom
@@ -351,23 +412,25 @@ html:not(.ready) #scene{ visibility: hidden; }
   color: #9fd4ff;
 }
 
-/* Kategorie-Akzente am Platzhalter */
-.cat-bird     .placeholder{ box-shadow: inset 0 0 0 2px rgba(140,210,255,0.35); }
-.cat-insect   .placeholder{ box-shadow: inset 0 0 0 2px rgba(180,255,150,0.35); }
-.cat-bat      .placeholder{ box-shadow: inset 0 0 0 2px rgba(200,160,255,0.35); }
-.cat-spider   .placeholder{ box-shadow: inset 0 0 0 2px rgba(255,200,140,0.35); }
-.cat-aircraft .placeholder{ box-shadow: inset 0 0 0 2px rgba(255,255,255,0.4); }
-.cat-manned   .placeholder{ box-shadow: inset 0 0 0 2px rgba(255,180,90,0.5); }
-.cat-unmanned .placeholder{ box-shadow: inset 0 0 0 2px rgba(120,255,220,0.45); }
-.cat-reference .placeholder{ background: rgba(255,255,255,0.05); box-shadow: inset 0 0 0 2px rgba(255,255,255,0.15); }
-.cat-planet   .placeholder{ box-shadow: inset 0 0 0 2px rgba(255,200,120,0.4); }
-.cat-star     .placeholder{ background: radial-gradient(circle at 40% 35%, rgba(255,240,180,0.55), rgba(255,170,70,0.12)); box-shadow: inset 0 0 0 2px rgba(255,210,120,0.55); }
-.cat-cosmic   .placeholder{ background: radial-gradient(circle at 40% 35%, rgba(190,150,255,0.4), rgba(90,60,160,0.12)); box-shadow: inset 0 0 0 2px rgba(180,140,255,0.5); }
-.cat-exoplanet .placeholder{ box-shadow: inset 0 0 0 2px rgba(120,220,180,0.45); }
-.cat-nebula   .placeholder{ background: radial-gradient(circle at 40% 35%, rgba(255,140,200,0.35), rgba(120,40,120,0.12)); box-shadow: inset 0 0 0 2px rgba(255,150,210,0.45); }
-.cat-cluster  .placeholder{ box-shadow: inset 0 0 0 2px rgba(200,220,255,0.5); }
-.cat-blackhole .placeholder{ background: radial-gradient(circle at 50% 50%, rgba(0,0,0,0.85), rgba(255,150,40,0.25)); box-shadow: inset 0 0 0 2px rgba(255,160,50,0.5); }
-.cat-galaxy   .placeholder{ background: radial-gradient(circle at 40% 35%, rgba(180,200,255,0.4), rgba(80,60,150,0.12)); box-shadow: inset 0 0 0 2px rgba(170,180,255,0.5); }
+/* Kategorie nur noch als feiner Farbakzent im Label (kein Kreis-Chip mehr):
+   dünne Leiste unter der Beschriftung, Farbe = Kategorie. */
+.sky-item figcaption{ border-bottom: 2px solid transparent; }
+.cat-bird      figcaption{ border-bottom-color: rgba(140,210,255,0.65); }
+.cat-insect    figcaption{ border-bottom-color: rgba(180,255,150,0.65); }
+.cat-bat       figcaption{ border-bottom-color: rgba(200,160,255,0.65); }
+.cat-spider    figcaption{ border-bottom-color: rgba(255,200,140,0.65); }
+.cat-aircraft  figcaption{ border-bottom-color: rgba(255,255,255,0.6); }
+.cat-manned    figcaption{ border-bottom-color: rgba(255,180,90,0.75); }
+.cat-unmanned  figcaption{ border-bottom-color: rgba(120,255,220,0.7); }
+.cat-reference figcaption{ border-bottom-color: rgba(255,255,255,0.35); }
+.cat-planet    figcaption{ border-bottom-color: rgba(255,200,120,0.7); }
+.cat-star      figcaption{ border-bottom-color: rgba(255,210,120,0.8); }
+.cat-cosmic    figcaption{ border-bottom-color: rgba(180,140,255,0.75); }
+.cat-exoplanet figcaption{ border-bottom-color: rgba(120,220,180,0.7); }
+.cat-nebula    figcaption{ border-bottom-color: rgba(255,150,210,0.7); }
+.cat-cluster   figcaption{ border-bottom-color: rgba(200,220,255,0.75); }
+.cat-blackhole figcaption{ border-bottom-color: rgba(255,160,50,0.75); }
+.cat-galaxy    figcaption{ border-bottom-color: rgba(170,180,255,0.75); }
 
 /* Jahreszahl (Rekordverlauf, ab dem Weltraum) */
 .year{

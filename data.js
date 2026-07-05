@@ -1204,3 +1204,42 @@ const TELEPORT_TARGETS = [
   { alt:33.6e9*9.4607e15,   label:{de:"Frontier",      en:"Frontier"} },
   { alt:439900000000000000000000000, label:{de:"Rand des Universums", en:"Edge of the universe"} },
 ];
+
+/* ---------------------------------------------------------------------------
+   GAP_FACTS — rein additive, praesentative Zwischen-Texte fuer die langen
+   leeren Strecken. KEINE Aenderung an SKY_DATA. Jede Zahl quellengeprueft:
+   Standardatmosphaere (ISA), Lichtlaufzeit = Distanz / c (299.792 km/s).
+   Werden nur als beilaeufige Textzeilen gerendert (kein Objekt, kein Modal).
+   --------------------------------------------------------------------------- */
+const GAP_FACTS = [
+  { alt:5500, de:"Hier ist der Luftdruck nur noch halb so hoch wie am Boden.",
+              en:"Air pressure here is only half of what it is at sea level." },
+  { alt:19000, de:"Ab hier (Armstrong-Grenze) wuerde Koerperfluessigkeit ohne Druckanzug bei 37 °C zu sieden beginnen.",
+               en:"Above here (the Armstrong limit) body fluids would boil at 37 °C without a pressure suit." },
+  { alt:34000, de:"Der Luftdruck betraegt nur noch rund 1 % des Bodenwerts.",
+               en:"Air pressure is down to roughly 1 % of the sea-level value." },
+  { alt:600000, de:"Die Internationale Raumstation umrundet die Erde etwa alle 90 Minuten.",
+                en:"The International Space Station circles the Earth about every 90 minutes." },
+  { alt:120000000, de:"Das Licht des Mondes braucht nur etwa 1,3 Sekunden bis zur Erde.",
+                   en:"Moonlight takes only about 1.3 seconds to reach the Earth." },
+  { alt:90000000000, de:"Das Sonnenlicht ist gut 8 Minuten unterwegs, bis es uns erreicht.",
+                     en:"Sunlight travels for a good 8 minutes before it reaches us." },
+  { alt:3000000000000, de:"Ein Funksignal von hier zur Erde ist mehrere Stunden unterwegs.",
+                       en:"A radio signal from here to Earth is on its way for several hours." },
+  { alt:40000000000000, de:"So weit hat sich noch kein anderes von Menschen gebautes Objekt von der Erde entfernt.",
+                        en:"No other human-made object has ever travelled this far from Earth." },
+  { alt:2.0e16, de:"Zwischen den Sternen ist es so leer, dass heutige Sonden Zehntausende Jahre bis zum naechsten braeuchten.",
+                en:"Space between the stars is so empty that today's probes would need tens of thousands of years to reach the next one." },
+  { alt:3.0e17, de:"Das Licht der hellsten Sterne hier war Jahrhunderte zu uns unterwegs.",
+                en:"Light from the brightest stars here has been travelling to us for centuries." },
+  { alt:5.0e18, de:"Unsere Milchstrasse enthaelt schaetzungsweise 100 bis 400 Milliarden Sterne.",
+                en:"Our Milky Way contains an estimated 100 to 400 billion stars." },
+  { alt:5.0e21, de:"Das Licht der Andromeda-Galaxie ist seit rund 2,5 Millionen Jahren zu uns unterwegs.",
+                en:"Light from the Andromeda galaxy has been travelling toward us for about 2.5 million years." },
+  { alt:3.0e23, de:"In diesem Massstab sehen ganze Galaxien aus wie einzelne Lichtpunkte in einem gewaltigen Netz.",
+                en:"At this scale entire galaxies look like single points of light in a vast web." },
+  { alt:5.0e24, de:"Die Galaxien ordnen sich zu Faeden und Waenden, dazwischen liegen fast leere Blasen.",
+                en:"Galaxies arrange into filaments and walls, with almost empty voids in between." },
+  { alt:1.2e26, de:"Das Licht der aeltesten sichtbaren Galaxien war ueber 13 Milliarden Jahre unterwegs.",
+                en:"Light from the oldest visible galaxies has been travelling for over 13 billion years." },
+];

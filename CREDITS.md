@@ -67,5 +67,17 @@ Pro Eintrag in `data.js` im Feld `source` verlinkt. Wichtigste:
 - Marienkäfer — PLOS ONE (Rothamsted-Radar)
 - Höhenrekorde Luftfahrt — Wikipedia "List of flight altitude records"
 
+## Eigene Illustrationen (kein externer Nachweis nötig)
+- **SVG-Bildsprache** für die 45 Objekte ohne Foto (`visuals.js`): Planeten-/Sternkugeln
+  mit radialem Licht, Saturn-Ring, Sonne, Mond, sowie strichbasierte Icons für ISS, Mir,
+  Hubble, JWST, Voyager & Co., Astronauten, Kapseln, Galaxien und kosmische Struktur.
+  Vollständig selbst erstellt (Public Domain / CC0, eigene Arbeit).
+- **Wolken** (`images/clouds/*.png`): prozedural erzeugt mit `tools/build_clouds.py` (eigene Arbeit).
+
+## Bild-Pipeline
+- Alle Anzeige-Fotos werden mit `tools/build_images.py` auf max. 320 px Breite als WebP
+  konvertiert (Qualität 80–82). Originale bleiben als `onerror`-Fallback erhalten.
+  `images/raw/` (Rohdaten) ist vom Deploy ausgeschlossen (`.gitignore`).
+
 ## Schriften
 - Space Grotesk (Display-Schrift, self-hosted WOFF2) — Florian Karsten, SIL Open Font License 1.1

@@ -1,0 +1,6 @@
+# Cloudflare Pages — Cache-Header
+# Bilder und Fonts sind inhaltsadressiert/versioniert -> aggressiv & unveraenderlich cachen.
+/images/*
+  Cache-Control: public, max-age=31536000, immutable
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
